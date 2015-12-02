@@ -1,0 +1,75 @@
+﻿<!doctype html>
+<html dir="ltr" lang="zh-CN">
+<head>
+<title>jQuery实现页面详情展开收起</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style type="text/css">
+body {font:normal 12px/24px Arial, Helvetica, sans-serif; background:#D9F0DB;}
+textarea,pre {font-family:Courier; font-size:12px;}
+</style>
+</head>
+<body>
+<p><a href='_index.htm'>&lt;&lt;目录</a></p><pre name="code" class="html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;meta charset=utf-8&quot; /&gt;
+&lt;title&gt;jQuery实现页面详情展开收起&lt;/title&gt;
+&lt;style&gt;
+.detailpd { padding-top:10px; }
+&lt;/style&gt; 
+&lt;script src=&quot;http://libs.baidu.com/jquery/1.10.2/jquery.min.js&quot;&gt;&lt;/script&gt;
+&lt;script&gt;
+// 显隐项目介绍详情
+	$(function view_details_click(){
+		$(&quot;#detailmain_a&quot;).bind(&#39;click&#39;,function(){
+			if($(&quot;#deal_info_box&quot;).is(&quot;:hidden&quot;)){
+				$(&quot;#deal_info_box&quot;).show();
+				$(this).find(&quot;#view_details&quot;).text(&quot;收起详情&quot;);
+				$(this).find(&quot;.fa&quot;).removeClass(&quot;fa-angle-right&quot;).addClass(&quot;fa-angle-down&quot;);
+			}
+			else{
+				$(&quot;#deal_info_box&quot;).hide();
+				$(this).find(&quot;#view_details&quot;).text(&quot;展开详情&quot;);
+				$(this).find(&quot;.fa&quot;).removeClass(&quot;fa-angle-down&quot;).addClass(&quot;fa-angle-right&quot;);
+			}
+		});
+		$(&quot;#detailmain_aa&quot;).bind(&#39;click&#39;,function(){
+			$(&quot;#deal_info_box&quot;).hide();
+			$(&quot;#view_details&quot;).text(&quot;展开详情&quot;);
+		});
+	});
+&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+	&lt;p class=&quot;detailpd&quot;&gt;
+		项目详情介绍:
+	&lt;/p&gt;
+	&lt;a class=&quot;detailmain_a&quot; href=&quot;javascript:void(0);&quot; id=&quot;detailmain_a&quot;&gt;
+		&lt;span id=&quot;view_details&quot;&gt;展开详情&gt;&lt;/span&gt;&lt;i class=&quot;fa fa-angle-right&quot;&gt;&lt;/i&gt;
+	&lt;/a&gt;
+	&lt;div class=&quot;deal_info_box pb15&quot; id=&quot;deal_info_box&quot; style=&quot;display:none&quot;&gt;
+	&lt;!-- 此处引入要展开的具体文件内容 --&gt;
+		123&lt;br/&gt;
+		123&lt;br/&gt;
+		123&lt;br/&gt;
+		123&lt;br/&gt;
+		123&lt;br/&gt;
+		123&lt;br/&gt;
+		123&lt;br/&gt;
+		123&lt;br/&gt;
+		123&lt;br/&gt;
+		123&lt;br/&gt;
+		123&lt;br/&gt;
+		123&lt;br/&gt;
+		123&lt;br/&gt;
+		123&lt;br/&gt;
+		123&lt;br/&gt;
+		&lt;a class=&quot;detailmain_aa tc&quot; href=&quot;javascript:void(0);&quot; id=&quot;detailmain_aa&quot; style=&quot;width:130px;display:block;margin:0 auto&quot;&gt;
+			&lt;span class=&quot;theme_fcolor&quot; id=&quot;view_detailss&quot;&gt;收起详情&lt;/span&gt;&lt;i class=&quot;fa fa-angle-up theme_fcolor&quot;&gt;&lt;/i&gt;
+		&lt;/a&gt;
+	&lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;</pre><br>
+<p><a href='_index.htm'>&lt;&lt;目录</a></p>
+</body>
+</html>

@@ -1,0 +1,440 @@
+﻿<!doctype html>
+<html dir="ltr" lang="zh-CN">
+<head>
+<title>Python 字符串详解</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style type="text/css">
+body {font:normal 12px/24px Arial, Helvetica, sans-serif; background:#D9F0DB;}
+textarea,pre {font-family:Courier; font-size:12px;}
+</style>
+</head>
+<body>
+<p><a href='_index.htm'>&lt;&lt;目录</a></p><p><span style="font-size:18px">1、字符串的访问：</span></p>
+<p></p>
+<pre code_snippet_id="648588" snippet_file_name="blog_20150420_1_8485922"  code_snippet_id="648588" snippet_file_name="blog_20150420_1_8485922" name="code" class="python">s = &quot;abcdefg&quot;
+n = type(s)
+print n
+print &quot;s=&quot;,s
+print &quot;s0=&quot;,s[0]
+print &quot;s1=&quot;,s[1]
+print &quot;s2=&quot;,s[2]&lt;span style=&quot;font-family: Arial, Helvetica, sans-serif;&quot;&gt;
+&lt;/span&gt;&lt;pre name=&quot;code&quot; class=&quot;python&quot;&gt;&lt;span style=&quot;font-family: Arial, Helvetica, sans-serif;&quot;&gt;print &quot;s[1:5]: &quot;, s[1:5] &#160;#使用方括号截取字符串&lt;/span&gt;</pre>
+<p></p>
+<pre></pre>
+<p></p>
+<p></p>
+<p>输出结果：</p>
+<p>&gt;&gt;&gt;&nbsp;</p>
+<p>&lt;type 'str'&gt;s= abcdefgs0= as1= bs2= c</p>
+<p>s[1:5]: &nbsp;bcde&gt;&gt;&gt;&nbsp;</p>
+<p><span style="font-size:18px">2、字符串更新</span></p>
+<pre code_snippet_id="648588" snippet_file_name="blog_20150420_2_6038779"  code_snippet_id="648588" snippet_file_name="blog_20150420_2_6038779" name="code" class="python">var1 = &#39;Hello World!&#39;
+print &quot;Updated String :- &quot;, var1[:6] + &#39;Python&#39;  #字符串变为 Hello Python</pre><br>
+<p><span style="font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; font-size:18px">3、Python转义字符</span></p>
+<p></p>
+<p style="line-height:16.7999992370605px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif">
+在需要在字符中使用特殊字符时，python用反斜杠(\)转义字符。如下表：</p>
+<table class="reference  " style="font-size:12px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; border-collapse:collapse; width:722px; color:rgb(0,0,0)">
+<thead>
+<tr style="background-color:rgb(246,244,240)">
+<th style="font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; color:rgb(255,255,255); border:1px solid rgb(85,85,85); padding:3px; vertical-align:top; background-color:rgb(85,85,85)">
+转义字符</th>
+<th style="font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; color:rgb(255,255,255); border:1px solid rgb(85,85,85); padding:3px; vertical-align:top; background-color:rgb(85,85,85)">
+描述</th>
+</tr>
+</thead>
+<tbody>
+<tr style="background-color:rgb(246,244,240)">
+<td style="line-height:16.7999992370605px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; border:1px solid rgb(212,212,212); padding:7px 5px; vertical-align:top">
+\(在行尾时)</td>
+<td style="line-height:16.7999992370605px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; border:1px solid rgb(212,212,212); padding:7px 5px; vertical-align:top">
+续行符</td>
+</tr>
+<tr>
+<td style="line-height:16.7999992370605px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; border:1px solid rgb(212,212,212); padding:7px 5px; vertical-align:top">
+\\</td>
+<td style="line-height:16.7999992370605px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; border:1px solid rgb(212,212,212); padding:7px 5px; vertical-align:top">
+反斜杠符号</td>
+</tr>
+<tr style="background-color:rgb(246,244,240)">
+<td style="line-height:16.7999992370605px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; border:1px solid rgb(212,212,212); padding:7px 5px; vertical-align:top">
+\'</td>
+<td style="line-height:16.7999992370605px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; border:1px solid rgb(212,212,212); padding:7px 5px; vertical-align:top">
+单引号</td>
+</tr>
+<tr>
+<td style="line-height:16.7999992370605px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; border:1px solid rgb(212,212,212); padding:7px 5px; vertical-align:top">
+\&quot;</td>
+<td style="line-height:16.7999992370605px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; border:1px solid rgb(212,212,212); padding:7px 5px; vertical-align:top">
+双引号</td>
+</tr>
+<tr style="background-color:rgb(246,244,240)">
+<td style="line-height:16.7999992370605px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; border:1px solid rgb(212,212,212); padding:7px 5px; vertical-align:top">
+\a</td>
+<td style="line-height:16.7999992370605px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; border:1px solid rgb(212,212,212); padding:7px 5px; vertical-align:top">
+响铃</td>
+</tr>
+<tr>
+<td style="line-height:16.7999992370605px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; border:1px solid rgb(212,212,212); padding:7px 5px; vertical-align:top">
+\b</td>
+<td style="line-height:16.7999992370605px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; border:1px solid rgb(212,212,212); padding:7px 5px; vertical-align:top">
+退&#26684;(Backspace)</td>
+</tr>
+<tr style="background-color:rgb(246,244,240)">
+<td style="line-height:16.7999992370605px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; border:1px solid rgb(212,212,212); padding:7px 5px; vertical-align:top">
+\e</td>
+<td style="line-height:16.7999992370605px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; border:1px solid rgb(212,212,212); padding:7px 5px; vertical-align:top">
+转义</td>
+</tr>
+<tr>
+<td style="line-height:16.7999992370605px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; border:1px solid rgb(212,212,212); padding:7px 5px; vertical-align:top">
+\000</td>
+<td style="line-height:16.7999992370605px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; border:1px solid rgb(212,212,212); padding:7px 5px; vertical-align:top">
+空</td>
+</tr>
+<tr style="background-color:rgb(246,244,240)">
+<td style="line-height:16.7999992370605px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; border:1px solid rgb(212,212,212); padding:7px 5px; vertical-align:top">
+\n</td>
+<td style="line-height:16.7999992370605px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; border:1px solid rgb(212,212,212); padding:7px 5px; vertical-align:top">
+换行 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; print &nbsp;&quot;\n&quot;</td>
+</tr>
+<tr>
+<td style="line-height:16.7999992370605px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; border:1px solid rgb(212,212,212); padding:7px 5px; vertical-align:top">
+\v</td>
+<td style="line-height:16.7999992370605px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; border:1px solid rgb(212,212,212); padding:7px 5px; vertical-align:top">
+纵向制表符</td>
+</tr>
+<tr style="background-color:rgb(246,244,240)">
+<td style="line-height:16.7999992370605px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; border:1px solid rgb(212,212,212); padding:7px 5px; vertical-align:top">
+\t</td>
+<td style="line-height:16.7999992370605px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; border:1px solid rgb(212,212,212); padding:7px 5px; vertical-align:top">
+横向制表符</td>
+</tr>
+<tr>
+<td style="line-height:16.7999992370605px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; border:1px solid rgb(212,212,212); padding:7px 5px; vertical-align:top">
+\r</td>
+<td style="line-height:16.7999992370605px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; border:1px solid rgb(212,212,212); padding:7px 5px; vertical-align:top">
+回车</td>
+</tr>
+<tr style="background-color:rgb(246,244,240)">
+<td style="line-height:16.7999992370605px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; border:1px solid rgb(212,212,212); padding:7px 5px; vertical-align:top">
+\f</td>
+<td style="line-height:16.7999992370605px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; border:1px solid rgb(212,212,212); padding:7px 5px; vertical-align:top">
+换页</td>
+</tr>
+<tr>
+<td style="line-height:16.7999992370605px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; border:1px solid rgb(212,212,212); padding:7px 5px; vertical-align:top">
+\oyy</td>
+<td style="line-height:16.7999992370605px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; border:1px solid rgb(212,212,212); padding:7px 5px; vertical-align:top">
+八进制数，yy代表的字符，例如：\o12代表换行</td>
+</tr>
+<tr style="background-color:rgb(246,244,240)">
+<td style="line-height:16.7999992370605px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; border:1px solid rgb(212,212,212); padding:7px 5px; vertical-align:top">
+\xyy</td>
+<td style="line-height:16.7999992370605px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; border:1px solid rgb(212,212,212); padding:7px 5px; vertical-align:top">
+十六进制数，yy代表的字符，例如：\x0a代表换行</td>
+</tr>
+<tr>
+<td style="line-height:16.7999992370605px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; border:1px solid rgb(212,212,212); padding:7px 5px; vertical-align:top">
+\other</td>
+<td style="line-height:16.7999992370605px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; border:1px solid rgb(212,212,212); padding:7px 5px; vertical-align:top">
+其它的字符以普通&#26684;式输出</td>
+</tr>
+</tbody>
+</table>
+<br>
+<span style="font-size:18px">4、raw字符串(转义字符串)：</span>
+<p><br>
+Python中对于文件路径的描述，有一下几种形式形式：</p>
+<p style="text-align:justify"><span style="font-size:18px">r&quot;C:\xxx\sdf\fgh&quot; &nbsp; &nbsp; #前面有r后，编译器将不再将\看做特殊字符，当做原始字符编译</span></p>
+<p style="text-align:justify"><span style="font-size:18px">r&quot;C:\sdf\dfdsf\ffg<span style="color:#ff0000">\\</span>&quot;</span></p>
+<p style="text-align:justify"><span style="font-size:18px">&quot;C:\\dfgd\\dgfdf\\dfg\\dff&quot;</span></p>
+<p><span style="font-size:18px; text-align:justify">&quot;C:\\dfgd\\dgfdf\\dfg\\dff\\&quot;</span><br>
+<br>
+</p>
+<h2 style="font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; margin-top:10px; margin-bottom:10px">
+<span style="font-weight:normal"><span style="font-size:18px">5、Unicode 字符串</span></span></h2>
+<p></p>
+<p style="line-height:16.7999992370605px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif">
+Python 中定义一个 Unicode 字符串和定义一个普通字符串一样简单：</p>
+<pre class="prettyprint prettyprinted" style="margin:15px auto; line-height:20px; font-family:'courier new'; word-break:break-all; word-wrap:break-word; border-width:1px 1px 1px 4px; border-style:solid; border-color:rgb(221,221,221); padding:10px 15px"><span class="pun" style="color:rgb(102,102,0)">&gt;&gt;&gt;</span><span class="pln"> u</span><span class="str" style="color:rgb(0,136,0)">'Hello World !'</span><span class="pln">
+u</span><span class="str" style="color:rgb(0,136,0)">'Hello World !'</span></pre>
+<p style="line-height:16.7999992370605px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif">
+引号前小写的&quot;u&quot;表示这里创建的是一个 Unicode 字符串。如果你想加入一个特殊字符，可以使用 Python 的 Unicode-Escape 编码。如下例所示：</p>
+<pre class="prettyprint prettyprinted" style="margin:15px auto; line-height:20px; font-family:'courier new'; word-break:break-all; word-wrap:break-word; border-width:1px 1px 1px 4px; border-style:solid; border-color:rgb(221,221,221); padding:10px 15px"><span class="pun" style="color:rgb(102,102,0)">&gt;&gt;&gt;</span><span class="pln"> u</span><span class="str" style="color:rgb(0,136,0)">'Hello\u0020World !'</span><span class="pln">
+u</span><span class="str" style="color:rgb(0,136,0)">'Hello World !'</span></pre>
+<p style="line-height:16.7999992370605px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif">
+被替换的 \u0020 标识表示在给定位置插入编码&#20540;为 0x0020 的 Unicode 字符（空&#26684;符）。</p>
+<span style="font-size:18px">6、<span style="font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif">Python字符串&#26684;式化</span></span>
+<p style="line-height:16.7999992370605px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif">
+Python 支持&#26684;式化字符串的输出 。尽管这样可能会用到非常复杂的表达式，但最基本的用法是将一个&#20540;插入到一个有字符串&#26684;式符 %s 的字符串中。</p>
+<p style="line-height:16.7999992370605px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif">
+在 Python 中，字符串&#26684;式化使用与 C 中 sprintf 函数一样的语法。</p>
+<p style="line-height:16.7999992370605px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif">
+如下实例：</p>
+<pre class="prettyprint prettyprinted" style="margin:15px auto; line-height:20px; font-family:'courier new'; word-break:break-all; word-wrap:break-word; border-width:1px 1px 1px 4px; border-style:solid; border-color:rgb(221,221,221); padding:10px 15px"><span class="com" style="color:rgb(136,0,0)">#!/usr/bin/python</span><span class="pln">
+
+</span><span class="kwd" style="color:rgb(0,0,136)">print</span><span class="pln"> </span><span class="str" style="color:rgb(0,136,0)">&quot;My name is %s and weight is %d kg!&quot;</span><span class="pln"> </span><span class="pun" style="color:rgb(102,102,0)">%</span><span class="pln"> </span><span class="pun" style="color:rgb(102,102,0)">(</span><span class="str" style="color:rgb(0,136,0)">'Zara'</span><span class="pun" style="color:rgb(102,102,0)">,</span><span class="pln"> </span><span class="lit" style="color:rgb(0,102,102)">21</span><span class="pun" style="color:rgb(102,102,0)">)</span><span class="pln">    <span style="color:#cc0000">#注意双引号后还要加一个%</span></span></pre>
+<p style="line-height:16.7999992370605px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif">
+以上实例输出结果：</p>
+<pre class="prettyprint prettyprinted" style="margin:15px auto; line-height:20px; font-family:'courier new'; word-break:break-all; word-wrap:break-word; border-width:1px 1px 1px 4px; border-style:solid; border-color:rgb(221,221,221); padding:10px 15px"><span class="typ" style="color:rgb(102,0,102)">My</span><span class="pln"> name </span><span class="kwd" style="color:rgb(0,0,136)">is</span><span class="pln"> </span><span class="typ" style="color:rgb(102,0,102)">Zara</span><span class="pln"> </span><span class="kwd" style="color:rgb(0,0,136)">and</span><span class="pln"> weight </span><span class="kwd" style="color:rgb(0,0,136)">is</span><span class="pln"> </span><span class="lit" style="color:rgb(0,102,102)">21</span><span class="pln"> kg</span><span class="pun" style="color:rgb(102,102,0)">!</span></pre>
+<p style="line-height:16.7999992370605px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif">
+python字符串&#26684;式化符号:</p>
+<table class="reference  " style="font-size:12px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; border-collapse:collapse; width:722px; color:rgb(0,0,0)">
+<tbody>
+<tr style="background-color:rgb(246,244,240)">
+<th style="font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; color:rgb(255,255,255); border:1px solid rgb(85,85,85); padding:3px; vertical-align:top; background-color:rgb(85,85,85)">
+&nbsp;&nbsp;&nbsp; 符&nbsp;&nbsp; 号</th>
+<th style="font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; color:rgb(255,255,255); border:1px solid rgb(85,85,85); padding:3px; vertical-align:top; background-color:rgb(85,85,85)">
+描述</th>
+</tr>
+<tr>
+<td style="line-height:16.7999992370605px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; border:1px solid rgb(212,212,212); padding:7px 5px; vertical-align:top">
+<span style="font-family:宋体; line-height:23px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; %c</span></td>
+<td style="line-height:16.7999992370605px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; border:1px solid rgb(212,212,212); padding:7px 5px; vertical-align:top">
+<span style="font-family:宋体; font-size:12px; line-height:23px">&nbsp;&#26684;式化字符及其ASCII码</span></td>
+</tr>
+<tr style="background-color:rgb(246,244,240)">
+<td style="line-height:16.7999992370605px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; border:1px solid rgb(212,212,212); padding:7px 5px; vertical-align:top">
+<span style="font-family:宋体; font-size:12px; line-height:23px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; %s</span></td>
+<td style="line-height:16.7999992370605px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; border:1px solid rgb(212,212,212); padding:7px 5px; vertical-align:top">
+<span style="font-family:宋体; font-size:12px; line-height:23px">&nbsp;&#26684;式化字符串</span></td>
+</tr>
+<tr>
+<td style="line-height:16.7999992370605px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; border:1px solid rgb(212,212,212); padding:7px 5px; vertical-align:top">
+<span style="font-family:宋体; font-size:12px; line-height:23px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; %d</span></td>
+<td style="line-height:16.7999992370605px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; border:1px solid rgb(212,212,212); padding:7px 5px; vertical-align:top">
+<span style="font-family:宋体; font-size:12px; line-height:23px">&nbsp;&#26684;式化整数</span></td>
+</tr>
+<tr style="background-color:rgb(246,244,240)">
+<td style="line-height:16.7999992370605px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; border:1px solid rgb(212,212,212); padding:7px 5px; vertical-align:top">
+<span style="font-family:宋体; font-size:12px; line-height:23px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; %u</span></td>
+<td style="line-height:16.7999992370605px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; border:1px solid rgb(212,212,212); padding:7px 5px; vertical-align:top">
+<span style="font-family:宋体; font-size:12px; line-height:23px">&nbsp;&#26684;式化无符号整型</span></td>
+</tr>
+<tr>
+<td style="line-height:16.7999992370605px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; border:1px solid rgb(212,212,212); padding:7px 5px; vertical-align:top">
+<span style="font-family:宋体; font-size:12px; line-height:23px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; %o</span></td>
+<td style="line-height:16.7999992370605px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; border:1px solid rgb(212,212,212); padding:7px 5px; vertical-align:top">
+<span style="font-family:宋体; font-size:12px; line-height:23px">&nbsp;&#26684;式化无符号八进制数</span></td>
+</tr>
+<tr style="background-color:rgb(246,244,240)">
+<td style="line-height:16.7999992370605px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; border:1px solid rgb(212,212,212); padding:7px 5px; vertical-align:top">
+<span style="font-family:宋体; font-size:12px; line-height:23px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; %x</span></td>
+<td style="line-height:16.7999992370605px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; border:1px solid rgb(212,212,212); padding:7px 5px; vertical-align:top">
+<span style="font-family:宋体; font-size:12px; line-height:23px">&nbsp;&#26684;式化无符号十六进制数</span></td>
+</tr>
+<tr>
+<td style="line-height:16.7999992370605px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; border:1px solid rgb(212,212,212); padding:7px 5px; vertical-align:top">
+<span style="font-family:宋体; font-size:12px; line-height:23px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; %X</span></td>
+<td style="line-height:16.7999992370605px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; border:1px solid rgb(212,212,212); padding:7px 5px; vertical-align:top">
+<span style="font-family:宋体; font-size:12px; line-height:23px">&nbsp;&#26684;式化无符号十六进制数（大写）</span></td>
+</tr>
+<tr style="background-color:rgb(246,244,240)">
+<td style="line-height:16.7999992370605px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; border:1px solid rgb(212,212,212); padding:7px 5px; vertical-align:top">
+<span style="font-family:宋体; font-size:12px; line-height:23px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; %f</span></td>
+<td style="line-height:16.7999992370605px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; border:1px solid rgb(212,212,212); padding:7px 5px; vertical-align:top">
+<span style="font-family:宋体; font-size:12px; line-height:23px">&nbsp;&#26684;式化浮点数字，可指定小数点后的精度</span></td>
+</tr>
+<tr>
+<td style="line-height:16.7999992370605px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; border:1px solid rgb(212,212,212); padding:7px 5px; vertical-align:top">
+<span style="font-family:宋体; font-size:12px; line-height:23px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; %e</span></td>
+<td style="line-height:16.7999992370605px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; border:1px solid rgb(212,212,212); padding:7px 5px; vertical-align:top">
+<span style="font-family:宋体; font-size:12px; line-height:23px">&nbsp;用科学计数法&#26684;式化浮点数</span></td>
+</tr>
+<tr style="background-color:rgb(246,244,240)">
+<td style="line-height:16.7999992370605px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; border:1px solid rgb(212,212,212); padding:7px 5px; vertical-align:top">
+<span style="font-family:宋体; font-size:12px; line-height:23px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; %E</span></td>
+<td style="line-height:16.7999992370605px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; border:1px solid rgb(212,212,212); padding:7px 5px; vertical-align:top">
+<span style="font-family:宋体; font-size:12px; line-height:23px">&nbsp;作用同%e，用科学计数法&#26684;式化浮点数</span></td>
+</tr>
+<tr>
+<td style="line-height:16.7999992370605px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; border:1px solid rgb(212,212,212); padding:7px 5px; vertical-align:top">
+<span style="font-family:宋体; font-size:12px; line-height:23px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; %g</span></td>
+<td style="line-height:16.7999992370605px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; border:1px solid rgb(212,212,212); padding:7px 5px; vertical-align:top">
+<span style="font-family:宋体; font-size:12px; line-height:23px">&nbsp;%f和%e的简写</span></td>
+</tr>
+<tr style="background-color:rgb(246,244,240)">
+<td style="line-height:16.7999992370605px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; border:1px solid rgb(212,212,212); padding:7px 5px; vertical-align:top">
+<span style="font-family:宋体; font-size:12px; line-height:23px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; %G</span></td>
+<td style="line-height:16.7999992370605px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; border:1px solid rgb(212,212,212); padding:7px 5px; vertical-align:top">
+<span style="font-family:宋体; font-size:12px; line-height:23px">&nbsp;%f 和 %E 的简写</span></td>
+</tr>
+<tr>
+<td style="line-height:16.7999992370605px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; border:1px solid rgb(212,212,212); padding:7px 5px; vertical-align:top">
+<span style="font-family:宋体; font-size:12px; line-height:23px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; %p</span></td>
+<td style="line-height:16.7999992370605px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; border:1px solid rgb(212,212,212); padding:7px 5px; vertical-align:top">
+<span style="font-family:宋体; font-size:12px; line-height:23px">&nbsp;用十六进制数&#26684;式化变量的地址</span></td>
+</tr>
+</tbody>
+</table>
+<p style="line-height:16.7999992370605px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif">
+&#26684;式化操作符辅助指令:</p>
+<table class="reference  " style="font-size:12px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; border-collapse:collapse; width:722px; color:rgb(0,0,0)">
+<tbody>
+<tr style="background-color:rgb(246,244,240)">
+<th style="font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; color:rgb(255,255,255); border:1px solid rgb(85,85,85); padding:3px; vertical-align:top; background-color:rgb(85,85,85)">
+符号</th>
+<th style="font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; color:rgb(255,255,255); border:1px solid rgb(85,85,85); padding:3px; vertical-align:top; background-color:rgb(85,85,85)">
+功能</th>
+</tr>
+<tr>
+<td style="line-height:16.7999992370605px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; border:1px solid rgb(212,212,212); padding:7px 5px; vertical-align:top">
+*</td>
+<td style="line-height:16.7999992370605px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; border:1px solid rgb(212,212,212); padding:7px 5px; vertical-align:top">
+定义宽度或者小数点精度</td>
+</tr>
+<tr style="background-color:rgb(246,244,240)">
+<td style="line-height:16.7999992370605px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; border:1px solid rgb(212,212,212); padding:7px 5px; vertical-align:top">
+-</td>
+<td style="line-height:16.7999992370605px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; border:1px solid rgb(212,212,212); padding:7px 5px; vertical-align:top">
+用做左对齐</td>
+</tr>
+<tr>
+<td style="line-height:16.7999992370605px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; border:1px solid rgb(212,212,212); padding:7px 5px; vertical-align:top">
+&#43;</td>
+<td style="line-height:16.7999992370605px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; border:1px solid rgb(212,212,212); padding:7px 5px; vertical-align:top">
+在正数前面显示加号( &#43; )</td>
+</tr>
+<tr style="background-color:rgb(246,244,240)">
+<td style="line-height:16.7999992370605px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; border:1px solid rgb(212,212,212); padding:7px 5px; vertical-align:top">
+&lt;sp&gt;</td>
+<td style="line-height:16.7999992370605px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; border:1px solid rgb(212,212,212); padding:7px 5px; vertical-align:top">
+在正数前面显示空&#26684;</td>
+</tr>
+<tr>
+<td style="line-height:16.7999992370605px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; border:1px solid rgb(212,212,212); padding:7px 5px; vertical-align:top">
+#</td>
+<td style="line-height:16.7999992370605px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; border:1px solid rgb(212,212,212); padding:7px 5px; vertical-align:top">
+在八进制数前面显示零('0')，在十六进制前面显示'0x'或者'0X'(取决于用的是'x'还是'X')</td>
+</tr>
+<tr style="background-color:rgb(246,244,240)">
+<td style="line-height:16.7999992370605px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; border:1px solid rgb(212,212,212); padding:7px 5px; vertical-align:top">
+0</td>
+<td style="line-height:16.7999992370605px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; border:1px solid rgb(212,212,212); padding:7px 5px; vertical-align:top">
+显示的数字前面填充'0'而不是默认的空&#26684;</td>
+</tr>
+<tr>
+<td style="line-height:16.7999992370605px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; border:1px solid rgb(212,212,212); padding:7px 5px; vertical-align:top">
+%</td>
+<td style="line-height:16.7999992370605px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; border:1px solid rgb(212,212,212); padding:7px 5px; vertical-align:top">
+'%%'输出一个单一的'%'</td>
+</tr>
+<tr style="background-color:rgb(246,244,240)">
+<td style="line-height:16.7999992370605px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; border:1px solid rgb(212,212,212); padding:7px 5px; vertical-align:top">
+(var)</td>
+<td style="line-height:16.7999992370605px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; border:1px solid rgb(212,212,212); padding:7px 5px; vertical-align:top">
+映射变量(字典参数)</td>
+</tr>
+<tr>
+<td style="line-height:16.7999992370605px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; border:1px solid rgb(212,212,212); padding:7px 5px; vertical-align:top">
+m.n.</td>
+<td style="line-height:16.7999992370605px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; border:1px solid rgb(212,212,212); padding:7px 5px; vertical-align:top">
+m 是显示的最小总宽度,n 是小数点后的位数(如果可用的话)</td>
+</tr>
+</tbody>
+</table>
+<br>
+<h2 style="font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; margin-top:10px; margin-bottom:10px">
+<span style="font-weight:normal"><span style="font-size:18px">7、Python字符串运算符</span></span></h2>
+<p style="line-height:16.7999992370605px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif">
+下表实例变量a&#20540;为字符串&quot;Hello&quot;，b变量&#20540;为&quot;Python&quot;：</p>
+<table class="reference  " style="font-size:12px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; border-collapse:collapse; width:722px; color:rgb(0,0,0)">
+<tbody>
+<tr style="background-color:rgb(246,244,240)">
+<th width="10%" style="font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; color:rgb(255,255,255); border:1px solid rgb(85,85,85); padding:3px; vertical-align:top; background-color:rgb(85,85,85)">
+操作符</th>
+<th style="font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; color:rgb(255,255,255); border:1px solid rgb(85,85,85); padding:3px; vertical-align:top; background-color:rgb(85,85,85)">
+描述</th>
+<th style="font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; color:rgb(255,255,255); border:1px solid rgb(85,85,85); padding:3px; vertical-align:top; background-color:rgb(85,85,85)">
+实例</th>
+</tr>
+<tr>
+<td style="line-height:16.7999992370605px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; border:1px solid rgb(212,212,212); padding:7px 5px; vertical-align:top">
+&#43;</td>
+<td style="line-height:16.7999992370605px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; border:1px solid rgb(212,212,212); padding:7px 5px; vertical-align:top">
+字符串连接</td>
+<td style="line-height:16.7999992370605px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; border:1px solid rgb(212,212,212); padding:7px 5px; vertical-align:top">
+a &#43; b 输出结果： HelloPython</td>
+</tr>
+<tr style="background-color:rgb(246,244,240)">
+<td style="line-height:16.7999992370605px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; border:1px solid rgb(212,212,212); padding:7px 5px; vertical-align:top">
+*</td>
+<td style="line-height:16.7999992370605px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; border:1px solid rgb(212,212,212); padding:7px 5px; vertical-align:top">
+重复输出字符串</td>
+<td style="line-height:16.7999992370605px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; border:1px solid rgb(212,212,212); padding:7px 5px; vertical-align:top">
+a*2 输出结果：HelloHello</td>
+</tr>
+<tr>
+<td style="line-height:16.7999992370605px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; border:1px solid rgb(212,212,212); padding:7px 5px; vertical-align:top">
+[]</td>
+<td style="line-height:16.7999992370605px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; border:1px solid rgb(212,212,212); padding:7px 5px; vertical-align:top">
+通过索引获取字符串中字符 &nbsp; a[-1]=o &nbsp; &nbsp;a[-2]=l</td>
+<td style="line-height:16.7999992370605px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; border:1px solid rgb(212,212,212); padding:7px 5px; vertical-align:top">
+a[1] 输出结果&nbsp;<strong>e</strong></td>
+</tr>
+<tr style="background-color:rgb(246,244,240)">
+<td style="line-height:16.7999992370605px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; border:1px solid rgb(212,212,212); padding:7px 5px; vertical-align:top">
+[ : ]</td>
+<td style="line-height:16.7999992370605px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; border:1px solid rgb(212,212,212); padding:7px 5px; vertical-align:top">
+截取字符串中的一部分 &nbsp; s[i:j:step] &nbsp;若倒序显示，一定要写step，且为负&#20540;，</td>
+<td style="line-height:16.7999992370605px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; border:1px solid rgb(212,212,212); padding:7px 5px; vertical-align:top">
+a[1:4] 输出结果&nbsp;<strong>ell</strong></td>
+</tr>
+<tr>
+<td style="line-height:16.7999992370605px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; border:1px solid rgb(212,212,212); padding:7px 5px; vertical-align:top">
+in</td>
+<td style="line-height:16.7999992370605px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; border:1px solid rgb(212,212,212); padding:7px 5px; vertical-align:top">
+成员运算符 - 如果字符串中包含给定的字符返回 True</td>
+<td style="line-height:16.7999992370605px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; border:1px solid rgb(212,212,212); padding:7px 5px; vertical-align:top">
+<strong>H in a</strong>&nbsp;输出结果 1</td>
+</tr>
+<tr style="background-color:rgb(246,244,240)">
+<td style="line-height:16.7999992370605px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; border:1px solid rgb(212,212,212); padding:7px 5px; vertical-align:top">
+not in</td>
+<td style="line-height:16.7999992370605px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; border:1px solid rgb(212,212,212); padding:7px 5px; vertical-align:top">
+成员运算符 - 如果字符串中不包含给定的字符返回 True</td>
+<td style="line-height:16.7999992370605px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; border:1px solid rgb(212,212,212); padding:7px 5px; vertical-align:top">
+<strong>M not in a</strong>&nbsp;输出结果 1</td>
+</tr>
+<tr>
+<td style="line-height:16.7999992370605px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; border:1px solid rgb(212,212,212); padding:7px 5px; vertical-align:top">
+r/R</td>
+<td style="line-height:16.7999992370605px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; border:1px solid rgb(212,212,212); padding:7px 5px; vertical-align:top">
+原始字符串 - 原始字符串：所有的字符串都是直接按照字面的意思来使用，没有转义特殊或不能打印的字符。 原始字符串除在字符串的第一个引号前加上字母&quot;r&quot;（可以大小写）以外，与普通字符串有着几乎完全相同的语法。（即关闭转义字符功能）</td>
+<td style="line-height:16.7999992370605px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; border:1px solid rgb(212,212,212); padding:7px 5px; vertical-align:top">
+<strong>print r'\n'</strong>&nbsp;prints \n 和&nbsp;<strong>print R'\n'</strong>prints \n</td>
+</tr>
+<tr style="background-color:rgb(246,244,240)">
+<td style="line-height:16.7999992370605px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; border:1px solid rgb(212,212,212); padding:7px 5px; vertical-align:top">
+%</td>
+<td style="line-height:16.7999992370605px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; border:1px solid rgb(212,212,212); padding:7px 5px; vertical-align:top">
+&#26684;式字符串</td>
+<td style="line-height:16.7999992370605px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; border:1px solid rgb(212,212,212); padding:7px 5px; vertical-align:top">
+请看下一章节</td>
+</tr>
+</tbody>
+</table>
+<br>
+<p>8、案例分析</p>
+<p><pre code_snippet_id="648588" snippet_file_name="blog_20150421_3_8000362"  name="code" class="python">s=&quot;fs fes  23   43    &quot;
+
+str=s.split()
+print str
+print str[0]+str[1]+str[2]+str[3]
+print str[0],
+print str[1],
+print str[2],
+print str[3]</pre><br>
+运行结果：</p>
+<p>&gt;&gt;&gt;&nbsp;<br>
+['fs', 'fes', '23', '43']<br>
+fsfes2343<br>
+fs fes 23 43<br>
+&gt;&gt;&gt;<br>
+</p>
+<br>
+<br>
+<p><a href='_index.htm'>&lt;&lt;目录</a></p>
+</body>
+</html>

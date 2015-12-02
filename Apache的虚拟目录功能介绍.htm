@@ -1,0 +1,79 @@
+﻿<!doctype html>
+<html dir="ltr" lang="zh-CN">
+<head>
+<title>Apache的虚拟目录功能介绍</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style type="text/css">
+body {font:normal 12px/24px Arial, Helvetica, sans-serif; background:#D9F0DB;}
+textarea,pre {font-family:Courier; font-size:12px;}
+</style>
+</head>
+<body>
+<p><a href='_index.htm'>&lt;&lt;目录</a></p><h2><span style="font-size:24px">Apache的虚拟目录功能：</span></h2>
+<p><span style="font-size:18px">已知我们把web应用放在Apache默认的hdocs目录下，Apache会自动的管理它。若我们想把web应用放在其他目录下，Apache仍然能够访问它，则需要用到Apache的虚拟目录功能。</span></p>
+<p><span style="font-size:18px">&nbsp;</span></p>
+<h4><span style="font-size:24px">Apache配置虚拟目录方法：</span></h4>
+<h5><span style="font-size:18px"><a target="_blank" name="section-2"></a><a target="_blank" name="section-3"></a></span><span style="font-size:18px">方法一：</span></h5>
+<p><span style="font-size:18px">（1）&nbsp;&nbsp; 进入Apache的conf目录</span></p>
+<div>
+<p><span style="font-size:18px"><span style="color:rgb(51,51,51)">（2</span>）打开httpd.conf文件输入：</span></p>
+</div>
+<div>
+<p><span style="color:#333333"><span style="font-size:18px">查找&lt;IfModule alias_module&gt;</span></span></p>
+</div>
+<div>
+<p><span style="font-size:18px"><span style="color:#333333">&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; </span><span style="color:#333333">在ScriptAlias/cgi-bin/&quot;D:/ProgramFiles/wamp/server/Apache2.2/cgi-bin/&quot;</span></span></p>
+<p><span style="font-size:18px"><span style="color:#333333">&nbsp; &nbsp;</span><span style="color:#333333">的后面输入：Alias/php&nbsp;&quot;F:/www_php&quot;&nbsp;</span></span></p>
+</div>
+<div>
+<p><span style="font-size:18px"><span style="color:#333333">（3</span>）注释掉documentroot路径</span></p>
+</div>
+<div>
+<p><span style="font-size:18px"><span style="color:#333333">&nbsp; </span><span style="color:#333333">注意：虚拟目录为php</span></span></p>
+</div>
+<h4><span style="font-size:18px">方法二：</span></h4>
+<div>
+<p><span style="color:#333333"><span style="font-size:18px">查找#Virtual hosts</span></span></p>
+<p><span style="font-size:18px"><span style="color:#333333">将# Includeconf/extra/httpd-vhosts.conf</span>前面的“#”去掉</span></p>
+<p><span style="font-size:18px"><span style="color:#333333">打开Apache</span>目录下Apache2.2\conf\extra\httpd-vhosts.conf文件</span></p>
+<p><span style="color:#333333"><span style="font-size:18px">在文件末尾添加</span></span></p>
+<p><span style="color:#333333"><span style="font-size:18px">&nbsp;&nbsp;&lt;IfModule alias_module&gt;</span></span></p>
+<p><span style="color:#333333"><span style="font-size:18px">&nbsp; &nbsp;&nbsp; Alias &nbsp;/php &nbsp;&quot;F:/www_php&quot;&nbsp;</span></span></p>
+<p><span style="color:#333333"><span style="font-size:18px">&nbsp;&nbsp;&lt;/IfModule alias_module&gt;</span></span></p>
+<p><span style="color:#333333"><span style="font-size:18px">&nbsp;</span></span></p>
+<p><span style="font-size:18px"><span style="color:#333333">注释掉documentroot</span>路径</span></p>
+<p><span style="font-size:18px"><span style="color:#333333">重启Apache</span><a target="_blank" name="section-4"></a><span style="color:#EEFFEE">1</span></span></p>
+<p><span style="font-size:18px"><span style="color:#333333">在浏览器中输入http://localhost/php</span>即可访问对应的目录</span></p>
+</div>
+<h3><span style="font-size:24px">Apache的虚拟目录功能对某一个目录进行访问权限的控制</span></h3>
+<p align="left"><span style="font-size:18px">&nbsp;虚拟目录：优点：便于访问<span style="color:#555555">&nbsp;&nbsp;
+</span>便于移动站点的目录<span style="color:#555555">&nbsp;&nbsp; </span>加大磁盘空间<span style="color:#555555">&nbsp;&nbsp;&nbsp;</span>安全性好</span></p>
+<p align="left"><span style="font-size:18px">&nbsp;</span></p>
+<p align="left"><span style="font-size:18px">建立虚拟目录：&nbsp;</span></p>
+<p align="left"><span style="font-size:18px">修改httpd.conf</span></p>
+<p align="left"><span style="font-size:18px">&nbsp;</span></p>
+<p align="left"><span style="font-size:18px">Alias /test “/var/www/test”</span></p>
+<p align="left"><span style="font-size:18px">&lt;Directory“/var/www/test”&gt;</span></p>
+<p align="left"><span style="font-size:18px; color:#ff0000">&nbsp;&nbsp;&nbsp;<strong><em>Options Indexes MultiViews &nbsp; &nbsp; &nbsp;&nbsp;</em></strong></span></p>
+<p><span style="color:rgb(255,0,0)"><strong><em>#</em></strong></span>这里的权限设置，是对上面的/var/www/test文件的权限设置</p>
+<p align="left"><strong><em><span style="font-size:18px; color:#ff0000">&nbsp;&nbsp;&nbsp;AllowOverride None &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</span></em></strong></p>
+<p align="left"><strong><em><span style="font-size:18px; color:#ff0000">&nbsp;&nbsp;&nbsp;Order allow,deny</span></em></strong></p>
+<p align="left"><strong><em><span style="font-size:18px; color:#ff0000">&nbsp;&nbsp;&nbsp;Allow from all</span></em></strong></p>
+<p align="left"><span style="font-size:18px">&lt;/Directory&gt;</span></p>
+<p align="left"><span style="font-size:18px">###########################################</span></p>
+<p align="left"><span style="font-size:18px">Apache&nbsp;使用的访问控制指令<span style="color:#555555">：</span></span></p>
+<p align="left"><span style="font-size:18px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Order&nbsp;指定执行规则顺序</span></p>
+<p align="left"><span style="font-size:18px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Deny&nbsp;指定拒绝访问列表</span></p>
+<p align="left"><span style="font-size:18px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Allow&nbsp;指定允许访问列表</span></p>
+<p align="left"><span style="font-size:18px">访问权限的顺序</span></p>
+<p align="left"><span style="font-size:18px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Orderallow,deny(默认禁止所有客户访问，在执行deny规则前先执行allow规则)</span></p>
+<p align="left"><span style="font-size:18px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Orderdeny,allow(默认禁止所有客户访问，在执行allow规则前先执行deny规则)</span></p>
+<p align="left"><span style="font-size:18px">&nbsp;</span></p>
+<p align="left"><span style="font-size:18px">Deny和allow访问列表的几种形式：</span></p>
+<p align="left"><span style="font-size:18px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ALL：所有客户</span></p>
+<p align="left"><span style="font-size:18px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;域名：如：sina.com</span></p>
+<p align="left"><span style="font-size:18px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;IP：部分或全部（中间用空&#26684;隔开）</span></p>
+<p align="left"><span style="font-size:18px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;网络：&nbsp;如：192.168.1.1/255.255.255.0<span style="color:#555555">&nbsp;&nbsp;&nbsp;</span>192.168.1.1/24</span></p>
+<p><a href='_index.htm'>&lt;&lt;目录</a></p>
+</body>
+</html>

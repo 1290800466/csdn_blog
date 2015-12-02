@@ -1,0 +1,42 @@
+﻿<!doctype html>
+<html dir="ltr" lang="zh-CN">
+<head>
+<title>selenium_webdriver(python)键盘组合键用法，输入中文问题</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style type="text/css">
+body {font:normal 12px/24px Arial, Helvetica, sans-serif; background:#D9F0DB;}
+textarea,pre {font-family:Courier; font-size:12px;}
+</style>
+</head>
+<body>
+<p><a href='_index.htm'>&lt;&lt;目录</a></p><p><br>
+</p>
+<p></p>
+<pre name="code" class="python">#coding=utf-8
+from selenium import webdriver
+from selenium.webdriver.common.keys import Keys
+import time
+driver = webdriver.Ie()
+driver.get(&quot;http://www.baidu.com&quot;)
+#输入框输入内容
+driver.find_element_by_id(&quot;kw&quot;).send_keys(&quot;selenium&quot;)
+time.sleep(3)
+#使用组合键ctrl+a 全选输入框内容
+driver.find_element_by_id(&quot;kw&quot;).send_keys(Keys.CONTROL,&#39;a&#39;)
+time.sleep(3)
+#使用组合键ctrl+x 剪切输入框内容
+driver.find_element_by_id(&quot;kw&quot;).send_keys(Keys.CONTROL,&#39;x&#39;)
+time.sleep(3)
+#输入框重新输入内容，搜索
+#输入框输入中文问题：
+# selenium2 python在send_keys()中输入中文一直报错，其前面加个小u 就解决了：
+#即：send_keys(u&quot;输入中文&quot;)
+driver.find_element_by_id(&quot;kw&quot;).send_keys(u&quot;虫师cnblogs&quot;)
+driver.find_element_by_id(&quot;su&quot;).click()
+time.sleep(5)
+driver.quit()</pre><br>
+<br>
+<p></p>
+<p><a href='_index.htm'>&lt;&lt;目录</a></p>
+</body>
+</html>

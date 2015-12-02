@@ -1,0 +1,122 @@
+﻿<!doctype html>
+<html dir="ltr" lang="zh-CN">
+<head>
+<title>PHP 魔术方法之&quot;__set()&quot;和&quot;__get&quot;</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style type="text/css">
+body {font:normal 12px/24px Arial, Helvetica, sans-serif; background:#D9F0DB;}
+textarea,pre {font-family:Courier; font-size:12px;}
+</style>
+</head>
+<body>
+<p><a href='_index.htm'>&lt;&lt;目录</a></p><p><span style="font-size:18px"><strong>__set()方法：</strong></span></p>
+<p><span style="font-size:18px"><span style="white-space:pre"></span>这个方法用来为私有成员属性设置&#20540;的，有两个参数，第一个参数为你要为设置&#20540;的属性名，第二个参数是要给属性设置的&#20540;，没有返回&#20540;。</span></p>
+<span style="font-size:18px"><span style="white-space:pre"></span>这个方法同样不用我们手工去调用，它也可以做成私有的，是在直接设置私有属性&#20540;的时候自动调用的，同样属性私有的已经被封装上了，如果没有__set()这个方法，是不允许的，比如在类外使用$this-&gt;name=‘zhangsan’,这样会出错，但是如果你在类里面加上了__set($property_name, $value)这个方法，在直接给私有属性赋&#20540;的时候，就会自动调用它，把属性比如name传给$property_name,把要赋的&#20540;“zhangsan”传给$value，通过这个方法的执行，达到赋&#20540;的目的。<br>
+<span style="white-space:pre"></span>如果成员属性不封装成私有的，对象本身就不会去自动调用这个方法。为了不传入非法的&#20540;，还可以在这个方法给做一下判断。<br>
+<br>
+</span>
+<p><span style="font-size:18px">注意：__set()方法操作的变量必须是私有变量。&nbsp;</span></p>
+<p><span style="font-size:18px">实例代码:<br>
+</span></p>
+<p><pre name="code" class="php">&lt;span style=&quot;font-size:18px;&quot;&gt;&lt;?php&lt;/span&gt;</pre><pre name="code" class="php">&lt;span style=&quot;font-size:18px;&quot;&gt;class person{
+	private $name;       //第一个成员属性$name定义人的名子，此属性被封装
+	private $sex;         //第二个成员属性$sex定义人的性别，此属性被封装
+	private $age;         //第三个成员属性$age定义人的年龄，此属性被封装
+	function __construct($name,$sex,$age){
+		$this-&gt;name=$name;
+		$this-&gt;sex=$sex;
+		$this-&gt;age=$age;
+	}
+	//声明魔术方法需要两个参数，真接为私有属性赋值时自动调用，并可以屏蔽一些非法赋值
+	public function __set($propertyName, $propertyValue) {
+		if($propertyName==&quot;sex&quot;){        //如果第一个参数是属性名sex则条件成立
+			//对于非法数据的处理
+			if(!($propertyValue == &quot;男&quot; || $propertyValue == &quot;女&quot;))  //第二个参数只能是男或女
+				return;                //如果是非法参数返回空，则结束方法执行
+			else
+				$this-&gt;$propertyName = $propertyValue;
+		}    
+		if($propertyName==&quot;age&quot;){        //如果第一个参数是属性名age则条件成立
+			if($propertyValue &gt; 150 || $propertyValue &lt;0)  //第二个参数只能在0到150之间的整数
+				return;                //如果是非法参数返回空，则结束方法执行
+			else
+				$this-&gt;$propertyName = $propertyValue;
+		}
+		if($propertyName==&quot;name&quot;){
+			//对于不需要进行验证的数据,根据参数决定为那个属性被赋值，传入不同的成员属性名，赋上传入的相应的值,定义赋值的方式.
+			$this-&gt;$propertyName = $propertyValue;
+		}
+		echo $this-&gt;name; //此时输出的名字为李四
+	}
+	public function showInfo() {
+		echo $this-&gt;name;
+	}
+}
+       
+
+//调用__set()方法:
+$per=new Person(&quot;张三&quot;, &quot;男&quot;, 20);
+$per-&gt;showInfo(); //此时输出的名字为张三
+//自动调用了__set()函数，将属性名name传给第一个参数，将属性值”李四”传给第二个参数
+$per-&gt;name=&quot;李四&quot;;      //当进行赋值时，它会自动调用__set中的 $this-&gt;propertyName=$propertyValue代码&lt;span style=&quot;white-space:pre&quot;&gt;	&lt;/span&gt;&lt;/span&gt;</pre><pre name="code" class="php">&lt;span style=&quot;font-size:18px;&quot;&gt;?&gt;&lt;/span&gt;</pre><span style="font-size:18px"><br>
+<strong>__get()方法：</strong></span></p>
+<p><span style="font-size:18px"><span style="white-space:pre"></span>这个方法用来获取私有成员属性&#20540;的,有一个参数，参数传入你要获取的成员属性的名称，返回获取的属性&#20540;，这个方法不用我们手工的去调用，因为我们也可以把这个方法做成私有的方法，是在直接获取私有属性的时候对象自动调用的。&nbsp;<br>
+实例代码：<br>
+</span></p>
+<p><pre name="code" class="php">&lt;span style=&quot;font-size:18px;&quot;&gt;&lt;?php
+class person1{
+	private $name=&quot;王五&quot;;
+	private $sex=&quot;男&quot;;
+	private $age=&quot;90&quot;;
+	//在类中添加__get()方法，在直接获取属性值时自动调用一次，以属性名作为参数传入并处理
+	public function __get($propertyName)  {    //在方法前使用private修饰，防止对象外部调用 
+		if($propertyName==&quot;sex&quot;) {          //如果参数传入的是”sex”则条件成立
+			return &quot;保密&quot;;                  //不让别人获取到性别，以“保密”替代
+		} 
+		 else  if($propertyName==&quot;age&quot;) {    //如果参数传入的是“age”则条件成立
+			if($this-&gt;age &gt; 30)               //如果对象中的年龄大于30时条件成立
+				return $this-&gt;age-10;           //返回对象中虚假的年龄，比真实年龄小10岁
+			else                           //如果对象中的年龄不大于30时则执行下面代码
+				return $this-&gt;$propertyName;  //让访问都可以获取到对象中真实的年龄
+		} 
+		else{                            //如果参数传入的是其它属性名则条件成立
+			return $this-&gt;$propertyName;      //对其它属性都没有限制，可以直接返回属性的值
+		}  
+	}
+	public function __set($propertyName, $propertyValue) {
+		if($propertyName==&quot;sex&quot;){        //如果第一个参数是属性名sex则条件成立
+			//对于非法数据的处理
+			if(!($propertyValue == &quot;男&quot; || $propertyValue == &quot;女&quot;))  //第二个参数只能是男或女
+				return;                //如果是非法参数返回空，则结束方法执行
+			else
+				$this-&gt;$propertyName = $propertyValue;
+		}    
+		if($propertyName==&quot;age&quot;){        //如果第一个参数是属性名age则条件成立
+			if($propertyValue &gt; 150 || $propertyValue &lt;0)  //第二个参数只能在0到150之间的整数
+				return;                //如果是非法参数返回空，则结束方法执行
+			else
+				$this-&gt;$propertyName = $propertyValue;
+		}
+		if($propertyName==&quot;name&quot;){
+			//对于不需要进行验证的数据,根据参数决定为那个属性被赋值，传入不同的成员属性名，赋上传入的相应的值,定义赋值的方式.
+			$this-&gt;$propertyName = $propertyValue;
+		}
+	}
+}
+
+
+
+/* 
+说明：
+1.它只有一个参数.就是属性名.
+2.这里的关键代码 return $this-&gt;$propertyName，即为真正得到属性值的代码.
+*/
+$per1=new Person1();
+echo &quot;&lt;br&gt;性别：&quot;.$per1-&gt;sex.&quot;&lt;br&gt;&quot;;   //它会自动的调用，特别是__get()方法中的$per1即为$this.
+echo &quot;&lt;br&gt;姓名：&quot;.$per1-&gt;name.&quot;&lt;br&gt;&quot;;   //它会自动的调用，特别是__get()方法中的$per1即为$this.
+echo &quot;&lt;br&gt;年龄：&quot;.$per1-&gt;age.&quot;&lt;br&gt;&quot;;   //它会自动的调用，特别是__get()方法中的$per1即为$this.				
+?&gt;	&lt;/span&gt;</pre><br>
+</p>
+<p><a href='_index.htm'>&lt;&lt;目录</a></p>
+</body>
+</html>

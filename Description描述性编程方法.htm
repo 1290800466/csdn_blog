@@ -1,0 +1,53 @@
+﻿<!doctype html>
+<html dir="ltr" lang="zh-CN">
+<head>
+<title>Description描述性编程方法：</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style type="text/css">
+body {font:normal 12px/24px Arial, Helvetica, sans-serif; background:#D9F0DB;}
+textarea,pre {font-family:Courier; font-size:12px;}
+</style>
+</head>
+<body>
+<p><a href='_index.htm'>&lt;&lt;目录</a></p><pre name="code" class="vb">&lt;pre name=&quot;code&quot; class=&quot;plain&quot;&gt;&lt;pre name=&quot;code&quot; class=&quot;vb&quot;&gt;&#39;Description描述性编程方法：
+&#39;通过声明描述性对象并给对象属性赋值的方法，将对象属性与执行语句分离开；
+&#39;Description描述性编程方法也具有后续强迫性；
+&#39;首先创建Description实例，来代表一个测试对象的属性描述；
+Set objDialog=description.Create()
+	objDialog(&quot;text&quot;).value=&quot;Login&quot;
+	
+	
+Set objName=description.Create()
+	objName(&quot;attached text&quot;).value=&quot;Agent Name:&quot;	
+
+
+Set objPwd=description.Create()
+	objPwd(&quot;attached text&quot;).value=&quot;Password:&quot;
+
+
+Set objButton=description.Create()
+	objButton(&quot;text&quot;).value=&quot;Ok&quot;
+
+&#39;将录制代码中的对象用Description实例的名字代替；
+With Dialog(objDialog)
+	.WinEdit(objName).Set &quot;wml111&quot;
+	.WinEdit(objPwd).SetSecure &quot;5514daebeeea118b8a208fcb96ce79880347a908&quot;
+	.WinButton(objButton).Click
+End With
+
+&#39;注意最后要释放对象；
+Set objDialog=Nothing 
+Set objName=Nothing 
+Set objPwd=Nothing 
+Set objButton=Nothing 
+
+&#39;直接描述性编程和Description描述性编程各自的优缺点：
+&#39;（1）、直接描述性编程适用于普通脚本中，可以解决对象库编程无法完成的任务，减少代码量；但无法做到复用；
+&#39;（2）、Description描述性编程适用于基本框架的脚本中，表面上多几句代码，但具有良好的复用性。
+</pre><br>
+<br>
+<pre></pre>
+<pre></pre>
+<p><a href='_index.htm'>&lt;&lt;目录</a></p>
+</body>
+</html>

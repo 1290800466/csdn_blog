@@ -1,0 +1,42 @@
+﻿<!doctype html>
+<html dir="ltr" lang="zh-CN">
+<head>
+<title>selenium_webdriver(python)调用js脚本</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style type="text/css">
+body {font:normal 12px/24px Arial, Helvetica, sans-serif; background:#D9F0DB;}
+textarea,pre {font-family:Courier; font-size:12px;}
+</style>
+</head>
+<body>
+<p><a href='_index.htm'>&lt;&lt;目录</a></p><p><br>
+</p>
+<p><pre name="code" class="python">#coding=utf-8
+from selenium import webdriver
+import time
+driver = webdriver.Firefox()
+driver.get(&quot;https://www.baidu.com/&quot;)
+#给搜索输入框标红javascript脚本
+js=&quot;var q=document.getElementById(\&quot;kw\&quot;);q.style.border=\&quot;2px solid red\&quot;;&quot;
+#调用给搜索输入框标红js脚本
+driver.execute_script(js)
+time.sleep(3)
+#单独执行js脚本
+driver.execute_script(&#39;alert(&quot;输入框标红了!&quot;)&#39;)
+time.sleep(3)
+#接受提示信息 
+driver.switch_to_alert().accept()
+time.sleep(3)
+#js隐藏元素,将获取的图片元素隐藏
+img1 = driver.find_element_by_xpath(&quot;//*[@id=&#39;lg&#39;]/img&quot;)
+driver.execute_script(&#39;$(arguments[0]).fadeOut()&#39;,img1)
+time.sleep(3)
+driver.find_element_by_xpath(&quot;//*[@id=&#39;kw&#39;]&quot;).send_keys(&quot;selenium&quot;)
+driver.find_element_by_xpath(&quot;//*[@id=&#39;su&#39;]&quot;).click()
+time.sleep(3)
+driver.quit()</pre><br>
+<br>
+</p>
+<p><a href='_index.htm'>&lt;&lt;目录</a></p>
+</body>
+</html>

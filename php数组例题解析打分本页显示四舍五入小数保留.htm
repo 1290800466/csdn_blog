@@ -1,0 +1,107 @@
+﻿<!doctype html>
+<html dir="ltr" lang="zh-CN">
+<head>
+<title>php数组例题解析：打分、本页显示、四舍五入、小数保留</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style type="text/css">
+body {font:normal 12px/24px Arial, Helvetica, sans-serif; background:#D9F0DB;}
+textarea,pre {font-family:Courier; font-size:12px;}
+</style>
+</head>
+<body>
+<p><a href='_index.htm'>&lt;&lt;目录</a></p><p><span style="font-size:14px">1、跳水比赛，8个评委打分。运动员的成绩是8个成绩去掉一个最高分，去掉一个最低分，剩下的6个分数的平均分就是最后得分。使用一维数组事项打分功能。求平均分并找出最高分的评委和最低分的评委。（保留2位小数）</span></p>
+<p><span style="font-size:14px">代码如下：</span></p>
+<p><span style="font-size:14px"></span></p>
+<pre name="code" class="php">&lt;html&gt;
+&lt;head&gt;
+&lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html;charset=utf-8&quot; /&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;?php   
+//评委所对应分数：
+$arr = array(&#39;a1&#39;=&gt;13,&#39;a2&#39;=&gt;12,&#39;a3&#39;=&gt;11,&#39;a4&#39;=&gt;14,&#39;a5&#39;=&gt;17,&#39;a6&#39;=&gt;16,&#39;a7&#39;=&gt;56,&#39;a8&#39;=&gt;67,);
+
+$d = max($arr);  //返回一个数组中的最大值，或者几个指定值中的最大值。
+$e = min($arr);  //返回一个数组中的最小值，或者几个指定值中的最小值。
+//找出评分最大的和最小的评委及其评分
+foreach($arr as $x=&gt;$x_value)
+{	
+	if($d == $x_value)
+	{
+		echo &quot;判分最大的裁判为：&quot;.$x.&quot;打分为：&quot;.$x_value.&quot;&lt;br&gt;&quot;;
+		$d1 = $x;
+		$e1 = $x_value;
+	}
+	elseif ($e == $x_value)
+	{
+		echo &quot;判分最小的裁判为：&quot;.$x.&quot;打分为：&quot;.$x_value.&quot;&lt;br&gt;&quot;;
+		$d2 = $x;
+		$e2 = $x_value;
+	}
+} 
+
+unset($arr[$d1]);   //销毁数组元素
+unset($arr[$d2]);
+$a = 0; 
+//求总分
+foreach($arr as $x=&gt;$x_value)
+{
+	echo &quot;裁判&quot;.$x.&quot;打分&quot;.$x_value.&quot;&lt;br&gt;&quot;;
+	$a = $a+&quot;$x_value&quot;;
+}
+echo &quot;总分为：&quot;.$a.&quot;&lt;br&gt;&quot;;
+$average = ($a/6);
+echo &quot;未四舍五入的平均分为：&quot;.$average.&quot;&lt;br&gt;&quot;;
+
+//round() 函数对浮点数进行四舍五入,可以自定义保留位数。
+//语法：round(要舍入的值,小数点后的尾数,舍入模式);
+$average = round($average,2);
+echo &quot;平均分为：&quot;.$average.&quot;&lt;br&gt;&quot;;
+?&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;
+</pre><span style="font-size:14px">2、在运动会上5个小孩比赛滑轮，滑完100米，分别用了10s,12s,57s,9s,14s,请编写程序，计算他们的平均时间？保留两位小数。</span>
+<p></p>
+<p><span style="font-size:14px">代码如下：</span><br>
+<br>
+</p>
+<pre name="code" class="php" style="font-size: 14px;">&lt;html&gt;
+&lt;head&gt;
+&lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html;charset=utf-8&quot; /&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+&lt;?php 
+//接收用户提交的学生成绩
+//@符号可以阻止非致命错误的提示
+$grades1=@$_REQUEST[&#39;grade&#39;];
+//拆分，对成绩进行分割，变成数组表示
+$grades=explode(&quot; &quot;,$grades1);
+$allgrade=0;
+foreach($grades as $key=&gt;$key_value)  //遍历
+{
+	$allgrade+=$key_value;
+}
+$num=count($grades);
+$average=($allgrade/$num);
+?&gt;
+
+&lt;h1&gt;请输入5个小孩的成绩，用空格隔开&lt;/h1&gt;
+&lt;!--实现了本页输出--&gt;
+&lt;form action=&quot;asd.php&quot; method=&quot;post&quot;&gt;  
+&lt;!--加上value=&quot;&lt;.?php echo &quot;$grades1&quot;; ?&gt;&quot;这句是为了计算后输入框中仍显示文本--&gt;
+&lt;input type=&quot;text&quot; name=&quot;grade&quot; value=&quot;&lt;?php echo &quot;$grades1&quot;; ?&gt;&quot;/&gt;
+&lt;input type=&quot;submit&quot; value=&quot;开始统计&quot;/&gt;
+&lt;/form&gt;
+&lt;form action=&quot;asd.php&quot; method=&quot;get&quot;&gt;
+&lt;!--value=&quot;&lt;.?php echo &quot;$average&quot;; ?&gt;&quot;此句可以在此文本框中显示计算的结果--&gt;
+&lt;input type=&quot;text&quot; name=&quot;grade&quot; value=&quot;&lt;?php echo &quot;$average&quot;; ?&gt;&quot;/&gt;
+&lt;/form&gt;
+&lt;/body&gt;
+&lt;/html&gt;</pre><br>
+<br>
+<p></p>
+<p><a href='_index.htm'>&lt;&lt;目录</a></p>
+</body>
+</html>

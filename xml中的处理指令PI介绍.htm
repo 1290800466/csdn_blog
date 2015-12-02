@@ -1,0 +1,49 @@
+﻿<!doctype html>
+<html dir="ltr" lang="zh-CN">
+<head>
+<title>xml中的处理指令PI 介绍</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style type="text/css">
+body {font:normal 12px/24px Arial, Helvetica, sans-serif; background:#D9F0DB;}
+textarea,pre {font-family:Courier; font-size:12px;}
+</style>
+</head>
+<body>
+<p><a href='_index.htm'>&lt;&lt;目录</a></p><p><span style="font-size:18px; color:#ff0000"><strong>pi指令就是引入css文件：</strong></span></p>
+<p><pre name="code" class="html">&lt;span style=&quot;font-size:18px;&quot;&gt;&lt;?xmlversion=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+&lt;!--xml文件也可以使用css来修饰,使用pi指令，引入pi指令后，xml就像HTML一样显示，不在显示xml的形式--&gt;
+&lt;?xml-stylesheettype=&quot;text/css&quot; href=&quot;classes.css&quot;?&gt;
+&lt;班级&gt;
+&lt;stustuNo=&quot;a0&#39;0&quot;1&quot; stuNo2=&quot;t-0001&quot;&gt;
+&lt;name&gt;孙悟空&lt;/name&gt;
+&lt;sex&gt;男&lt;/sex&gt;
+&lt;age&gt;500&lt;/age&gt;
+&lt;/stu&gt;
+&lt;stustuNo=&quot;a002&quot;&gt;
+&lt;name&gt;白骨精&lt;/name&gt;
+&lt;sex&gt;女&lt;/sex&gt;
+&lt;age&gt;100&lt;/age&gt;
+&lt;/stu&gt;
+&lt;/班级&gt;&lt;/span&gt;</pre></p>
+<p><span style="font-size:18px">classes.css：</span></p>
+<p><pre name="code" class="css">&lt;span style=&quot;font-size:18px;&quot;&gt;@CHARSET&quot;UTF-8&quot;;
+name {
+       font-size:100px;
+       font-weight:bold;
+       color:red;
+}
+sex {
+       font-size:80px;
+       font-weight:bold;
+       color:blue;
+}
+age {
+       font-size:60px;
+       font-weight:bold;
+       color:yellow;
+}&lt;/span&gt;</pre><span style="font-size:18px"><br>
+</span><br>
+</p>
+<p><a href='_index.htm'>&lt;&lt;目录</a></p>
+</body>
+</html>

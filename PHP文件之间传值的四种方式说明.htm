@@ -1,0 +1,69 @@
+﻿<!doctype html>
+<html dir="ltr" lang="zh-CN">
+<head>
+<title>PHP文件之间传值的四种方式说明</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style type="text/css">
+body {font:normal 12px/24px Arial, Helvetica, sans-serif; background:#D9F0DB;}
+textarea,pre {font-family:Courier; font-size:12px;}
+</style>
+</head>
+<body>
+<p><a href='_index.htm'>&lt;&lt;目录</a></p><p><strong><span style="font-size:18px">一. POST传&#20540;</span></strong></p>
+<p><span style="font-size:18px">post传&#20540;是用于html的&lt;form&gt;表单跳转的方法，很方便使用。例如：</span></p>
+<pre name="code" class="html">&lt;span style=&quot;font-size:18px;&quot;&gt;&lt;html&gt;
+ &lt;form action=&#39;&#39; method=&#39;&#39;&gt;
+ &lt;input type=&#39;text&#39; name=&#39;name1&#39;&gt;
+ &lt;input type=&#39;hidden&#39; name=&#39;name2&#39; value=&#39;value&#39;&gt;
+ &lt;input type=&#39;submit&#39; value=&#39;提交&#39;&gt;
+ &lt;/form&gt;
+ &lt;/html&gt;&lt;/span&gt;</pre><span style="font-size:18px">&nbsp; &nbsp; &nbsp; form中的action填入的是跳转页面的url路径,method填入post方法。form表单中的提交按钮按下后，就会把form中有name的内容都传到填入的url中，可以通过$_POST['name']获取，例如:<br>
+</span><pre name="code" class="php">&lt;span style=&quot;font-size:18px;&quot;&gt;&lt;?php
+$a=$_POST[&#39;name1&#39;];
+$b=$_POST[&#39;name2&#39;];
+?&gt;&lt;/span&gt;</pre><span style="font-size:18px">&nbsp; &nbsp; &nbsp; 这里有个很方便的小技巧，在input标签中把type选为'hidden'时，这个input标签会隐藏起来，不在页面显示，但这input标签在form中，并且有name&#20540;和value&#20540;，同样会跟随提交按钮传递过去，这种隐藏标签可以传递一些不想显示出来的内容。<br>
+<br>
+</span>
+<p><strong><span style="font-size:18px">二.GET传&#20540;</span></strong></p>
+<span style="font-size:18px">GET传&#20540;是通过跟随url传递的，在页面跳转时，跟着url跳转。常用于&lt;a&gt;标签的使用。例如：<br>
+</span><pre name="code" class="php">&lt;span style=&quot;font-size:18px;&quot;&gt;&lt;a href=&#39;xxx.php?id=value&#39;&gt;点我跳转&lt;/a&gt;&lt;/span&gt;</pre><span style="font-size:18px">&nbsp; &nbsp; &nbsp;跳转进入xxx.php后，就能通过$_GET['id']获取传递的&#20540;。GET方法常用于URL的目的是删除或读取某个id的php文件。<br>
+<br>
+<strong>三.SESSION传&#20540;</strong><br>
+&nbsp; &nbsp;SESSION是全局变量的一种，经常用于用户登陆后保存用户id之类的常用数据。一旦保存到SESSION中，其他页面都可以通过SESSION获取,SESSION的使用要开启session：<br>
+</span><pre name="code" class="php">&lt;span style=&quot;font-size:18px;&quot;&gt;&lt;?php
+//session赋值
+   session_start();
+   $_SESSION[&#39;one&#39;]=value1;
+   $_SESSION[&#39;two&#39;]=value2;
+ 
+//session值的读取:
+   $one = $_SESSION[&#39;one&#39;];
+    
+//session值的销毁
+   unset($_SESSION[&#39;one&#39;]);
+?&gt;&lt;/span&gt;</pre>
+<p><span style="font-size:18px"><br>
+<span style="font-weight:bold">四.网址传&#20540;</span><br>
+<br>
+代码实例：</span></p>
+<p><pre name="code" class="html">&lt;span style=&quot;font-size:18px;&quot;&gt;&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;meta charset=&quot;UTF-8&quot;&gt;
+&lt;title&gt;Insert title here&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;a href=&quot;http://localhost/wml/chuanzhi.php?name=wml&amp;id=2&quot;&gt;传值&lt;/a&gt;
+&lt;/body&gt;
+&lt;/html&gt;&lt;/span&gt;</pre><span style="font-size:18px"><br>
+</span><pre name="code" class="php">&lt;span style=&quot;font-size:18px;&quot;&gt;&lt;?php
+$name=$_GET[&#39;name&#39;];
+$id=$_GET[&#39;id&#39;];
+echo $name.&quot;&lt;br/&gt;&quot;;
+echo $id;
+// echoname=wml&amp;id=2
+?&gt;&lt;/span&gt;</pre><br>
+</p>
+<p><a href='_index.htm'>&lt;&lt;目录</a></p>
+</body>
+</html>

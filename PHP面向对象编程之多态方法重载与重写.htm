@@ -1,0 +1,119 @@
+﻿<!doctype html>
+<html dir="ltr" lang="zh-CN">
+<head>
+<title>PHP面向对象编程之--多态：方法重载与重写</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style type="text/css">
+body {font:normal 12px/24px Arial, Helvetica, sans-serif; background:#D9F0DB;}
+textarea,pre {font-family:Courier; font-size:12px;}
+</style>
+</head>
+<body>
+<p><a href='_index.htm'>&lt;&lt;目录</a></p><span style="color:rgb(51,51,51); font-family:Arial; line-height:26px; font-size:18px"><strong>重载</strong><br>
+</span><span style="color:rgb(51,51,51); font-family:Arial; font-size:14px; line-height:26px"></span>
+<p style="color:rgb(51,51,51); font-family:Arial; font-size:14px; line-height:26px">
+<span style="font-size:18px">基本概念: 函数名一样，通过函数的参数个数或者是参数类型不同，达到调用同一个函数名，</span></p>
+<p style="color:rgb(51,51,51); font-family:Arial; font-size:14px; line-height:26px">
+<span style="font-size:18px"><span style="white-space:pre"></span>但是可以区分不同的函数</span></p>
+<span style="color:rgb(51,51,51); font-family:Arial; line-height:26px; font-size:18px">PHP5 中可以通过魔术函数来实现方法重载的效果。<br>
+</span><span style="color:rgb(51,51,51); font-family:Arial; font-size:14px; line-height:26px"></span>
+<p style="color:rgb(51,51,51); font-family:Arial; font-size:14px; line-height:26px">
+<span style="font-size:18px">代码说明：</span></p>
+<p style="color:rgb(51,51,51); font-family:Arial; line-height:26px"><pre name="code" class="php" style="font-size: 18px;">&lt;?php
+class  A{
+    public function test1($p){
+        echo &quot;接收一个参数&lt;br/&gt;&quot;;
+        echo &quot;接收到参数是：&lt;br/&gt;&quot;;
+        echo var_dump($p);
+    }
+    public function test2($p){
+        echo &quot;&lt;br/&gt;&lt;br/&gt;接收两个参数&lt;br/&gt;&quot;;
+        echo &quot;接收到参数是：&lt;br/&gt;&quot;;
+        var_dump($p);
+    }
+              
+    //这些提供一个__call
+    //__call： 是当一个对象调用某个方法，而该方法不存在，则
+    //系统会自动调用__call
+    function __call($method,$p){
+        if($method==&quot;test&quot;){
+            if(count($p)==1){
+                $this-&gt;test1($p);
+            }else if(count($p)==2){
+                $this-&gt;test2($p);
+            }
+        }
+    }
+}
+       $a=new A();
+       $a-&gt;test(&quot;小明&quot;);
+       $a-&gt;test(&quot;小民&quot;,&quot;男&quot;);
+?&gt;</pre><span style="font-size:18px; color:rgb(51,51,51); font-family:Arial; line-height:26px">小结: 关于重载<br>
+① &nbsp; &nbsp; php5 默认情况下不直接支持方法重载<br>
+</span><span style="color:rgb(51,51,51); font-family:Arial; font-size:14px; line-height:26px"></span></p>
+<p style="font-size:14px; color:rgb(51,51,51); font-family:Arial; line-height:26px">
+<span style="font-size:18px">② &nbsp; &nbsp; php5 可以通过 &nbsp;__call &nbsp;魔术方法，模拟一个方法重载的效果.</span></p>
+<p style="font-size:14px; color:rgb(51,51,51); font-family:Arial; line-height:26px">
+<br>
+</p>
+<p style="font-size:14px; color:rgb(51,51,51); font-family:Arial; line-height:26px">
+<span style="font-size:18px"><strong>方法的重写/方法的覆盖(override)</strong><br>
+<span style="white-space:pre"></span>当一个父类知道所有的子类都有一个方法，但是父类不能确定该方法究竟如何写，</span></p>
+<p style="font-size:14px; color:rgb(51,51,51); font-family:Arial; line-height:26px">
+<span style="font-size:18px">可以让子类去覆盖这个方法,具体用法如下:</span></p>
+<pre name="code" class="php" style="font-size: 18px;">&lt;?php
+ //抽象一个Animal类
+       class Animal{
+              public $name;
+              protected $price;
+              function cry(){
+                     echo &quot;不知道动物怎么叫..&quot;;
+                     echo &quot;&lt;br/&gt;&quot;;
+              }
+       }
+       class Dog extends Animal{
+              //覆盖父类中的 cry()方法
+                function cry(){
+                     echo &quot;小狗汪汪叫..&quot;;
+                     echo &quot;&lt;br&gt;&quot;;
+              }
+       }
+       class Pig extends Animal{
+              //覆盖&lt;span style=&quot;font-family: Arial, Helvetica, sans-serif;&quot;&gt;父类中的 cry()方法&lt;/span&gt;
+              function cry(){
+                     echo &quot;小猪哼哼叫..&quot;;
+                     echo &quot;&lt;br&gt;&quot;;
+              }
+       }
+       //创建一个只狗
+       $animal=new Animal();
+       $animal-&gt;cry();
+       $dog1=new Dog();
+       $dog1-&gt;cry();
+       $pig1=new Pig();
+       $pig1-&gt;cry();
+?&gt;</pre><span style="font-size:18px"><span style="color:rgb(51,51,51); font-family:Arial; line-height:26px">关于方法重写细节讨论：</span><br style="color:rgb(51,51,51); font-family:Arial; line-height:26px">
+<span style="color:rgb(51,51,51); font-family:Arial; line-height:26px; white-space:pre"></span><span style="color:rgb(51,51,51); font-family:Arial; line-height:26px">方法重写就是子类有一个方法，和父类的某个方法的名称、参数个数一样，那么我们就说子类的这个方法重写了父类的那个方法。</span><br style="color:rgb(51,51,51); font-family:Arial; line-height:26px">
+<span style="color:rgb(51,51,51); font-family:Arial; line-height:26px">1. 要实现重写，要求 子类的</span><span style="color:rgb(51,51,51); font-family:Arial; line-height:26px">那个方法的名字和参数个数一摸一样，但是并不要求参数的名称一样.</span><br style="color:rgb(51,51,51); font-family:Arial; line-height:26px">
+<span style="color:rgb(51,51,51); font-family:Arial; line-height:26px">2. 如果子类要去调用父类的某个方法(pub</span><span style="color:rgb(51,51,51); font-family:Arial; line-height:26px">lic / protected) 则可以使用 parent::方法名(参数..) , 父类名::方法名(参数...)</span><br style="color:rgb(51,51,51); font-family:Arial; line-height:26px">
+<span style="color:rgb(51,51,51); font-family:Arial; line-height:26px">3. 在实现方法覆盖的时候，访问修饰符可以不一样 &nbsp; &nbsp; &nbsp; //但是必须满足: 子类的访问范围&gt;=父类的访问范围</span><br style="color:rgb(51,51,51); font-family:Arial; line-height:26px">
+<span style="color:rgb(51,51,51); font-family:Arial; line-height:26px">注意：当父类的函数为私有（private）类型时，不能覆盖，因为父类为私有该函数根本不能继承。</span><br style="color:rgb(51,51,51); font-family:Arial; line-height:26px">
+<span style="color:rgb(51,51,51); font-family:Arial; line-height:26px">// 多态体现在什么地方?</span><br style="color:rgb(51,51,51); font-family:Arial; line-height:26px">
+<span style="color:rgb(51,51,51); font-family:Arial; line-height:26px">// class Animal{</span><br style="color:rgb(51,51,51); font-family:Arial; line-height:26px">
+<span style="color:rgb(51,51,51); font-family:Arial; line-height:26px">// &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; public function cry(){</span><br style="color:rgb(51,51,51); font-family:Arial; line-height:26px">
+<span style="color:rgb(51,51,51); font-family:Arial; line-height:26px">// &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;echo '动物叫唤..';</span><br style="color:rgb(51,51,51); font-family:Arial; line-height:26px">
+<span style="color:rgb(51,51,51); font-family:Arial; line-height:26px">// &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; }</span><br style="color:rgb(51,51,51); font-family:Arial; line-height:26px">
+<span style="color:rgb(51,51,51); font-family:Arial; line-height:26px">// &nbsp; &nbsp; &nbsp; &nbsp;}</span><br style="color:rgb(51,51,51); font-family:Arial; line-height:26px">
+<span style="color:rgb(51,51,51); font-family:Arial; line-height:26px">// &nbsp; &nbsp; &nbsp; &nbsp;class Cat extends Animal{</span><br style="color:rgb(51,51,51); font-family:Arial; line-height:26px">
+<span style="color:rgb(51,51,51); font-family:Arial; line-height:26px">// &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; public &nbsp;function cry(){</span><br style="color:rgb(51,51,51); font-family:Arial; line-height:26px">
+<span style="color:rgb(51,51,51); font-family:Arial; line-height:26px">// &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;echo &quot;abc&quot;;</span><br style="color:rgb(51,51,51); font-family:Arial; line-height:26px">
+<span style="color:rgb(51,51,51); font-family:Arial; line-height:26px">// &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; }</span><br style="color:rgb(51,51,51); font-family:Arial; line-height:26px">
+<span style="color:rgb(51,51,51); font-family:Arial; line-height:26px">// &nbsp; &nbsp; &nbsp; &nbsp;}</span><br style="color:rgb(51,51,51); font-family:Arial; line-height:26px">
+<span style="color:rgb(51,51,51); font-family:Arial; line-height:26px">// &nbsp; &nbsp; &nbsp; &nbsp;$cat1=new Cat();</span><br style="color:rgb(51,51,51); font-family:Arial; line-height:26px">
+<span style="color:rgb(51,51,51); font-family:Arial; line-height:26px">// &nbsp; &nbsp; &nbsp; &nbsp;$cat1-&gt;cry();</span><br style="color:rgb(51,51,51); font-family:Arial; line-height:26px">
+<span style="color:rgb(51,51,51); font-family:Arial; line-height:26px">// 当子类没有覆盖父类的方法则 $cat1-&gt;cry() 调用的是父类,当 子类覆盖了父类的方法，则调用自己的cry()&nbsp;</span><br>
+<br>
+</span><br>
+<p><a href='_index.htm'>&lt;&lt;目录</a></p>
+</body>
+</html>

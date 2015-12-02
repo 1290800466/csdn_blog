@@ -1,0 +1,279 @@
+﻿<!doctype html>
+<html dir="ltr" lang="zh-CN">
+<head>
+<title>HTML 图像 表格 图像映射   实际应用-菜谱、课程表</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style type="text/css">
+body {font:normal 12px/24px Arial, Helvetica, sans-serif; background:#D9F0DB;}
+textarea,pre {font-family:Courier; font-size:12px;}
+</style>
+</head>
+<body>
+<p><a href='_index.htm'>&lt;&lt;目录</a></p><p></p>
+<p><strong><span style="font-size:14px">html图片、表&#26684;显示实例代码：</span></strong></p>
+<p></p>
+<pre name="code" class="html">&lt;html&gt;
+
+&lt;head&gt;
+&lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=gb2312&quot;&gt;
+&lt;title&gt; 第三讲代码 &lt;/title&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+
+图片：&lt;br&gt;
+&lt;!--打开一张图片，src 指 &quot;source&quot;即源属性  值是图像的 URL 地址，图片既可以是本地图片也可以是外网图片--&gt;
+&lt;img src = &quot;图片1.jpg&quot; /&gt;
+&lt;!--按照规定的像素打开一张图片--&gt;
+&lt;img src = &quot;图片1.jpg&quot; width=&quot;300px&quot; height = &quot;300px&quot;/&gt;
+&lt;!----&gt;
+
+&lt;!--alt 属性用来为图像定义一串预备的可替换的文本。替换文本属性的值是用户定义的。
+在浏览器无法载入图像时，替换文本属性告诉读者她们失去的信息。此时，浏览器将显示这个替代性的文本而不是图像。
+--&gt;
+&lt;img src = &quot;图片1.jpg&quot; width=&quot;300px&quot; height = &quot;300px&quot; alt = &quot;这是一张图片&quot; /&gt;
+&lt;!--border属性是给打开的图片加相框，其后属性值是相框的宽带--&gt;
+&lt;img src = &quot;图片1.jpg&quot; width=&quot;300px&quot; height = &quot;300px&quot; border = &quot;4&quot;/&gt;
+&lt;!--设定相框的宽带和颜色--&gt;
+&lt;img src = &quot;图片1.jpg&quot; width=&quot;300px&quot; height = &quot;300px&quot; style=&quot;border:4px solid red&quot; /&gt;
+
+&lt;!--打开外网图片--&gt;
+&lt;img src = &quot;http://d.pcs.baidu.com/thumbnail/c07eb801aa9d36000dc8de951ca71d01?fid=136084341-250528-278231926921786&amp;time=1427014800&amp;sign=FDTAER-DCb740ccc5511e5e8fedcff06b081203-KAaIL5eeD%2Fa82Qw9k7kv7pUhaTo%3D&amp;rt=sh&amp;expires=2h&amp;r=735636236&amp;sharesign=unknown&amp;size=c710_u500&amp;quality=100&quot; width=&quot;300px&quot; height = &quot;300px&quot; style=&quot;border:4px solid red&quot; /&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;
+**********************************************************************************************************************************************&lt;br&gt;
+表格：&lt;br&gt;
+
+&lt;!--&lt;table&gt; 标签可定义表格。在 &lt;table&gt; 标签内部，你可以放置表格的标题、表格行、表格列、表格单元以及其他的表格--&gt;
+&lt;!--border属性给表格加框，1px表示边框宽度为1像素--&gt;
+&lt;!--width属性控制单元格左右宽度，可用像素表示，也可用百分比表示（占整个屏幕宽度百分比）--&gt;
+&lt;!--height属性控制单元格上下高度，可用像素表示，也可用百分比表示（占整个屏幕宽度百分比）--&gt;
+&lt;!--align属性确定表格在屏幕上的位置，位置有 left,center,right三个选项--&gt;
+&lt;!--bgcolor属性确定表格背景颜色，可控制整个表格，也可只控制一行或一列--&gt;
+&lt;table border = &quot;3px&quot; width = &quot;50%&quot; height = &quot;100px&quot; align = &quot;center&quot; bgcolor = &quot;yellow&quot;&gt;
+
+&lt;!--&lt;tr&gt; 标签定义表格中的行。--&gt;
+&lt;!--
+	align属性写在table标记中可确定整个表格在屏幕上的位置；
+	align属性写在tr标记中可确定表中一行数据在单元格中的位置；
+	align属性写在td标记中可确定表中某行数据的某一列数据在单元格中的位置
+--&gt;
+&lt;tr align = &quot;left&quot;&gt;
+&lt;!--&lt;td&gt; 标签定义表格中的一个单元格。也就是列--&gt;
+&lt;td &gt;&lt;font size = &quot;6&quot;&gt;
+&lt;b&gt;
+11
+&lt;/b&gt;&lt;/font&gt;
+&lt;/td &gt;
+&lt;td&gt;
+12
+&lt;/td&gt;
+&lt;td&gt;
+13
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr align = &quot;center&quot; bgcolor = &quot;red&quot;&gt;
+&lt;td align = &quot;center&quot;&gt;
+21
+&lt;/td&gt;
+&lt;td&gt;
+22
+&lt;/td&gt;
+&lt;td&gt;
+23
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr align = &quot;right&quot; bgcolor = &quot;green&quot;&gt;
+&lt;td&gt;
+32
+&lt;/td&gt;
+&lt;td&gt;
+32
+&lt;/td&gt;
+&lt;td&gt;
+33
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/table&gt;&lt;br&gt;
+*********************************************************************************************************************************&lt;br&gt;&lt;br&gt;
+菜单表格练习：&lt;br&gt;&lt;br&gt;
+
+
+&lt;img src = &quot;第三讲菜单表格练习.png&quot; width=&quot;300px&quot; height = &quot;300px&quot; alt = &quot;练习用图片&quot; /&gt;&lt;br&gt;&lt;br&gt;
+
+编写结果如下表所示：&lt;br&gt;&lt;br&gt;
+&lt;!--cellspacing属性表示单元格间距(表格间距)代表表格边框与单元格补白的距离,也是单元格补白之间的距离--&gt;
+&lt;!--cellpadding属性表示单元格内部数据与单元格内框之间的距离--&gt;
+&lt;!--bordercolor属性控制表格边框颜色--&gt;
+&lt;!--background属性为表格设置背景图片--&gt;
+&lt;table border = &quot;1px&quot; width = &quot;30%&quot; align = &quot;center&quot; bordercolor=&quot;red&quot;  cellspacing=&quot;0px&quot; cellpadding=&quot;10px&quot; background = &quot;图片2.jpg&quot; &gt;
+&lt;tr align = &quot;center&quot;&gt;
+&lt;!--colspan属性表示合并列单元格，属性值是几就表示该列跨多少列--&gt;
+&lt;td colspan=&quot;3&quot;&gt; 星期一菜谱&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;!--rowspan属性表示合并行单元格，属性值是几就表示该列跨多少行--&gt;
+&lt;td rowspan=&quot;2&quot;&gt;素菜&lt;/td&gt;
+&lt;td&gt;青草茄子&lt;/td&gt;
+&lt;td&gt;花椒扁豆&lt;/td&gt;
+
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;小葱豆腐&lt;/td&gt;
+&lt;td&gt;炒白菜&lt;/td&gt;
+
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td rowspan=&quot;2&quot;&gt;荤菜&lt;/td&gt;
+&lt;td&gt;油焖大虾&lt;/td&gt;
+&lt;td&gt;海参鱼翅&lt;/td&gt;
+
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;img src = &quot;第三讲菜单表格练习.png&quot; width=&quot;100px&quot; height = &quot;100px&quot; alt = &quot;练习用图片&quot; /&gt;&lt;br&gt; &#160; &#160;红烧肉&lt;/td&gt;
+&lt;td&gt;烤全羊&lt;/td&gt;
+
+&lt;/tr&gt;
+
+&lt;/table&gt;
+
+&lt;/body&gt;
+
+&lt;/html&gt;</pre>
+<p></p>
+<p><span style="font-size:14px"><strong>课程表表&#26684;编写：</strong></span></p>
+<p></p>
+<pre name="code" class="html">&lt;html&gt;
+&lt;head&gt;
+&lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=UTF-8&quot;&gt;
+&lt;title&gt; 课程表 &lt;/title&gt;
+
+&lt;/head&gt;
+&lt;body&gt;
+&lt;h3 align = &quot;center&quot;&gt;课程表&lt;h3&gt;
+
+&lt;table border = &quot;1px&quot; width = &quot;50%&quot; align = &quot;center&quot; bordercolor = &quot;#2894FF&quot;  &gt;
+&lt;tr align = &quot;center&quot;&gt;
+&lt;!--&lt;th&gt; 标签定义表格内的表头单元格。此 th 元素内部的文本通常会呈现为粗体,当需要粗体显示的列时，可用th代替td。--&gt;
+&lt;th&gt;项目&lt;/th&gt;
+&lt;th colspan=&quot;5&quot;&gt;上课&lt;/th&gt;
+&lt;th colspan=&quot;2&quot;&gt;休息&lt;/th&gt;
+&lt;/tr&gt;
+&lt;tr align = &quot;center&quot;&gt;
+&lt;th&gt;星期&lt;/th&gt;
+&lt;th&gt;星期一&lt;/th&gt;
+&lt;th&gt;星期二&lt;/th&gt;
+&lt;th&gt;星期三&lt;/th&gt;
+&lt;th&gt;星期四&lt;/th&gt;
+&lt;th&gt;星期五&lt;/th&gt;
+&lt;th&gt;星期六&lt;/th&gt;
+&lt;th&gt;星期日&lt;/th&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td rowspan=&quot;4&quot; align = &quot;center&quot;&gt;上午&lt;/td&gt;
+&lt;td&gt;语文&lt;/td&gt;
+&lt;td&gt;数学&lt;/td&gt;
+&lt;td&gt;英语&lt;/td&gt;
+&lt;td&gt;物理&lt;/td&gt;
+&lt;td&gt;计算机&lt;/td&gt;
+&lt;td&gt;化学&lt;/td&gt;
+&lt;td rowspan=&quot;4&quot; align = &quot;center&quot;&gt;休息&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;物理&lt;/td&gt;
+&lt;td&gt;化学&lt;/td&gt;
+&lt;td&gt;英语&lt;/td&gt;
+&lt;td&gt;语文&lt;/td&gt;
+&lt;td&gt;数学&lt;/td&gt;
+&lt;td&gt;计算机&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;语文&lt;/td&gt;
+&lt;td&gt;化学&lt;/td&gt;
+&lt;td&gt;英语&lt;/td&gt;
+&lt;td&gt;物理&lt;/td&gt;
+&lt;td&gt;数学&lt;/td&gt;
+&lt;td&gt;计算机&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr  &gt;
+&lt;td&gt;化学&lt;/td&gt;
+&lt;td&gt;数学&lt;/td&gt;
+&lt;td&gt;语文&lt;/td&gt;
+&lt;td&gt;英语&lt;/td&gt;
+&lt;td&gt;地理&lt;/td&gt;
+&lt;td &gt;生物&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;!--对于某一个行间距较大问题，可在中间写一个空行，这样行间距就会变大--&gt;
+&lt;tr&gt;
+&lt;/tr&gt;
+
+&lt;tr &gt;
+&lt;td rowspan=&quot;2&quot; align = &quot;center&quot;  &gt;下午&lt;/td&gt;
+&lt;td&gt;语文&lt;/td&gt;
+&lt;td&gt;数学&lt;/td&gt;
+&lt;td&gt;化学&lt;/td&gt;
+&lt;td&gt;生物&lt;/td&gt;
+&lt;td&gt;英语&lt;/td&gt;
+&lt;td&gt;计算机&lt;/td&gt;
+&lt;td rowspan=&quot;2&quot; align = &quot;center&quot;&gt;休息&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;物理&lt;/td&gt;
+&lt;td&gt;英语&lt;/td&gt;
+&lt;td&gt;地理&lt;/td&gt;
+&lt;td&gt;生物&lt;/td&gt;
+&lt;td&gt;化学&lt;/td&gt;
+&lt;td&gt;语文&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;/table&gt;
+&lt;/body&gt;
+&lt;/html&gt;</pre><span style="font-size:14px"><strong>图像映射实例：</strong></span><br>
+<pre name="code" class="html">&lt;html&gt;
+&lt;head&gt;
+&lt;title&gt;客户端图像映射图&lt;/title&gt;
+&lt;/head&gt;
+&lt;!--
+	作图行映射时，必须要理解坐标体系
+	                          (x轴)
+(0,0)   —————————————————————————————&gt;大
+       |
+	   |
+	   |
+	   |
+	   |
+	   |
+	   |
+	   |
+	   |
+	   |
+	   |
+（y轴）|
+	   |
+	   \/大（正数）
+作映射前，要先根据坐标体系，量出做映射图像对应的坐标
+--&gt;
+&lt;body&gt;
+&lt;!--给图片起一个名字usemap，一定要以#开头，但#不属于名字的一部分--&gt;
+&lt;img src=&quot;映射图.png&quot; usemap=&quot;#face&quot;&gt;
+&lt;!--map内部为映射区域--&gt;
+&lt;map name=&quot;face&quot;&gt;
+&lt;!--对矩形区域做映射，这是左上角和右下角的坐标--&gt;
+&lt;area shape=&quot;rect&quot; href=&quot;第三讲练习课程表表格编写.html&quot;  coords=&quot;140,20,280,60&quot;&gt;
+&lt;!--对多边形区域做映射，这是多边形每个点的坐标--&gt;
+&lt;area shape=&quot;poly&quot; href=&quot;第三讲练习课程表表格编写.html&quot; coords=&quot;100,100,180,80,200,140&quot;&gt;
+&lt;!--对圆形区域做映射，这是圆的圆心坐标和半径像素长度--&gt;
+&lt;area shape=&quot;circle&quot; href=&quot;第三讲练习课程表表格编写.html&quot;  coords=&quot;80,100,60&quot;&gt;
+&lt;/map&gt;
+
+&lt;/body&gt;
+
+&lt;/html&gt;</pre>
+<p><br>
+</p>
+<p><strong><span style="font-size:14px">映射图片：</span></strong></p>
+<img src="http://img.blog.csdn.net/20150511165419280?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvdTAxMzM3MjQ4Nw==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center" width="500" height="300" alt=""><br>
+<p></p>
+<br>
+<p><a href='_index.htm'>&lt;&lt;目录</a></p>
+</body>
+</html>

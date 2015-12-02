@@ -1,0 +1,259 @@
+﻿<!doctype html>
+<html dir="ltr" lang="zh-CN">
+<head>
+<title>Python文件操作</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style type="text/css">
+body {font:normal 12px/24px Arial, Helvetica, sans-serif; background:#D9F0DB;}
+textarea,pre {font-family:Courier; font-size:12px;}
+</style>
+</head>
+<body>
+<p><a href='_index.htm'>&lt;&lt;目录</a></p><h2 style="font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; margin-top:10px; margin-bottom:10px">
+<span style="font-size:18px">1、打开文件：open函数</span></h2>
+<p style="line-height:16.7999992370605px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif">
+你必须先用Python内置的open()函数打开一个文件，创建一个file对象，相关的辅助方法才可以调用它进行读写。</p>
+<p style="line-height:16.7999992370605px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif">
+语法：</p>
+<pre class="prettyprint prettyprinted" style="margin:15px auto; line-height:20px; font-family:'courier new'; word-break:break-all; word-wrap:break-word; border-width:1px 1px 1px 4px; border-style:solid; border-color:rgb(221,221,221); padding:10px 15px"><span class="pln">file </span><span class="kwd" style="color:rgb(0,0,136)">object</span><span class="pln"> </span><span class="pun" style="color:rgb(102,102,0)">=</span><span class="pln"> open</span><span class="pun" style="color:rgb(102,102,0)">('</span><span class="pln">file_name', <span style="color:#666600">'</span></span><span class="pln">access_mode'</span><span class="pun" style="color:rgb(102,102,0)">,</span><span class="pln"> 'buffering'</span><span class="pun" style="color:rgb(102,102,0)">)</span></pre>
+<pre class="prettyprint prettyprinted" style="margin:15px auto; line-height:20px; font-family:'courier new'; word-break:break-all; word-wrap:break-word; border-width:1px 1px 1px 4px; border-style:solid; border-color:rgb(221,221,221); padding:10px 15px"><span class="pun" style="color:rgb(102,102,0)">如：<span style="color:rgb(0,130,0); font-family:Consolas,'Courier New',Courier,mono,serif; line-height:18px">open(&quot;aaa.py&quot;,&quot;r&quot;)</span></span></pre>
+<p style="line-height:16.7999992370605px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif">
+各个参数的细节如下：</p>
+<ul style="line-height:16.7999992370605px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif">
+<li style="padding:2px 0px">file_name：file_name变量是一个包含了你要访问的文件名称的字符串&#20540;。</li><li style="padding:2px 0px">access_mode：access_mode决定了打开文件的模式：只读，写入，追加等。所有可取&#20540;见如下的完全列表。这个参数是非强制的，默认文件访问模式为只读(r)。</li><li style="padding:2px 0px">buffering:如果buffering的&#20540;被设为0，就不会有寄存。如果buffering的&#20540;取1，访问文件时会寄存行。如果将buffering的&#20540;设为大于1的整数，表明了这就是的寄存区的缓冲大小。如果取负&#20540;，寄存区的缓冲大小则为系统默认。</li></ul>
+<p style="line-height:16.7999992370605px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif">
+<span style="font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; line-height:16.7999992370605px">打开文件的</span>不同模式的意义：</p>
+<p>
+<table class="reference  " style="font-size:12px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; border-collapse:collapse; width:722px; color:rgb(0,0,0)">
+<tbody>
+<tr style="background-color:rgb(246,244,240)">
+<th style="font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; color:rgb(255,255,255); border:1px solid rgb(85,85,85); padding:3px; vertical-align:top; width:65px; background-color:rgb(85,85,85)">
+模式</th>
+<th style="font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; color:rgb(255,255,255); border:1px solid rgb(85,85,85); padding:3px; vertical-align:top; background-color:rgb(85,85,85)">
+描述</th>
+</tr>
+<tr>
+<td style="line-height:16.7999992370605px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; border:1px solid rgb(212,212,212); padding:7px 5px; vertical-align:top">
+r</td>
+<td style="line-height:16.7999992370605px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; border:1px solid rgb(212,212,212); padding:7px 5px; vertical-align:top">
+以只读方式打开文件。文件的指针将会放在文件的开头。这是默认模式。</td>
+</tr>
+<tr style="background-color:rgb(246,244,240)">
+<td style="line-height:16.7999992370605px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; border:1px solid rgb(212,212,212); padding:7px 5px; vertical-align:top">
+rb</td>
+<td style="line-height:16.7999992370605px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; border:1px solid rgb(212,212,212); padding:7px 5px; vertical-align:top">
+以二进制&#26684;式打开一个文件用于只读。文件指针将会放在文件的开头。这是默认模式。</td>
+</tr>
+<tr>
+<td style="line-height:16.7999992370605px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; border:1px solid rgb(212,212,212); padding:7px 5px; vertical-align:top">
+r&#43;</td>
+<td style="line-height:16.7999992370605px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; border:1px solid rgb(212,212,212); padding:7px 5px; vertical-align:top">
+打开一个文件用于读写。文件指针将会放在文件的开头。</td>
+</tr>
+<tr style="background-color:rgb(246,244,240)">
+<td style="line-height:16.7999992370605px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; border:1px solid rgb(212,212,212); padding:7px 5px; vertical-align:top">
+rb&#43;</td>
+<td style="line-height:16.7999992370605px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; border:1px solid rgb(212,212,212); padding:7px 5px; vertical-align:top">
+以二进制&#26684;式打开一个文件用于读写。文件指针将会放在文件的开头。</td>
+</tr>
+<tr>
+<td style="line-height:16.7999992370605px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; border:1px solid rgb(212,212,212); padding:7px 5px; vertical-align:top">
+w</td>
+<td style="line-height:16.7999992370605px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; border:1px solid rgb(212,212,212); padding:7px 5px; vertical-align:top">
+打开一个文件只用于写入。如果该文件已存在则将其覆盖。如果该文件不存在，创建新文件。</td>
+</tr>
+<tr style="background-color:rgb(246,244,240)">
+<td style="line-height:16.7999992370605px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; border:1px solid rgb(212,212,212); padding:7px 5px; vertical-align:top">
+wb</td>
+<td style="line-height:16.7999992370605px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; border:1px solid rgb(212,212,212); padding:7px 5px; vertical-align:top">
+以二进制&#26684;式打开一个文件只用于写入。如果该文件已存在则将其覆盖。如果该文件不存在，创建新文件。</td>
+</tr>
+<tr>
+<td style="line-height:16.7999992370605px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; border:1px solid rgb(212,212,212); padding:7px 5px; vertical-align:top">
+w&#43;</td>
+<td style="line-height:16.7999992370605px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; border:1px solid rgb(212,212,212); padding:7px 5px; vertical-align:top">
+打开一个文件用于读写。如果该文件已存在则将其覆盖。如果该文件不存在，创建新文件。</td>
+</tr>
+<tr style="background-color:rgb(246,244,240)">
+<td style="line-height:16.7999992370605px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; border:1px solid rgb(212,212,212); padding:7px 5px; vertical-align:top">
+wb&#43;</td>
+<td style="line-height:16.7999992370605px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; border:1px solid rgb(212,212,212); padding:7px 5px; vertical-align:top">
+以二进制&#26684;式打开一个文件用于读写。如果该文件已存在则将其覆盖。如果该文件不存在，创建新文件。</td>
+</tr>
+<tr>
+<td style="line-height:16.7999992370605px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; border:1px solid rgb(212,212,212); padding:7px 5px; vertical-align:top">
+a</td>
+<td style="line-height:16.7999992370605px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; border:1px solid rgb(212,212,212); padding:7px 5px; vertical-align:top">
+打开一个文件用于追加。如果该文件已存在，文件指针将会放在文件的结尾。也就是说，新的内容将会被写入到已有内容之后。如果该文件不存在，创建新文件进行写入。</td>
+</tr>
+<tr style="background-color:rgb(246,244,240)">
+<td style="line-height:16.7999992370605px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; border:1px solid rgb(212,212,212); padding:7px 5px; vertical-align:top">
+ab</td>
+<td style="line-height:16.7999992370605px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; border:1px solid rgb(212,212,212); padding:7px 5px; vertical-align:top">
+以二进制&#26684;式打开一个文件用于追加。如果该文件已存在，文件指针将会放在文件的结尾。也就是说，新的内容将会被写入到已有内容之后。如果该文件不存在，创建新文件进行写入。</td>
+</tr>
+<tr>
+<td style="line-height:16.7999992370605px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; border:1px solid rgb(212,212,212); padding:7px 5px; vertical-align:top">
+a&#43;</td>
+<td style="line-height:16.7999992370605px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; border:1px solid rgb(212,212,212); padding:7px 5px; vertical-align:top">
+打开一个文件用于读写。如果该文件已存在，文件指针将会放在文件的结尾。文件打开时会是追加模式。如果该文件不存在，创建新文件用于读写。</td>
+</tr>
+<tr style="background-color:rgb(246,244,240)">
+<td style="line-height:16.7999992370605px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; border:1px solid rgb(212,212,212); padding:7px 5px; vertical-align:top">
+ab&#43;</td>
+<td style="line-height:16.7999992370605px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; border:1px solid rgb(212,212,212); padding:7px 5px; vertical-align:top">
+以二进制&#26684;式打开一个文件用于追加。如果该文件已存在，文件指针将会放在文件的结尾。如果该文件不存在，创建新文件用于读写。</td>
+</tr>
+</tbody>
+</table>
+<span style="font-family:Microsoft Yahei,Helvetica Neue,Helvetica,Arial,sans-serif"><br>
+</span></p>
+<p><span style="font-family:Microsoft Yahei,Helvetica Neue,Helvetica,Arial,sans-serif"></span></p>
+<h3 style="font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif">
+<span style="font-size:18px">2、关闭文件：Close()方法</span></h3>
+<p></p>
+<p style="line-height:16.7999992370605px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif">
+File对象的close（）方法刷新缓冲区里任何还没写入的信息，并关闭该文件，这之后便不能再进行写入。</p>
+<p style="line-height:16.7999992370605px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif">
+当一个文件对象的引用被重新指定给另一个文件时，Python会关闭之前的文件。用close（）方法关闭文件是一个很好的习惯。</p>
+<p style="line-height:16.7999992370605px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif">
+语法：</p>
+<pre class="prettyprint prettyprinted" style="margin:15px auto; line-height:20px; font-family:'courier new'; word-break:break-all; word-wrap:break-word; border-width:1px 1px 1px 4px; border-style:solid; border-color:rgb(221,221,221); padding:10px 15px"><span class="pln">fileObject</span><span class="pun" style="color:rgb(102,102,0)">.</span><span class="pln">close</span><span class="pun" style="color:rgb(102,102,0)">();</span></pre>
+<p style="line-height:16.7999992370605px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif">
+例子：</p>
+<pre class="prettyprint prettyprinted" style="margin:15px auto; line-height:20px; font-family:'courier new'; word-break:break-all; word-wrap:break-word; border-width:1px 1px 1px 4px; border-style:solid; border-color:rgb(221,221,221); padding:10px 15px"><span class="com" style="color:rgb(136,0,0)">#coding=utf-8</span><span class="pln">
+</span><span class="com" style="color:rgb(136,0,0)">#!/usr/bin/python</span><span class="pln">
+ 
+</span><span class="com" style="color:rgb(136,0,0)"># 打开一个文件</span><span class="pln">
+fo </span><span class="pun" style="color:rgb(102,102,0)">=</span><span class="pln"> open</span><span class="pun" style="color:rgb(102,102,0)">(</span><span class="str" style="color:rgb(0,136,0)">&quot;foo.txt&quot;</span><span class="pun" style="color:rgb(102,102,0)">,</span><span class="pln"> </span><span class="str" style="color:rgb(0,136,0)">&quot;wb&quot;</span><span class="pun" style="color:rgb(102,102,0)">)</span><span class="pln">
+</span><span class="kwd" style="color:rgb(0,0,136)">print</span><span class="pln"> </span><span class="str" style="color:rgb(0,136,0)">&quot;Name of the file: &quot;</span><span class="pun" style="color:rgb(102,102,0)">,</span><span class="pln"> fo</span><span class="pun" style="color:rgb(102,102,0)">.</span><span class="pln">name
+ 
+</span><span class="com" style="color:rgb(136,0,0)"># 关闭打开的文件</span><span class="pln">
+fo</span><span class="pun" style="color:rgb(102,102,0)">.</span><span class="pln">close</span><span class="pun" style="color:rgb(102,102,0)">()</span></pre>
+<span style="font-size:18px"><strong>3、查看文件属性：</strong></span>
+<p><span style="font-family:Microsoft Yahei,Helvetica Neue,Helvetica,Arial,sans-serif"></span>
+<table class="reference  " style="font-size:12px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; border-collapse:collapse; width:722px; color:rgb(0,0,0)">
+<tbody>
+<tr style="background-color:rgb(246,244,240)">
+<th style="font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; color:rgb(255,255,255); border:1px solid rgb(85,85,85); padding:3px; vertical-align:top; background-color:rgb(85,85,85)">
+属性</th>
+<th style="font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; color:rgb(255,255,255); border:1px solid rgb(85,85,85); padding:3px; vertical-align:top; background-color:rgb(85,85,85)">
+描述</th>
+</tr>
+<tr>
+<td style="line-height:16.7999992370605px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; border:1px solid rgb(212,212,212); padding:7px 5px; vertical-align:top">
+file.closed</td>
+<td style="line-height:16.7999992370605px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; border:1px solid rgb(212,212,212); padding:7px 5px; vertical-align:top">
+返回true如果文件已被关闭，否则返回false。</td>
+</tr>
+<tr style="background-color:rgb(246,244,240)">
+<td style="line-height:16.7999992370605px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; border:1px solid rgb(212,212,212); padding:7px 5px; vertical-align:top">
+file.mode</td>
+<td style="line-height:16.7999992370605px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; border:1px solid rgb(212,212,212); padding:7px 5px; vertical-align:top">
+返回被打开文件的访问模式。</td>
+</tr>
+<tr>
+<td style="line-height:16.7999992370605px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; border:1px solid rgb(212,212,212); padding:7px 5px; vertical-align:top">
+file.name</td>
+<td style="line-height:16.7999992370605px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; border:1px solid rgb(212,212,212); padding:7px 5px; vertical-align:top">
+返回文件的名称。</td>
+</tr>
+<tr style="background-color:rgb(246,244,240)">
+<td style="line-height:16.7999992370605px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; border:1px solid rgb(212,212,212); padding:7px 5px; vertical-align:top">
+file.softspace</td>
+<td style="line-height:16.7999992370605px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; border:1px solid rgb(212,212,212); padding:7px 5px; vertical-align:top">
+如果用print输出后，必须跟一个空&#26684;符，则返回false。否则返回true。</td>
+</tr>
+</tbody>
+</table>
+</p>
+<p style="line-height:16.7999992370605px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif">
+如下实例：</p>
+<pre class="prettyprint prettyprinted" style="margin:15px auto; line-height:20px; font-family:'courier new'; word-break:break-all; word-wrap:break-word; border-width:1px 1px 1px 4px; border-style:solid; border-color:rgb(221,221,221); padding:10px 15px"><span class="com" style="color:rgb(136,0,0)">#coding=utf-8</span><span class="pln">
+</span><span class="com" style="color:rgb(136,0,0)">#!/usr/bin/python</span><span class="pln">
+ 
+</span><span class="com" style="color:rgb(136,0,0)"># 打开一个文件</span><span class="pln">
+fo </span><span class="pun" style="color:rgb(102,102,0)">=</span><span class="pln"> open</span><span class="pun" style="color:rgb(102,102,0)">(</span><span class="str" style="color:rgb(0,136,0)">&quot;foo.txt&quot;</span><span class="pun" style="color:rgb(102,102,0)">,</span><span class="pln"> </span><span class="str" style="color:rgb(0,136,0)">&quot;wb&quot;</span><span class="pun" style="color:rgb(102,102,0)">)</span><span class="pln">
+</span><span class="kwd" style="color:rgb(0,0,136)">print</span><span class="pln"> </span><span class="str" style="color:rgb(0,136,0)">&quot;Name of the file: &quot;</span><span class="pun" style="color:rgb(102,102,0)">,</span><span class="pln"> fo</span><span class="pun" style="color:rgb(102,102,0)">.</span><span class="pln">name
+</span><span class="kwd" style="color:rgb(0,0,136)">print</span><span class="pln"> </span><span class="str" style="color:rgb(0,136,0)">&quot;Closed or not : &quot;</span><span class="pun" style="color:rgb(102,102,0)">,</span><span class="pln"> fo</span><span class="pun" style="color:rgb(102,102,0)">.</span><span class="pln">closed
+</span><span class="kwd" style="color:rgb(0,0,136)">print</span><span class="pln"> </span><span class="str" style="color:rgb(0,136,0)">&quot;Opening mode : &quot;</span><span class="pun" style="color:rgb(102,102,0)">,</span><span class="pln"> fo</span><span class="pun" style="color:rgb(102,102,0)">.</span><span class="pln">mode
+</span><span class="kwd" style="color:rgb(0,0,136)">print</span><span class="pln"> </span><span class="str" style="color:rgb(0,136,0)">&quot;Softspace flag : &quot;</span><span class="pun" style="color:rgb(102,102,0)">,</span><span class="pln"> fo</span><span class="pun" style="color:rgb(102,102,0)">.</span><span class="pln">softspace</span></pre>
+<p style="line-height:16.7999992370605px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif">
+以上实例输出结果：</p>
+<pre class="prettyprint prettyprinted" style="margin:15px auto; line-height:20px; font-family:'courier new'; word-break:break-all; word-wrap:break-word; border-width:1px 1px 1px 4px; border-style:solid; border-color:rgb(221,221,221); padding:10px 15px"><span class="typ" style="color:rgb(102,0,102)">Name</span><span class="pln"> of the file</span><span class="pun" style="color:rgb(102,102,0)">:</span><span class="pln">  foo</span><span class="pun" style="color:rgb(102,102,0)">.</span><span class="pln">txt
+</span><span class="typ" style="color:rgb(102,0,102)">Closed</span><span class="pln"> </span><span class="kwd" style="color:rgb(0,0,136)">or</span><span class="pln"> </span><span class="kwd" style="color:rgb(0,0,136)">not</span><span class="pln"> </span><span class="pun" style="color:rgb(102,102,0)">:</span><span class="pln">  </span><span class="kwd" style="color:rgb(0,0,136)">False</span><span class="pln">
+</span><span class="typ" style="color:rgb(102,0,102)">Opening</span><span class="pln"> mode </span><span class="pun" style="color:rgb(102,102,0)">:</span><span class="pln">  wb
+</span><span class="typ" style="color:rgb(102,0,102)">Softspace</span><span class="pln"> flag </span><span class="pun" style="color:rgb(102,102,0)">:</span><span class="pln">  </span><span class="lit" style="color:rgb(0,102,102)">0</span></pre>
+<span style="font-size:18px"><strong>4、读取文件：</strong></span><span style="font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif"><strong><span style="font-size:18px">read()方法</span></strong></span>
+<p><span style="font-family:Microsoft Yahei,Helvetica Neue,Helvetica,Arial,sans-serif"></span></p>
+<p style="line-height:16.7999992370605px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif">
+read（）方法从一个打开的文件中读取一个字符串。需要重点注意的是，Python字符串可以是二进制数据，而不是仅仅是文字。</p>
+<p style="line-height:16.7999992370605px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif">
+语法：</p>
+<pre class="prettyprint prettyprinted" style="margin:15px auto; line-height:20px; font-family:'courier new'; word-break:break-all; word-wrap:break-word; border-width:1px 1px 1px 4px; border-style:solid; border-color:rgb(221,221,221); padding:10px 15px"><span class="pln">fileObject</span><span class="pun" style="color:rgb(102,102,0)">.</span><span class="pln">read</span><span class="pun" style="color:rgb(102,102,0)">([</span><span class="pln">count</span><span class="pun" style="color:rgb(102,102,0)">]);</span></pre>
+<p style="line-height:16.7999992370605px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif">
+在这里，被传递的<strong>参数是要从已打开文件中读取的字节计数。该方法从文件的开头开始读入，如果没有传入count，它会尝试尽可能多地读取更多的内容，很可能是直到文件的末尾。</strong></p>
+<p style="line-height:16.7999992370605px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif">
+例子：</p>
+<p style="line-height:16.7999992370605px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif">
+就用我们上面创建的文件foo.txt。</p>
+<pre class="prettyprint prettyprinted" style="margin:15px auto; line-height:20px; font-family:'courier new'; word-break:break-all; word-wrap:break-word; border-width:1px 1px 1px 4px; border-style:solid; border-color:rgb(221,221,221); padding:10px 15px"><span class="com" style="color:rgb(136,0,0)">#coding=utf-8</span><span class="pln">
+</span><span class="com" style="color:rgb(136,0,0)">#!/usr/bin/python</span><span class="pln">
+ 
+</span><span class="com" style="color:rgb(136,0,0)"># 打开一个文件</span><span class="pln">
+fo </span><span class="pun" style="color:rgb(102,102,0)">=</span><span class="pln"> open</span><span class="pun" style="color:rgb(102,102,0)">(</span><span class="str" style="color:rgb(0,136,0)">&quot;/tmp/foo.txt&quot;</span><span class="pun" style="color:rgb(102,102,0)">,</span><span class="pln"> </span><span class="str" style="color:rgb(0,136,0)">&quot;r&#43;&quot;</span><span class="pun" style="color:rgb(102,102,0)">)</span><span class="pln">
+str </span><span class="pun" style="color:rgb(102,102,0)">=</span><span class="pln"> fo</span><span class="pun" style="color:rgb(102,102,0)">.</span><span class="pln">read</span><span class="pun" style="color:rgb(102,102,0)">(</span><span class="lit" style="color:rgb(0,102,102)">10</span><span class="pun" style="color:rgb(102,102,0)">);</span><span class="pln">
+</span><span class="kwd" style="color:rgb(0,0,136)">print</span><span class="pln"> </span><span class="str" style="color:rgb(0,136,0)">&quot;Read String is : &quot;</span><span class="pun" style="color:rgb(102,102,0)">,</span><span class="pln"> str
+</span><span class="com" style="color:rgb(136,0,0)"># 关闭打开的文件</span><span class="pln">
+fo</span><span class="pun" style="color:rgb(102,102,0)">.</span><span class="pln">close</span><span class="pun" style="color:rgb(102,102,0)">()</span></pre>
+<p style="line-height:16.7999992370605px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif">
+以上实例输出结果：</p>
+<pre class="prettyprint prettyprinted" style="margin:15px auto; line-height:20px; font-family:'courier new'; word-break:break-all; word-wrap:break-word; border-width:1px 1px 1px 4px; border-style:solid; border-color:rgb(221,221,221); padding:10px 15px"><span class="typ" style="color:rgb(102,0,102)">Read</span><span class="pln"> </span><span class="typ" style="color:rgb(102,0,102)">String</span><span class="pln"> </span><span class="kwd" style="color:rgb(0,0,136)">is</span><span class="pln"> </span><span class="pun" style="color:rgb(102,102,0)">:</span><span class="pln">  </span><span class="typ" style="color:rgb(102,0,102)">Python</span><span class="pln"> </span><span class="kwd" style="color:rgb(0,0,136)">is</span></pre>
+<pre class="prettyprint prettyprinted" style="margin:15px auto; line-height:20px; font-family:'courier new'; word-break:break-all; word-wrap:break-word; border-width:1px 1px 1px 4px; border-style:solid; border-color:rgb(221,221,221); padding:10px 15px"><span class="kwd" style="color:rgb(0,0,136)"><strong>文件读取的几种方式：</strong></span></pre>
+<ol start="1" class="dp-py" style="padding:0px; border:none; list-style-position:initial; color:rgb(92,92,92); font-family:Consolas,'Courier New',Courier,mono,serif; line-height:26px; margin:0px 0px 1px 45px!important">
+<li class="alt" style="border-style:none none none solid; border-left-width:3px; border-left-color:rgb(108,226,108); list-style:decimal-leading-zero outside; color:inherit; line-height:18px; margin:0px!important; padding:0px 3px 0px 10px!important">
+<span style="margin:0px; padding:0px; border:none; color:black; background-color:inherit"><span class="comment" style="margin:0px; padding:0px; border:none; color:rgb(0,130,0); background-color:inherit">open(&quot;aaa.py&quot;,&quot;r&quot;).readline() &nbsp;只读第一行</span>&nbsp;</span></li><li style="border-style:none none none solid; border-left-width:3px; border-left-color:rgb(108,226,108); list-style:decimal-leading-zero outside; line-height:18px; margin:0px!important; padding:0px 3px 0px 10px!important; background-color:rgb(248,248,248)">
+<span style="margin:0px; padding:0px; border:none; color:black; background-color:inherit"><span class="comment" style="margin:0px; padding:0px; border:none; color:rgb(0,130,0); background-color:inherit">open(&quot;aaa.py&quot;,&quot;r&quot;).readlines() &nbsp;读取整个文档，但一行一行的读</span>&nbsp;</span></li><li class="alt" style="border-style:none none none solid; border-left-width:3px; border-left-color:rgb(108,226,108); list-style:decimal-leading-zero outside; color:inherit; line-height:18px; margin:0px!important; padding:0px 3px 0px 10px!important">
+<span style="margin:0px; padding:0px; border:none; color:black; background-color:inherit"><span class="comment" style="margin:0px; padding:0px; border:none; color:rgb(0,130,0); background-color:inherit">open(&quot;aaa.py&quot;,&quot;r&quot;).read()&nbsp;&nbsp;<span style="color:rgb(0,130,0); font-family:Consolas,'Courier New',Courier,mono,serif; line-height:18px; background-color:rgb(248,248,248)">读取整个文档，但一个字符一个字符的读</span></span>&nbsp;</span></li></ol>
+<strong><span style="font-size:18px"></span></strong>
+<p><span style="font-family:Microsoft Yahei,Helvetica Neue,Helvetica,Arial,sans-serif"><strong><span style="font-size:18px"><br>
+</span></strong></span></p>
+<strong><span style="font-size:18px">5、向文件中写入数据：<span style="font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif">Write()方法</span></span></strong>
+<p><span style="font-family:Microsoft Yahei,Helvetica Neue,Helvetica,Arial,sans-serif"></span></p>
+<p style="line-height:16.7999992370605px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif">
+Write()方法可将任何字符串写入一个打开的文件。需要重点注意的是，Python字符串可以是二进制数据，而不是仅仅是文字。</p>
+<p style="line-height:16.7999992370605px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif">
+Write()方法不在字符串的结尾不添加换行符('\n')：</p>
+<p style="line-height:16.7999992370605px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif">
+语法：</p>
+<pre class="prettyprint prettyprinted" style="margin:15px auto; line-height:20px; font-family:'courier new'; word-break:break-all; word-wrap:break-word; border-width:1px 1px 1px 4px; border-style:solid; border-color:rgb(221,221,221); padding:10px 15px"><span class="pln">fileObject</span><span class="pun" style="color:rgb(102,102,0)">.</span><span class="pln">write</span><span class="pun" style="color:rgb(102,102,0)">(</span><span class="kwd" style="color:rgb(0,0,136)">string</span><span class="pun" style="color:rgb(102,102,0)">);</span></pre>
+<p style="line-height:16.7999992370605px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif">
+在这里，被传递的参数是要写入到已打开文件的内容。</p>
+<p style="line-height:16.7999992370605px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif">
+例子：</p>
+<pre class="prettyprint prettyprinted" style="margin:15px auto; line-height:20px; font-family:'courier new'; word-break:break-all; word-wrap:break-word; border-width:1px 1px 1px 4px; border-style:solid; border-color:rgb(221,221,221); padding:10px 15px"><span class="com" style="color:rgb(136,0,0)">#coding=utf-8</span><span class="pln">
+</span><span class="com" style="color:rgb(136,0,0)">#!/usr/bin/python</span><span class="pln">
+ 
+</span><span class="com" style="color:rgb(136,0,0)"># 打开一个文件</span><span class="pln">
+fo </span><span class="pun" style="color:rgb(102,102,0)">=</span><span class="pln"> open</span><span class="pun" style="color:rgb(102,102,0)">(</span><span class="str" style="color:rgb(0,136,0)">&quot;/tmp/foo.txt&quot;</span><span class="pun" style="color:rgb(102,102,0)">,</span><span class="pln"> </span><span class="str" style="color:rgb(0,136,0)">&quot;wb&quot;</span><span class="pun" style="color:rgb(102,102,0)">)</span><span class="pln">
+fo</span><span class="pun" style="color:rgb(102,102,0)">.</span><span class="pln">write</span><span class="pun" style="color:rgb(102,102,0)">(</span><span class="pln"> </span><span class="str" style="color:rgb(0,136,0)">&quot;Python is a great language.\nYeah its great!!\n&quot;</span><span class="pun" style="color:rgb(102,102,0)">);</span><span class="pln">
+ 
+</span><span class="com" style="color:rgb(136,0,0)"># 关闭打开的文件</span><span class="pln">
+fo</span><span class="pun" style="color:rgb(102,102,0)">.</span><span class="pln">close</span><span class="pun" style="color:rgb(102,102,0)">()</span></pre>
+<p style="line-height:16.7999992370605px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif">
+上述方法会创建foo.txt文件，并将收到的内容写入该文件，并最终关闭文件。如果你打开这个文件，将看到以下内容:</p>
+<pre class="prettyprint prettyprinted" style="margin:15px auto; line-height:20px; font-family:'courier new'; word-break:break-all; word-wrap:break-word; border-width:1px 1px 1px 4px; border-style:solid; border-color:rgb(221,221,221); padding:10px 15px"><span class="typ" style="color:rgb(102,0,102)">Python</span><span class="pln"> </span><span class="kwd" style="color:rgb(0,0,136)">is</span><span class="pln"> a great language</span><span class="pun" style="color:rgb(102,102,0)">.</span><span class="pln">
+</span><span class="typ" style="color:rgb(102,0,102)">Yeah</span><span class="pln"> its great</span><span class="pun" style="color:rgb(102,102,0)">!!</span></pre>
+<pre class="prettyprint prettyprinted" style="margin:15px auto; line-height:20px; font-family:'courier new'; word-break:break-all; word-wrap:break-word; border-width:1px 1px 1px 4px; border-style:solid; border-color:rgb(221,221,221); padding:10px 15px"><span class="pun" style="color:rgb(102,102,0)"></span><pre class="prettyprint prettyprinted" style="margin:15px auto; line-height:20px; font-family:'courier new'; word-break:break-all; word-wrap:break-word; border-width:1px 1px 1px 4px; border-style:solid; border-color:rgb(221,221,221); padding:10px 15px"><span class="kwd" style="color:rgb(0,0,136)"><strong>文件写入的几种方式：</strong></span></pre><ol start="1" class="dp-py" style="padding:0px; border:none; list-style-position:initial; color:rgb(92,92,92); font-family:Consolas,'Courier New',Courier,mono,serif; line-height:26px; margin:0px 0px 1px 45px!important"><li class="alt" style="border-style:none none none solid; border-left-width:3px; border-left-color:rgb(108,226,108); list-style:decimal-leading-zero outside; color:inherit; line-height:18px; margin:0px!important; padding:0px 3px 0px 10px!important"><span style="margin:0px; padding:0px; border:none; color:black; background-color:inherit"><span class="comment" style="margin:0px; padding:0px; border:none; color:rgb(0,130,0); background-color:inherit">open(&quot;aaa.py&quot;,&quot;a&quot;).write(&quot;asdfghjkl&quot;)   &nbsp;写入字符串&quot;asdfghjkl&quot;</span></span></li><li style="border-style:none none none solid; border-left-width:3px; border-left-color:rgb(108,226,108); list-style:decimal-leading-zero outside; line-height:18px; margin:0px!important; padding:0px 3px 0px 10px!important; background-color:rgb(248,248,248)"><span style="margin:0px; padding:0px; border:none; color:black; background-color:inherit"><span class="comment" style="margin:0px; padding:0px; border:none; color:rgb(0,130,0); background-color:inherit">open(&quot;aaa.py&quot;,&quot;a&quot;).writelines([a,b,c]) &nbsp;   写入字符串序列</span></span></li></ol><br></pre>
+<pre class="prettyprint prettyprinted" style="margin:15px auto; line-height:20px; font-family:'courier new'; word-break:break-all; word-wrap:break-word; border-width:1px 1px 1px 4px; border-style:solid; border-color:rgb(221,221,221); padding:10px 15px"><span style="color:#666600"><strong>文件的&#26684;式化写入：</strong></span></pre>
+<pre class="prettyprint prettyprinted" style="margin:15px auto; line-height:20px; font-family:'courier new'; word-break:break-all; word-wrap:break-word; border-width:1px 1px 1px 4px; border-style:solid; border-color:rgb(221,221,221); padding:10px 15px"><span style="color:#666600"><strong>fd = open(&quot;aaa.py&quot;,&quot;a&quot;)
+head = &quot;%10d%10s%10.2f\n&quot;%(67867768,&quot;dghfsk&quot;,67.897896778)   #&#26684;式化写入
+fd.write(head)
+print open(&quot;aaa.py&quot;,&quot;r&quot;).read()
+fd.close()
+</strong></span></pre>
+<pre class="prettyprint prettyprinted" style="margin:15px auto; line-height:20px; font-family:'courier new'; word-break:break-all; word-wrap:break-word; border-width:1px 1px 1px 4px; border-style:solid; border-color:rgb(221,221,221); padding:10px 15px">
+</pre>
+<p><a href='_index.htm'>&lt;&lt;目录</a></p>
+</body>
+</html>

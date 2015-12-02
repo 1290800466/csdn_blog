@@ -1,0 +1,60 @@
+﻿<!doctype html>
+<html dir="ltr" lang="zh-CN">
+<head>
+<title>Python之isinstance() 函数判断数据类型</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style type="text/css">
+body {font:normal 12px/24px Arial, Helvetica, sans-serif; background:#D9F0DB;}
+textarea,pre {font-family:Courier; font-size:12px;}
+</style>
+</head>
+<body>
+<p><a href='_index.htm'>&lt;&lt;目录</a></p><pre name="code" class="python">isinstance
+
+isinstance(object, classinfo) 
+判断实例是否是这个类或者object是变量
+
+classinfo 是类型(tuple,dict,int,float)
+判断变量是否是这个类型 
+
+class objA: 
+pass 
+
+A = objA() 
+B = &#39;a&#39;,&#39;v&#39; 
+C = &#39;a string&#39; 
+
+print isinstance(A, objA) 
+print isinstance(B, tuple) 
+print isinstance(C, basestring) 
+输出结果： 
+True 
+True 
+True 
+
+ 
+不仅如此，还可以利用isinstance函数，来判断一个对象是否是一个已知的类型。
+isinstance说明如下:
+    isinstance(object, class-or-type-or-tuple) -&gt; bool
+    
+    Return whether an object is an instance of a class or of a subclass thereof.
+    With a type as second argument, return whether that is the object&#39;s type.
+    The form using a tuple, isinstance(x, (A, B, ...)), is a shortcut for
+    isinstance(x, A) or isinstance(x, B) or ... (etc.).
+
+其第一个参数为对象，第二个为类型名或类型名的一个列表。其返回值为布尔型。若对象的类型与参数二的类型相同则返回True。若参数二为一个元组，则若对象类型与元组中类型名之一相同即返回True。
+
+&gt;&gt;&gt;isinstance(lst, list)
+True
+
+&gt;&gt;&gt;isinstance(lst, (int, str, list) )
+True
+</pre><pre name="code" class="python">&lt;pre name=&quot;code&quot; class=&quot;python&quot;&gt;另外:Python可以得到一个对象的类型 ，利用type函数：&gt;&gt;&gt;lst = [1, 2, 3]&gt;&gt;&gt;type(lst)&lt;type &#39;list&#39;&gt;
+</pre><br>
+<br>
+<pre></pre>
+<p><br>
+</p>
+<p><a href='_index.htm'>&lt;&lt;目录</a></p>
+</body>
+</html>

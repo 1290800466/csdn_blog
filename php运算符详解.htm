@@ -1,0 +1,579 @@
+﻿<!doctype html>
+<html dir="ltr" lang="zh-CN">
+<head>
+<title>php运算符详解</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style type="text/css">
+body {font:normal 12px/24px Arial, Helvetica, sans-serif; background:#D9F0DB;}
+textarea,pre {font-family:Courier; font-size:12px;}
+</style>
+</head>
+<body>
+<p><a href='_index.htm'>&lt;&lt;目录</a></p><p><span style="font-size:18px"></span></p>
+<h2 style="margin:0px; padding:0px; border:0px; font-family:微软雅黑; font-size:14px; background-color:rgb(249,249,249)">
+PHP 算数运算符</h2>
+<span style="font-family:微软雅黑; background-color:rgb(249,249,249)"></span>
+<table class="dataintable  " style="margin:10px 0px 0px; padding:0px; border:1px solid rgb(170,170,170); border-collapse:collapse; width:709px; color:rgb(0,0,0); font-family:Verdana,Arial,宋体; font-size:12px; background-color:rgb(249,249,249)">
+<tbody style="margin:0px; padding:0px; border:0px">
+<tr style="margin:0px; padding:0px; border:0px">
+<th style="margin:0px; padding:5px 15px 5px 6px; border:1px solid rgb(170,170,170); vertical-align:baseline; width:119px; background-color:rgb(213,213,213)">
+运算符</th>
+<th style="margin:0px; padding:5px 15px 5px 6px; border:1px solid rgb(170,170,170); vertical-align:baseline; width:119px; background-color:rgb(213,213,213)">
+名称</th>
+<th style="margin:0px; padding:5px 15px 5px 6px; border:1px solid rgb(170,170,170); vertical-align:baseline; background-color:rgb(213,213,213)">
+例子</th>
+<th style="margin:0px; padding:5px 15px 5px 6px; border:1px solid rgb(170,170,170); vertical-align:baseline; background-color:rgb(213,213,213)">
+结果</th>
+</tr>
+<tr style="margin:0px; padding:0px; border:0px">
+<td style="margin:0px; padding:6px 15px 6px 6px; border:1px solid rgb(170,170,170); vertical-align:text-top; background-color:rgb(239,239,239)">
+&#43;</td>
+<td style="margin:0px; padding:6px 15px 6px 6px; border:1px solid rgb(170,170,170); vertical-align:text-top; background-color:rgb(239,239,239)">
+加法</td>
+<td style="margin:0px; padding:6px 15px 6px 6px; border:1px solid rgb(170,170,170); vertical-align:text-top; background-color:rgb(239,239,239)">
+$x &#43; $y</td>
+<td style="margin:0px; padding:6px 15px 6px 6px; border:1px solid rgb(170,170,170); vertical-align:text-top; background-color:rgb(239,239,239)">
+$x 与 $y 求和</td>
+</tr>
+<tr style="margin:0px; padding:0px; border:0px">
+<td style="margin:0px; padding:6px 15px 6px 6px; border:1px solid rgb(170,170,170); vertical-align:text-top; background-color:rgb(239,239,239)">
+-</td>
+<td style="margin:0px; padding:6px 15px 6px 6px; border:1px solid rgb(170,170,170); vertical-align:text-top; background-color:rgb(239,239,239)">
+减法</td>
+<td style="margin:0px; padding:6px 15px 6px 6px; border:1px solid rgb(170,170,170); vertical-align:text-top; background-color:rgb(239,239,239)">
+$x - $y</td>
+<td style="margin:0px; padding:6px 15px 6px 6px; border:1px solid rgb(170,170,170); vertical-align:text-top; background-color:rgb(239,239,239)">
+$x 与 $y 的差数</td>
+</tr>
+<tr style="margin:0px; padding:0px; border:0px">
+<td style="margin:0px; padding:6px 15px 6px 6px; border:1px solid rgb(170,170,170); vertical-align:text-top; background-color:rgb(239,239,239)">
+*</td>
+<td style="margin:0px; padding:6px 15px 6px 6px; border:1px solid rgb(170,170,170); vertical-align:text-top; background-color:rgb(239,239,239)">
+乘法</td>
+<td style="margin:0px; padding:6px 15px 6px 6px; border:1px solid rgb(170,170,170); vertical-align:text-top; background-color:rgb(239,239,239)">
+$x * $y</td>
+<td style="margin:0px; padding:6px 15px 6px 6px; border:1px solid rgb(170,170,170); vertical-align:text-top; background-color:rgb(239,239,239)">
+$x 与 $y 的乘积</td>
+</tr>
+<tr style="margin:0px; padding:0px; border:0px">
+<td style="margin:0px; padding:6px 15px 6px 6px; border:1px solid rgb(170,170,170); vertical-align:text-top; background-color:rgb(239,239,239)">
+/</td>
+<td style="margin:0px; padding:6px 15px 6px 6px; border:1px solid rgb(170,170,170); vertical-align:text-top; background-color:rgb(239,239,239)">
+除法</td>
+<td style="margin:0px; padding:6px 15px 6px 6px; border:1px solid rgb(170,170,170); vertical-align:text-top; background-color:rgb(239,239,239)">
+$x / $y</td>
+<td style="margin:0px; padding:6px 15px 6px 6px; border:1px solid rgb(170,170,170); vertical-align:text-top; background-color:rgb(239,239,239)">
+$x 与 $y 的商数</td>
+</tr>
+<tr style="margin:0px; padding:0px; border:0px">
+<td style="margin:0px; padding:6px 15px 6px 6px; border:1px solid rgb(170,170,170); vertical-align:text-top; background-color:rgb(239,239,239)">
+%</td>
+<td style="margin:0px; padding:6px 15px 6px 6px; border:1px solid rgb(170,170,170); vertical-align:text-top; background-color:rgb(239,239,239)">
+模数</td>
+<td style="margin:0px; padding:6px 15px 6px 6px; border:1px solid rgb(170,170,170); vertical-align:text-top; background-color:rgb(239,239,239)">
+$x % $y</td>
+<td style="margin:0px; padding:6px 15px 6px 6px; border:1px solid rgb(170,170,170); vertical-align:text-top; background-color:rgb(239,239,239)">
+$x 除 $y 的余数</td>
+</tr>
+</tbody>
+</table>
+<p></p>
+<p></p>
+<h2 style="margin:0px; padding:0px; border:0px; font-family:微软雅黑; font-size:14px; background-color:rgb(249,249,249)">
+PHP 递增/递减运算符</h2>
+<table class="dataintable  " style="margin:10px 0px 0px; padding:0px; border:1px solid rgb(170,170,170); border-collapse:collapse; width:709px; color:rgb(0,0,0); font-family:Verdana,Arial,宋体; font-size:12px; background-color:rgb(249,249,249)">
+<tbody style="margin:0px; padding:0px; border:0px">
+<tr style="margin:0px; padding:0px; border:0px">
+<th style="margin:0px; padding:5px 15px 5px 6px; border:1px solid rgb(170,170,170); vertical-align:baseline; width:119px; background-color:rgb(213,213,213)">
+运算符</th>
+<th style="margin:0px; padding:5px 15px 5px 6px; border:1px solid rgb(170,170,170); vertical-align:baseline; width:119px; background-color:rgb(213,213,213)">
+名称</th>
+<th style="margin:0px; padding:5px 15px 5px 6px; border:1px solid rgb(170,170,170); vertical-align:baseline; background-color:rgb(213,213,213)">
+描述</th>
+</tr>
+<tr style="margin:0px; padding:0px; border:0px">
+<td style="margin:0px; padding:6px 15px 6px 6px; border:1px solid rgb(170,170,170); vertical-align:text-top; background-color:rgb(239,239,239)">
+&#43;&#43;$x</td>
+<td style="margin:0px; padding:6px 15px 6px 6px; border:1px solid rgb(170,170,170); vertical-align:text-top; background-color:rgb(239,239,239)">
+前递增</td>
+<td style="margin:0px; padding:6px 15px 6px 6px; border:1px solid rgb(170,170,170); vertical-align:text-top; background-color:rgb(239,239,239)">
+$x 加一递增，然后返回 $x</td>
+</tr>
+<tr style="margin:0px; padding:0px; border:0px">
+<td style="margin:0px; padding:6px 15px 6px 6px; border:1px solid rgb(170,170,170); vertical-align:text-top; background-color:rgb(239,239,239)">
+$x&#43;&#43;</td>
+<td style="margin:0px; padding:6px 15px 6px 6px; border:1px solid rgb(170,170,170); vertical-align:text-top; background-color:rgb(239,239,239)">
+后递增</td>
+<td style="margin:0px; padding:6px 15px 6px 6px; border:1px solid rgb(170,170,170); vertical-align:text-top; background-color:rgb(239,239,239)">
+返回 $x，然后 $x 加一递增</td>
+</tr>
+<tr style="margin:0px; padding:0px; border:0px">
+<td style="margin:0px; padding:6px 15px 6px 6px; border:1px solid rgb(170,170,170); vertical-align:text-top; background-color:rgb(239,239,239)">
+--$x</td>
+<td style="margin:0px; padding:6px 15px 6px 6px; border:1px solid rgb(170,170,170); vertical-align:text-top; background-color:rgb(239,239,239)">
+前递减</td>
+<td style="margin:0px; padding:6px 15px 6px 6px; border:1px solid rgb(170,170,170); vertical-align:text-top; background-color:rgb(239,239,239)">
+$x 减一递减，然后返回 $x</td>
+</tr>
+<tr style="margin:0px; padding:0px; border:0px">
+<td style="margin:0px; padding:6px 15px 6px 6px; border:1px solid rgb(170,170,170); vertical-align:text-top; background-color:rgb(239,239,239)">
+$x--</td>
+<td style="margin:0px; padding:6px 15px 6px 6px; border:1px solid rgb(170,170,170); vertical-align:text-top; background-color:rgb(239,239,239)">
+后递减</td>
+<td style="margin:0px; padding:6px 15px 6px 6px; border:1px solid rgb(170,170,170); vertical-align:text-top; background-color:rgb(239,239,239)">
+返回 $x，然后 $x 减一递减</td>
+</tr>
+</tbody>
+</table>
+<br>
+<p></p>
+<p></p>
+<h2 style="margin:0px; padding:0px; border:0px; font-family:微软雅黑; font-size:14px; background-color:rgb(249,249,249)">
+PHP 赋&#20540;运算符</h2>
+<p></p>
+<p style="margin-top:12px; margin-bottom:0px; padding-top:0px; padding-bottom:0px; border:0px; line-height:18px; font-family:Verdana,Arial,宋体; background-color:rgb(249,249,249)">
+PHP 赋&#20540;运算符用于向变量写&#20540;。</p>
+<p style="margin-top:12px; margin-bottom:0px; padding-top:0px; padding-bottom:0px; border:0px; line-height:18px; font-family:Verdana,Arial,宋体; background-color:rgb(249,249,249)">
+PHP 中基础的赋&#20540;运算符是 &quot;=&quot;。这意味着右侧赋&#20540;表达式会为左侧运算数设置&#20540;。</p>
+<table class="dataintable  " style="margin:10px 0px 0px; padding:0px; border:1px solid rgb(170,170,170); border-collapse:collapse; width:709px; color:rgb(0,0,0); font-family:Verdana,Arial,宋体; font-size:12px; background-color:rgb(249,249,249)">
+<tbody style="margin:0px; padding:0px; border:0px">
+<tr style="margin:0px; padding:0px; border:0px">
+<th style="margin:0px; padding:5px 15px 5px 6px; border:1px solid rgb(170,170,170); vertical-align:baseline; width:119px; background-color:rgb(213,213,213)">
+赋&#20540;</th>
+<th style="margin:0px; padding:5px 15px 5px 6px; border:1px solid rgb(170,170,170); vertical-align:baseline; width:119px; background-color:rgb(213,213,213)">
+等同于</th>
+<th style="margin:0px; padding:5px 15px 5px 6px; border:1px solid rgb(170,170,170); vertical-align:baseline; background-color:rgb(213,213,213)">
+描述</th>
+</tr>
+<tr style="margin:0px; padding:0px; border:0px">
+<td style="margin:0px; padding:6px 15px 6px 6px; border:1px solid rgb(170,170,170); vertical-align:text-top; background-color:rgb(239,239,239)">
+x = y</td>
+<td style="margin:0px; padding:6px 15px 6px 6px; border:1px solid rgb(170,170,170); vertical-align:text-top; background-color:rgb(239,239,239)">
+x = y</td>
+<td style="margin:0px; padding:6px 15px 6px 6px; border:1px solid rgb(170,170,170); vertical-align:text-top; background-color:rgb(239,239,239)">
+右侧表达式为左侧运算数设置&#20540;。</td>
+</tr>
+<tr style="margin:0px; padding:0px; border:0px">
+<td style="margin:0px; padding:6px 15px 6px 6px; border:1px solid rgb(170,170,170); vertical-align:text-top; background-color:rgb(239,239,239)">
+x &#43;= y</td>
+<td style="margin:0px; padding:6px 15px 6px 6px; border:1px solid rgb(170,170,170); vertical-align:text-top; background-color:rgb(239,239,239)">
+x = x &#43; y</td>
+<td style="margin:0px; padding:6px 15px 6px 6px; border:1px solid rgb(170,170,170); vertical-align:text-top; background-color:rgb(239,239,239)">
+加</td>
+</tr>
+<tr style="margin:0px; padding:0px; border:0px">
+<td style="margin:0px; padding:6px 15px 6px 6px; border:1px solid rgb(170,170,170); vertical-align:text-top; background-color:rgb(239,239,239)">
+x -= y</td>
+<td style="margin:0px; padding:6px 15px 6px 6px; border:1px solid rgb(170,170,170); vertical-align:text-top; background-color:rgb(239,239,239)">
+x = x - y</td>
+<td style="margin:0px; padding:6px 15px 6px 6px; border:1px solid rgb(170,170,170); vertical-align:text-top; background-color:rgb(239,239,239)">
+减</td>
+</tr>
+<tr style="margin:0px; padding:0px; border:0px">
+<td style="margin:0px; padding:6px 15px 6px 6px; border:1px solid rgb(170,170,170); vertical-align:text-top; background-color:rgb(239,239,239)">
+x *= y</td>
+<td style="margin:0px; padding:6px 15px 6px 6px; border:1px solid rgb(170,170,170); vertical-align:text-top; background-color:rgb(239,239,239)">
+x = x * y</td>
+<td style="margin:0px; padding:6px 15px 6px 6px; border:1px solid rgb(170,170,170); vertical-align:text-top; background-color:rgb(239,239,239)">
+乘</td>
+</tr>
+<tr style="margin:0px; padding:0px; border:0px">
+<td style="margin:0px; padding:6px 15px 6px 6px; border:1px solid rgb(170,170,170); vertical-align:text-top; background-color:rgb(239,239,239)">
+x /= y</td>
+<td style="margin:0px; padding:6px 15px 6px 6px; border:1px solid rgb(170,170,170); vertical-align:text-top; background-color:rgb(239,239,239)">
+x = x / y</td>
+<td style="margin:0px; padding:6px 15px 6px 6px; border:1px solid rgb(170,170,170); vertical-align:text-top; background-color:rgb(239,239,239)">
+除</td>
+</tr>
+<tr style="margin:0px; padding:0px; border:0px">
+<td style="margin:0px; padding:6px 15px 6px 6px; border:1px solid rgb(170,170,170); vertical-align:text-top; background-color:rgb(239,239,239)">
+x %= y</td>
+<td style="margin:0px; padding:6px 15px 6px 6px; border:1px solid rgb(170,170,170); vertical-align:text-top; background-color:rgb(239,239,239)">
+x = x % y</td>
+<td style="margin:0px; padding:6px 15px 6px 6px; border:1px solid rgb(170,170,170); vertical-align:text-top; background-color:rgb(239,239,239)">
+模数</td>
+</tr>
+</tbody>
+</table>
+<h2 style="margin:0px; padding:0px; border:0px; font-family:微软雅黑; font-size:14px; background-color:rgb(249,249,249)">
+<br>
+</h2>
+<h2 style="margin:0px; padding:0px; border:0px; font-family:微软雅黑; font-size:14px; background-color:rgb(249,249,249)">
+PHP 比较运算符</h2>
+<p style="margin-top:12px; margin-bottom:0px; padding-top:0px; padding-bottom:0px; border:0px; line-height:18px; font-family:Verdana,Arial,宋体; background-color:rgb(249,249,249)">
+PHP 比较运算符用于比较两个&#20540;（数字或字符串）：</p>
+<table class="dataintable  " style="margin:10px 0px 0px; padding:0px; border:1px solid rgb(170,170,170); border-collapse:collapse; width:709px; color:rgb(0,0,0); font-family:Verdana,Arial,宋体; font-size:12px; background-color:rgb(249,249,249)">
+<tbody style="margin:0px; padding:0px; border:0px">
+<tr style="margin:0px; padding:0px; border:0px">
+<th style="margin:0px; padding:5px 15px 5px 6px; border:1px solid rgb(170,170,170); vertical-align:baseline; width:48px; background-color:rgb(213,213,213)">
+运算符</th>
+<th style="margin:0px; padding:5px 15px 5px 6px; border:1px solid rgb(170,170,170); vertical-align:baseline; width:119px; background-color:rgb(213,213,213)">
+名称</th>
+<th style="margin:0px; padding:5px 15px 5px 6px; border:1px solid rgb(170,170,170); vertical-align:baseline; width:119px; background-color:rgb(213,213,213)">
+例子</th>
+<th style="margin:0px; padding:5px 15px 5px 6px; border:1px solid rgb(170,170,170); vertical-align:baseline; background-color:rgb(213,213,213)">
+结果</th>
+</tr>
+<tr style="margin:0px; padding:0px; border:0px">
+<td style="margin:0px; padding:6px 15px 6px 6px; border:1px solid rgb(170,170,170); vertical-align:text-top; background-color:rgb(239,239,239)">
+<span style="color:#ff0000">==</span></td>
+<td style="margin:0px; padding:6px 15px 6px 6px; border:1px solid rgb(170,170,170); vertical-align:text-top; background-color:rgb(239,239,239)">
+等于</td>
+<td style="margin:0px; padding:6px 15px 6px 6px; border:1px solid rgb(170,170,170); vertical-align:text-top; background-color:rgb(239,239,239)">
+$x == $y</td>
+<td style="margin:0px; padding:6px 15px 6px 6px; border:1px solid rgb(170,170,170); vertical-align:text-top; background-color:rgb(239,239,239)">
+如果 $x 等于 $y，则返回 true。</td>
+</tr>
+<tr style="margin:0px; padding:0px; border:0px">
+<td style="margin:0px; padding:6px 15px 6px 6px; border:1px solid rgb(170,170,170); vertical-align:text-top; background-color:rgb(239,239,239)">
+<span style="color:#ff0000">===</span></td>
+<td style="margin:0px; padding:6px 15px 6px 6px; border:1px solid rgb(170,170,170); vertical-align:text-top; background-color:rgb(239,239,239)">
+全等（完全相同）</td>
+<td style="margin:0px; padding:6px 15px 6px 6px; border:1px solid rgb(170,170,170); vertical-align:text-top; background-color:rgb(239,239,239)">
+$x === $y</td>
+<td style="margin:0px; padding:6px 15px 6px 6px; border:1px solid rgb(170,170,170); vertical-align:text-top; background-color:rgb(239,239,239)">
+如果 $x 等于 $y，且它们类型相同，则返回 true。</td>
+</tr>
+<tr style="margin:0px; padding:0px; border:0px">
+<td style="margin:0px; padding:6px 15px 6px 6px; border:1px solid rgb(170,170,170); vertical-align:text-top; background-color:rgb(239,239,239)">
+!=</td>
+<td style="margin:0px; padding:6px 15px 6px 6px; border:1px solid rgb(170,170,170); vertical-align:text-top; background-color:rgb(239,239,239)">
+不等于</td>
+<td style="margin:0px; padding:6px 15px 6px 6px; border:1px solid rgb(170,170,170); vertical-align:text-top; background-color:rgb(239,239,239)">
+$x != $y</td>
+<td style="margin:0px; padding:6px 15px 6px 6px; border:1px solid rgb(170,170,170); vertical-align:text-top; background-color:rgb(239,239,239)">
+如果 $x 不等于 $y，则返回 true。</td>
+</tr>
+<tr style="margin:0px; padding:0px; border:0px">
+<td style="margin:0px; padding:6px 15px 6px 6px; border:1px solid rgb(170,170,170); vertical-align:text-top; background-color:rgb(239,239,239)">
+&lt;&gt;</td>
+<td style="margin:0px; padding:6px 15px 6px 6px; border:1px solid rgb(170,170,170); vertical-align:text-top; background-color:rgb(239,239,239)">
+不等于</td>
+<td style="margin:0px; padding:6px 15px 6px 6px; border:1px solid rgb(170,170,170); vertical-align:text-top; background-color:rgb(239,239,239)">
+$x &lt;&gt; $y</td>
+<td style="margin:0px; padding:6px 15px 6px 6px; border:1px solid rgb(170,170,170); vertical-align:text-top; background-color:rgb(239,239,239)">
+如果 $x 不等于 $y，则返回 true。</td>
+</tr>
+<tr style="margin:0px; padding:0px; border:0px">
+<td style="margin:0px; padding:6px 15px 6px 6px; border:1px solid rgb(170,170,170); vertical-align:text-top; background-color:rgb(239,239,239)">
+!==</td>
+<td style="margin:0px; padding:6px 15px 6px 6px; border:1px solid rgb(170,170,170); vertical-align:text-top; background-color:rgb(239,239,239)">
+不全等（完全不同）</td>
+<td style="margin:0px; padding:6px 15px 6px 6px; border:1px solid rgb(170,170,170); vertical-align:text-top; background-color:rgb(239,239,239)">
+$x !== $y</td>
+<td style="margin:0px; padding:6px 15px 6px 6px; border:1px solid rgb(170,170,170); vertical-align:text-top; background-color:rgb(239,239,239)">
+如果 $x 不等于 $y，且它们类型不相同，则返回 true。</td>
+</tr>
+<tr style="margin:0px; padding:0px; border:0px">
+<td style="margin:0px; padding:6px 15px 6px 6px; border:1px solid rgb(170,170,170); vertical-align:text-top; background-color:rgb(239,239,239)">
+&gt;</td>
+<td style="margin:0px; padding:6px 15px 6px 6px; border:1px solid rgb(170,170,170); vertical-align:text-top; background-color:rgb(239,239,239)">
+大于</td>
+<td style="margin:0px; padding:6px 15px 6px 6px; border:1px solid rgb(170,170,170); vertical-align:text-top; background-color:rgb(239,239,239)">
+$x &gt; $y</td>
+<td style="margin:0px; padding:6px 15px 6px 6px; border:1px solid rgb(170,170,170); vertical-align:text-top; background-color:rgb(239,239,239)">
+如果 $x 大于 $y，则返回 true。</td>
+</tr>
+<tr style="margin:0px; padding:0px; border:0px">
+<td style="margin:0px; padding:6px 15px 6px 6px; border:1px solid rgb(170,170,170); vertical-align:text-top; background-color:rgb(239,239,239)">
+&lt;</td>
+<td style="margin:0px; padding:6px 15px 6px 6px; border:1px solid rgb(170,170,170); vertical-align:text-top; background-color:rgb(239,239,239)">
+大于</td>
+<td style="margin:0px; padding:6px 15px 6px 6px; border:1px solid rgb(170,170,170); vertical-align:text-top; background-color:rgb(239,239,239)">
+$x &lt; $y</td>
+<td style="margin:0px; padding:6px 15px 6px 6px; border:1px solid rgb(170,170,170); vertical-align:text-top; background-color:rgb(239,239,239)">
+如果 $x 小于 $y，则返回 true。</td>
+</tr>
+<tr style="margin:0px; padding:0px; border:0px">
+<td style="margin:0px; padding:6px 15px 6px 6px; border:1px solid rgb(170,170,170); vertical-align:text-top; background-color:rgb(239,239,239)">
+&gt;=</td>
+<td style="margin:0px; padding:6px 15px 6px 6px; border:1px solid rgb(170,170,170); vertical-align:text-top; background-color:rgb(239,239,239)">
+大于或等于</td>
+<td style="margin:0px; padding:6px 15px 6px 6px; border:1px solid rgb(170,170,170); vertical-align:text-top; background-color:rgb(239,239,239)">
+$x &gt;= $y</td>
+<td style="margin:0px; padding:6px 15px 6px 6px; border:1px solid rgb(170,170,170); vertical-align:text-top; background-color:rgb(239,239,239)">
+如果 $x 大于或者等于 $y，则返回 true.</td>
+</tr>
+</tbody>
+</table>
+<h2 style="margin:0px; padding:0px; border:0px; font-family:微软雅黑; font-size:14px; background-color:rgb(249,249,249)">
+<br>
+</h2>
+<h2 style="margin:0px; padding:0px; border:0px; font-family:微软雅黑; font-size:14px; background-color:rgb(249,249,249)">
+PHP 逻辑运算符</h2>
+<table class="dataintable  " style="margin:10px 0px 0px; padding:0px; border:1px solid rgb(170,170,170); border-collapse:collapse; width:709px; color:rgb(0,0,0); font-family:Verdana,Arial,宋体; font-size:12px; background-color:rgb(249,249,249)">
+<tbody style="margin:0px; padding:0px; border:0px">
+<tr style="margin:0px; padding:0px; border:0px">
+<th style="margin:0px; padding:5px 15px 5px 6px; border:1px solid rgb(170,170,170); vertical-align:baseline; width:48px; background-color:rgb(213,213,213)">
+运算符</th>
+<th style="margin:0px; padding:5px 15px 5px 6px; border:1px solid rgb(170,170,170); vertical-align:baseline; width:119px; background-color:rgb(213,213,213)">
+名称</th>
+<th style="margin:0px; padding:5px 15px 5px 6px; border:1px solid rgb(170,170,170); vertical-align:baseline; width:119px; background-color:rgb(213,213,213)">
+例子</th>
+<th style="margin:0px; padding:5px 15px 5px 6px; border:1px solid rgb(170,170,170); vertical-align:baseline; background-color:rgb(213,213,213)">
+结果</th>
+</tr>
+<tr style="margin:0px; padding:0px; border:0px">
+<td style="margin:0px; padding:6px 15px 6px 6px; border:1px solid rgb(170,170,170); vertical-align:text-top; background-color:rgb(239,239,239)">
+and</td>
+<td style="margin:0px; padding:6px 15px 6px 6px; border:1px solid rgb(170,170,170); vertical-align:text-top; background-color:rgb(239,239,239)">
+与</td>
+<td style="margin:0px; padding:6px 15px 6px 6px; border:1px solid rgb(170,170,170); vertical-align:text-top; background-color:rgb(239,239,239)">
+$x and $y</td>
+<td style="margin:0px; padding:6px 15px 6px 6px; border:1px solid rgb(170,170,170); vertical-align:text-top; background-color:rgb(239,239,239)">
+如果 $x 和 $y 都为 true，则返回 true。</td>
+</tr>
+<tr style="margin:0px; padding:0px; border:0px">
+<td style="margin:0px; padding:6px 15px 6px 6px; border:1px solid rgb(170,170,170); vertical-align:text-top; background-color:rgb(239,239,239)">
+or</td>
+<td style="margin:0px; padding:6px 15px 6px 6px; border:1px solid rgb(170,170,170); vertical-align:text-top; background-color:rgb(239,239,239)">
+或</td>
+<td style="margin:0px; padding:6px 15px 6px 6px; border:1px solid rgb(170,170,170); vertical-align:text-top; background-color:rgb(239,239,239)">
+$x or $y</td>
+<td style="margin:0px; padding:6px 15px 6px 6px; border:1px solid rgb(170,170,170); vertical-align:text-top; background-color:rgb(239,239,239)">
+如果 $x 和 $y 至少有一个为 true，则返回 true。</td>
+</tr>
+<tr style="margin:0px; padding:0px; border:0px">
+<td style="margin:0px; padding:6px 15px 6px 6px; border:1px solid rgb(170,170,170); vertical-align:text-top; background-color:rgb(239,239,239)">
+xor</td>
+<td style="margin:0px; padding:6px 15px 6px 6px; border:1px solid rgb(170,170,170); vertical-align:text-top; background-color:rgb(239,239,239)">
+异或</td>
+<td style="margin:0px; padding:6px 15px 6px 6px; border:1px solid rgb(170,170,170); vertical-align:text-top; background-color:rgb(239,239,239)">
+$x xor $y</td>
+<td style="margin:0px; padding:6px 15px 6px 6px; border:1px solid rgb(170,170,170); vertical-align:text-top; background-color:rgb(239,239,239)">
+如果 $x 和 $y 有且仅有一个为 true，则返回 true。</td>
+</tr>
+<tr style="margin:0px; padding:0px; border:0px">
+<td style="margin:0px; padding:6px 15px 6px 6px; border:1px solid rgb(170,170,170); vertical-align:text-top; background-color:rgb(239,239,239)">
+&amp;&amp;</td>
+<td style="margin:0px; padding:6px 15px 6px 6px; border:1px solid rgb(170,170,170); vertical-align:text-top; background-color:rgb(239,239,239)">
+与</td>
+<td style="margin:0px; padding:6px 15px 6px 6px; border:1px solid rgb(170,170,170); vertical-align:text-top; background-color:rgb(239,239,239)">
+$x &amp;&amp; $y</td>
+<td style="margin:0px; padding:6px 15px 6px 6px; border:1px solid rgb(170,170,170); vertical-align:text-top; background-color:rgb(239,239,239)">
+如果 $x 和 $y 都为 true，则返回 true。</td>
+</tr>
+<tr style="margin:0px; padding:0px; border:0px">
+<td style="margin:0px; padding:6px 15px 6px 6px; border:1px solid rgb(170,170,170); vertical-align:text-top; background-color:rgb(239,239,239)">
+||</td>
+<td style="margin:0px; padding:6px 15px 6px 6px; border:1px solid rgb(170,170,170); vertical-align:text-top; background-color:rgb(239,239,239)">
+或</td>
+<td style="margin:0px; padding:6px 15px 6px 6px; border:1px solid rgb(170,170,170); vertical-align:text-top; background-color:rgb(239,239,239)">
+$x || $y</td>
+<td style="margin:0px; padding:6px 15px 6px 6px; border:1px solid rgb(170,170,170); vertical-align:text-top; background-color:rgb(239,239,239)">
+如果 $x 和 $y 至少有一个为 true，则返回 true。</td>
+</tr>
+<tr style="margin:0px; padding:0px; border:0px">
+<td style="margin:0px; padding:6px 15px 6px 6px; border:1px solid rgb(170,170,170); vertical-align:text-top; background-color:rgb(239,239,239)">
+!</td>
+<td style="margin:0px; padding:6px 15px 6px 6px; border:1px solid rgb(170,170,170); vertical-align:text-top; background-color:rgb(239,239,239)">
+非</td>
+<td style="margin:0px; padding:6px 15px 6px 6px; border:1px solid rgb(170,170,170); vertical-align:text-top; background-color:rgb(239,239,239)">
+!$x</td>
+<td style="margin:0px; padding:6px 15px 6px 6px; border:1px solid rgb(170,170,170); vertical-align:text-top; background-color:rgb(239,239,239)">
+如果 $x 不为 true，则返回 true。</td>
+</tr>
+</tbody>
+</table>
+<br>
+<p></p>
+<p class="para" style="margin-top:0px; margin-bottom:1.5rem; color:rgb(51,51,51); font-family:'Fira Sans','Source Sans Pro',Helvetica,Arial,sans-serif; font-size:16px; line-height:24px; background-color:rgb(242,242,242)">
+下表按照优<strong>先级从高到低</strong>列出了运算符。同一行中的运算符具有相同优先级，此时它们的结合方向决定求&#20540;顺序。</p>
+<table class="doctable table  " style="border-collapse:collapse; border-spacing:0px; margin:0px 0px 1.5rem; width:824px; border-color:rgb(204,204,204); color:rgb(51,51,51); font-family:'Fira Sans','Source Sans Pro',Helvetica,Arial,sans-serif; font-size:16px; line-height:24px; background-color:rgb(242,242,242)">
+<caption><span style="font-weight:bolder">运算符优先级</span></caption>
+<thead>
+<tr style="border-width:1px; border-style:solid; border-color:rgb(196,201,223) rgb(196,201,223) rgb(136,146,191)">
+<th style="padding:0.25rem 0.5rem; background-color:rgb(196,201,223)">结合方向</th>
+<th style="padding:0.25rem 0.5rem; background-color:rgb(196,201,223)">运算符</th>
+<th style="padding:0.25rem 0.5rem; background-color:rgb(196,201,223)">附加信息</th>
+</tr>
+</thead>
+<tbody class="tbody">
+<tr style="border:1px solid rgb(204,204,204); background-color:rgb(255,255,255)">
+<td style="vertical-align:top; padding:0.25rem 0.5rem">无</td>
+<td style="vertical-align:top; padding:0.25rem 0.5rem">clone new</td>
+<td style="vertical-align:top; padding:0.25rem 0.5rem"><a target="_blank" target="_blank" href="http://php.net/manual/zh/language.oop5.cloning.php" class="link" style="border-bottom-width:1px; border-bottom-style:solid; text-decoration:none; color:rgb(51,102,153)">clone</a>&nbsp;和&nbsp;<a target="_blank" target="_blank" href="http://php.net/manual/zh/language.oop5.basic.php#language.oop5.basic.new" class="link" style="border-bottom-width:1px; border-bottom-style:solid; text-decoration:none; color:rgb(51,102,153)">new</a></td>
+</tr>
+<tr style="border:1px solid rgb(204,204,204); background-color:rgb(230,230,230)">
+<td style="vertical-align:top; padding:0.25rem 0.5rem">左</td>
+<td style="vertical-align:top; padding:0.25rem 0.5rem">[</td>
+<td style="vertical-align:top; padding:0.25rem 0.5rem"><span class="function"><a target="_blank" target="_blank" href="http://php.net/manual/zh/function.array.php" class="function" style="border-bottom-width:1px; border-bottom-style:solid; text-decoration:none; color:rgb(51,102,153)">array()</a></span></td>
+</tr>
+<tr style="border:1px solid rgb(204,204,204); background-color:rgb(255,255,255)">
+<td style="vertical-align:top; padding:0.25rem 0.5rem">右</td>
+<td style="vertical-align:top; padding:0.25rem 0.5rem">&#43;&#43; -- ~ (int) (float) (string) (array) (object) (bool) @</td>
+<td style="vertical-align:top; padding:0.25rem 0.5rem"><a target="_blank" target="_blank" href="http://php.net/manual/zh/language.types.php" class="link" style="border-bottom-width:1px; border-bottom-style:solid; text-decoration:none; color:rgb(51,102,153)">类型</a>和<a target="_blank" target="_blank" href="http://php.net/manual/zh/language.operators.increment.php" class="link" style="border-bottom-width:1px; border-bottom-style:solid; text-decoration:none; color:rgb(51,102,153)">递增／递减</a></td>
+</tr>
+<tr style="border:1px solid rgb(204,204,204); background-color:rgb(230,230,230)">
+<td style="vertical-align:top; padding:0.25rem 0.5rem">无</td>
+<td style="vertical-align:top; padding:0.25rem 0.5rem">instanceof</td>
+<td style="vertical-align:top; padding:0.25rem 0.5rem"><a target="_blank" target="_blank" href="http://php.net/manual/zh/language.types.php" class="link" style="border-bottom-width:1px; border-bottom-style:solid; text-decoration:none; color:rgb(51,102,153)">类型</a></td>
+</tr>
+<tr style="border:1px solid rgb(204,204,204); background-color:rgb(255,255,255)">
+<td style="vertical-align:top; padding:0.25rem 0.5rem">右</td>
+<td style="vertical-align:top; padding:0.25rem 0.5rem">!</td>
+<td style="vertical-align:top; padding:0.25rem 0.5rem"><a target="_blank" target="_blank" href="http://php.net/manual/zh/language.operators.logical.php" class="link" style="border-bottom-width:1px; border-bottom-style:solid; text-decoration:none; color:rgb(51,102,153)">逻辑运算符</a></td>
+</tr>
+<tr style="border:1px solid rgb(204,204,204); background-color:rgb(230,230,230)">
+<td style="vertical-align:top; padding:0.25rem 0.5rem">左</td>
+<td style="vertical-align:top; padding:0.25rem 0.5rem">* / %</td>
+<td style="vertical-align:top; padding:0.25rem 0.5rem"><a target="_blank" target="_blank" href="http://php.net/manual/zh/language.operators.arithmetic.php" class="link" style="border-bottom-width:1px; border-bottom-style:solid; text-decoration:none; color:rgb(51,102,153)">算术运算符</a></td>
+</tr>
+<tr style="border:1px solid rgb(204,204,204); background-color:rgb(255,255,255)">
+<td style="vertical-align:top; padding:0.25rem 0.5rem">左</td>
+<td style="vertical-align:top; padding:0.25rem 0.5rem">&#43; - .</td>
+<td style="vertical-align:top; padding:0.25rem 0.5rem"><a target="_blank" target="_blank" href="http://php.net/manual/zh/language.operators.arithmetic.php" class="link" style="border-bottom-width:1px; border-bottom-style:solid; text-decoration:none; color:rgb(51,102,153)">算术运算符</a>和<a target="_blank" target="_blank" href="http://php.net/manual/zh/language.operators.string.php" class="link" style="border-bottom-width:1px; border-bottom-style:solid; text-decoration:none; color:rgb(51,102,153)">字符串运算符</a></td>
+</tr>
+<tr style="border:1px solid rgb(204,204,204); background-color:rgb(230,230,230)">
+<td style="vertical-align:top; padding:0.25rem 0.5rem">左</td>
+<td style="vertical-align:top; padding:0.25rem 0.5rem">&lt;&lt; &gt;&gt;</td>
+<td style="vertical-align:top; padding:0.25rem 0.5rem"><a target="_blank" target="_blank" href="http://php.net/manual/zh/language.operators.bitwise.php" class="link" style="border-bottom-width:1px; border-bottom-style:solid; text-decoration:none; color:rgb(51,102,153)">位运算符</a></td>
+</tr>
+<tr style="border:1px solid rgb(204,204,204); background-color:rgb(255,255,255)">
+<td style="vertical-align:top; padding:0.25rem 0.5rem">无</td>
+<td style="vertical-align:top; padding:0.25rem 0.5rem">== != === !== &lt;&gt;</td>
+<td style="vertical-align:top; padding:0.25rem 0.5rem"><a target="_blank" target="_blank" href="http://php.net/manual/zh/language.operators.comparison.php" class="link" style="border-bottom-width:1px; border-bottom-style:solid; text-decoration:none; color:rgb(51,102,153)">比较运算符</a></td>
+</tr>
+<tr style="border:1px solid rgb(204,204,204); background-color:rgb(230,230,230)">
+<td style="vertical-align:top; padding:0.25rem 0.5rem">左</td>
+<td style="vertical-align:top; padding:0.25rem 0.5rem">&amp;</td>
+<td style="vertical-align:top; padding:0.25rem 0.5rem"><a target="_blank" target="_blank" href="http://php.net/manual/zh/language.operators.bitwise.php" class="link" style="border-bottom-width:1px; border-bottom-style:solid; text-decoration:none; color:rgb(51,102,153)">位运算符</a>和<a target="_blank" target="_blank" href="http://php.net/manual/zh/language.references.php" class="link" style="border-bottom-width:1px; border-bottom-style:solid; text-decoration:none; color:rgb(51,102,153)">引用</a></td>
+</tr>
+<tr style="border:1px solid rgb(204,204,204); background-color:rgb(255,255,255)">
+<td style="vertical-align:top; padding:0.25rem 0.5rem">左</td>
+<td style="vertical-align:top; padding:0.25rem 0.5rem">^</td>
+<td style="vertical-align:top; padding:0.25rem 0.5rem"><a target="_blank" target="_blank" href="http://php.net/manual/zh/language.operators.bitwise.php" class="link" style="border-bottom-width:1px; border-bottom-style:solid; text-decoration:none; color:rgb(51,102,153)">位运算符</a></td>
+</tr>
+<tr style="border:1px solid rgb(204,204,204); background-color:rgb(230,230,230)">
+<td style="vertical-align:top; padding:0.25rem 0.5rem">左</td>
+<td style="vertical-align:top; padding:0.25rem 0.5rem">|</td>
+<td style="vertical-align:top; padding:0.25rem 0.5rem"><a target="_blank" target="_blank" href="http://php.net/manual/zh/language.operators.bitwise.php" class="link" style="border-bottom-width:1px; border-bottom-style:solid; text-decoration:none; color:rgb(51,102,153)">位运算符</a></td>
+</tr>
+<tr style="border:1px solid rgb(204,204,204); background-color:rgb(255,255,255)">
+<td style="vertical-align:top; padding:0.25rem 0.5rem">左</td>
+<td style="vertical-align:top; padding:0.25rem 0.5rem">&amp;&amp;</td>
+<td style="vertical-align:top; padding:0.25rem 0.5rem"><a target="_blank" target="_blank" href="http://php.net/manual/zh/language.operators.logical.php" class="link" style="border-bottom-width:1px; border-bottom-style:solid; text-decoration:none; color:rgb(51,102,153)">逻辑运算符</a></td>
+</tr>
+<tr style="border:1px solid rgb(204,204,204); background-color:rgb(230,230,230)">
+<td style="vertical-align:top; padding:0.25rem 0.5rem">左</td>
+<td style="vertical-align:top; padding:0.25rem 0.5rem">||</td>
+<td style="vertical-align:top; padding:0.25rem 0.5rem"><a target="_blank" target="_blank" href="http://php.net/manual/zh/language.operators.logical.php" class="link" style="border-bottom-width:1px; border-bottom-style:solid; text-decoration:none; color:rgb(51,102,153)">逻辑运算符</a></td>
+</tr>
+<tr style="border:1px solid rgb(204,204,204); background-color:rgb(255,255,255)">
+<td style="vertical-align:top; padding:0.25rem 0.5rem">左</td>
+<td style="vertical-align:top; padding:0.25rem 0.5rem">? :</td>
+<td style="vertical-align:top; padding:0.25rem 0.5rem"><a target="_blank" target="_blank" href="http://php.net/manual/zh/language.operators.comparison.php#language.operators.comparison.ternary" class="link" style="border-bottom-width:1px; border-bottom-style:solid; text-decoration:none; color:rgb(51,102,153)">三元运算符</a></td>
+</tr>
+<tr style="border:1px solid rgb(204,204,204); background-color:rgb(230,230,230)">
+<td style="vertical-align:top; padding:0.25rem 0.5rem">右</td>
+<td style="vertical-align:top; padding:0.25rem 0.5rem">= &#43;= -= *= /= .= %= &amp;= |= ^= &lt;&lt;= &gt;&gt;= =&gt;</td>
+<td style="vertical-align:top; padding:0.25rem 0.5rem"><a target="_blank" target="_blank" href="http://php.net/manual/zh/language.operators.assignment.php" class="link" style="border-bottom-width:1px; border-bottom-style:solid; text-decoration:none; color:rgb(51,102,153)">赋&#20540;运算符</a></td>
+</tr>
+<tr style="border:1px solid rgb(204,204,204); background-color:rgb(255,255,255)">
+<td style="vertical-align:top; padding:0.25rem 0.5rem">左</td>
+<td style="vertical-align:top; padding:0.25rem 0.5rem">and</td>
+<td style="vertical-align:top; padding:0.25rem 0.5rem"><a target="_blank" target="_blank" href="http://php.net/manual/zh/language.operators.logical.php" class="link" style="border-bottom-width:1px; border-bottom-style:solid; text-decoration:none; color:rgb(51,102,153)">逻辑运算符</a></td>
+</tr>
+<tr style="border:1px solid rgb(204,204,204); background-color:rgb(230,230,230)">
+<td style="vertical-align:top; padding:0.25rem 0.5rem">左</td>
+<td style="vertical-align:top; padding:0.25rem 0.5rem">xor</td>
+<td style="vertical-align:top; padding:0.25rem 0.5rem"><a target="_blank" target="_blank" href="http://php.net/manual/zh/language.operators.logical.php" class="link" style="border-bottom-width:1px; border-bottom-style:solid; text-decoration:none; color:rgb(51,102,153)">逻辑运算符</a></td>
+</tr>
+<tr style="border:1px solid rgb(204,204,204); background-color:rgb(255,255,255)">
+<td style="vertical-align:top; padding:0.25rem 0.5rem">左</td>
+<td style="vertical-align:top; padding:0.25rem 0.5rem">or</td>
+<td style="vertical-align:top; padding:0.25rem 0.5rem"><a target="_blank" target="_blank" href="http://php.net/manual/zh/language.operators.logical.php" class="link" style="border-bottom-width:1px; border-bottom-style:solid; text-decoration:none; color:rgb(51,102,153)">逻辑运算符</a></td>
+</tr>
+<tr style="border:1px solid rgb(204,204,204); background-color:rgb(230,230,230)">
+<td style="vertical-align:top; padding:0.25rem 0.5rem">左</td>
+<td style="vertical-align:top; padding:0.25rem 0.5rem">,</td>
+<td style="vertical-align:top; padding:0.25rem 0.5rem">多处用到</td>
+</tr>
+</tbody>
+</table>
+<p class="para" style="margin-top:0px; margin-bottom:1.5rem; color:rgb(51,51,51); font-family:'Fira Sans','Source Sans Pro',Helvetica,Arial,sans-serif; font-size:16px; line-height:24px; background-color:rgb(242,242,242)">
+<span style="white-space:pre"></span>对具有相同优先级的运算符，左结合方向意味着将从左向右求&#20540;，右结合方向则反之。对于无结合方向具有相同优先级的运算符，该运算符有可能无法与其自身结合。举例说，在 PHP 中&nbsp;<span style="">1 &lt; 2 &gt; 1</span>&nbsp;是一个非法语句，而&nbsp;<span style="">1 &lt;= 1 == 1</span>&nbsp;则不是。因为&nbsp;<span style=""><code style="font-weight:700; font-size:0.875rem; line-height:1.375rem; font-family:'Fira Mono','Source Code Pro',monospace; word-wrap:break-word">T_IS_EQUAL</code></span>&nbsp;运算符的优先级比&nbsp;<span style=""><code style="font-weight:700; font-size:0.875rem; line-height:1.375rem; font-family:'Fira Mono','Source Code Pro',monospace; word-wrap:break-word">T_IS_SMALLER_OR_EQUAL</code></span>&nbsp;的运算符要低。</p>
+<span style="font-size:18px">在做运算符问题时，一定要注意优先级问题，如下例所示：</span>
+<p><img src="http://img.blog.csdn.net/20150425224628572?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvdTAxMzM3MjQ4Nw==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center" width="500" height="100" alt=""><br>
+</p>
+<p><span style="font-size:18px">对于$f ，因为=的优先级高于 or ，所以该式是先 给$f 赋&#20540;再做or 运算，所以结果是false</span></p>
+<h1>php三元运算符：</h1>
+<div>
+<p><span style="font-size:18px">基本语法：</span></p>
+<p><span style="font-size:18px">表达式1 ? 表达式2 ： 表达式3&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></p>
+<p><span style="font-size:18px">规则：如果表达式1的运算结果是true，则取表达式2的&#20540;，否则，取表达式3的&#20540;。</span></p>
+<pre name="code" class="php">&lt;?php   
+$a = 12;
+$b = 45;
+$c = $a&gt;$b ? $a:$b;
+echo &#39;$c=&#39;.$c ;
+?&gt; </pre>
+<div><br>
+</div>
+<h1>PHP字符串运算符：</h1>
+</div>
+<div>
+<p style="line-height:16.7999992370605px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif">
+<span style="font-size:18px">在 PHP 中，只有一个字符串运算符。</span></p>
+<p style="line-height:16.7999992370605px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif">
+<span style="font-size:18px">并置运算符 (.) 用于把两个字符串&#20540;连接起来。</span></p>
+<p style="line-height:16.7999992370605px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif">
+<span style="font-size:18px">下面的实例演示了如何将两个字符串变量连接在一起：</span></p>
+<div class="example" style="width:711px; margin:0px; padding:5px; border:1px solid rgb(212,212,212); font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; background-color:rgb(229,238,204)">
+<h2 class="example" style="font-size:14px; margin-top:0px; margin-bottom:10px; color:rgb(97,127,16); background-color:transparent">
+实例</h2>
+<div class="example_code notranslate" style="width:696.765625px; padding:5px; border:1px solid rgb(212,212,212); font-size:13px; font-family:'courier new'; background-color:rgb(255,255,255)">
+&lt;?php<br>
+$txt1=&quot;Hello world!&quot;;<br>
+$txt2=&quot;What a nice day!&quot;;<br>
+echo $txt1 . &quot; &quot; . $txt2;<br>
+?&gt;</div>
+</div>
+<p style="line-height:16.7999992370605px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif">
+上面的代码将输出：Hello world! What a nice day!</p>
+<br>
+</div>
+<div><br>
+</div>
+<div><br>
+</div>
+<div><br>
+</div>
+<div><br>
+<br>
+</div>
+<div><br>
+</div>
+<div><br>
+</div>
+<div><br>
+</div>
+<p><br>
+</p>
+<p><br>
+</p>
+<p><br>
+</p>
+<p><br>
+</p>
+<p><br>
+</p>
+<p><br>
+</p>
+<p><br>
+</p>
+<p><br>
+</p>
+<p><br>
+</p>
+<p><br>
+</p>
+<p><br>
+</p>
+<p><br>
+</p>
+<p><br>
+</p>
+<p><a href='_index.htm'>&lt;&lt;目录</a></p>
+</body>
+</html>

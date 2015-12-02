@@ -1,0 +1,33 @@
+﻿<!doctype html>
+<html dir="ltr" lang="zh-CN">
+<head>
+<title>Python下如何使用第三方函数库</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style type="text/css">
+body {font:normal 12px/24px Arial, Helvetica, sans-serif; background:#D9F0DB;}
+textarea,pre {font-family:Courier; font-size:12px;}
+</style>
+</head>
+<body>
+<p><a href='_index.htm'>&lt;&lt;目录</a></p><h2>Python下使用第三方函数库：</h2>
+<p><span style="font-size:18px">以httplib2 为例</span></p>
+<p><span style="font-size:18px">以下代码为读取某网页信息：</span></p>
+<p><span style="font-size:18px"><span style="color:red">&gt;&gt;&gt; import urllib&nbsp;&nbsp;&nbsp; </span>
+//该库可以访问web网页</span></p>
+<p><span style="font-size:18px">&gt;&gt;&gt;url=&quot;http://www.163.com&quot; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>
+</p>
+<p><span style="font-size:18px">&gt;&gt;&gt;content=urllib.urlopen(url).read()&nbsp;&nbsp; //读取某网页信息</span></p>
+<p><span style="font-size:18px">&gt;&gt;&gt;open(&quot;163.com.html&quot;,&quot;w&quot;).write(content)&nbsp;&nbsp;&nbsp; //将读取的网页信息写入163.com.html文件，若没有该文件则新建一个。</span></p>
+<p><span style="font-size:18px">&nbsp;</span></p>
+<p><span style="font-size:18px">&nbsp;</span></p>
+<p><span style="font-size:18px"><span style="color:red">&gt;&gt;&gt; import webbrowser</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; //该库用来调用本地浏览器</span></p>
+<p><span style="font-size:18px">&gt;&gt;&gt;webbrowser.open_new_tab(&quot;163.com.html&quot;)&nbsp;&nbsp; //将163.com.html文件用浏览器打开</span></p>
+<p><span style="font-size:18px">&gt;&gt;&gt; webbrowser.open_new_tab(&quot;www.163.com&quot;)</span></p>
+<p><span style="font-size:18px">&nbsp;</span></p>
+<p><span style="font-size:18px"><span style="color:red">&gt;&gt;&gt; import webbrowser as web</span>&nbsp; //该库用来调用本地浏览器,对于较长的模块名，为方便，可以给他起一个假名，如webbrowser 起假名web。Python语句基本语法：</span></p>
+<p><span style="font-size:18px">Module_name.method(parameters)。</span></p>
+<p><span style="font-size:18px">&gt;&gt;&gt; <span style="color:red">web.</span>browser.open_new_tab(&quot;163.com.html&quot;)&nbsp;&nbsp; //将163.com.html文件用浏览器打开</span></p>
+<p><span style="font-size:18px">&gt;&gt;&gt; <span style="color:red">web.</span>browser.open_new_tab(&quot;www.163.com&quot;)</span></p>
+<p><a href='_index.htm'>&lt;&lt;目录</a></p>
+</body>
+</html>

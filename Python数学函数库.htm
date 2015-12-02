@@ -1,0 +1,338 @@
+﻿<!doctype html>
+<html dir="ltr" lang="zh-CN">
+<head>
+<title>Python数学函数库</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style type="text/css">
+body {font:normal 12px/24px Arial, Helvetica, sans-serif; background:#D9F0DB;}
+textarea,pre {font-family:Courier; font-size:12px;}
+</style>
+</head>
+<body>
+<p><a href='_index.htm'>&lt;&lt;目录</a></p><h4><span style="font-size:18px">Python数学函数库：</span></h4>
+<p><span style="font-size:18px">对于Python数学函数，很多不能直接访问的，需要导入 math 模块，通过静态对象调用该方法。（以下几种数学相关函数库都是这样）</span></p>
+<p><span style="font-size:18px">&nbsp;</span></p>
+<p><span style="font-size:18px">import math</span></p>
+<p><span style="font-size:18px">//注意，数字函数要加math.前缀，形式如下：</span></p>
+<p><span style="font-size:18px">Math.pi</span></p>
+<p><span style="font-size:18px">math.ceil( x )</span></p>
+<p>&nbsp;</p>
+<table border="0" cellspacing="0" cellpadding="0" width="553">
+<tbody>
+<tr>
+<td valign="top" style="background:#555555">
+<p><strong><span style="color:white">函数</span></strong></p>
+</td>
+<td valign="top" style="background:#555555">
+<p><strong><span style="color:white">返回&#20540;</span><span style="color:white"> ( </span>
+<span style="color:white">描述</span><span style="color:white"> )</span></strong></p>
+</td>
+</tr>
+<tr>
+<td valign="top">
+<p><a target="_blank" href="http://www.w3cschool.cc/python/func-number-abs.html"><span style="color:black">abs(x)</span></a></p>
+</td>
+<td valign="top">
+<p>返回数字的绝对&#20540;，如abs(-10) 返回 10</p>
+</td>
+</tr>
+<tr>
+<td valign="top" style="background:#F6F4F0">
+<p><a target="_blank" href="http://www.w3cschool.cc/python/func-number-ceil.html"><span style="color:black">ceil(x)</span></a></p>
+</td>
+<td valign="top" style="background:#F6F4F0">
+<p>返回数字的上入整数，如math.ceil(4.1) 返回 5</p>
+</td>
+</tr>
+<tr>
+<td valign="top">
+<p><a target="_blank" href="http://www.w3cschool.cc/python/func-number-cmp.html"><span style="color:black">cmp(x, y)</span></a></p>
+</td>
+<td valign="top">
+<p>如果 x &lt; y 返回 -1, 如果 x == y 返回 0, 如果 x &gt; y 返回 1</p>
+</td>
+</tr>
+<tr>
+<td valign="top" style="background:#F6F4F0">
+<p><a target="_blank" href="http://www.w3cschool.cc/python/func-number-exp.html"><span style="color:black">exp(x)</span></a></p>
+</td>
+<td valign="top" style="background:#F6F4F0">
+<p>返回e的x次幂(e<sup>x</sup>),如math.exp(1) 返回2.718281828459045</p>
+</td>
+</tr>
+<tr>
+<td valign="top">
+<p><a target="_blank" href="http://www.w3cschool.cc/python/func-number-fabs.html"><span style="color:black">fabs(x)</span></a></p>
+</td>
+<td valign="top">
+<p>返回数字的绝对&#20540;，如math.fabs(-10) 返回10.0</p>
+</td>
+</tr>
+<tr>
+<td valign="top" style="background:#F6F4F0">
+<p><a target="_blank" href="http://www.w3cschool.cc/python/func-number-floor.html"><span style="color:black">floor(x)</span></a></p>
+</td>
+<td valign="top" style="background:#F6F4F0">
+<p>返回数字的下舍整数，如math.floor(4.9)返回 4</p>
+</td>
+</tr>
+<tr>
+<td valign="top">
+<p><a target="_blank" href="http://www.w3cschool.cc/python/func-number-log.html"><span style="color:black">log(x)</span></a></p>
+</td>
+<td valign="top">
+<p>如math.log(math.e)返回1.0,math.log(100,10)返回2.0</p>
+</td>
+</tr>
+<tr>
+<td valign="top" style="background:#F6F4F0">
+<p><a target="_blank" href="http://www.w3cschool.cc/python/func-number-log10.html"><span style="color:black">log10(x)</span></a></p>
+</td>
+<td valign="top" style="background:#F6F4F0">
+<p>返回以10为基数的x的对数，如math.log10(100)返回 2.0</p>
+</td>
+</tr>
+<tr>
+<td valign="top">
+<p><a target="_blank" href="http://www.w3cschool.cc/python/func-number-max.html"><span style="color:black">max(x1, x2,...)</span></a></p>
+</td>
+<td valign="top">
+<p>返回给定参数的最大&#20540;，参数可以为序列。</p>
+</td>
+</tr>
+<tr>
+<td valign="top" style="background:#F6F4F0">
+<p><a target="_blank" href="http://www.w3cschool.cc/python/func-number-min.html"><span style="color:black">min(x1, x2,...)</span></a></p>
+</td>
+<td valign="top" style="background:#F6F4F0">
+<p>返回给定参数的最小&#20540;，参数可以为序列。</p>
+</td>
+</tr>
+<tr>
+<td valign="top">
+<p><a target="_blank" href="http://www.w3cschool.cc/python/func-number-modf.html"><span style="color:black">modf(x)</span></a></p>
+</td>
+<td valign="top">
+<p>返回x的整数部分与小数部分，两部分的数&#20540;符号与x相同，整数部分以浮点型表示。</p>
+</td>
+</tr>
+<tr>
+<td valign="top" style="background:#F6F4F0">
+<p>pow(x, y)</p>
+</td>
+<td valign="top" style="background:#F6F4F0">
+<p><span style="color:red">x**y </span>运算后的&#20540;。</p>
+</td>
+</tr>
+<tr>
+<td valign="top">
+<p><a target="_blank" href="http://www.w3cschool.cc/python/func-number-round.html"><span style="color:black">round(x [,n])</span></a></p>
+</td>
+<td valign="top">
+<p>返回浮点数x的四舍五入&#20540;，如给出n&#20540;，则代表舍入到小数点后的位数。</p>
+</td>
+</tr>
+<tr>
+<td valign="top" style="background:#F6F4F0">
+<p><a target="_blank" href="http://www.w3cschool.cc/python/func-number-sqrt.html"><span style="color:black">sqrt(x)</span></a></p>
+</td>
+<td valign="top" style="background:#F6F4F0">
+<p>返回数字x的平方根，数字可以为负数，返回类型为实数，如math.sqrt(4)返回 2&#43;0j</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h4><span style="font-size:18px">Python随机数函数</span></h4>
+<p><span style="font-size:18px">随机数可以用于数学，游戏，安全等领域中，还经常被嵌入到算法中，用以提高算法效率，并提高程序的安全性。</span></p>
+<p><span style="font-size:18px">Python包含以下常用随机数函数：</span></p>
+<table border="0" cellspacing="0" cellpadding="0" width="552">
+<tbody>
+<tr>
+<td valign="top" style="background:#555555">
+<p><strong><span style="color:white">函数</span></strong></p>
+</td>
+<td valign="top" style="background:#555555">
+<p><strong><span style="color:white">描述</span></strong></p>
+</td>
+</tr>
+<tr>
+<td valign="top">
+<p><a target="_blank" href="http://www.w3cschool.cc/python/func-number-choice.html"><span style="color:black">choice(seq)</span></a></p>
+</td>
+<td valign="top">
+<p>从序列的元素中随机挑选一个元素，比如random.choice(range(10))，从0到9中随机挑选一个整数。</p>
+</td>
+</tr>
+<tr>
+<td valign="top" style="background:#F6F4F0">
+<p><a target="_blank" href="http://www.w3cschool.cc/python/func-number-randrange.html"><span style="color:black">randrange ([start,] stop [,step])</span></a></p>
+</td>
+<td valign="top" style="background:#F6F4F0">
+<p>从指定范围内，按指定基数递增的集合中获取一个随机数，基数缺省&#20540;为1</p>
+</td>
+</tr>
+<tr>
+<td valign="top">
+<p><a target="_blank" href="http://www.w3cschool.cc/python/func-number-random.html"><span style="color:black">random()</span></a></p>
+</td>
+<td valign="top">
+<p>随机生成下一个实数，它在[0,1)范围内。</p>
+</td>
+</tr>
+<tr>
+<td valign="top" style="background:#F6F4F0">
+<p><a target="_blank" href="http://www.w3cschool.cc/python/func-number-seed.html"><span style="color:black">seed([x])</span></a></p>
+</td>
+<td valign="top" style="background:#F6F4F0">
+<p>改变随机数生成器的种子seed。如果你不了解其原理，你不必特别去设定seed，Python会帮你选择seed。</p>
+</td>
+</tr>
+<tr>
+<td valign="top">
+<p><a target="_blank" href="http://www.w3cschool.cc/python/func-number-shuffle.html"><span style="color:black">shuffle(lst)</span></a></p>
+</td>
+<td valign="top">
+<p>将序列的所有元素随机排序</p>
+</td>
+</tr>
+<tr>
+<td valign="top" style="background:#F6F4F0">
+<p><a target="_blank" href="http://www.w3cschool.cc/python/func-number-uniform.html"><span style="color:black">uniform(x, y)</span></a></p>
+</td>
+<td valign="top" style="background:#F6F4F0">
+<p>随机生成下一个实数，它在[x,y]范围内。</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>&nbsp;</p>
+<div align="center">
+<hr size="1" width="100%" noshade="noshade" align="center" style="color:#D4D4D4">
+</div>
+<h4><span style="font-size:18px">Python三角函数</span></h4>
+<p><span style="font-size:18px">Python包括以下三角函数：</span></p>
+<table border="0" cellspacing="0" cellpadding="0" width="535">
+<tbody>
+<tr>
+<td valign="top" style="background:#555555">
+<p><strong><span style="color:white">函数</span></strong></p>
+</td>
+<td valign="top" style="background:#555555">
+<p><strong><span style="color:white">描述</span></strong></p>
+</td>
+</tr>
+<tr>
+<td valign="top">
+<p><a target="_blank" href="http://www.w3cschool.cc/python/func-number-acos.html"><span style="color:black">acos(x)</span></a></p>
+</td>
+<td valign="top">
+<p>返回x的反余弦弧度&#20540;。</p>
+</td>
+</tr>
+<tr>
+<td valign="top" style="background:#F6F4F0">
+<p><a target="_blank" href="http://www.w3cschool.cc/python/func-number-asin.html"><span style="color:black">asin(x)</span></a></p>
+</td>
+<td valign="top" style="background:#F6F4F0">
+<p>返回x的反正弦弧度&#20540;。</p>
+</td>
+</tr>
+<tr>
+<td valign="top">
+<p><a target="_blank" href="http://www.w3cschool.cc/python/func-number-atan.html"><span style="color:black">atan(x)</span></a></p>
+</td>
+<td valign="top">
+<p>返回x的反正切弧度&#20540;。</p>
+</td>
+</tr>
+<tr>
+<td valign="top" style="background:#F6F4F0">
+<p><a target="_blank" href="http://www.w3cschool.cc/python/func-number-atan2.html"><span style="color:black">atan2(y, x)</span></a></p>
+</td>
+<td valign="top" style="background:#F6F4F0">
+<p>返回给定的 X 及 Y 坐标&#20540;的反正切&#20540;。</p>
+</td>
+</tr>
+<tr>
+<td valign="top">
+<p><a target="_blank" href="http://www.w3cschool.cc/python/func-number-cos.html"><span style="color:black">cos(x)</span></a></p>
+</td>
+<td valign="top">
+<p>返回x的弧度的余弦&#20540;。</p>
+</td>
+</tr>
+<tr>
+<td valign="top" style="background:#F6F4F0">
+<p><a target="_blank" href="http://www.w3cschool.cc/python/func-number-hypot.html"><span style="color:black">hypot(x, y)</span></a></p>
+</td>
+<td valign="top" style="background:#F6F4F0">
+<p>返回欧几里德范数 sqrt(x*x &#43; y*y)。</p>
+</td>
+</tr>
+<tr>
+<td valign="top">
+<p><a target="_blank" href="http://www.w3cschool.cc/python/func-number-sin.html"><span style="color:black">sin(x)</span></a></p>
+</td>
+<td valign="top">
+<p>返回的x弧度的正弦&#20540;。</p>
+</td>
+</tr>
+<tr>
+<td valign="top" style="background:#F6F4F0">
+<p><a target="_blank" href="http://www.w3cschool.cc/python/func-number-tan.html"><span style="color:black">tan(x)</span></a></p>
+</td>
+<td valign="top" style="background:#F6F4F0">
+<p>返回x弧度的正切&#20540;。</p>
+</td>
+</tr>
+<tr>
+<td valign="top">
+<p><a target="_blank" href="http://www.w3cschool.cc/python/func-number-degrees.html"><span style="color:black">degrees(x)</span></a></p>
+</td>
+<td valign="top">
+<p>将弧度转换为角度,如degrees(math.pi/2) ， 返回90.0</p>
+</td>
+</tr>
+<tr>
+<td valign="top" style="background:#F6F4F0">
+<p><a target="_blank" href="http://www.w3cschool.cc/python/func-number-radians.html"><span style="color:black">radians(x)</span></a></p>
+</td>
+<td valign="top" style="background:#F6F4F0">
+<p>将角度转换为弧度</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>&nbsp;</p>
+<h4><span style="font-size:18px">Python数学常量</span></h4>
+<table border="0" cellspacing="0" cellpadding="0" width="551">
+<tbody>
+<tr>
+<td valign="top" style="background:#555555">
+<p><strong><span style="color:white">常量</span></strong></p>
+</td>
+<td valign="top" style="background:#555555">
+<p><strong><span style="color:white">描述</span></strong></p>
+</td>
+</tr>
+<tr>
+<td valign="top">
+<p>pi</p>
+</td>
+<td valign="top">
+<p>数学常量 pi（圆周率，一般以π来表示）</p>
+</td>
+</tr>
+<tr>
+<td valign="top" style="background:#F6F4F0">
+<p>e</p>
+</td>
+<td valign="top" style="background:#F6F4F0">
+<p>数学常量 e，e即自然常数（自然常数）。</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p><a href='_index.htm'>&lt;&lt;目录</a></p>
+</body>
+</html>

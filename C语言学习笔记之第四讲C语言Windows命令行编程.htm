@@ -1,0 +1,35 @@
+﻿<!doctype html>
+<html dir="ltr" lang="zh-CN">
+<head>
+<title>C语言学习笔记之  第四讲：C语言Windows命令行编程</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style type="text/css">
+body {font:normal 12px/24px Arial, Helvetica, sans-serif; background:#D9F0DB;}
+textarea,pre {font-family:Courier; font-size:12px;}
+</style>
+</head>
+<body>
+<p><a href='_index.htm'>&lt;&lt;目录</a></p><p><strong>1、 stdlib 头文件</strong></p>
+<p>即standard library标准库头文件。</p>
+<p>stdlib 头文件里包含了C、C&#43;&#43;语言的最常用的<a target="_blank" href="http://baike.baidu.com/view/710031.htm" target="_blank">系统函数</a></p>
+<p>该文件包含了C语言标准<a target="_blank" href="http://baike.baidu.com/view/905012.htm" target="_blank">库函数</a>的定义</p>
+<p><strong>2、 system()函数</strong></p>
+<p>函数名: system&nbsp; </p>
+<p>功&nbsp;&nbsp; 能: 发出一个DOS命令，在命令窗口中输入一个DOS命令；</p>
+<p>用&nbsp;&nbsp; 法: int system(char*command);&nbsp;&nbsp; </p>
+<p>system函数已经被收录在标准c库中，可以直接调用</p>
+<p>如以下程序：</p>
+<p>#include&nbsp;&lt;<span style="background:yellow">stdlib.h</span>&gt;&nbsp;&nbsp;</p>
+<p>#include&nbsp;&lt;<span style="background:yellow">stdio.h</span>&gt;&nbsp;&nbsp;</p>
+<p>int&nbsp;main(void)&nbsp;&nbsp;</p>
+<p>{&nbsp;&nbsp;</p>
+<p>printf(&quot;About&nbsp;to&nbsp;spawn&nbsp;command.com&nbsp;and&nbsp;run&nbsp;a&nbsp;DOS&nbsp;command\n&quot;);&nbsp;&nbsp;</p>
+<p>system(&quot;dir&quot;);&nbsp;&nbsp;//列出当前目录的文件及文件夹</p>
+<p>system(&quot;pause&quot;);//暂停</p>
+<p>return&nbsp;0;&nbsp;&nbsp;</p>
+<p>}</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p><a href='_index.htm'>&lt;&lt;目录</a></p>
+</body>
+</html>

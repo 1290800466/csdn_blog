@@ -1,0 +1,257 @@
+﻿<!doctype html>
+<html dir="ltr" lang="zh-CN">
+<head>
+<title>python 元组详解</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style type="text/css">
+body {font:normal 12px/24px Arial, Helvetica, sans-serif; background:#D9F0DB;}
+textarea,pre {font-family:Courier; font-size:12px;}
+</style>
+</head>
+<body>
+<p><a href='_index.htm'>&lt;&lt;目录</a></p><h1 style="font-size:25px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; margin-top:0px">
+Python&nbsp;<span class="color_h1" style="color:rgb(138,192,7)">元组</span></h1>
+<p style="line-height:16.7999992370605px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif">
+Python的元组与列表类&#20284;，不同之处在于<span style="font-size:14px; color:#ff0000">元组的元素不能修改。</span></p>
+<p style="line-height:16.7999992370605px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif">
+<span style="color:#ff0000">元组使用小括号，列表使用方括号。</span></p>
+<p style="line-height:16.7999992370605px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif">
+元组创建很简单，只需要在括号中添加元素，并使用逗号隔开即可。</p>
+<p style="line-height:16.7999992370605px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif">
+如下实例：</p>
+<pre class="prettyprint prettyprinted" style="margin:15px auto; line-height:20px; font-family:'courier new'; word-break:break-all; word-wrap:break-word; border-width:1px 1px 1px 4px; border-style:solid; border-color:rgb(221,221,221); padding:10px 15px"><span class="pln">tup1 </span><span class="pun" style="color:rgb(102,102,0)">=</span><span class="pln"> </span><span class="pun" style="color:rgb(102,102,0)">(</span><span class="str" style="color:rgb(0,136,0)">'physics'</span><span class="pun" style="color:rgb(102,102,0)">,</span><span class="pln"> </span><span class="str" style="color:rgb(0,136,0)">'chemistry'</span><span class="pun" style="color:rgb(102,102,0)">,</span><span class="pln"> </span><span class="lit" style="color:rgb(0,102,102)">1997</span><span class="pun" style="color:rgb(102,102,0)">,</span><span class="pln"> </span><span class="lit" style="color:rgb(0,102,102)">2000</span><span class="pun" style="color:rgb(102,102,0)">);</span><span class="pln">
+tup2 </span><span class="pun" style="color:rgb(102,102,0)">=</span><span class="pln"> </span><span class="pun" style="color:rgb(102,102,0)">(</span><span class="lit" style="color:rgb(0,102,102)">1</span><span class="pun" style="color:rgb(102,102,0)">,</span><span class="pln"> </span><span class="lit" style="color:rgb(0,102,102)">2</span><span class="pun" style="color:rgb(102,102,0)">,</span><span class="pln"> </span><span class="lit" style="color:rgb(0,102,102)">3</span><span class="pun" style="color:rgb(102,102,0)">,</span><span class="pln"> </span><span class="lit" style="color:rgb(0,102,102)">4</span><span class="pun" style="color:rgb(102,102,0)">,</span><span class="pln"> </span><span class="lit" style="color:rgb(0,102,102)">5</span><span class="pln"> </span><span class="pun" style="color:rgb(102,102,0)">);</span><span class="pln">
+tup3 </span><span class="pun" style="color:rgb(102,102,0)">=</span><span class="pln"> </span><span class="str" style="color:rgb(0,136,0)">&quot;a&quot;</span><span class="pun" style="color:rgb(102,102,0)">,</span><span class="pln"> </span><span class="str" style="color:rgb(0,136,0)">&quot;b&quot;</span><span class="pun" style="color:rgb(102,102,0)">,</span><span class="pln"> </span><span class="str" style="color:rgb(0,136,0)">&quot;c&quot;</span><span class="pun" style="color:rgb(102,102,0)">,</span><span class="pln"> </span><span class="str" style="color:rgb(0,136,0)">&quot;d&quot;</span><span class="pun" style="color:rgb(102,102,0)">;</span></pre>
+<p style="line-height:16.7999992370605px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif">
+创建空元组</p>
+<pre class="prettyprint prettyprinted" style="margin:15px auto; line-height:20px; font-family:'courier new'; word-break:break-all; word-wrap:break-word; border-width:1px 1px 1px 4px; border-style:solid; border-color:rgb(221,221,221); padding:10px 15px"><span class="pln">tup1 </span><span class="pun" style="color:rgb(102,102,0)">=</span><span class="pln"> </span><span class="pun" style="color:rgb(102,102,0)">();</span></pre>
+<p style="line-height:16.7999992370605px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif">
+元组中只包含一个元素时，需要在元素后面添加逗号</p>
+<pre class="prettyprint prettyprinted" style="margin:15px auto; line-height:20px; font-family:'courier new'; word-break:break-all; word-wrap:break-word; border-width:1px 1px 1px 4px; border-style:solid; border-color:rgb(221,221,221); padding:10px 15px"><span class="pln">tup1 </span><span class="pun" style="color:rgb(102,102,0)">=</span><span class="pln"> </span><span class="pun" style="color:rgb(102,102,0)">(</span><span class="lit" style="color:rgb(0,102,102)">50</span><span class="pun" style="color:rgb(102,102,0)">,);</span></pre>
+<p style="line-height:16.7999992370605px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif">
+元组与字符串类&#20284;，下标索引从0开始，可以进行截取，组合等。</p>
+<hr style="color:rgb(212,212,212); height:1px; border:0px; clear:both; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; background-color:rgb(212,212,212)">
+<h2 style="font-size:22px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; margin-top:10px; margin-bottom:10px">
+访问元组</h2>
+<p style="line-height:16.7999992370605px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif">
+元组可以使用下标索引来访问元组中的&#20540;，如下实例:</p>
+<pre class="prettyprint prettyprinted" style="margin:15px auto; line-height:20px; font-family:'courier new'; word-break:break-all; word-wrap:break-word; border-width:1px 1px 1px 4px; border-style:solid; border-color:rgb(221,221,221); padding:10px 15px"><span class="com" style="color:rgb(136,0,0)">#!/usr/bin/python</span><span class="pln">
+
+tup1 </span><span class="pun" style="color:rgb(102,102,0)">=</span><span class="pln"> </span><span class="pun" style="color:rgb(102,102,0)">(</span><span class="str" style="color:rgb(0,136,0)">'physics'</span><span class="pun" style="color:rgb(102,102,0)">,</span><span class="pln"> </span><span class="str" style="color:rgb(0,136,0)">'chemistry'</span><span class="pun" style="color:rgb(102,102,0)">,</span><span class="pln"> </span><span class="lit" style="color:rgb(0,102,102)">1997</span><span class="pun" style="color:rgb(102,102,0)">,</span><span class="pln"> </span><span class="lit" style="color:rgb(0,102,102)">2000</span><span class="pun" style="color:rgb(102,102,0)">);</span><span class="pln">
+tup2 </span><span class="pun" style="color:rgb(102,102,0)">=</span><span class="pln"> </span><span class="pun" style="color:rgb(102,102,0)">(</span><span class="lit" style="color:rgb(0,102,102)">1</span><span class="pun" style="color:rgb(102,102,0)">,</span><span class="pln"> </span><span class="lit" style="color:rgb(0,102,102)">2</span><span class="pun" style="color:rgb(102,102,0)">,</span><span class="pln"> </span><span class="lit" style="color:rgb(0,102,102)">3</span><span class="pun" style="color:rgb(102,102,0)">,</span><span class="pln"> </span><span class="lit" style="color:rgb(0,102,102)">4</span><span class="pun" style="color:rgb(102,102,0)">,</span><span class="pln"> </span><span class="lit" style="color:rgb(0,102,102)">5</span><span class="pun" style="color:rgb(102,102,0)">,</span><span class="pln"> </span><span class="lit" style="color:rgb(0,102,102)">6</span><span class="pun" style="color:rgb(102,102,0)">,</span><span class="pln"> </span><span class="lit" style="color:rgb(0,102,102)">7</span><span class="pln"> </span><span class="pun" style="color:rgb(102,102,0)">);</span><span class="pln">
+
+</span><span class="kwd" style="color:rgb(0,0,136)">print</span><span class="pln"> </span><span class="str" style="color:rgb(0,136,0)">&quot;tup1[0]: &quot;</span><span class="pun" style="color:rgb(102,102,0)">,</span><span class="pln"> tup1</span><span class="pun" style="color:rgb(102,102,0)">[</span><span class="lit" style="color:rgb(0,102,102)">0</span><span class="pun" style="color:rgb(102,102,0)">]</span><span class="pln">
+</span><span class="kwd" style="color:rgb(0,0,136)">print</span><span class="pln"> </span><span class="str" style="color:rgb(0,136,0)">&quot;tup2[1:5]: &quot;</span><span class="pun" style="color:rgb(102,102,0)">,</span><span class="pln"> tup2</span><span class="pun" style="color:rgb(102,102,0)">[</span><span class="lit" style="color:rgb(0,102,102)">1</span><span class="pun" style="color:rgb(102,102,0)">:</span><span class="lit" style="color:rgb(0,102,102)">5</span><span class="pun" style="color:rgb(102,102,0)">]</span></pre>
+<p style="line-height:16.7999992370605px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif">
+以上实例输出结果：</p>
+<pre class="prettyprint prettyprinted" style="margin:15px auto; line-height:20px; font-family:'courier new'; word-break:break-all; word-wrap:break-word; border-width:1px 1px 1px 4px; border-style:solid; border-color:rgb(221,221,221); padding:10px 15px"><span class="pln">tup1</span><span class="pun" style="color:rgb(102,102,0)">[</span><span class="lit" style="color:rgb(0,102,102)">0</span><span class="pun" style="color:rgb(102,102,0)">]:</span><span class="pln">  physics
+tup2</span><span class="pun" style="color:rgb(102,102,0)">[</span><span class="lit" style="color:rgb(0,102,102)">1</span><span class="pun" style="color:rgb(102,102,0)">:</span><span class="lit" style="color:rgb(0,102,102)">5</span><span class="pun" style="color:rgb(102,102,0)">]:</span><span class="pln">  </span><span class="pun" style="color:rgb(102,102,0)">(</span><span class="lit" style="color:rgb(0,102,102)">2</span><span class="pun" style="color:rgb(102,102,0)">,</span><span class="pln"> </span><span class="lit" style="color:rgb(0,102,102)">3</span><span class="pun" style="color:rgb(102,102,0)">,</span><span class="pln"> </span><span class="lit" style="color:rgb(0,102,102)">4</span><span class="pun" style="color:rgb(102,102,0)">,</span><span class="pln"> </span><span class="lit" style="color:rgb(0,102,102)">5</span><span class="pun" style="color:rgb(102,102,0)">)</span></pre>
+<hr style="color:rgb(212,212,212); height:1px; border:0px; clear:both; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; background-color:rgb(212,212,212)">
+<h2 style="font-size:22px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; margin-top:10px; margin-bottom:10px">
+修改元组</h2>
+<p style="line-height:16.7999992370605px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif">
+元组中的元素&#20540;是不允许修改的，但我们可以对元组进行连接组合，如下实例:</p>
+<pre class="prettyprint prettyprinted" style="margin:15px auto; line-height:20px; font-family:'courier new'; word-break:break-all; word-wrap:break-word; border-width:1px 1px 1px 4px; border-style:solid; border-color:rgb(221,221,221); padding:10px 15px"><span class="com" style="color:rgb(136,0,0)">#coding=utf-8</span><span class="pln">
+</span><span class="com" style="color:rgb(136,0,0)">#!/usr/bin/python</span><span class="pln">
+
+tup1 </span><span class="pun" style="color:rgb(102,102,0)">=</span><span class="pln"> </span><span class="pun" style="color:rgb(102,102,0)">(</span><span class="lit" style="color:rgb(0,102,102)">12</span><span class="pun" style="color:rgb(102,102,0)">,</span><span class="pln"> </span><span class="lit" style="color:rgb(0,102,102)">34.56</span><span class="pun" style="color:rgb(102,102,0)">);</span><span class="pln">
+tup2 </span><span class="pun" style="color:rgb(102,102,0)">=</span><span class="pln"> </span><span class="pun" style="color:rgb(102,102,0)">(</span><span class="str" style="color:rgb(0,136,0)">'abc'</span><span class="pun" style="color:rgb(102,102,0)">,</span><span class="pln"> </span><span class="str" style="color:rgb(0,136,0)">'xyz'</span><span class="pun" style="color:rgb(102,102,0)">);</span><span class="pln">
+
+</span><span class="com" style="color:rgb(136,0,0)"># 以下修改元组元素操作是非法的。</span><span class="pln">
+</span><span class="com" style="color:rgb(136,0,0)"># tup1[0] = 100;</span><span class="pln">
+
+</span><span class="com" style="color:rgb(136,0,0)"># 创建一个新的元组</span><span class="pln">
+tup3 </span><span class="pun" style="color:rgb(102,102,0)">=</span><span class="pln"> tup1 </span><span class="pun" style="color:rgb(102,102,0)">&#43;</span><span class="pln"> tup2</span><span class="pun" style="color:rgb(102,102,0)">;</span><span class="pln">
+</span><span class="kwd" style="color:rgb(0,0,136)">print</span><span class="pln"> tup3</span><span class="pun" style="color:rgb(102,102,0)">;</span></pre>
+<p style="line-height:16.7999992370605px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif">
+以上实例输出结果：</p>
+<pre class="prettyprint prettyprinted" style="margin:15px auto; line-height:20px; font-family:'courier new'; word-break:break-all; word-wrap:break-word; border-width:1px 1px 1px 4px; border-style:solid; border-color:rgb(221,221,221); padding:10px 15px"><span class="pun" style="color:rgb(102,102,0)">(</span><span class="lit" style="color:rgb(0,102,102)">12</span><span class="pun" style="color:rgb(102,102,0)">,</span><span class="pln"> </span><span class="lit" style="color:rgb(0,102,102)">34.56</span><span class="pun" style="color:rgb(102,102,0)">,</span><span class="pln"> </span><span class="str" style="color:rgb(0,136,0)">'abc'</span><span class="pun" style="color:rgb(102,102,0)">,</span><span class="pln"> </span><span class="str" style="color:rgb(0,136,0)">'xyz'</span><span class="pun" style="color:rgb(102,102,0)">)</span></pre>
+<hr style="color:rgb(212,212,212); height:1px; border:0px; clear:both; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; background-color:rgb(212,212,212)">
+<h2 style="font-size:22px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; margin-top:10px; margin-bottom:10px">
+删除元组</h2>
+<p style="line-height:16.7999992370605px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif">
+元组中的元素&#20540;是不允许删除的，但我们可以使用del语句来删除整个元组，如下实例:</p>
+<pre class="prettyprint prettyprinted" style="margin:15px auto; line-height:20px; font-family:'courier new'; word-break:break-all; word-wrap:break-word; border-width:1px 1px 1px 4px; border-style:solid; border-color:rgb(221,221,221); padding:10px 15px"><span class="com" style="color:rgb(136,0,0)">#!/usr/bin/python</span><span class="pln">
+
+tup </span><span class="pun" style="color:rgb(102,102,0)">=</span><span class="pln"> </span><span class="pun" style="color:rgb(102,102,0)">(</span><span class="str" style="color:rgb(0,136,0)">'physics'</span><span class="pun" style="color:rgb(102,102,0)">,</span><span class="pln"> </span><span class="str" style="color:rgb(0,136,0)">'chemistry'</span><span class="pun" style="color:rgb(102,102,0)">,</span><span class="pln"> </span><span class="lit" style="color:rgb(0,102,102)">1997</span><span class="pun" style="color:rgb(102,102,0)">,</span><span class="pln"> </span><span class="lit" style="color:rgb(0,102,102)">2000</span><span class="pun" style="color:rgb(102,102,0)">);</span><span class="pln">
+
+</span><span class="kwd" style="color:rgb(0,0,136)">print</span><span class="pln"> tup</span><span class="pun" style="color:rgb(102,102,0)">;</span><span class="pln">
+</span><span class="kwd" style="color:rgb(0,0,136)">del</span><span class="pln"> tup</span><span class="pun" style="color:rgb(102,102,0)">;</span><span class="pln">
+</span><span class="kwd" style="color:rgb(0,0,136)">print</span><span class="pln"> </span><span class="str" style="color:rgb(0,136,0)">&quot;After deleting tup : &quot;</span><span class="pln">
+</span><span class="kwd" style="color:rgb(0,0,136)">print</span><span class="pln"> tup</span><span class="pun" style="color:rgb(102,102,0)">;</span></pre>
+<p style="line-height:16.7999992370605px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif">
+以上实例元组被删除后，输出变量会有异常信息，输出如下所示：</p>
+<pre class="prettyprint prettyprinted" style="margin:15px auto; line-height:20px; font-family:'courier new'; word-break:break-all; word-wrap:break-word; border-width:1px 1px 1px 4px; border-style:solid; border-color:rgb(221,221,221); padding:10px 15px"><span class="pun" style="color:rgb(102,102,0)">(</span><span class="str" style="color:rgb(0,136,0)">'physics'</span><span class="pun" style="color:rgb(102,102,0)">,</span><span class="pln"> </span><span class="str" style="color:rgb(0,136,0)">'chemistry'</span><span class="pun" style="color:rgb(102,102,0)">,</span><span class="pln"> </span><span class="lit" style="color:rgb(0,102,102)">1997</span><span class="pun" style="color:rgb(102,102,0)">,</span><span class="pln"> </span><span class="lit" style="color:rgb(0,102,102)">2000</span><span class="pun" style="color:rgb(102,102,0)">)</span><span class="pln">
+</span><span class="typ" style="color:rgb(102,0,102)">After</span><span class="pln"> deleting tup </span><span class="pun" style="color:rgb(102,102,0)">:</span><span class="pln">
+</span><span class="typ" style="color:rgb(102,0,102)">Traceback</span><span class="pln"> </span><span class="pun" style="color:rgb(102,102,0)">(</span><span class="pln">most recent call </span><span class="kwd" style="color:rgb(0,0,136)">last</span><span class="pun" style="color:rgb(102,102,0)">):</span><span class="pln">
+  </span><span class="typ" style="color:rgb(102,0,102)">File</span><span class="pln"> </span><span class="str" style="color:rgb(0,136,0)">&quot;test.py&quot;</span><span class="pun" style="color:rgb(102,102,0)">,</span><span class="pln"> line </span><span class="lit" style="color:rgb(0,102,102)">9</span><span class="pun" style="color:rgb(102,102,0)">,</span><span class="pln"> </span><span class="kwd" style="color:rgb(0,0,136)">in</span><span class="pln"> </span><span class="str" style="color:rgb(0,136,0)">&lt;module&gt;</span><span class="pln">
+    </span><span class="kwd" style="color:rgb(0,0,136)">print</span><span class="pln"> tup</span><span class="pun" style="color:rgb(102,102,0)">;</span><span class="pln">
+</span><span class="typ" style="color:rgb(102,0,102)">NameError</span><span class="pun" style="color:rgb(102,102,0)">:</span><span class="pln"> name </span><span class="str" style="color:rgb(0,136,0)">'tup'</span><span class="pln"> </span><span class="kwd" style="color:rgb(0,0,136)">is</span><span class="pln"> </span><span class="kwd" style="color:rgb(0,0,136)">not</span><span class="pln"> </span><span class="kwd" style="color:rgb(0,0,136)">defined</span></pre>
+<hr style="color:rgb(212,212,212); height:1px; border:0px; clear:both; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; background-color:rgb(212,212,212)">
+<h2 style="font-size:22px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; margin-top:10px; margin-bottom:10px">
+元组运算符</h2>
+<p style="line-height:16.7999992370605px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif">
+与字符串一样，元组之间可以使用 &#43; 号和 * 号进行运算。这就意味着他们可以组合和复制，运算后会生成一个新的元组。</p>
+<table class="reference " style="font-size:12px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; border-collapse:collapse; width:722px; color:rgb(0,0,0)">
+<tbody>
+<tr style="background-color:rgb(246,244,240)">
+<th style="font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; color:rgb(255,255,255); border:1px solid rgb(85,85,85); padding:3px; vertical-align:top; width:233px; background-color:rgb(85,85,85)">
+Python 表达式</th>
+<th style="font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; color:rgb(255,255,255); border:1px solid rgb(85,85,85); padding:3px; vertical-align:top; width:234px; background-color:rgb(85,85,85)">
+结果</th>
+<th style="font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; color:rgb(255,255,255); border:1px solid rgb(85,85,85); padding:3px; vertical-align:top; width:234px; background-color:rgb(85,85,85)">
+描述</th>
+</tr>
+<tr>
+<td style="line-height:16.7999992370605px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; border:1px solid rgb(212,212,212); padding:7px 5px; vertical-align:top">
+len((1, 2, 3))</td>
+<td style="line-height:16.7999992370605px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; border:1px solid rgb(212,212,212); padding:7px 5px; vertical-align:top">
+3</td>
+<td style="line-height:16.7999992370605px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; border:1px solid rgb(212,212,212); padding:7px 5px; vertical-align:top">
+计算元素个数</td>
+</tr>
+<tr style="background-color:rgb(246,244,240)">
+<td style="line-height:16.7999992370605px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; border:1px solid rgb(212,212,212); padding:7px 5px; vertical-align:top">
+(1, 2, 3) &#43; (4, 5, 6)</td>
+<td style="line-height:16.7999992370605px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; border:1px solid rgb(212,212,212); padding:7px 5px; vertical-align:top">
+(1, 2, 3, 4, 5, 6)</td>
+<td style="line-height:16.7999992370605px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; border:1px solid rgb(212,212,212); padding:7px 5px; vertical-align:top">
+连接</td>
+</tr>
+<tr>
+<td style="line-height:16.7999992370605px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; border:1px solid rgb(212,212,212); padding:7px 5px; vertical-align:top">
+['Hi!'] * 4</td>
+<td style="line-height:16.7999992370605px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; border:1px solid rgb(212,212,212); padding:7px 5px; vertical-align:top">
+['Hi!', 'Hi!', 'Hi!', 'Hi!']</td>
+<td style="line-height:16.7999992370605px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; border:1px solid rgb(212,212,212); padding:7px 5px; vertical-align:top">
+复制</td>
+</tr>
+<tr style="background-color:rgb(246,244,240)">
+<td style="line-height:16.7999992370605px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; border:1px solid rgb(212,212,212); padding:7px 5px; vertical-align:top">
+3 in (1, 2, 3)</td>
+<td style="line-height:16.7999992370605px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; border:1px solid rgb(212,212,212); padding:7px 5px; vertical-align:top">
+True</td>
+<td style="line-height:16.7999992370605px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; border:1px solid rgb(212,212,212); padding:7px 5px; vertical-align:top">
+元素是否存在</td>
+</tr>
+<tr>
+<td style="line-height:16.7999992370605px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; border:1px solid rgb(212,212,212); padding:7px 5px; vertical-align:top">
+for x in (1, 2, 3): print x,</td>
+<td style="line-height:16.7999992370605px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; border:1px solid rgb(212,212,212); padding:7px 5px; vertical-align:top">
+1 2 3</td>
+<td style="line-height:16.7999992370605px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; border:1px solid rgb(212,212,212); padding:7px 5px; vertical-align:top">
+迭代</td>
+</tr>
+</tbody>
+</table>
+<hr style="color:rgb(212,212,212); height:1px; border:0px; clear:both; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; background-color:rgb(212,212,212)">
+<h2 style="font-size:22px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; margin-top:10px; margin-bottom:10px">
+元组索引，截取</h2>
+<p style="line-height:16.7999992370605px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif">
+因为元组也是一个序列，所以我们可以访问元组中的指定位置的元素，也可以截取索引中的一段元素，如下所示：</p>
+<p style="line-height:16.7999992370605px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif">
+元组：</p>
+<pre class="prettyprint prettyprinted" style="margin:15px auto; line-height:20px; font-family:'courier new'; word-break:break-all; word-wrap:break-word; border-width:1px 1px 1px 4px; border-style:solid; border-color:rgb(221,221,221); padding:10px 15px"><span class="pln">L </span><span class="pun" style="color:rgb(102,102,0)">=</span><span class="pln"> </span><span class="pun" style="color:rgb(102,102,0)">(</span><span class="str" style="color:rgb(0,136,0)">'spam'</span><span class="pun" style="color:rgb(102,102,0)">,</span><span class="pln"> </span><span class="str" style="color:rgb(0,136,0)">'Spam'</span><span class="pun" style="color:rgb(102,102,0)">,</span><span class="pln"> </span><span class="str" style="color:rgb(0,136,0)">'SPAM!'</span><span class="pun" style="color:rgb(102,102,0)">)</span></pre>
+<table class="reference " style="font-size:12px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; border-collapse:collapse; width:722px; color:rgb(0,0,0)">
+<tbody>
+<tr style="background-color:rgb(246,244,240)">
+<th style="font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; color:rgb(255,255,255); border:1px solid rgb(85,85,85); padding:3px; vertical-align:top; width:233px; background-color:rgb(85,85,85)">
+Python 表达式</th>
+<th style="font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; color:rgb(255,255,255); border:1px solid rgb(85,85,85); padding:3px; vertical-align:top; width:234px; background-color:rgb(85,85,85)">
+结果</th>
+<th style="font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; color:rgb(255,255,255); border:1px solid rgb(85,85,85); padding:3px; vertical-align:top; width:234px; background-color:rgb(85,85,85)">
+描述</th>
+</tr>
+<tr>
+<td style="line-height:16.7999992370605px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; border:1px solid rgb(212,212,212); padding:7px 5px; vertical-align:top">
+L[2]</td>
+<td style="line-height:16.7999992370605px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; border:1px solid rgb(212,212,212); padding:7px 5px; vertical-align:top">
+'SPAM!'</td>
+<td style="line-height:16.7999992370605px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; border:1px solid rgb(212,212,212); padding:7px 5px; vertical-align:top">
+读取第三个元素</td>
+</tr>
+<tr style="background-color:rgb(246,244,240)">
+<td style="line-height:16.7999992370605px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; border:1px solid rgb(212,212,212); padding:7px 5px; vertical-align:top">
+L[-2]</td>
+<td style="line-height:16.7999992370605px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; border:1px solid rgb(212,212,212); padding:7px 5px; vertical-align:top">
+'Spam'</td>
+<td style="line-height:16.7999992370605px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; border:1px solid rgb(212,212,212); padding:7px 5px; vertical-align:top">
+反向读取；读取倒数第二个元素</td>
+</tr>
+<tr>
+<td style="line-height:16.7999992370605px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; border:1px solid rgb(212,212,212); padding:7px 5px; vertical-align:top">
+L[1:]</td>
+<td style="line-height:16.7999992370605px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; border:1px solid rgb(212,212,212); padding:7px 5px; vertical-align:top">
+('Spam', 'SPAM!')</td>
+<td style="line-height:16.7999992370605px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; border:1px solid rgb(212,212,212); padding:7px 5px; vertical-align:top">
+截取元素</td>
+</tr>
+</tbody>
+</table>
+<hr style="color:rgb(212,212,212); height:1px; border:0px; clear:both; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; background-color:rgb(212,212,212)">
+<h2 style="font-size:22px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; margin-top:10px; margin-bottom:10px">
+无关闭分隔符</h2>
+<p style="line-height:16.7999992370605px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif">
+任意无符号的对象，以逗号隔开，默认为元组，如下实例：</p>
+<pre class="prettyprint prettyprinted" style="margin:15px auto; line-height:20px; font-family:'courier new'; word-break:break-all; word-wrap:break-word; border-width:1px 1px 1px 4px; border-style:solid; border-color:rgb(221,221,221); padding:10px 15px"><span class="com" style="color:rgb(136,0,0)">#!/usr/bin/python</span><span class="pln">
+
+</span><span class="kwd" style="color:rgb(0,0,136)">print</span><span class="pln"> </span><span class="str" style="color:rgb(0,136,0)">'abc'</span><span class="pun" style="color:rgb(102,102,0)">,</span><span class="pln"> </span><span class="pun" style="color:rgb(102,102,0)">-</span><span class="lit" style="color:rgb(0,102,102)">4.24e93</span><span class="pun" style="color:rgb(102,102,0)">,</span><span class="pln"> </span><span class="lit" style="color:rgb(0,102,102)">18</span><span class="pun" style="color:rgb(102,102,0)">&#43;</span><span class="lit" style="color:rgb(0,102,102)">6.6j</span><span class="pun" style="color:rgb(102,102,0)">,</span><span class="pln"> </span><span class="str" style="color:rgb(0,136,0)">'xyz'</span><span class="pun" style="color:rgb(102,102,0)">;</span><span class="pln">
+x</span><span class="pun" style="color:rgb(102,102,0)">,</span><span class="pln"> y </span><span class="pun" style="color:rgb(102,102,0)">=</span><span class="pln"> </span><span class="lit" style="color:rgb(0,102,102)">1</span><span class="pun" style="color:rgb(102,102,0)">,</span><span class="pln"> </span><span class="lit" style="color:rgb(0,102,102)">2</span><span class="pun" style="color:rgb(102,102,0)">;</span><span class="pln">
+</span><span class="kwd" style="color:rgb(0,0,136)">print</span><span class="pln"> </span><span class="str" style="color:rgb(0,136,0)">&quot;Value of x , y : &quot;</span><span class="pun" style="color:rgb(102,102,0)">,</span><span class="pln"> x</span><span class="pun" style="color:rgb(102,102,0)">,</span><span class="pln">y</span><span class="pun" style="color:rgb(102,102,0)">;</span></pre>
+<p style="line-height:16.7999992370605px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif">
+以上实例允许结果：</p>
+<pre class="prettyprint prettyprinted" style="margin:15px auto; line-height:20px; font-family:'courier new'; word-break:break-all; word-wrap:break-word; border-width:1px 1px 1px 4px; border-style:solid; border-color:rgb(221,221,221); padding:10px 15px"><span class="pln">abc </span><span class="pun" style="color:rgb(102,102,0)">-</span><span class="lit" style="color:rgb(0,102,102)">4.24e&#43;93</span><span class="pln"> </span><span class="pun" style="color:rgb(102,102,0)">(</span><span class="lit" style="color:rgb(0,102,102)">18</span><span class="pun" style="color:rgb(102,102,0)">&#43;</span><span class="lit" style="color:rgb(0,102,102)">6.6j</span><span class="pun" style="color:rgb(102,102,0)">)</span><span class="pln"> xyz
+</span><span class="typ" style="color:rgb(102,0,102)">Value</span><span class="pln"> of x </span><span class="pun" style="color:rgb(102,102,0)">,</span><span class="pln"> y </span><span class="pun" style="color:rgb(102,102,0)">:</span><span class="pln"> </span><span class="lit" style="color:rgb(0,102,102)">1</span><span class="pln"> </span><span class="lit" style="color:rgb(0,102,102)">2</span></pre>
+<hr style="color:rgb(212,212,212); height:1px; border:0px; clear:both; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; background-color:rgb(212,212,212)">
+<h2 style="font-size:22px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; margin-top:10px; margin-bottom:10px">
+元组内置函数</h2>
+<p style="line-height:16.7999992370605px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif">
+Python元组包含了以下内置函数</p>
+<table class="reference " style="font-size:12px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; border-collapse:collapse; width:722px; color:rgb(0,0,0)">
+<tbody>
+<tr style="background-color:rgb(246,244,240)">
+<th style="font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; color:rgb(255,255,255); border:1px solid rgb(85,85,85); padding:3px; vertical-align:top; width:30px; background-color:rgb(85,85,85)">
+序号</th>
+<th style="font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; color:rgb(255,255,255); border:1px solid rgb(85,85,85); padding:3px; vertical-align:top; width:678px; background-color:rgb(85,85,85)">
+方法及描述</th>
+</tr>
+<tr>
+<td style="line-height:16.7999992370605px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; border:1px solid rgb(212,212,212); padding:7px 5px; vertical-align:top">
+1</td>
+<td style="line-height:16.7999992370605px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; border:1px solid rgb(212,212,212); padding:7px 5px; vertical-align:top">
+<a target="_blank" href="http://www.w3cschool.cc/python/att-tuple-cmp.html" style="color:rgb(0,0,0); background-color:transparent">cmp(tuple1, tuple2)</a><br>
+比较两个元组元素。</td>
+</tr>
+<tr style="background-color:rgb(246,244,240)">
+<td style="line-height:16.7999992370605px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; border:1px solid rgb(212,212,212); padding:7px 5px; vertical-align:top">
+2</td>
+<td style="line-height:16.7999992370605px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; border:1px solid rgb(212,212,212); padding:7px 5px; vertical-align:top">
+<a target="_blank" href="http://www.w3cschool.cc/python/att-tuple-len.html" style="color:rgb(0,0,0); background-color:transparent">len(tuple)</a><br>
+计算元组元素个数。</td>
+</tr>
+<tr>
+<td style="line-height:16.7999992370605px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; border:1px solid rgb(212,212,212); padding:7px 5px; vertical-align:top">
+3</td>
+<td style="line-height:16.7999992370605px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; border:1px solid rgb(212,212,212); padding:7px 5px; vertical-align:top">
+<a target="_blank" href="http://www.w3cschool.cc/python/att-tuple-max.html" style="color:rgb(0,0,0); background-color:transparent">max(tuple)</a><br>
+返回元组中元素最大&#20540;。</td>
+</tr>
+<tr style="background-color:rgb(246,244,240)">
+<td style="line-height:16.7999992370605px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; border:1px solid rgb(212,212,212); padding:7px 5px; vertical-align:top">
+4</td>
+<td style="line-height:16.7999992370605px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; border:1px solid rgb(212,212,212); padding:7px 5px; vertical-align:top">
+<a target="_blank" href="http://www.w3cschool.cc/python/att-tuple-min.html" style="color:rgb(0,0,0); background-color:transparent">min(tuple)</a><br>
+返回元组中元素最小&#20540;。</td>
+</tr>
+<tr>
+<td style="line-height:16.7999992370605px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; border:1px solid rgb(212,212,212); padding:7px 5px; vertical-align:top">
+5</td>
+<td style="line-height:16.7999992370605px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; border:1px solid rgb(212,212,212); padding:7px 5px; vertical-align:top">
+<a target="_blank" href="http://www.w3cschool.cc/python/att-tuple-tuple.html" style="color:rgb(0,0,0); background-color:transparent">tuple(seq)</a><br>
+将列表转换为元组。</td>
+</tr>
+</tbody>
+</table>
+<p><a href='_index.htm'>&lt;&lt;目录</a></p>
+</body>
+</html>

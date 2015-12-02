@@ -1,0 +1,86 @@
+﻿<!doctype html>
+<html dir="ltr" lang="zh-CN">
+<head>
+<title>PHP防盗链技术</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style type="text/css">
+body {font:normal 12px/24px Arial, Helvetica, sans-serif; background:#D9F0DB;}
+textarea,pre {font-family:Courier; font-size:12px;}
+</style>
+</head>
+<body>
+<p><a href='_index.htm'>&lt;&lt;目录</a></p><p><span style="font-size:18px">// $_SERVER['HTTP_REFERER']的获取情况<br>
+// 注意 $_SERVER['HTTP_REFERER'] 并不一定总能获取到，只有在以下情况下才能获取到：<br>
+// 一、能够取到HTTP_REFERER的情况为以下几种：<br>
+// 1．直接用&lt;a href&gt;<br>
+// 2．用Submit或&lt;input type=image&gt;提交的表单(POST or GET)<br>
+// 3．使用Jscript提交的表单(POST or GET)<br>
+<br>
+<br>
+// 二、不能取到的情况有以下几种：<br>
+// 1．从收藏夹链接<br>
+// 2．单击”主页”或者自定义的地址<br>
+// 3．利用Jscript的location.href or location.replace()<br>
+// 4．在浏览器直接输入地址<br>
+// 5．&lt;%Response.Redirect%&gt;<br>
+// 6．&lt;%Response.AddHeader%&gt;或&lt;meta http-equiv=refresh&gt;转向<br>
+// 7．用XML加载地址<br>
+<br>
+<br>
+// strrpos函数讲解：<br>
+// strrpos — 计算指定字符串在目标字符串中最后一次出现的位置<br>
+// 说明<br>
+// int strrpos ( string $haystack , string $needle [, int $offset = 0 ] )<br>
+// 返回字符串 $haystack 中 needle 最后一次出现的数字位置。<br>
+// $haystack<br>
+// 在此字符串中进行查找。<br>
+// needle<br>
+// 如果 needle不是一个字符串，它将被转换为整型并被视为字符的顺序&#20540;。<br>
+// 返回&#20540;<br>
+// 返回 needle 存在的位置。如果没有找到，返回 FALSE。<br>
+</span></p>
+<p><span style="font-size:18px"><br>
+</span></p>
+<p><span style="font-size:18px">盗链判断代码：asd.php</span></p>
+<p><pre name="code" class="php">&lt;span style=&quot;font-size:18px;&quot;&gt;&lt;?php
+//防盗链技术
+//先判断是否获取到 $_SERVER[&#39;HTTP_REFERER&#39;] 变量
+if(isset($_SERVER[&#39;HTTP_REFERER&#39;])){
+    //判断$_SERVER[&#39;HTTP_REFERER&#39;]是不是以http://localhost/开始的
+    if(strpos($_SERVER[&#39;HTTP_REFERER&#39;],&quot;http://localhost&quot;)==0){
+        echo &#39;&lt;img src=&quot;a.png&quot;/&gt;&#39;;
+    } 
+    else{  
+        header(&quot;Location:warning.php&quot;);//跳转页面到warning.php
+        //echo $_SERVER[&quot;HTTP_REFERER&quot;];
+    }
+} 
+else {
+    header(&quot;Location:warning.php&quot;);
+}
+?&gt;&lt;/span&gt;</pre><span style="font-size:18px"><br>
+warning.php<br>
+</span></p>
+<p><pre name="code" class="php">&lt;span style=&quot;font-size:18px;&quot;&gt;&lt;html&gt;
+
+&lt;b&gt;倒链&lt;/b&gt;
+
+&lt;/html&gt;&lt;/span&gt;</pre></p>
+<p><span style="font-size:18px"><br>
+</span></p>
+<p><span style="font-size:18px">防盗链验证代码 &nbsp;</span></p>
+<pre name="code" class="html">&lt;span style=&quot;font-size:18px;&quot;&gt;&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;meta charset=&quot;UTF-8&quot;&gt;
+&lt;title&gt;Insert title here&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;a href=&quot;http://localhost/wml/asd.php&quot;&gt;验证防盗链&lt;/a&gt;
+&lt;/body&gt;
+&lt;/html&gt;&lt;/span&gt;</pre><span style="font-size:18px"><br>
+<br>
+</span><br>
+<p><a href='_index.htm'>&lt;&lt;目录</a></p>
+</body>
+</html>

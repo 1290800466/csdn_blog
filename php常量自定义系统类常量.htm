@@ -1,0 +1,85 @@
+﻿<!doctype html>
+<html dir="ltr" lang="zh-CN">
+<head>
+<title>php常量--自定义/系统/类常量</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style type="text/css">
+body {font:normal 12px/24px Arial, Helvetica, sans-serif; background:#D9F0DB;}
+textarea,pre {font-family:Courier; font-size:12px;}
+</style>
+</head>
+<body>
+<p><a href='_index.htm'>&lt;&lt;目录</a></p><p><pre name="code" class="php">&lt;span style=&quot;font-size:18px;&quot;&gt;&lt;?php 
+
+// php常量:分为以下四种
+//（1）、自定义常量：
+//     必须用函数define()定义
+//     define() 函数 - 它使用三个参数：
+//     首个参数定义常量的名称
+//     第二个参数定义常量的值
+//     可选的第三个参数规定常量名是否对大小写敏感。默认是 false，对大小写敏感。
+//     定义完后其值不能再改变了
+//     使用时直接用常量名，不能像变量一样在前面加$s
+//     实例代码：
+
+define(&quot;GREETING&quot;, &quot;Welcome to W3School.com.cn!&quot;);
+echo &quot;对大小写敏感：&quot;.GREETING.&quot;&lt;br/&gt;&quot;;
+
+//第三个参数为  true  ，对大小写不敏感
+define(&quot;GREETING&quot;, &quot;Welcome to W3School.com.cn!&quot;, true);
+echo &quot;对大小写不敏感：&quot;.greeting.&quot;&lt;br/&gt;&quot;;
+
+//（2）、系统常量：
+//     PHP_VERSION:当前解析器的版本号
+//     PHP_OS：执行当前PHP版本的操作系统名称
+//     可以直接拿来使用，例如要查看执行当前PHP版本的操作系统名称，就可以写成 echo PHP_OS 
+//     实例代码：
+
+echo &quot;&lt;br/&gt;&quot;;
+//输出当前解析器的版本号
+echo &quot;当前解析器的版本号是:&#160;&#160;&quot;.PHP_VERSION;
+echo &quot;&lt;br/&gt;&quot;;
+//输出执行当前PHP版本的操作系统名称
+echo &quot;当前操作系统是：&#160;&quot;.PHP_OS;
+echo &quot;&lt;br/&gt;&quot;;
+// 输出圆周率
+echo M_PI;
+echo &quot;&lt;br/&gt;&quot;;
+// 输出科学常数e
+echo M_E;
+echo &quot;&lt;br/&gt;&quot;;
+// 输出以2为底e的对数
+echo M_LOG2E;
+echo &quot;&lt;br/&gt;&quot;;
+// 输出以10为底e的对数
+echo M_LOG10E;
+echo &quot;&lt;br/&gt;&quot;;
+// 输出2的自然对数（常数e为底数的对数叫做自然对数）
+echo M_LN2;
+echo &quot;&lt;br/&gt;&quot;;
+// 输出10的自然对数
+echo M_LN10;
+echo &quot;&lt;br/&gt;&quot;;
+
+  
+//（3）、php类常量
+
+class MyClass{
+    //类常量，用constant修饰，不带
+    const cons1 = &#39;constant value&#39;;
+    function showCons1() {
+        echo self::cons1.&quot;&lt;br/&gt;&quot;;
+    }
+}
+//常量的表示形式：    类名::常量名
+echo &quot;&lt;br/&gt;类常量值为：&quot;.MyClass::cons1.&quot;&lt;br/&gt;&quot;;
+
+// （4）、魔术常量
+//      见博客：http://blog.csdn.net/u013372487/article/details/46729965
+?&gt;
+&lt;/span&gt;</pre><span style="font-size:18px"><br>
+</span><br>
+</p>
+<p><a href='_index.htm'>&lt;&lt;目录</a></p>
+</body>
+</html>

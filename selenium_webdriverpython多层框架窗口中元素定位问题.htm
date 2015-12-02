@@ -1,0 +1,103 @@
+﻿<!doctype html>
+<html dir="ltr" lang="zh-CN">
+<head>
+<title>selenium_webdriver(python)多层框架/窗口中元素定位问题</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style type="text/css">
+body {font:normal 12px/24px Arial, Helvetica, sans-serif; background:#D9F0DB;}
+textarea,pre {font-family:Courier; font-size:12px;}
+</style>
+</head>
+<body>
+<p><a href='_index.htm'>&lt;&lt;目录</a></p><p><br>
+</p>
+<p>frame.html:</p>
+<p><pre name="code" class="html">&lt;html&gt;
+&lt;head&gt;
+&lt;meta http-equiv=&quot;content-type&quot; content=&quot;text/html;charset=utf-8&quot; /&gt;
+&lt;title&gt;frame&lt;/title&gt;
+&lt;script type=&quot;text/javascript&quot;
+async=&quot;&quot;src=&quot;http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js
+&quot;&gt;&lt;/script&gt;
+&lt;link
+href=&quot;http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstra
+p-combined.min.css&quot; rel=&quot;stylesheet&quot; /&gt;
+&lt;script type=&quot;text/javascript&quot;&gt;$(document).ready(function(){});&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;div class=&quot;row-fluid&quot;&gt;
+&lt;div class=&quot;span10 well&quot;&gt;
+&lt;h3&gt;frame&lt;/h3&gt;
+&lt;iframe id=&quot;f1&quot; src=&quot;inner.html&quot; width=&quot;800&quot;,
+height=&quot;600&quot;&gt;&lt;/iframe&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/body&gt;
+&lt;script
+src=&quot;http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.
+min.js&quot;&gt;&lt;/script&gt;
+&lt;/html&gt;</pre><br>
+<br>
+</p>
+<p>inner.html:</p>
+<p><pre name="code" class="html">&lt;html&gt;
+&lt;head&gt;
+&lt;meta http-equiv=&quot;content-type&quot; content=&quot;text/html;charset=utf-8&quot; /&gt;
+&lt;title&gt;inner&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;div class=&quot;row-fluid&quot;&gt;
+&lt;div class=&quot;span6 well&quot;&gt;
+&lt;h3&gt;inner&lt;/h3&gt;
+&lt;iframe id=&quot;f2&quot; src=&quot;http://www.baidu.com&quot;
+width=&quot;700&quot;height=&quot;500&quot;&gt;&lt;/iframe&gt;
+&lt;a href=&quot;javascript:alert(&#39;watir-webdriver better thanselenium webdriver;&#39;)&quot;&gt;click&lt;/a&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;</pre></p>
+<p><br>
+</p>
+<p></p>
+<h2>多层框架或窗口的定位：</h2>
+<p></p>
+<p><pre name="code" class="python">#coding=utf-8
+&#39;&#39;&#39;
+多层框架或窗口的定位：
+ switch_to_frame()
+ switch_to_window()
+
+对于一个现代的web 应用，经常会出现框架（frame） 或窗口（window）的应用，
+这也就给我们的定位带来了一个难题。有时候我们定位一个元素，定位器没有问题，但一直定位不了，
+这时候就要首先检查这个元素是否在一个frame 中，seelnium webdriver 提供了一个switch_to_frame法，
+可以很轻松的来解决这个问题。
+&#39;&#39;&#39;
+from selenium import webdriver
+import time
+import os
+browser = webdriver.Chrome()
+file_path = os.path.abspath(&#39;frame.html&#39;)
+print file_path
+browser.get(file_path)
+browser.implicitly_wait(30)
+#先找到到ifrome1（id = f1），利用其id寻找
+browser.switch_to_frame(&quot;f1&quot;)
+#再找到其下面的ifrome2(id =f2)，利用其id寻找
+browser.switch_to_frame(&quot;f2&quot;)
+#下面就可以正常的操作元素了
+browser.find_element_by_id(&quot;kw&quot;).send_keys(&quot;selenium&quot;)
+browser.find_element_by_id(&quot;su&quot;).click()
+time.sleep(3)
+&#39;&#39;&#39;
+有可能嵌套的不是框架，而是窗口，还有针对窗口的方法：switch_to_window
+用法与switch_to_frame 相同：
+driver.switch_to_window(&quot;windowName&quot;)
+&#39;&#39;&#39;
+browser.quit()</pre><br>
+<br>
+</p>
+<br>
+<br>
+<p><a href='_index.htm'>&lt;&lt;目录</a></p>
+</body>
+</html>

@@ -1,0 +1,28 @@
+﻿<!doctype html>
+<html dir="ltr" lang="zh-CN">
+<head>
+<title>js里调用函数时，函数名带括号和不带括号的区别</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style type="text/css">
+body {font:normal 12px/24px Arial, Helvetica, sans-serif; background:#D9F0DB;}
+textarea,pre {font-family:Courier; font-size:12px;}
+</style>
+</head>
+<body>
+<p><a href='_index.htm'>&lt;&lt;目录</a></p><p><span style="font-size:18px"><strong>示例代码：</strong></span></p>
+<p><pre name="code" class="javascript">&lt;span style=&quot;font-size:18px;&quot;&gt;function hi(){  
+  var a = 1;  
+  return function(){
+   console.log(a++);
+  };  
+};         
+var aaa = hi();
+var bbb = hi;
+&lt;/span&gt;</pre><span style="font-size:18px"><br>
+<code style="font-family:Consolas,Menlo,Monaco,'Courier New',monospace; padding:2px 4px; color:rgb(199,37,78); background-color:rgb(246,246,246)">如以上代码：</code></span></p>
+<p><span style="font-size:18px"><code style="font-family:Consolas,Menlo,Monaco,'Courier New',monospace; padding:2px 4px; color:rgb(199,37,78); background-color:rgb(246,246,246)">aaa</code><span style="color:rgb(51,51,51); font-family:'Open Sans','Helvetica Neue',Helvetica,Arial,STHeiti,'Microsoft Yahei',SimSun,sans-serif; line-height:18.6667px">&nbsp;是将&nbsp;</span><code style="font-family:Consolas,Menlo,Monaco,'Courier New',monospace; padding:2px 4px; color:rgb(199,37,78); background-color:rgb(246,246,246)">hi()</code><span style="color:rgb(51,51,51); font-family:'Open Sans','Helvetica Neue',Helvetica,Arial,STHeiti,'Microsoft Yahei',SimSun,sans-serif; line-height:18.6667px">&nbsp;的运行结果赋&#20540;给它，即&nbsp;</span><code style="font-family:Consolas,Menlo,Monaco,'Courier New',monospace; padding:2px 4px; color:rgb(199,37,78); background-color:rgb(246,246,246)">return</code><span style="color:rgb(51,51,51); font-family:'Open Sans','Helvetica Neue',Helvetica,Arial,STHeiti,'Microsoft Yahei',SimSun,sans-serif; line-height:18.6667px">&nbsp;返回的匿名函数，此时有一个闭包，则每次调用&nbsp;</span><code style="font-family:Consolas,Menlo,Monaco,'Courier New',monospace; padding:2px 4px; color:rgb(199,37,78); background-color:rgb(246,246,246)">aaa</code><span style="color:rgb(51,51,51); font-family:'Open Sans','Helvetica Neue',Helvetica,Arial,STHeiti,'Microsoft Yahei',SimSun,sans-serif; line-height:18.6667px">&nbsp;时都访问的同一个&nbsp;</span><code style="font-family:Consolas,Menlo,Monaco,'Courier New',monospace; padding:2px 4px; color:rgb(199,37,78); background-color:rgb(246,246,246)">a</code><span style="color:rgb(51,51,51); font-family:'Open Sans','Helvetica Neue',Helvetica,Arial,STHeiti,'Microsoft Yahei',SimSun,sans-serif; line-height:18.6667px">，</span><code style="font-family:Consolas,Menlo,Monaco,'Courier New',monospace; padding:2px 4px; color:rgb(199,37,78); background-color:rgb(246,246,246)">aaa()</code><span style="color:rgb(51,51,51); font-family:'Open Sans','Helvetica Neue',Helvetica,Arial,STHeiti,'Microsoft Yahei',SimSun,sans-serif; line-height:18.6667px">&nbsp;第一次运行结果为&nbsp;</span><code style="font-family:Consolas,Menlo,Monaco,'Courier New',monospace; padding:2px 4px; color:rgb(199,37,78); background-color:rgb(246,246,246)">1</code><span style="color:rgb(51,51,51); font-family:'Open Sans','Helvetica Neue',Helvetica,Arial,STHeiti,'Microsoft Yahei',SimSun,sans-serif; line-height:18.6667px">，第二次为</span><code style="font-family:Consolas,Menlo,Monaco,'Courier New',monospace; padding:2px 4px; color:rgb(199,37,78); background-color:rgb(246,246,246)">2</code><br style="color:rgb(51,51,51); font-family:'Open Sans','Helvetica Neue',Helvetica,Arial,STHeiti,'Microsoft Yahei',SimSun,sans-serif; line-height:18.6667px">
+<span style="color:rgb(51,51,51); font-family:'Open Sans','Helvetica Neue',Helvetica,Arial,STHeiti,'Microsoft Yahei',SimSun,sans-serif; line-height:18.6667px">而&nbsp;</span><code style="font-family:Consolas,Menlo,Monaco,'Courier New',monospace; padding:2px 4px; color:rgb(199,37,78); background-color:rgb(246,246,246)">bbb</code><span style="color:rgb(51,51,51); font-family:'Open Sans','Helvetica Neue',Helvetica,Arial,STHeiti,'Microsoft Yahei',SimSun,sans-serif; line-height:18.6667px">&nbsp;将是将&nbsp;</span><code style="font-family:Consolas,Menlo,Monaco,'Courier New',monospace; padding:2px 4px; color:rgb(199,37,78); background-color:rgb(246,246,246)">hi</code><span style="color:rgb(51,51,51); font-family:'Open Sans','Helvetica Neue',Helvetica,Arial,STHeiti,'Microsoft Yahei',SimSun,sans-serif; line-height:18.6667px">&nbsp;这个函数名赋&#20540;给它，则调用&nbsp;</span><code style="font-family:Consolas,Menlo,Monaco,'Courier New',monospace; padding:2px 4px; color:rgb(199,37,78); background-color:rgb(246,246,246)">bbb()</code><span style="color:rgb(51,51,51); font-family:'Open Sans','Helvetica Neue',Helvetica,Arial,STHeiti,'Microsoft Yahei',SimSun,sans-serif; line-height:18.6667px">&nbsp;后返回一个函数表达式，即</span><code style="font-family:Consolas,Menlo,Monaco,'Courier New',monospace; padding:2px 4px; color:rgb(199,37,78); background-color:rgb(246,246,246)">function(){console.log(a&#43;&#43;)};</code></span><br>
+</p>
+<p><a href='_index.htm'>&lt;&lt;目录</a></p>
+</body>
+</html>

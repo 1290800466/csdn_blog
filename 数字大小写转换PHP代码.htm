@@ -1,0 +1,43 @@
+﻿<!doctype html>
+<html dir="ltr" lang="zh-CN">
+<head>
+<title>数字大小写转换PHP代码</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style type="text/css">
+body {font:normal 12px/24px Arial, Helvetica, sans-serif; background:#D9F0DB;}
+textarea,pre {font-family:Courier; font-size:12px;}
+</style>
+</head>
+<body>
+<p><a href='_index.htm'>&lt;&lt;目录</a></p><p><br>
+</p>
+<p></p>
+<pre name="code" class="php">&lt;?php 
+header(&quot;Content-type: text/html; charset=utf-8&quot;);
+//PHP数字金额转大小格式
+function a($a){
+    $da_num=array(&#39;零&#39;,&#39;一&#39;,&#39;二&#39;,&#39;三&#39;,&#39;四&#39;,&#39;五&#39;,&#39;六&#39;,&#39;七&#39;,&#39;八&#39;,&#39;九&#39;);
+    return $da_num[$a];
+}
+function daxie($num){
+    $ren=null;
+    $len_num = strlen($num);
+    if(!is_numeric($num) || $num &lt; 0){
+        echo &quot;输入错误！&quot;;
+    }else{
+        for($i=0;$i&lt;$len_num;$i++){
+            //substr() 函数返回字符串的一部分。
+            $ren.= a(substr($num,$i,1));
+        }
+        echo $ren;
+    }
+
+}
+daxie(&#39;0123456789&#39;);
+echo &quot;&lt;br&gt;&quot;;
+?&gt;</pre><br>
+<br>
+<p></p>
+<p><a href='_index.htm'>&lt;&lt;目录</a></p>
+</body>
+</html>

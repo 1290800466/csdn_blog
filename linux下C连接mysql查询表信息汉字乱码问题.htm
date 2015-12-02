@@ -1,0 +1,15 @@
+﻿<!doctype html>
+<html dir="ltr" lang="zh-CN">
+<head>
+<title>linux下C连接mysql查询表信息汉字乱码问题</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style type="text/css">
+body {font:normal 12px/24px Arial, Helvetica, sans-serif; background:#D9F0DB;}
+textarea,pre {font-family:Courier; font-size:12px;}
+</style>
+</head>
+<body>
+<p><a href='_index.htm'>&lt;&lt;目录</a></p><p align="left"><span style="white-space:pre"></span>对于mysql C_API接口的查询问题，在查询之前需要设置读取数据库的编码&#26684;式，即在查询语句之前添加以下语句 mysql_query(connection, &quot;set names utf8&quot;)&nbsp;即在执行数据查询之前，要设置一下编码方式！</p>
+<p><a href='_index.htm'>&lt;&lt;目录</a></p>
+</body>
+</html>

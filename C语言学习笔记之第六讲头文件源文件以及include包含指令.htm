@@ -1,0 +1,21 @@
+﻿<!doctype html>
+<html dir="ltr" lang="zh-CN">
+<head>
+<title>C语言学习笔记之  第六讲：头文件源文件以及include包含指令</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style type="text/css">
+body {font:normal 12px/24px Arial, Helvetica, sans-serif; background:#D9F0DB;}
+textarea,pre {font-family:Courier; font-size:12px;}
+</style>
+</head>
+<body>
+<p><a href='_index.htm'>&lt;&lt;目录</a></p><p><strong>1、#include说明：</strong></p>
+<p>#include后可以包含任意类型，不仅.h可以，也可以.c，也可以.cpp。也就是其他的代码文件可以利用#include直接调用。</p>
+<p>&nbsp; &nbsp; &nbsp;&nbsp;#include内容不能重复包含，将会出现变量重名。即#include后所包含内容重复，不行。如aq.cpp包含date.h，若include.cpp调用了aq.cpp，就不需要再调用date.h了，否则将出现变量重名，编译出错。</p>
+<p><strong>2、变量的定义可以在头文件中，变量的运算可以在原文件中。也就是可以分开放。</strong></p>
+<p><strong>3、函数定义规律：</strong></p>
+<p><strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </strong>一般情况下，函数的声明，应该放在头文件。函数的实现与变量的定义应当放在源文件。</p>
+<p><strong>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</strong></p>
+<p><a href='_index.htm'>&lt;&lt;目录</a></p>
+</body>
+</html>

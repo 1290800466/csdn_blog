@@ -1,0 +1,42 @@
+﻿<!doctype html>
+<html dir="ltr" lang="zh-CN">
+<head>
+<title>css 元素跳动代码</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style type="text/css">
+body {font:normal 12px/24px Arial, Helvetica, sans-serif; background:#D9F0DB;}
+textarea,pre {font-family:Courier; font-size:12px;}
+</style>
+</head>
+<body>
+<p><a href='_index.htm'>&lt;&lt;目录</a></p><p><span style="font-size:18px">代码示例：</span></p>
+<p><pre name="code" class="html">&lt;span style=&quot;font-size:18px;&quot;&gt;&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;meta charset=&quot;utf-8&quot;&gt;
+&lt;style&gt;
+.scroll{
+	position:absolute;
+	animation:1s arrow infinite ease;
+}
+@keyframes arrow {
+	0%,100% {
+		top:50px;
+	}
+	50% {
+		top:200px;
+	}
+}
+&lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;b class=&quot;scroll&quot;&gt;滑动鼠标滚轮&lt;/b&gt;	
+&lt;/body&gt;
+&lt;/html&gt;&lt;/span&gt;</pre></p>
+<p><span style="font-size:18px"><br>
+</span></p>
+<span style="font-size:18px">以上代码会控制&lt;b&gt; 标签中元素上下跳动，若将 top &nbsp;改为 left &nbsp;则是左右跳动。<br>
+</span><br>
+<p><a href='_index.htm'>&lt;&lt;目录</a></p>
+</body>
+</html>

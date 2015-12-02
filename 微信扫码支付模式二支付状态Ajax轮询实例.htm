@@ -1,0 +1,66 @@
+﻿<!doctype html>
+<html dir="ltr" lang="zh-CN">
+<head>
+<title>微信扫码支付模式二支付状态Ajax轮询实例</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style type="text/css">
+body {font:normal 12px/24px Arial, Helvetica, sans-serif; background:#D9F0DB;}
+textarea,pre {font-family:Courier; font-size:12px;}
+</style>
+</head>
+<body>
+<p><a href='_index.htm'>&lt;&lt;目录</a></p><p><span style="font-size:18px"><strong>Ajax 轮训支付状态代码：</strong></span></p>
+<p><pre name="code" class="html">&lt;span style=&quot;font-size:18px;&quot;&gt;&lt;script&gt;
+    //设置每隔1000毫秒执行一次load() 方法
+    setInterval(function(){load()},1000);
+    function load(){
+    	var xmlhttp;  
+        if (window.XMLHttpRequest){  
+            // code for IE7+, Firefox, Chrome, Opera, Safari  
+            xmlhttp=new XMLHttpRequest();  
+        }else{  
+            // code for IE6, IE5  
+            xmlhttp=new ActiveXObject(&quot;Microsoft.XMLHTTP&quot;);  
+        }  
+        xmlhttp.onreadystatechange=function(){  
+            if (xmlhttp.readyState==4 &amp;&amp; xmlhttp.status==200){  
+            	trade_state=xmlhttp.responseText;
+            	if(trade_state==&#39;SUCCESS&#39;){
+                	document.getElementById(&quot;myDiv&quot;).innerHTML=&#39;支付成功&#39;;
+                	document.getElementById(&#39;green&#39;).style.background=&quot;green&quot;;
+                	//alert(transaction_id);
+                	//延迟3000毫秒执行tz() 方法
+                	setTimeout(function(){tz()},3000);
+                	function tz(){
+                		window.location.href=&quot;http://www.5188zc.com/index.php?ctl=payment&amp;act=notify&amp;class_name=Pcwxcodepay&quot;;
+                    }
+                }else if(trade_state==&#39;REFUND&#39;){
+                	document.getElementById(&quot;myDiv&quot;).innerHTML=&#39;转入退款&#39;;
+                }else if(trade_state==&#39;NOTPAY&#39;){
+                	document.getElementById(&quot;myDiv&quot;).innerHTML=&#39;请扫码支付&#39;;
+                	
+                }else if(trade_state==&#39;CLOSED&#39;){
+                	document.getElementById(&quot;myDiv&quot;).innerHTML=&#39;已关闭&#39;;
+                }else if(trade_state==&#39;REVOKED&#39;){
+                	document.getElementById(&quot;myDiv&quot;).innerHTML=&#39;已撤销&#39;;
+                }else if(trade_state==&#39;USERPAYING&#39;){
+                	document.getElementById(&quot;myDiv&quot;).innerHTML=&#39;用户支付中&#39;;
+                }else if(trade_state==&#39;PAYERROR&#39;){
+                	document.getElementById(&quot;myDiv&quot;).innerHTML=&#39;支付失败&#39;;
+                }
+            	
+            }  
+        }  
+        //orderquery.php 文件返回订单状态，通过订单状态确定支付状态
+        xmlhttp.open(&quot;POST&quot;,&quot;orderquery.php&quot;,true);  
+        //下面这句话必须有  
+        //把标签/值对添加到要发送的头文件。  
+        xmlhttp.setRequestHeader(&quot;Content-type&quot;,&quot;application/x-www-form-urlencoded&quot;);  
+        xmlhttp.send(&quot;out_trade_no=&lt;?php echo $payment_notice[&#39;notice_sn&#39;];?&gt;&quot;); 
+        }
+    &lt;/script&gt;&lt;/span&gt;</pre><span style="font-size:18px"><br>
+</span><br>
+</p>
+<p><a href='_index.htm'>&lt;&lt;目录</a></p>
+</body>
+</html>

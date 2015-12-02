@@ -1,0 +1,58 @@
+﻿<!doctype html>
+<html dir="ltr" lang="zh-CN">
+<head>
+<title>PHP时间比较和时间差计算</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style type="text/css">
+body {font:normal 12px/24px Arial, Helvetica, sans-serif; background:#D9F0DB;}
+textarea,pre {font-family:Courier; font-size:12px;}
+</style>
+</head>
+<body>
+<p><a href='_index.htm'>&lt;&lt;目录</a></p><pre name="code" class="php">&lt;?php
+//PHP时间比较和时间差计算:
+//(1).比较两个绝对时间的大小
+header(&quot;Content-type: text/html; charset=utf-8&quot;); 
+date_default_timezone_set(&#39;PRC&#39;);   
+$zero1=date(&quot;Y-m-d h:i:s&quot;);
+//$zero1=&quot;2010-11-29 21:07:00&quot;;   
+$zero2=&quot;2010-11-29 21:07:00&quot;;   
+echo &quot;zero1的时间为：&quot;.$zero1.&quot;&lt;br&gt;&quot;;   
+echo &quot;zero2的时间为：&quot;.$zero2.&quot;&lt;br&gt;&quot;;   
+// strtotime — 将任何英文文本的日期时间描述解析为 Unix 时间戳
+if(strtotime($zero1)&lt;strtotime($zero2)){   
+    echo &quot;zero1早于zero2&quot;;   
+}else if(strtotime($zero1)&gt;strtotime($zero2)){   
+    echo &quot;zero2早于zero1&quot;;   
+}else{   
+    echo &quot;zero2等于zero1&quot;;   
+}
+echo &quot;&lt;br/&gt;&lt;br/&gt;&quot;;      
+?&gt;
+&lt;?php   
+//(2).倒计时小程序
+$zero1=strtotime (date(&quot;y-m-d h:i:s&quot;)); //当前时间  ,注意H 是24小时 h是12小时 
+$zero2=strtotime (&quot;2016-1-1 00:00:00&quot;);  //过年时间
+//float ceil ( float $value )
+//返回不小于 value 的下一个整数，value 如果有小数部分则进一位。
+$guonian=ceil(($zero2-$zero1)/86400); //60s*60min*24h   
+echo &quot;离过年还有&lt;strong&gt;$guonian&lt;/strong&gt;天！&quot;;  
+echo &quot;&lt;br/&gt;&lt;br/&gt;&quot;; 
+?&gt;  
+&lt;?php
+//(3).PHP计算两个时间差的方法 
+$startdate=date(&quot;y-m-d H:i:s&quot;);
+$enddate=&quot;2015-7-30 18:00:00&quot;;
+// floor — 舍去法取整
+// float floor ( float $value )
+// 返回不大于 value 的最接近的整数，舍去小数部分取整。
+$date=floor((strtotime($enddate)-strtotime($startdate))/86400);
+$hour=floor((strtotime($enddate)-strtotime($startdate))%86400/3600);
+$minute=floor((strtotime($enddate)-strtotime($startdate))%86400/60);
+$second=floor((strtotime($enddate)-strtotime($startdate))%86400%60);
+echo &quot;现在距结束时间还有&quot;.$date.&quot;天&quot;.$hour.&quot;小时&quot;.$minute.&quot;分钟&quot;.$second.&quot;秒&quot;;
+echo &quot;&lt;br/&gt;&lt;br/&gt;&quot;;
+?&gt;</pre><br>
+<p><a href='_index.htm'>&lt;&lt;目录</a></p>
+</body>
+</html>

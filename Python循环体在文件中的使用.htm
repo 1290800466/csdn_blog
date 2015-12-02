@@ -1,0 +1,33 @@
+﻿<!doctype html>
+<html dir="ltr" lang="zh-CN">
+<head>
+<title>Python 循环体在文件中的使用</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style type="text/css">
+body {font:normal 12px/24px Arial, Helvetica, sans-serif; background:#D9F0DB;}
+textarea,pre {font-family:Courier; font-size:12px;}
+</style>
+</head>
+<body>
+<p><a href='_index.htm'>&lt;&lt;目录</a></p><pre name="code" class="python">&lt;span style=&quot;font-size:18px;&quot;&gt;# while循环在文件中的使用，输出打印文件内容
+fr = open(&quot;aaa.py&quot;,&#39;r&#39;)
+s = fr.readline()
+while s != &#39;&#39;:   #s不等于 空
+    print s
+    s = fr.readline()
+print &quot;1读取完成&quot;
+print &#39;\n&#39;
+fr.close()
+
+
+
+# for循环在文件中的使用，输出打印文件内容
+fr = open(&quot;aaa.py&quot;,&#39;r&#39;)
+for t in  fr:
+    print t
+print &quot;2读取完成&quot;
+fr.close()
+&lt;/span&gt;</pre><br>
+<p><a href='_index.htm'>&lt;&lt;目录</a></p>
+</body>
+</html>

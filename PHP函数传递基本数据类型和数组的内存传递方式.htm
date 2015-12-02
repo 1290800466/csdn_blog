@@ -1,0 +1,43 @@
+﻿<!doctype html>
+<html dir="ltr" lang="zh-CN">
+<head>
+<title>PHP 函数传递基本数据类型和数组的内存传递方式</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style type="text/css">
+body {font:normal 12px/24px Arial, Helvetica, sans-serif; background:#D9F0DB;}
+textarea,pre {font-family:Courier; font-size:12px;}
+</style>
+</head>
+<body>
+<p><a href='_index.htm'>&lt;&lt;目录</a></p><pre name="code" class="php">&lt;?php
+//屏蔽程序 notice 级错误
+error_reporting(E_ALL^E_NOTICE);
+//如果给函数传递的是基本数据类型，如整数、小数、布尔、字符等时,在默认的情况下是传递的值；
+//如果你希望传入地址,则可以用一下方法：
+function test(&amp;$n) 
+//加上&amp;符号表示传入的是地址，若改变此值则所对应地址的值也会改变；
+//若没有&amp;符号，仅仅是传值，若在函数中对该值进行改变，仅仅是这个值改变，其所对应地址的值没有改变，即该值的改变仅仅能影响函数内部，出了此函数，该值将保持原值不变
+{
+	echo &quot;传入地址对应值为：&quot;.$n.&quot;&lt;br/&gt;&quot;;
+	$n+=1;
+}
+//调用以上函数
+$a=100;
+test($a);
+echo $a.&quot;&lt;br/&gt;&quot;; //有&amp;符号打印101，没有&amp;符号打印100
+//在php中如果，给一个函数传递的是数组，则默认情况下是传值(拷贝了新的数组),如果希望传入地址，则应当，&amp;$数组名
+$a1=array(1,3,900);
+$a2=array(56,90,100);
+$arr=array($a1,$a2,6);
+ foreach($arr as $k=&gt;$k_v)
+{
+	echo &quot;$k=&gt;$k_v&quot;;
+	echo &quot;&lt;br&gt;&quot;;
+} 
+
+print_r($arr); 
+echo &quot;&lt;br&gt;&quot;;
+?&gt;</pre><br>
+<p><a href='_index.htm'>&lt;&lt;目录</a></p>
+</body>
+</html>

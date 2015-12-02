@@ -1,0 +1,92 @@
+﻿<!doctype html>
+<html dir="ltr" lang="zh-CN">
+<head>
+<title>Python循环语句for详解</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style type="text/css">
+body {font:normal 12px/24px Arial, Helvetica, sans-serif; background:#D9F0DB;}
+textarea,pre {font-family:Courier; font-size:12px;}
+</style>
+</head>
+<body>
+<p><a href='_index.htm'>&lt;&lt;目录</a></p><p></p>
+<pre code_snippet_id="648353" snippet_file_name="blog_20150420_1_6345475" name="code" class="python">for i in 5,6,7,8,9:
+&#39;&#39;&#39;
+for后跟变量名，in后跟序列，注意加冒号
+for循环每次从序列中取一个值放到变量中
+此处的序列主要指 列表  元组   字符串   文件
+&#39;&#39;&#39;
+    print i
+else:
+    print &quot;error&quot;
+
+    
+for i in &quot;qwe&quot;,&quot;asd&quot;,&quot;zxc&quot;:  
+    print i
+&#39;&#39;&#39;
+python 中的列表说明：
+用[]括起来的一组数据，数据之间用逗号隔开，数据可以同类型，也可以不同类型；
+如：li=[1,2,3,4,&quot;a&quot;,6]
+&#39;&#39;&#39;   
+    
+li=[1,2,3,4,&quot;a&quot;,6]
+for val in li:  
+    print &quot;val=&quot;,val
+print li</pre><br>
+<pre code_snippet_id="648353" snippet_file_name="blog_20150420_2_2618861" name="code" class="python">&#39;&#39;&#39;
+range()函数：在数字序列中产生连续的数字
+range(x,y,z)
+x:起始值
+y:结束值
+z:步长
+&#39;&#39;&#39;
+li=range(2,10,2)
+for val in li: 
+	print &quot;val=&quot;,val
+li=range(2,10)
+for val in li: 
+	print &quot;val=&quot;,val
+li=range(10)
+for val in li:
+	print &quot;val=&quot;,val
+</pre><pre code_snippet_id="648353" snippet_file_name="blog_20150420_2_2618861" name="code" class="python">&lt;pre name=&quot;code&quot; class=&quot;python&quot;&gt;&#39;&#39;&#39;
+for遍历文件
+open(&quot;aaa.py&quot;,&quot;r&quot;).readline()  遍历aaa.py的第一行，每个字符作为一行
+open(&quot;aaa.py&quot;,&quot;r&quot;).readlines()  遍历整个aaa.py文档，源文档一行作为遍历的一行
+open(&quot;aaa.py&quot;,&quot;r&quot;).read()  遍历整个aaa.py文档，每个字符作为一行
+r 表示已只读的形式打开
+&#39;&#39;&#39;
+
+for val in open(&quot;aaa.py&quot;,&quot;r&quot;).read():
+    print val
+
+for val in open(&quot;aaa.py&quot;,&quot;r&quot;).readline():
+    print val
+
+for val in open(&quot;aaa.py&quot;,&quot;r&quot;).readlines():
+    print val
+
+&#39;&#39;&#39;
+实现将一个文件读出，并写入到另一个文件中
+a+ 表示以追加的形式写入
+&#39;&#39;&#39;
+
+for a in open(&quot;aaa.py&quot;,&quot;r&quot;).readlines():
+    open(&quot;a.txt&quot;,&quot;a+&quot;).write(a)
+else:
+    print &quot;END&quot;</pre><br>
+文件打开类型：<br>
+r &nbsp; 读<br>
+w &nbsp;写<br>
+a &nbsp;连续追加写<br>
+a&#43; 若打开目录没有该文件，则自动创建该文件<br>
+<p>b</p>
+<p>注意读写完毕后一定要关闭文件：</p>
+<pre></pre>
+<p>关闭文件函数： &nbsp;file_name.close()</p>
+<br>
+<br>
+<p></p>
+<p><a href='_index.htm'>&lt;&lt;目录</a></p>
+</body>
+</html>

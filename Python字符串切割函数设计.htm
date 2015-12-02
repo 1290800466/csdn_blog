@@ -1,0 +1,60 @@
+﻿<!doctype html>
+<html dir="ltr" lang="zh-CN">
+<head>
+<title>Python 字符串切割函数设计</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style type="text/css">
+body {font:normal 12px/24px Arial, Helvetica, sans-serif; background:#D9F0DB;}
+textarea,pre {font-family:Courier; font-size:12px;}
+</style>
+</head>
+<body>
+<p><a href='_index.htm'>&lt;&lt;目录</a></p><pre name="code" class="python">s=&quot;   fs.fes..23...43....tghf    &quot;
+
+print &quot;要切割的字符串为：&quot;,s ,&quot;\n&quot;
+
+s = s.strip()  #去掉字符串左右两边空格
+
+print &quot;输出去掉空格的字符串：&quot;,s,&quot;\n&quot;
+
+# sep 为切割字符串的符号
+
+sep = &#39;.&#39;   
+
+def my_split(src, sep):  #自定义my_split()函数
+
+    a = s.find(sep)   #find返回查找字符开始的索引
+
+    w1 = s[:a]
+
+    print(w1)
+
+    b = a
+
+
+    n = len(sep)
+
+    while b &lt;= len(s) and b != -1:
+
+        while s[a:a + n] == sep:
+
+            a = a + n
+
+        b = s.find(sep, a)  #从a开始查找sep
+
+        if b != -1:
+
+            print(s[a:b])
+
+        else:
+
+            print(s[a:])
+
+        a = b
+
+print &#39;调用 my_split函数,提取切割出的字符串：\n&#39;
+
+my_split(s, sep)</pre><br>
+<p><a href='_index.htm'>&lt;&lt;目录</a></p>
+</body>
+</html>

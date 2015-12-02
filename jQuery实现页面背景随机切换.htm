@@ -1,0 +1,47 @@
+﻿<!doctype html>
+<html dir="ltr" lang="zh-CN">
+<head>
+<title>jQuery实现页面背景随机切换</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style type="text/css">
+body {font:normal 12px/24px Arial, Helvetica, sans-serif; background:#D9F0DB;}
+textarea,pre {font-family:Courier; font-size:12px;}
+</style>
+</head>
+<body>
+<p><a href='_index.htm'>&lt;&lt;目录</a></p><pre name="code" class="html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;meta charset=utf-8&quot; /&gt;
+&lt;title&gt;jQuery实现页面背景随机切换&lt;/title&gt;
+&lt;style&gt;
+.back {
+	position: absolute;
+	width: 1000px;
+	height: 100px;
+	background-size: cover;
+}
+&lt;/style&gt; 
+&lt;script src=&quot;http://libs.baidu.com/jquery/1.10.2/jquery.min.js&quot;&gt;&lt;/script&gt;
+&lt;script&gt;
+$(document).ready(function(){
+	var imgArr=[&quot;bg001.jpg&quot;, 
+				&quot;bg002.png&quot;, 
+				&quot;bg003.png&quot;
+	];
+	var img =parseInt(Math.random()*(imgArr.length)); 
+	var currentImage=imgArr[img];
+	$(&quot;.back&quot;).css(&quot;background-image&quot;,&quot;url(&quot;+currentImage+&quot;)&quot;);
+});
+&lt;/script&gt;
+
+&lt;/head&gt;
+&lt;body&gt;
+	&lt;div class=&quot;back&quot; &gt; 
+		123
+	&lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;</pre><br>
+<p><a href='_index.htm'>&lt;&lt;目录</a></p>
+</body>
+</html>

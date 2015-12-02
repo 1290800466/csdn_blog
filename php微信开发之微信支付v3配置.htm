@@ -1,0 +1,35 @@
+﻿<!doctype html>
+<html dir="ltr" lang="zh-CN">
+<head>
+<title>php 微信开发之 微信支付 v3 配置</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style type="text/css">
+body {font:normal 12px/24px Arial, Helvetica, sans-serif; background:#D9F0DB;}
+textarea,pre {font-family:Courier; font-size:12px;}
+</style>
+</head>
+<body>
+<p><a href='_index.htm'>&lt;&lt;目录</a></p><p><span style="font-size:18px"><span style="white-space:pre"></span>&nbsp; &nbsp; &nbsp; &nbsp; 公司需要微信支付现不到镇的是非常的麻烦。然后呢那个要怎么申请我就不写了。因为不是我负责的所以我就记录微信支付开发就好了。自己也记录一下以后要开发好下手 。<br>
+1. 到这里下载sdk<br>
+<span style="white-space:pre"></span>&nbsp; &nbsp; &nbsp; &nbsp; 版本本V3 : http://pay.weixin.qq.com/wiki/doc/api/app.php?chapter=11_1<br>
+2. 下载好后修改配置文件位于： lib/WxPay.Config.php 然后修改 指定的参数<br>
+<span style="white-space:pre"></span>&nbsp; &nbsp; &nbsp; &nbsp;APPID：绑定支付的APPID（必须配置，开户邮件中可查看） <br>
+<span style="white-space:pre"></span>&nbsp; &nbsp; &nbsp; &nbsp; MCHID：商户号（必须配置，开户邮件中可查看）<br>
+<span style="white-space:pre"></span>&nbsp; &nbsp; &nbsp; &nbsp; KEY：商户支付密钥，参考开户邮件设置（必须配置，登录商户平台自行设置）设置地址：</span></p>
+<p><span style="font-size:18px">&nbsp; &nbsp; &nbsp; &nbsp; https://pay.weixin.qq.com/index.php/account/api_cert<br>
+<span style="white-space:pre"></span>&nbsp; &nbsp; &nbsp; &nbsp;APPSECRET：公众帐号secert （登录公众平台，进入开发者中心 - AppSecret ）<br>
+3.到 https://pay.weixin.qq.com/index.php/account/api_cert 这个位置下载证书 然后解压 apiclient_cert.pem和</span></p>
+<p><span style="font-size:18px">&nbsp; &nbsp; &nbsp; &nbsp; apiclient_key.pem 放到这个 cert 文件夹<br>
+4. 到微信公众平台 左边栏 微信支付 - 开发配置<br>
+<span style="white-space:pre"></span>&nbsp; &nbsp; &nbsp; &nbsp; 支付测试<br>
+<span style="white-space:pre"></span>&nbsp; &nbsp; &nbsp; &nbsp; 测试目录 为你的域名(注意如果选择了http:// 那么你就直接输入域名就好了 )<br>
+<span style="white-space:pre"></span>&nbsp; &nbsp; &nbsp; &nbsp; 测试白名单 为 你要测试的微信帐号(app端的 我 - 点击头像 - 微信号 没有的话自己设置一下)<br>
+<span style="white-space:pre"></span>&nbsp; &nbsp; &nbsp; &nbsp; 如果配备错误到支付的时候会显示 system:access_denied<br>
+5.开发者中心 - 网页授权获取用户基本信息 - 修改(写上你的域名)&nbsp;</span></p>
+<p><span style="font-size:18px">PS：位于doc/README.doc 这个是基本文件结构文档大伙可以看看 如果出现了 redirect uri 参数错误 这个错误那么</span></p>
+<p><span style="font-size:18px"><span style="white-space:pre"></span>&nbsp; &nbsp; &nbsp; &nbsp; 请看第4步和第5步 重新设置一下</span><br>
+</p>
+<p><span style="color:#ff0000"><span style="font-size:18px">原文地址：<a target="_blank" target="_blank" href="http://alzhai.com/post-697.html">http://alzhai.com/post-697.html</a></span></span></p>
+<p><a href='_index.htm'>&lt;&lt;目录</a></p>
+</body>
+</html>

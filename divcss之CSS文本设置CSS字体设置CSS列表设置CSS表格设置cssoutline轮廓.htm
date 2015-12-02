@@ -1,0 +1,156 @@
+﻿<!doctype html>
+<html dir="ltr" lang="zh-CN">
+<head>
+<title>div+css之CSS 文本设置 CSS 字体设置  CSS 列表设置 CSS 表格设置  css outline轮廓</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style type="text/css">
+body {font:normal 12px/24px Arial, Helvetica, sans-serif; background:#D9F0DB;}
+textarea,pre {font-family:Courier; font-size:12px;}
+</style>
+</head>
+<body>
+<p><a href='_index.htm'>&lt;&lt;目录</a></p><span style="font-size:14px"><strong>1、CSS 文本设置：</strong><br>
+CSS 文本属性<br>
+&nbsp; &nbsp;属性<span style="white-space:pre"> </span>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 描述<br>
+color<span style="white-space:pre"> </span>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;设置文本颜色<br>
+direction<span style="white-space:pre"> </span>&nbsp; &nbsp; &nbsp;设置文本方向。<br>
+line-height<span style="white-space:pre"> </span>&nbsp; &nbsp; &nbsp;设置行高。<br>
+letter-spacing<span style="white-space:pre"> </span>&nbsp;设置字符间距。<br>
+text-align<span style="white-space:pre"> </span>&nbsp; &nbsp; &nbsp;对齐元素中的文本。<br>
+text-decoration<span style="white-space:pre"> </span>&nbsp;向文本添加修饰。<br>
+text-indent<span style="white-space:pre"> </span>&nbsp; &nbsp; &nbsp;缩进元素中文本的首行。<br>
+text-shadow<span style="white-space:pre"> </span>&nbsp; &nbsp; &nbsp;设置文本阴影。CSS2 包含该属性，但是 CSS2.1 没有保留该属性。<br>
+text-transform<span style="white-space:pre"> </span>&nbsp;控制元素中的字母。<br>
+unicode-bidi<span style="white-space:pre"> </span>&nbsp;设置文本方向。<br>
+white-space<span style="white-space:pre"> </span>&nbsp; &nbsp; &nbsp;设置元素中空白的处理方式。<br>
+word-spacing<span style="white-space:pre"> </span>&nbsp;设置字间距。<br>
+<br>
+<strong>2、CSS 字体设置：</strong><br>
+CSS 字体属性<br>
+&nbsp; &nbsp; 属性<span style="white-space:pre"> </span>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;描述<br>
+font<span style="white-space:pre"> </span>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 简写属性。作用是把所有针对字体的属性设置在一个声明中。<br>
+font-family<span style="white-space:pre"> </span>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 设置字体系列。<br>
+font-size<span style="white-space:pre"> </span>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 设置字体的尺寸。<br>
+font-size-adjust &nbsp; &nbsp; &nbsp; 当首选字体不可用时，对替换字体进行智能缩放。（CSS2.1 已删除该属性。）<br>
+font-stretch<span style="white-space:pre"> </span>&nbsp; &nbsp; &nbsp; 对字体进行水平拉伸。（CSS2.1 已删除该属性。）<br>
+font-style<span style="white-space:pre"> </span>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 设置字体风&#26684;。<br>
+font-variant<span style="white-space:pre"> </span>&nbsp; &nbsp; &nbsp; 以小型大写字体或者正常字体显示文本。<br>
+font-weight<span style="white-space:pre"> </span>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 设置字体的粗细。<br>
+<br>
+<strong>3、CSS 列表设置：</strong><br>
+CSS 列表属性(list)<br>
+&nbsp; &nbsp; 属性<span style="white-space:pre"> </span>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 描述<br>
+list-style<span style="white-space:pre"> </span>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;简写属性。用于把所有用于列表的属性设置于一个声明中。<br>
+list-style-image<span style="white-space:pre"> </span>&nbsp;将图象设置为列表项标志。<br>
+list-style-position<span style="white-space:pre"> </span>&nbsp;设置列表中列表项标志的位置。<br>
+list-style-type<span style="white-space:pre"> </span>&nbsp; &nbsp; &nbsp;设置列表项标志的类型。<br>
+marker-offset<span style="white-space:pre"> </span>&nbsp;<br>
+<br>
+列表项图像<br>
+有时，常规的标志是不够的。你可能想对各标志使用一个图像，这可以利用 list-style-image 属性做到：<br>
+ul li {list-style-image : url(xxx.gif)}<br>
+只需要简单地使用一个 url() &#20540;，就可以使用图像作为标志。<br>
+<br>
+<strong>4、CSS 表&#26684;设置：</strong><br>
+<br>
+表&#26684;边框： border 属性。<br>
+下面的例子为 table、th 以及 td 设置了蓝色边框：<br>
+table, th, td{border: 1px solid blue;} &nbsp;<br>
+折叠边框：border-collapse 属性设置将表&#26684;边框折叠为单一边框：<br>
+table{border-collapse:collapse;}<br>
+表&#26684;宽度和高度：通过 width 和 height 属性定义表&#26684;的宽度和高度。<br>
+table{width:100%;}<br>
+th{height:50px;}<br>
+表&#26684;文本对齐：text-align 属性设置水平对齐方式，比如左对齐、右对齐或者居中：<br>
+td{text-align:right;}<br>
+vertical-align 属性设置垂直对齐方式，比如顶部对齐、底部对齐或居中对齐：<br>
+td{height:50px;vertical-align:bottom;}<br>
+表&#26684;内边距：控制表&#26684;中内容与边框的距离，请为 td 和 th 元素设置 padding 属性：<br>
+td{padding:15px;}<br>
+表&#26684;颜色：<br>
+下面的例子设置边框的颜色，以及 th 元素的文本和背景颜色：<br>
+table, td, th{border:1px solid green;}<br>
+th{background-color:green;color:white;}<br>
+<br>
+<strong>5、css outline轮廓线设置：</strong><br>
+<br>
+ooutline：在一个声明中设置所有的轮廓的属性。<br>
+&nbsp;<br>
+outline-color：设置轮廓的颜色。<br>
+<br>
+outline-style：设置轮廓的样式。包括以下选项：<br>
+none：默认。定义无轮廓。<br>
+dotted：定义点状的轮廓。<br>
+dashed：定义虚线轮廓。&nbsp;<br>
+solid：定义实线轮廓。<br>
+double：定义双线轮廓。双线的宽度等于outline-width的&#20540;。<br>
+groove：定义3D凹槽轮廓。此效果取决于outline-color的&#20540;。<br>
+ridge：定义3D凹槽轮廓。此效果取决于outline-color的&#20540;。<br>
+inset：定义3D凹槽轮廓。此效果取决于outline-color的&#20540;。<br>
+outset：定义3D凹槽轮廓。此效果取决于outline-color的&#20540;。<br>
+inherit：规定应该从父元素继承轮廓样式的设置。<br>
+outline-width：设置轮廓的宽度。<br>
+&nbsp;<br>
+thin：规定细轮廓。<br>
+medium：默认。规定中等的轮廓。<br>
+thick：规定粗轮廓。<br>
+length：数&#20540;。规定轮廓粗细的&#20540;。<br>
+inherit：规定应该从父元素继承轮廓样式的设置。<br>
+<br>
+<br>
+例：p {<br>
+border:red solid thin;<br>
+outline:#00ff00 dotted thick;<br>
+</span>
+<p><span style="font-size:14px">}</span></p>
+<p><strong>示例：</strong></p>
+<p><pre name="code" class="html">&lt;html&gt;
+&lt;head&gt;
+
+&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;css文件.css&quot; /&gt;
+&lt;title&gt;&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;b&gt;1、css文本设置:&lt;/b&gt;&lt;br&gt;
+&lt;p&gt;dhsfbhegfbeyhwdfgghrt&lt;/p&gt;
+&lt;h1&gt;样式一&lt;/h1&gt;&lt;br&gt;
+&lt;h2&gt;hello word&lt;/h2&gt;&lt;br&gt;
+&lt;h3&gt;样式三 hello word&lt;/h3&gt;&lt;br&gt;
+&lt;h4&gt;hello wordepwgrjsegjjdklgndsoglnuiotjreiolsfmdsl&lt;/h4&gt;&lt;br&gt;
+&lt;a href=&quot;http://www.baidu.com&quot;&gt;hello word&lt;/a&gt;&lt;br&gt;&lt;br&gt;
+
+
+&lt;br&gt;&lt;b&gt;2、css字体设置:&lt;/b&gt;&lt;br&gt;
+&lt;p&gt;dhsfbhegfbeyhwdfgghrt&lt;/p&gt;
+&lt;ul &gt;
+&lt;li&gt;qweersgtresrtgeswreswrf&lt;/li&gt;
+&lt;li&gt;asresfrserfesfresrfsefsfd&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1&gt;样式一&lt;/h1&gt;&lt;br&gt;
+&lt;h2&gt;hello word&lt;/h2&gt;&lt;br&gt;
+&lt;h3&gt;样式三 hello word&lt;/h3&gt;&lt;br&gt;
+&lt;h4&gt;hello wordepwgrjsegjjdklgndsoglnuiotjreiolsfmdsl&lt;/h4&gt;&lt;br&gt;
+&lt;a href=&quot;http://www.baidu.com&quot;&gt;hello word&lt;/a&gt;&lt;br&gt;
+
+&lt;/body&gt;
+
+
+&lt;html&gt;</pre><br>
+<pre name="code" class="html">&lt;/pre&gt;&lt;span style=&quot;font-size:14px;&quot;&gt;&lt;strong&gt;css文件.css：&lt;/strong&gt;&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;font-size:14px;&quot;&gt;&lt;strong&gt;&lt;/strong&gt;&lt;/span&gt;&lt;pre name=&quot;code&quot; class=&quot;css&quot;&gt;p {text-indent: 5em;} /* 使所有段落的首行缩进 5 em */
+h1{ text-align:center; }/* 水平对齐 */
+h2{word-spacing:30px;} /* 改变字（单词）之间的标准间隔 */
+h3 {letter-spacing: 20px}/* 字母间隔：修改的是字符或字母之间的间隔 */
+h4 {text-transform: uppercase}/* 文本的大小写转换uppercase 和 lowercase 将文本转换为全大写和全小写字符。最后，capitalize 只对每个单词的首字母大写。 */
+a {text-decoration:overline underline blink;}/* 文本装饰：underline 会对元素加下划线，overline 的作用在文本的顶端画一个上划线,line-through 在文本中间画一个贯穿线，blink 会让文本闪烁。 */
+p {font-size:5em;}/* 使用 em 来设置字体大小：1em 等于当前的字体尺寸。如果一个元素的 font-size 为 16 像素，那么对于该元素，1em 就等于 16 像素。 */
+ul li {list-style-image : url(1.jpg)}/* 列表项图像:对各标志使用一个图像 */
+
+p {
+border:red solid thin;
+outline:#00ff00 dotted 10px;   /*  css outline轮廓线设置： */
+}</pre></p>
+<br>
+<p><a href='_index.htm'>&lt;&lt;目录</a></p>
+</body>
+</html>

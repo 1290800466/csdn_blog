@@ -1,0 +1,64 @@
+﻿<!doctype html>
+<html dir="ltr" lang="zh-CN">
+<head>
+<title>jQuery图片轮播效果</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style type="text/css">
+body {font:normal 12px/24px Arial, Helvetica, sans-serif; background:#D9F0DB;}
+textarea,pre {font-family:Courier; font-size:12px;}
+</style>
+</head>
+<body>
+<p><a href='_index.htm'>&lt;&lt;目录</a></p><p>代码实例：<pre name="code" class="html">&lt;!DOCTYPE html&gt;
+&lt;head&gt;
+&lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=utf-8&quot; /&gt;
+&lt;title&gt;仿手机腾讯网图片轮播效果&lt;/title&gt;
+&lt;link type=&quot;text/css&quot; rel=&quot;stylesheet&quot; href=&quot;main.css&quot; /&gt;
+&lt;style&gt;
+@charset &quot;utf-8&quot;;
+* {padding:0;margin:0;border:none;text-decoration:none;list-style:none;overflow:hidden;}
+#main{width:960px;height:450px;position:relative;left:50%;margin-left:-480px;margin-top:100px;}
+#picbox{width:3840px;height:450px;position:absolute;top:0px;left:0px;}
+.pics{width:960px;height:450px;float:left;}
+#pic1{background:url(http://3gimg.qq.com/images/3gqq/ad_home.jpg);}
+#pic2{background:url(http://3gimg.qq.com/images/3gqq/ad_yuetu.jpg);}
+#pic3{background:url(http://3gimg.qq.com/images/3gqq/ad_nba.jpg);}
+#pic4{background:url(http://3gimg.qq.com/images/3gqq/ad_stock.jpg);}
+&lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;div id=&quot;main&quot;&gt;
+  &lt;div id=&quot;picbox&quot;&gt;
+    &lt;div id=&quot;pic1&quot; class=&quot;pics&quot;&gt;&lt;/div&gt;
+    &lt;div id=&quot;pic2&quot; class=&quot;pics&quot;&gt;&lt;/div&gt;
+    &lt;div id=&quot;pic3&quot; class=&quot;pics&quot;&gt;&lt;/div&gt;
+    &lt;div id=&quot;pic4&quot; class=&quot;pics&quot;&gt;&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;script src=&quot;http://h.qhimg.com/js/jquery-1.6.2.min.js&quot;&gt;&lt;/script&gt;
+&lt;script type=&quot;text/javascript&quot;&gt;
+    var i=0;
+	var m;
+	$(document).ready(function(){
+		setInterval( function autodo(){
+			i++;
+			if(i&gt;4){i=1}
+			doit(i);
+		},1500);
+	});
+	function doit(i){
+		m = -960*(i-1);
+		$(&quot;#picbox&quot;).stop(true, true).animate({&quot;left&quot;:m+&quot;px&quot;},500);
+	}
+&lt;/script&gt; 
+&lt;/body&gt;
+&lt;/html&gt;
+
+
+
+
+</pre><br>
+</p>
+<p><a href='_index.htm'>&lt;&lt;目录</a></p>
+</body>
+</html>

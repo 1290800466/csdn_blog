@@ -1,0 +1,63 @@
+﻿<!doctype html>
+<html dir="ltr" lang="zh-CN">
+<head>
+<title>php自定义函数</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style type="text/css">
+body {font:normal 12px/24px Arial, Helvetica, sans-serif; background:#D9F0DB;}
+textarea,pre {font-family:Courier; font-size:12px;}
+</style>
+</head>
+<body>
+<p><a href='_index.htm'>&lt;&lt;目录</a></p><div style="margin:0px 0px 0px 15px; padding:20px 0px; border-width:1px 0px; border-top-style:solid; border-bottom-style:solid; border-top-color:rgb(170,170,170); border-bottom-color:rgb(170,170,170); width:710px; font-family:Verdana,Arial,宋体; background-color:rgb(249,249,249)">
+<h2 style="margin:0px; padding:0px; border:0px; font-family:微软雅黑; font-size:14px">
+PHP 用户定义函数</h2>
+<p style="margin-top:12px; margin-bottom:0px; padding-top:0px; padding-bottom:0px; border:0px; line-height:18px">
+函数是可以在程序中重复使用的语句块。</p>
+<p style="margin-top:12px; margin-bottom:0px; padding-top:0px; padding-bottom:0px; border:0px; line-height:18px">
+页面加载时函数不会立即执行。</p>
+<p style="margin-top:12px; margin-bottom:0px; padding-top:0px; padding-bottom:0px; border:0px; line-height:18px">
+函数只有在被调用时才会执行。</p>
+</div>
+<div style="margin:0px 0px 0px 15px; padding:20px 0px; border-width:1px 0px; border-top-style:solid; border-bottom-style:solid; border-top-color:rgb(170,170,170); border-bottom-color:rgb(170,170,170); width:710px; font-family:Verdana,Arial,宋体; background-color:rgb(249,249,249)">
+<h2 style="margin:0px; padding:0px; border:0px; font-family:微软雅黑; font-size:14px">
+在 PHP 创建用户定义函数</h2>
+<p style="margin-top:12px; margin-bottom:0px; padding-top:0px; padding-bottom:0px; border:0px; line-height:18px">
+用户定义的函数声明以关单 &quot;function&quot; 开头：</p>
+<h3 style="margin:20px 0px 0px; padding:0px; border:0px; font-size:12px">语法</h3>
+<pre style="margin-top:10px; margin-bottom:0px; padding:10px; border:1px dotted rgb(119,136,85); font-family:'Courier New',Courier,monospace; width:685px; background:rgb(245,245,245)">function 函数名称() {
+  //被执行的代码;
+}
+</pre>
+<p class="note" style="margin-top:12px; margin-bottom:0px; padding-top:0px; padding-bottom:0px; border:0px; line-height:18px">
+<span style="margin:0px; padding:0px; border:0px; font-weight:bold">注释：</span>函数名能够以字母或下划线开头（而非数字）。</p>
+<p class="note" style="margin-top:12px; margin-bottom:0px; padding-top:0px; padding-bottom:0px; border:0px; line-height:18px">
+<span style="margin:0px; padding:0px; border:0px; font-weight:bold">注释：</span>函数名对大小写不敏感。</p>
+<p class="tip" style="margin-top:12px; margin-bottom:0px; padding-top:0px; padding-bottom:0px; border:0px; line-height:18px">
+<span style="margin:0px; padding:0px; border:0px; color:rgb(255,153,85)"><strong>提示：</strong></span>函数名应该能够反映函数所执行的任务。</p>
+<p style="margin-top:12px; margin-bottom:0px; padding-top:0px; padding-bottom:0px; border:0px; line-height:18px">
+在下面的例子中，我们创建名为 &quot;writeMsg()&quot; 的函数。打开的花括号（{）指示函数代码的开始，而关闭的花括号（}）指示函数的结束。此函数输出 &quot;Hello world!&quot;。如需调用该函数，只要使用函数名即可：</p>
+<h3 style="margin:20px 0px 0px; padding:0px; border:0px; font-size:12px">实例</h3>
+<pre style="margin-top:10px; margin-bottom:0px; padding:10px; border:1px dotted rgb(119,136,85); font-family:'Courier New',Courier,monospace; width:685px; background:rgb(245,245,245)">&lt;?php
+function writeMsg() {
+  echo &quot;Hello world!&quot;;
+}
+
+writeMsg(); <span class="code_comment" style="margin:0px; padding:0px; border:0px; color:rgb(153,153,153)">// 调用函数</span>
+?&gt;</pre>
+<pre style="margin-top:10px; margin-bottom:0px; padding:10px; border:1px dotted rgb(119,136,85); font-family:'Courier New',Courier,monospace; width:685px; background:rgb(245,245,245)"><h1 style="margin:0px; padding:0px; border:0px; font-family:微软雅黑; font-size:14px; background-color:rgb(249,249,249)">PHP 函数参数</h1><p style="margin-top:12px; margin-bottom:0px; padding-top:0px; padding-bottom:0px; border:0px; line-height:18px; font-family:Verdana,Arial,宋体; background-color:rgb(249,249,249)">可以通过参数向函数传递信息。参数类&#20284;变量。</p><p style="margin-top:12px; margin-bottom:0px; padding-top:0px; padding-bottom:0px; border:0px; line-height:18px; font-family:Verdana,Arial,宋体; background-color:rgb(249,249,249)">参数被定义在函数名之后，括号内部。您可以添加<span style="font-size:18px">任意多参数</span>，只要用逗号隔开即可。</p><p style="margin-top:12px; margin-bottom:0px; padding-top:0px; padding-bottom:0px; border:0px; line-height:18px; font-family:Verdana,Arial,宋体; background-color:rgb(249,249,249)">下面的例子中的函数有一个参数（$fname）。当调用 familyName() 函数时，我们同时要传递一个名字（例如 Bill），这样会输出不同的名字，但是姓氏相同：</p><h3 style="margin:20px 0px 0px; padding:0px; border:0px; font-size:12px; font-family:Verdana,Arial,宋体; background-color:rgb(249,249,249)">实例</h3><pre style="margin-top:10px; margin-bottom:0px; padding:10px; border:1px dotted rgb(119,136,85); font-family:'Courier New',Courier,monospace; width:685px; background:rgb(245,245,245)">&lt;?php
+function familyName($fname) {
+  echo &quot;$fname Zhang.&lt;br&gt;&quot;;
+}
+
+familyName(&quot;Li&quot;);
+familyName(&quot;Hong&quot;);
+familyName(&quot;Tao&quot;);
+familyName(&quot;Xiao Mei&quot;);
+familyName(&quot;Jian&quot;);
+?&gt;</pre><h2 style="margin-top:10px; margin-bottom:0px; padding:10px; border:1px dotted rgb(119,136,85); font-family:'Courier New',Courier,monospace; width:685px; background:rgb(245,245,245)">函数调用的深入理解（函数的递归）：</h2><pre style="margin-top:10px; margin-bottom:0px; padding:10px; border:1px dotted rgb(119,136,85); font-family:'Courier New',Courier,monospace; width:685px; background:rgb(245,245,245)"><img src="http://img.blog.csdn.net/20150503161931755?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvdTAxMzM3MjQ4Nw==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center" width="600" height="350" alt="">
+</pre></pre>
+</div>
+<p><a href='_index.htm'>&lt;&lt;目录</a></p>
+</body>
+</html>

@@ -1,0 +1,70 @@
+﻿<!doctype html>
+<html dir="ltr" lang="zh-CN">
+<head>
+<title>使用if  IE语句判断浏览器IE版本及添加升级提示</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style type="text/css">
+body {font:normal 12px/24px Arial, Helvetica, sans-serif; background:#D9F0DB;}
+textarea,pre {font-family:Courier; font-size:12px;}
+</style>
+</head>
+<body>
+<p><a href='_index.htm'>&lt;&lt;目录</a></p><p align="left"><span style="color:rgb(51,51,51)">实现方法</span></p>
+<p align="left"><span style="color:rgb(51,51,51)">判断当前浏览器是否IE6</span>（或IE6内核）</p>
+<div style="background:whitesmoke">
+<p align="left"><span style="color:#333333">1.&nbsp; </span><span style="color:#C7254E">&lt;!--[if IE 6]&gt;</span></p>
+<p align="left" style="background:rgb(238,238,238)"><span style="color:#333333">2.&nbsp;
+</span><span style="color:#C7254E">你使用的是</span><span style="color:#C7254E">IE6</span><span style="color:#C7254E">浏览器，这是</span><span style="color:#C7254E">IE</span><span style="color:#C7254E">的过期版本，是时候升级了！</span></p>
+<p align="left"><span style="color:#333333">3.&nbsp; </span><span style="color:#C7254E">&lt;![endif]--&gt;</span></p>
+</div>
+<p align="left"><span style="color:#333333">判断当前浏览器是否IE7</span>及以下版本</p>
+<div style="background:whitesmoke">
+<p align="left"><span style="color:#333333">1.&nbsp; </span><span style="color:#C7254E">&lt;!--[if lte IE 7]&gt;</span></p>
+<p align="left" style="background:rgb(238,238,238)"><span style="color:#333333">2.&nbsp;
+</span><span style="color:#C7254E">这段文字只会在</span><span style="color:#C7254E">IE7</span><span style="color:#C7254E">及（</span><span style="color:#C7254E">IE7/IE6/IE5</span><span style="color:#C7254E">等）以下版本显示</span></p>
+<p align="left"><span style="color:#333333">3.&nbsp; </span><span style="color:#C7254E">&lt;![endif]--&gt;</span></p>
+</div>
+<p align="left"><span style="color:#333333">完整的判断IE</span>及IE版本代码</p>
+<p align="left"><span style="color:#333333">判断是否IE</span></p>
+<div style="background:whitesmoke">
+<p align="left"><span style="color:#333333">1.&nbsp; </span><span style="color:#C7254E">&lt;!--[if IE]&gt;</span></p>
+<p align="left" style="background:rgb(238,238,238)"><span style="color:#333333">2.&nbsp;
+</span><span style="color:#C7254E">你正在使用的是</span><span style="color:#C7254E">IE</span><span style="color:#C7254E">浏览器</span></p>
+<p align="left"><span style="color:#333333">3.&nbsp; </span><span style="color:#C7254E">&lt;![endif]--&gt;</span></p>
+</div>
+<p align="left"><span style="color:#333333">判断IE</span>版本</p>
+<div style="background:whitesmoke">
+<p align="left"><span style="color:#333333">1.&nbsp; </span><span style="color:#C7254E">&lt;!--[if IE 6]&gt;</span></p>
+<p align="left" style="background:rgb(238,238,238)"><span style="color:#333333">2.&nbsp;
+</span><span style="color:#C7254E">你正在使用的</span><span style="color:#C7254E">IE</span><span style="color:#C7254E">版本是</span><span style="color:#C7254E">IE6</span></p>
+<p align="left"><span style="color:#333333">3.&nbsp; </span><span style="color:#C7254E">&lt;![endif]--&gt;</span></p>
+<p align="left" style="background:rgb(238,238,238)"><span style="color:#333333">4.&nbsp;
+</span><span style="color:#C7254E">&lt;!--[if IE 7]&gt;</span></p>
+<p align="left"><span style="color:#333333">5.&nbsp; </span><span style="color:#C7254E">你正在使用的</span><span style="color:#C7254E">IE</span><span style="color:#C7254E">版本是</span><span style="color:#C7254E">IE7</span></p>
+<p align="left" style="background:rgb(238,238,238)"><span style="color:#333333">6.&nbsp;
+</span><span style="color:#C7254E">&lt;![endif]--&gt;</span></p>
+<p align="left"><span style="color:#333333">7.&nbsp; </span><span style="color:#C7254E">&lt;!--[if IE 8]&gt;</span></p>
+<p align="left" style="background:rgb(238,238,238)"><span style="color:#333333">8.&nbsp;
+</span><span style="color:#C7254E">你正在使用的</span><span style="color:#C7254E">IE</span><span style="color:#C7254E">版本是</span><span style="color:#C7254E">IE8</span></p>
+<p align="left"><span style="color:#333333">9.&nbsp; </span><span style="color:#C7254E">&lt;![endif]--&gt;</span></p>
+<p align="left" style="background:rgb(238,238,238)"><span style="color:#333333">10.
+</span><span style="color:#C7254E">&lt;!--[if IE 9]&gt;</span></p>
+<p align="left"><span style="color:#333333">11. </span><span style="color:#C7254E">你正在使用的</span><span style="color:#C7254E">IE</span><span style="color:#C7254E">版本是</span><span style="color:#C7254E">IE9</span></p>
+<p align="left" style="background:rgb(238,238,238)"><span style="color:#333333">12.
+</span><span style="color:#C7254E">&lt;![endif]--&gt;</span></p>
+</div>
+<p align="left"><span style="color:#333333">以此类推</span></p>
+<p align="left"><span style="color:#333333">IE8</span><span style="color:#333333">及以下版本提示浏览器升级：</span></p>
+<p align="left"><span style="color:#C7254E; background:#F9F2F4">&lt;!--[if lte IE8]&gt;&lt;script&gt;window.location.href='http://cdn.dmeng.net/upgrade-your-browser.html?referrer='&#43;location.href;&lt;/script&gt;&lt;![endif]--&gt;</span></p>
+<p align="left"><span style="color:#333333">把这段代码添加在网站头部代码</span><span style="color:#C7254E; background:#F9F2F4">&lt;/head&gt;</span><span style="color:#333333">之前，当IE8</span>及以下版本浏览器（包括使用IE8及以下版本内核的浏览器）访问网站的时候将自动跳转到浏览器升级提示页面。</p>
+<p align="left"><span style="color:#333333">注意：</span><span style="color:#C7254E; background:#F9F2F4">&lt;!--[if lte IE 8]&gt; &lt;![endif]--&gt;
+</span><span style="color:#C7254E; background:#F9F2F4">之间不能有特殊字符，如双引号，若有特殊字符则用</span><span style="color:#C7254E; background:#F9F2F4"> \
+</span><span style="color:#C7254E; background:#F9F2F4">符号转义。如若有</span><span style="color:#C7254E; background:#F9F2F4"> “
+</span><span style="color:#C7254E; background:#F9F2F4">则写为</span><span style="color:#C7254E; background:#F9F2F4">&nbsp; \”</span></p>
+<p align="left"><span style="color:#333333">自动调用IE</span>最高版本：</p>
+<p align="left"><span style="color:#333333">有的双核浏览器其中一核使用的就是IE</span>内核，但是默认并不会调用最高版本，往往是模拟IE7，这个时候我们需要在网页头部添加一行代码让浏览器自动调用最高版本的IE来更好的支持HTML5和CSS3。</p>
+<p align="left"><span style="color:#C7254E; background:#F9F2F4">&lt;meta http-equiv=&quot;X-UA-Compatible&quot;content=&quot;IE=Edge&quot; &gt;</span></p>
+<p>&nbsp;</p>
+<p><a href='_index.htm'>&lt;&lt;目录</a></p>
+</body>
+</html>

@@ -1,0 +1,29 @@
+﻿<!doctype html>
+<html dir="ltr" lang="zh-CN">
+<head>
+<title>PHP如何关闭notice级别的错误提示</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style type="text/css">
+body {font:normal 12px/24px Arial, Helvetica, sans-serif; background:#D9F0DB;}
+textarea,pre {font-family:Courier; font-size:12px;}
+</style>
+</head>
+<body>
+<p><a href='_index.htm'>&lt;&lt;目录</a></p><div class="article_title"><span class="ico ico_type_Repost"></span>
+<p><span style="font-family:Arial,Helvetica,simsun,u5b8bu4f53; line-height:25px; font-size:14px">1、在php.ini文件中改动error_reporting<br>
+</span><span style="font-family:Arial,Helvetica,simsun,u5b8bu4f53; line-height:25px; font-size:14px">改为：</span></p>
+<p><span style="font-family:Arial,Helvetica,simsun,u5b8bu4f53; font-size:14px"><span style="line-height:25px"><span style="white-space:pre"><span style="background-color:rgb(255,255,255)"><span style="font-family:Arial,Helvetica,simsun,u5b8bu4f53; font-size:14px; line-height:25px">error_reporting=E_ALL
+ &amp; ~E_NOTICE</span></span></span></span></span></p>
+<p><span style="font-family:Arial,Helvetica,simsun,u5b8bu4f53"><span style="line-height:25px"><span style="white-space:pre"></span><span style="font-size:14px; white-space:pre"><br>
+</span></span></span><span style="background-color:rgb(255,255,255)"><span style="font-size:14px"><span style="font-family:Arial,Helvetica,simsun,u5b8bu4f53; line-height:25px">2、如果你不能操作php.ini文件，你可以使用如下方法</span></span></span><br>
+<span style="background-color:rgb(255,255,255)"><span style="font-size:14px"><span style="font-family:Arial,Helvetica,simsun,u5b8bu4f53; line-height:25px">在你想禁止notice错误提示的页面中加入如下代码：</span></span></span><br>
+<span style="background-color:rgb(255,255,255)"><span style="font-size:14px"><span style="font-family:Arial,Helvetica,simsun,u5b8bu4f53; line-height:25px"></span></span></span><pre name="code" class="php">&lt;?php error_reporting(E_ALL^E_NOTICE); ?&gt;</pre><br>
+</p>
+<p><span style="background-color:rgb(255,255,255)"><span style="font-size:14px"><span style="font-family:Arial,Helvetica,simsun,u5b8bu4f53; line-height:25px"><br>
+</span></span></span></p>
+<p><span style="background-color:rgb(255,255,255)"><span style="font-size:14px"><span style="font-family:Arial,Helvetica,simsun,u5b8bu4f53; line-height:25px"><br>
+</span></span></span></p>
+</div>
+<p><a href='_index.htm'>&lt;&lt;目录</a></p>
+</body>
+</html>

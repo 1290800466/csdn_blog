@@ -1,0 +1,51 @@
+﻿<!doctype html>
+<html dir="ltr" lang="zh-CN">
+<head>
+<title>eclispse 中python 注释 颜色设置 背景设置</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style type="text/css">
+body {font:normal 12px/24px Arial, Helvetica, sans-serif; background:#D9F0DB;}
+textarea,pre {font-family:Courier; font-size:12px;}
+</style>
+</head>
+<body>
+<p><a href='_index.htm'>&lt;&lt;目录</a></p><div class="markdown_views"><p><strong>1.改eclipse背景色</strong> <br>
+windows-&gt;peferences-&gt;General-&gt;Editors-&gt;Text Editor <br>
+Appearance color options: <br>
+选择Background color，去掉System default  在color里选择颜色（色调：85。饱和度：123。亮度：205），然后apply</p>
+
+<p><img src="http://img.my.csdn.net/uploads/201212/29/1356744837_7308.PNG" alt="这里写图片描述" title=""></p>
+
+<p><strong>2.改PyDev注释颜色</strong> <br>
+PyDev插件安装上后，默认注释的颜色是灰色，看注释非常费力，于是又找到改注释颜色办法。 <br>
+windows-&gt;peferences-&gt;PyDev-&gt;Editor <br>
+Appearance color options: <br>
+选择Comments，在color里选择颜色，然后apply</p>
+
+<p><img src="http://img.my.csdn.net/uploads/201212/29/1356744854_7980.PNG" alt="这里写图片描述" title=""></p>
+
+<p><strong>3.显示行号：</strong> <br>
+Window – Prefences – General – Editors – Text Editors – show line numbers <br>
+<strong>4.打开PyDev中的Python解释器：</strong> <br>
+在PyDev中，有时想使用直接边写边调试，使用python解释器比较方便，在PyDev中打开方法：</p>
+
+<p><img src="http://img.my.csdn.net/uploads/201211/08/1352378058_2444.PNG" alt="这里写图片描述" title=""></p>
+
+<p>现在看代码省力多了 <br>
+<strong>5. 添加已有文件</strong>，eclipse添加已有文件还是比较麻烦，除了把拖进‘explorer’，我没有找到直接把外部文件引用进去的方。不过如果可以把源文件拷过来，不产生bug的话，还是拷过来，然后按f5，文件就会出现在’explorer’里了</p></div>
+        <script  type="text/javascript">
+            $(function () {
+                $('pre.prettyprint code').each(function () {
+                    var lines = $(this).text().split('\n').length;
+                    var $numbering = $('<ul/>').addClass('pre-numbering').hide();
+                    $(this).addClass('has-numbering').parent().append($numbering);
+                    for (i = 1; i <= lines; i++) {
+                        $numbering.append($('<li/>').text(i));
+                    };
+                    $numbering.fadeIn(1700);
+                });
+            });
+        </script>
+<p><a href='_index.htm'>&lt;&lt;目录</a></p>
+</body>
+</html>

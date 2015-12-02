@@ -1,0 +1,45 @@
+﻿<!doctype html>
+<html dir="ltr" lang="zh-CN">
+<head>
+<title>PHP连接MySQL数据库中文乱码问题解决方法</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style type="text/css">
+body {font:normal 12px/24px Arial, Helvetica, sans-serif; background:#D9F0DB;}
+textarea,pre {font-family:Courier; font-size:12px;}
+</style>
+</head>
+<body>
+<p><a href='_index.htm'>&lt;&lt;目录</a></p><span style="font-size:18px">　<br>
+要解决PHP数据库乱码问题可以做以下设置：<br>
+<br>
+1、数据库里的设置：<br>
+</span>
+<p><span style="font-size:18px">&nbsp; &nbsp; &nbsp; (1).在MYSQL中新建数据库的时候数据库 &nbsp;选择UTF-8编码既字符集 &nbsp;设定为 utf-8_unicode_ci(Unicode (多语言), &nbsp; &nbsp; &nbsp; 不区分大小写)，库里面 表table的 整理 设置为 utf-8_general_ci；表里面的每个字段的 整理 都设置为</span></p>
+<p><span style="font-size:18px">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; utf-8_general_ci</span></p>
+<span style="font-size:18px">&nbsp; &nbsp; &nbsp; (2).创建数据库时，规定字符类型为uft8<br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;如：</span><pre name="code" class="sql">create database db_name character set utf8;</pre><span style="font-size:18px">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;或修改已创建数据库成utf8类型：<br>
+</span><pre name="code" class="sql">alter database db_name character set utf8;</pre><span style="font-size:18px">&nbsp; &nbsp; &nbsp; (3).创建表时，规定字符类型为utf8<br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 如：<br>
+</span><pre name="code" class="sql">CREATE TABLE tb_name(
+ id int(10) NOT NULL auto_increment,
+ username char(34) NOT NULL ,
+ password int(56) NOT NULL,
+ PRIMARY KEY (id)
+ ) DEFAULT CHARSET=utf8;</pre><span style="font-size:18px">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 或修改已创建表为utf8&#26684;式：<br>
+</span><pre name="code" class="sql">alter table tb_name character set utf8;</pre><span style="font-size:18px">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 或修改表中某个字段为utf8&#26684;式<br>
+</span><pre name="code" class="sql">alter table tb_name modify type_name varchar(50) CHARACTER SET utf8;</pre><br>
+2、php连接时的设置,在PHP的MySQL连接函数中，加上语句： mysql_query(&quot;set names 'utf8'&quot;);<br>
+<span style="white-space:pre"></span>
+<p><span style="font-size:18px">&nbsp; &nbsp; &nbsp; //注意此处为utf8，不要写成utf-8</span></p>
+<p><span style="font-size:18px"><br>
+</span></p>
+<p><span style="font-size:18px">3、网页页面申明编码：在HTML代码&lt;head&gt;xxx&lt;/head&gt;里面，可以用</span></p>
+<p><span style="font-size:18px">&nbsp; &nbsp; &nbsp; &lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=utf-8&quot;/&gt;申明页面编码</span></p>
+<span style="font-size:18px"><br>
+4、浏览器设置为utf-8&#26684;式。<br>
+<br>
+5、编辑器字符编码，代码文档要保存为utf-8&#26684;式。<br>
+</span><br>
+<p><a href='_index.htm'>&lt;&lt;目录</a></p>
+</body>
+</html>

@@ -1,0 +1,180 @@
+﻿<!doctype html>
+<html dir="ltr" lang="zh-CN">
+<head>
+<title>PHP循环控制 for 、while、 foreach 语句解析</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style type="text/css">
+body {font:normal 12px/24px Arial, Helvetica, sans-serif; background:#D9F0DB;}
+textarea,pre {font-family:Courier; font-size:12px;}
+</style>
+</head>
+<body>
+<p><a href='_index.htm'>&lt;&lt;目录</a></p><h2>for循环控制语句</h2>
+<span style="font-size:14px">基本语法结构：<br>
+for(循环初&#20540;;循环的条件;步长){<br>
+<span style="white-space:pre"></span>//n多语句,循环体;<br>
+</span>
+<p><span style="font-size:14px">}</span></p>
+<p><span style="font-size:14px">for循环实例：</span></p>
+<p></p>
+<pre name="code" class="php">&lt;?php
+for($i=0;$i&lt;99999;$i++){
+	echo &quot;&lt;br&gt;$i.hello beijing!&quot;;
+}
+ ?&gt;</pre><br>
+<p></p>
+<h2>while循环控制语句</h2>
+<div><span style="font-family:Verdana,Arial,宋体; line-height:18px; background-color:rgb(249,249,249)"><span style="font-size:14px">只要指定的条件为真，while 循环就会执行代码块。</span></span><br>
+</div>
+<p></p>
+<p><span style="font-size:14px">基本语法结构：<br>
+while(循环条件){<br>
+<span style="white-space:pre"></span>//循环体语句<span style="white-space:pre"> <br>
+</span>}</span></p>
+<p><span style="font-size:14px">while循环实例：</span></p>
+<p><span style="font-size:14px"></span></p>
+<pre name="code" class="php">&lt;?php
+$a = 0;
+while ($a&lt;100){
+	echo &quot;&lt;br&gt;$a.hello qingdao!&quot;;
+	$a = $a+1;	
+}
+?&gt;</pre><br>
+<p></p>
+<h2><span style="font-size:14px">do while 循环控制语句</span></h2>
+<div><span style="font-size:14px"><span style="font-family:Verdana,Arial,宋体; line-height:18px; background-color:rgb(249,249,249)">do...while 循环首先会执行一次代码块，然后检查条件，如果指定条件为真，则重复循环。</span><br>
+</span></div>
+<span style="font-size:14px">基本语法结构：<br>
+do{<br>
+<span style="white-space:pre"></span>//循环体<br>
+}while(循环条件)&nbsp;<br>
+</span>
+<p></p>
+<p><span style="font-size:14px"></span></p>
+<p><span style="font-size:14px">do while 循环实例：</span></p>
+<p><span style="font-size:14px"><br>
+</span></p>
+<pre name="code" class="php">&lt;?php
+$s = 1;
+do{
+	echo &quot;&lt;br&gt;$s.hello jinan!&quot;;
+	$s = $s+1;
+}while($s&lt;100);
+?&gt;</pre>
+<p><span style="font-size:14px"><br>
+</span></p>
+<p><span style="font-size:14px"></span></p>
+<h2 style="margin:0px; padding:0px; border:0px; font-family:微软雅黑; font-size:14px; background-color:rgb(249,249,249)">
+&nbsp;foreach 循环控制语句</h2>
+<div><br>
+</div>
+<p></p>
+<p style="margin-top:12px; margin-bottom:0px; padding-top:0px; padding-bottom:0px; border:0px; line-height:18px; font-family:Verdana,Arial,宋体; background-color:rgb(249,249,249)">
+foreach 循环只适用于数组，并用于遍历数组中的每个键/&#20540;对。</p>
+<p style="margin:20px 0px 0px; padding:0px; border:0px; font-size:12px; font-family:Verdana,Arial,宋体; background-color:rgb(249,249,249)">
+语法</p>
+<pre style="margin-top:10px; margin-bottom:0px; padding:10px; border:1px dotted rgb(119,136,85); font-family:'Courier New',Courier,monospace; width:685px; background:rgb(245,245,245)">foreach ($array as $value) {
+  code to be executed;
+}
+</pre>
+<p style="margin-top:12px; margin-bottom:0px; padding-top:0px; padding-bottom:0px; border:0px; line-height:18px; font-family:Verdana,Arial,宋体; background-color:rgb(249,249,249)">
+每进行一次循环迭代，当前数组元素的&#20540;就会被赋&#20540;给 $value 变量，并且数组指针会逐一地移动，直到到达最后一个数组元素。</p>
+<p style="margin-top:12px; margin-bottom:0px; padding-top:0px; padding-bottom:0px; border:0px; line-height:18px; font-family:Verdana,Arial,宋体; background-color:rgb(249,249,249)">
+下面的例子演示的循环将输出给定数组（$colors）的&#20540;：</p>
+<h3 style="margin:20px 0px 0px; padding:0px; border:0px; font-size:12px; font-family:Verdana,Arial,宋体; background-color:rgb(249,249,249)">
+实例</h3>
+<pre style="margin-top:10px; margin-bottom:0px; padding:10px; border:1px dotted rgb(119,136,85); font-family:'Courier New',Courier,monospace; width:685px; background:rgb(245,245,245)">&lt;?php 
+$colors = array(&quot;red&quot;,&quot;green&quot;,&quot;blue&quot;,&quot;yellow&quot;); 
+
+foreach ($colors as $value) {
+  echo &quot;$value &lt;br&gt;&quot;;
+}
+?&gt;</pre>
+<h2 style="margin:0px; padding:0px; border:0px; font-family:微软雅黑; background-color:rgb(249,249,249)">
+<span style="font-size:24px">&nbsp;foreach 的第二种用法：</span></h2>
+<h1>
+<div class="line number1 index0 alt2" style="line-height:15.3999996185303px; font-family:Consolas,'Bitstream Vera Sans Mono','Courier New',Courier,monospace; color:rgb(51,51,51); border:0px!important; margin:0px!important; padding:0px 1em!important; bottom:auto!important; float:none!important; height:auto!important; left:auto!important; outline:0px!important; overflow:visible!important; position:static!important; right:auto!important; top:auto!important; vertical-align:baseline!important; width:auto!important; min-height:inherit!important; white-space:pre!important">
+<pre name="code" class="php">&lt;pre name=&quot;code&quot; class=&quot;php&quot;&gt;&lt;?php
+$arr = array(&quot;1&quot;=&gt;&quot;111&quot;,&quot;2&quot;=&gt;&quot;222&quot;,&quot;3&quot;=&gt;&quot;333&quot;);
+foreach($arr as $key=&gt;$value)
+{
+  echo $key.&quot;=&gt;&quot;.$value.&quot;\n&quot;;
+}
+?&gt;
+结果如下：
+1=&gt;111
+2=&gt;222
+3=&gt;333</pre><br>
+<br>
+<pre></pre>
+<br>
+</div>
+</h1>
+<h1>循环控制语句实例：</h1>
+<pre name="code" class="php">&lt;!--5层半边金字塔代码--&gt;
+&lt;?php
+for($i = 1;$i&lt;=5;$i++){
+	$a = 1;
+	while($a&lt;=$i){
+		echo &quot;*&quot;;
+		$a = $a+1;
+		}
+	echo &quot;&lt;br&gt;&quot;;	
+}
+?&gt;
+
+
+&lt;!--5层金字塔代码--&gt;
+&lt;?php
+for($i = 1;$i&lt;=5;$i++){
+	$a = 1;
+	$c = 1;
+	while($a&lt;=(5-$i))
+	{
+		echo &quot;&amp;nbsp&quot;;
+		$a = $a+1;
+	}
+	while($c&lt;=(2*$i-1))
+	{
+		echo &quot;*&quot;;
+		$c = $c+1;
+	}	
+	echo &quot;&lt;br&gt;&quot;;	
+}
+?&gt;</pre>
+<p><br>
+</p>
+<pre name="code" class="php">&lt;!--5层空心金字塔--&gt;</pre><pre name="code" class="php">&lt;?php  
+for($i = 1;$i&lt;=5;$i++){  
+    $a = 1;  
+    $c = 1;  
+    while($a&lt;=(5-$i))  
+    {  
+        echo &quot;&#160;&quot;;  
+        $a = $a+1;  
+    }  
+    while($c&lt;=(2*$i-1))  
+    {   
+         if(($c==1)||($c==(2*$i-1)))
+         {
+              echo &quot;*&quot;;
+          }
+         else{echo &quot;&#160;&quot;;}
+        $c = $c+1;  
+    }     
+echo &quot;&lt;br&gt;&quot;;    
+}  
+?&gt; </pre><br>
+<br>
+<br>
+<p><span style="font-size:14px"><br>
+</span></p>
+<p><span style="font-size:14px"><br>
+</span></p>
+<p><span style="font-size:14px"><br>
+</span></p>
+<p><span style="font-size:14px"><br>
+</span></p>
+<p><a href='_index.htm'>&lt;&lt;目录</a></p>
+</body>
+</html>

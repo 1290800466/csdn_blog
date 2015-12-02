@@ -1,0 +1,33 @@
+﻿<!doctype html>
+<html dir="ltr" lang="zh-CN">
+<head>
+<title>二进制原码、反码、补码详解</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style type="text/css">
+body {font:normal 12px/24px Arial, Helvetica, sans-serif; background:#D9F0DB;}
+textarea,pre {font-family:Courier; font-size:12px;}
+</style>
+</head>
+<body>
+<p><a href='_index.htm'>&lt;&lt;目录</a></p><p><span style="font-size:14px">①&nbsp;&nbsp;原码：</span></p>
+<p><span style="font-size:14px">　　原码是指将最高位作为符号位(0表示正，1表示负)，其它数字位代表数&#20540;本身的绝对&#20540;的数字表示方式。</span></p>
+<p><span style="font-size:14px">　　例如：数字6 在计算机中原码表示为：0 000 0110</span></p>
+<p><span style="font-size:14px">　　其中，第一个数字0是符号位，0表示正数，0 000110是数字6的二进制数据表示。</span></p>
+<p><span style="font-size:14px">　　数字－6 在计算机中原码表示为：1 000 0110</span></p>
+<p><span style="font-size:14px">　　以上是在8位计算机中的原码表示，如果在32位或16位计算机中，表示方法也是一样的，只是多了几个数字0而已。</span></p>
+<p><span style="font-size:14px">　　例如，在32位 计算机中数字6 的原码表示为：00000000 0000 0000 0000 0000 0000 0110</span></p>
+<p><span style="font-size:14px">　　在16位 计算机中数字6 的原码表示为：00000000 0000 0110</span></p>
+<p><span style="font-size:14px">②&nbsp;&nbsp;&nbsp;反码：</span></p>
+<p><span style="font-size:14px">　　反码表示规则为：如果是正数，则表示方法和原码一样；如果是负数，符号位不变，其余各位取反，则得到这个数字的反码表示形式。</span></p>
+<p><span style="font-size:14px">　　例如，数字6 在8位 计算机中的反码就是它的原码：00000110</span></p>
+<p><span style="font-size:14px">　　数字－6 在 8位计算机中的反码为：11111001</span></p>
+<p><span style="font-size:14px">③&nbsp;&nbsp;&nbsp;补码</span></p>
+<p><span style="font-size:14px">　　补码是计算机表示数据的一般方式，其规则为：如果是整数，则表示方法和原码一样；如果是负数，则将数字的反码加上1(相当于将原码数&#20540;位取反然后在最低位加1)。</span></p>
+<p><span style="font-size:14px">　　例如：数字6 在8位 计算机中的补码就是它的原码：00000110</span></p>
+<p><span style="font-size:14px"><span style="white-space:pre"></span>&nbsp; &nbsp;&nbsp;数字－6 在8 位 计算机中的补码为：1111 1010</span></p>
+<p><span style="font-size:14px"><br>
+</span></p>
+<p><span style="font-size:14px"><strong><span style="white-space:pre"></span>注意：0的反码、补码都为零</strong></span></p>
+<p><a href='_index.htm'>&lt;&lt;目录</a></p>
+</body>
+</html>

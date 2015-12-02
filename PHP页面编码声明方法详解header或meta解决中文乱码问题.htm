@@ -1,0 +1,93 @@
+﻿<!doctype html>
+<html dir="ltr" lang="zh-CN">
+<head>
+<title>PHP 页面编码声明方法详解(header或meta，解决中文乱码问题)</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style type="text/css">
+body {font:normal 12px/24px Arial, Helvetica, sans-serif; background:#D9F0DB;}
+textarea,pre {font-family:Courier; font-size:12px;}
+</style>
+</head>
+<body>
+<p><a href='_index.htm'>&lt;&lt;目录</a></p><div id="art_demo"><span style="font-size:18px">PHP 页面编码声明与用header或meta实现PHP页面编码的区别</span></div>
+<div class="blank3"></div>
+<div id="con_all"></div>
+<div id="art_content"><span style="font-size:18px">php的header来定义一个php页面为utf编码或GBK编码<br>
+<br>
+<strong>php页面为utf编码</strong> <br>
+header(&quot;Content-type: text/html; charset=utf-8&quot;); <br>
+<br>
+<strong>php页面为gbk编码 </strong><br>
+header(&quot;Content-type: text/html; charset=gb2312&quot;); <br>
+<br>
+<strong>php页面为big5编码</strong> <br>
+header(&quot;Content-type: text/html; charset=big5&quot;); <br>
+<br>
+通常情况以上代码放在php页面的首页 <br>
+<br>
+<strong>用header或meta实现PHP页面编码的区别<br>
+一、页面编码</strong> <br>
+<br>
+1. 使用 &lt;META http-equiv=&quot;content-type&quot; content=&quot;text/html; charset=xxx&quot;&gt; 标签设置页面编码 <br>
+<br>
+这个标签的作用是声明客户端的浏览器用什么字符集编码显示该页面，xxx可以为GB2312，GBK，UTF-8（和MySQL不同，MySQL是 UTF8）等等。因此，大部分页面可以采用这种方式来告诉浏览器显示这个页面的时候采用什么编码，这样才不会造成编码错误而产生乱码。但是有的时候我们会 发现有了这句还是不行，不管xxx是哪一种，浏览器采用的始终都是一种编码，这个情况我后面会谈到。<br>
+<br>
+请注意，&lt;meta&gt;是属于html信息的，仅仅是一个声明，它起作用表明服务器已经把HTML信息传到了浏览器。 <br>
+<br>
+<strong>2. header(&quot;content-type:text/html; charset=xxx&quot;);</strong> <br>
+<br>
+这个函数header()的作用是把括号里面的信息发到http标头。 <br>
+<br>
+如果括号里面的内容为文中所说那样，那作用和&lt;META&gt;标签基本相同，大家对照第一个看发现字符都差不多的。但是不同的是如果有这段 函数，浏览器就会永远采用你所要求的xxx编码，绝对不会不听话，因此这个函数是很有用的。为什么会这样呢？那就得说说HTTPS标头和HTML信息的差 别了：<br>
+<br>
+https标头是服务器以HTTP协议传送HTML信息到浏览器前所送出的字串。 <br>
+<br>
+因为meta标签是属于html信息的，所以header()发送的内容先到达浏览器，通俗点就是header()的优先级高于meta（不知道可 不可以这样讲）。加入一个php页面既有header(&quot;content-type:text/html; charset=xxx&quot;)，又有&lt;META http-equiv=&quot;content-type&quot; content=&quot;text/html; charset=xxx&quot;&gt;，浏览器就只认前者http标头而不认meta了。当然这个函数只能在php页面内使用。<br>
+<br>
+同样也留有一个问题，为什么前者就绝对起作用，而后者有时候就不行呢？这就是接下来要谈的Apache的原因了。 <br>
+<br>
+<strong>3. AddDefaultCharset</strong> <br>
+<br>
+Apache 根目录的 conf 文件夹里，有整个Apache的配置文档httpd.conf。 <br>
+<br>
+用文本编辑器打开httpd.conf，第708行（不同版本可能不同）有AddDefaultCharset xxx，xxx为编码名称。这行代码的意思：设置整个服务器内的网页文件https标头里的字符集为你默认的xxx字符集。有这行，就相当于给每个文件都 加了一行header(&quot;content-type:text/html; charset=xxx&quot;)。这下就明白为什么明明meta设置了是utf-8，可浏览器始终采用gb2312的原因。<br>
+<br>
+如果网页里有header(&quot;content-type:text/html; charset=xxx&quot;)，就把默认的字符集改为你设置的字符集，所以这个函数永远有用。如果把AddDefaultCharset xxx前面加个“#”，注释掉这句，而且页面里不含header(&quot;content-type…&quot;)，那这个时候就轮到meta标签起作用了。<br>
+<br>
+<strong>总结：</strong> <br>
+<br>
+来个排序 <br>
+<br>
+header(&quot;content-type:text/html; charset=xxx&quot;) <br>
+AddDefaultCharset xxx <br>
+&lt;META http-equiv=&quot;content-type&quot; content=&quot;text/html; charset=xxx&quot;&gt; <br>
+如果你是web程序员，给你的每个页面都加个header(&quot;content-type:text/html; charset=xxx&quot;)，保证它在任何服务器都能正确显示，可移植性强。<br>
+<br>
+至于那句AddDefaultCharset xxx，要不要注释就仁者见仁了。反正我是注释掉了，不过我写页子也要写header()，便于放到服务器上能正常显示。 <br>
+<br>
+<strong>二、数据库编码 <br>
+</strong><br>
+PHP 程序在查询数据库之前，首先执行 mysql_query(“SET NAMES xxxx”);其中 xxxx 是你网页的编码(charset=xxxx)，如果网页中 charset=utf8，则 xxxx=utf8，如果网页中 charset=gb2312，则xxxx=gb2312，几乎所有WEB程序，都有一段连接数据库的公共代码，放在一个文件里，在这文件里，加入 mysql_query(“set names”)就可以了。<br>
+<br>
+SET NAMES 显示客户端发送的 SQL 语句中使用什么字符集。因此，SET NAMES 'utf-8'语句告诉服务器“将来从这个客户端传来的信息采用字符集utf-8”。它还为服务器发送回客户端的结果指定了字符集。（例如，如果你使用一 个SELECT语句，它表示列&#20540;使用了什么字符集。）<br>
+<br>
+<strong>PHP页面编码统一</strong> <br>
+<br>
+MySQL数据库编码、html页面编码、PHP或html文件本身编码要全部一致。 <br>
+　　1、MySQL数据库编码：建立数据库时指定编码（如gbk_chinese_ci)，建立数据表、建立字段、插入数据时不要指定编码，会自动继承数据库的编码。 <br>
+数据库连接时，也有编码，可以在连接完数据库后，执行 <br>
+mysql_query('SET NAMES gbk');//将gbk换成你的编码，如utf8。 <br>
+<br>
+　　2、html页面的编码，指的是这一行的设置： <br>
+&lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=gbk&quot; /&gt; <br>
+<br>
+　　3、PHP或html文件本身的编码：用editplus打开php文件或html文件，另存时，选择的编码，如果数据库和页面编码是gbk,则这儿的编码选择ansi；如果数据库和页面编码是utf-8，则这儿也选择utf-8。<br>
+<br>
+　　4、另外要注意的是，Javascript或Flash中传递的数据是utf-8编码，如果数据库和页面编码是gbk，要进行转码，然后写入数据库。 <br>
+iconv('utf-8', 'gbk', $content); <br>
+<br>
+<span style="white-space:pre"></span>5、在PHP程序中，可以加上一行，来指定PHP源程序的编码： <br>
+header('Content-type: text/html; charset=gbk');&nbsp;</span></div>
+<p><a href='_index.htm'>&lt;&lt;目录</a></p>
+</body>
+</html>

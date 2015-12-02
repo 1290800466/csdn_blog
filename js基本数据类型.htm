@@ -1,0 +1,111 @@
+﻿<!doctype html>
+<html dir="ltr" lang="zh-CN">
+<head>
+<title>js基本数据类型</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style type="text/css">
+body {font:normal 12px/24px Arial, Helvetica, sans-serif; background:#D9F0DB;}
+textarea,pre {font-family:Courier; font-size:12px;}
+</style>
+</head>
+<body>
+<p><a href='_index.htm'>&lt;&lt;目录</a></p><p><strong><span style="font-size:18px; color:#ff0000">1、JavaScript 数据类型：</span></strong></p>
+<p><span style="font-size:18px"><span style="font-size:18px">JavaScript是弱数据类型语言，在定义变量时，统一使用 var 表示，甚至可以去掉 var 这个关键字</span><br>
+</span></p>
+<p><span style="font-size:18px">JavaScript 有基本数据类型：数字，字符串，布尔型<span style="color:rgb(51,51,51); font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; line-height:24px">，数组，对象等等</span>：</span></p>
+<pre name="code" class="javascript">var length = 16;                                  // Number 通过数字字面量赋值 
+var points = x * 10;                              // Number 通过表达式字面量赋值
+var lastName = &quot;Johnson&quot;;                         // String 通过字符串字面量赋值</pre><pre name="code" class="javascript">var cars = [&quot;Saab&quot;, &quot;Volvo&quot;, &quot;BMW&quot;]; &#160; &#160; &#160; &#160; &#160; &#160; &#160;// Array &#160;通过数组字面量赋值
+var person = {firstName:&quot;John&quot;, lastName:&quot;Doe&quot;}; &#160;// Object 通过对象字面量赋值
+</pre><pre name="code" class="javascript">var a;    //若未给变量赋值，变量为   undefined     </pre><br>
+<p><span style="font-size:18px">typeof 操作符用<span style="font-size:18px">来检测变量的数据类型：</span><br>
+实例<br>
+typeof &quot;John&quot; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;// 返回 string&nbsp;<br>
+typeof 3.14 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;// 返回 number<br>
+typeof false &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; // 返回 boolean<br>
+</span></p>
+<pre name="code" class="html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;META http-equiv=&quot;content-type&quot; content=&quot;text/html; charset=&quot;UTF-8&quot;&gt; 
+&lt;/head&gt;
+&lt;body&gt;
+&lt;h1&gt;我的第一个 Web 页面&lt;/h1&gt;
+&lt;script&gt;
+var a=12;
+window.alert(typeof a);            // 返回 objecttypeof {name:&#39;John&#39;, age:34} // 返回 object
+&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</pre><br>
+在JavaScript中，数组是一种特殊的对象类型。 因此 typeof [1,2,3,4] 返回 object。&nbsp;
+<p></p>
+<p><span style="font-size:18px"><span style="color:#ff0000; background-color:rgb(255,255,255)"><strong>2、<span style="font-size:18px">Undefined 和 Null说明：</span></strong></span><br>
+Null： &nbsp;在 JavaScript 中 null 表示 &quot;什么都没有&quot;。<br>
+null是一个只有一个&#20540;的特殊类型。表示一个空对象引用。<br>
+用 typeof 检测 null 返回是object。<br>
+你可以设置为 null 来清空对象:<br>
+实例<br>
+var person = null; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; // Value is null, but type is still an object<br>
+你可以设置为 undefined 来清空对象:<br>
+实例<br>
+var person = undefined; &nbsp; &nbsp; // &#20540;为 undefined, type is undefined</span></p>
+<p><span style="font-size:18px"><br>
+Undefined：在 JavaScript 中, undefined 是一个没有设置&#20540;的变量。<br>
+typeof 一个没有&#20540;的变量会返回 undefined。<br>
+实例<br>
+var person; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;// Value is undefined, type is undefined<br>
+任何变量都可以通过设置&#20540;为 undefined 来清空。 类型为 undefined.<br>
+实例<br>
+person = undefined; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;// &#20540;为 undefined, type is undefined</span></p>
+<p><span style="font-size:18px"><br>
+Undefined 和 Null 的区别<br>
+typeof undefined &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; // 返回undefined<br>
+typeof null &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;//返回 object<br>
+null === undefined &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; // false<br>
+null == undefined &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;// true<br>
+</span></p>
+<p><span style="font-size:18px"></span></p>
+<h2 style="border:0px; margin:2px 0px; padding:0px; font-size:1.8em; line-height:1.8em; color:rgb(51,51,51); font-family:'Open Sans','Helvetica Neue',Helvetica,Arial,STHeiti,'Microsoft Yahei',sans-serif">
+<span style="font-size:18px; font-family:Arial,Helvetica,sans-serif"><span style="color:#ff0000">3、js命名规范（变量/函数）</span></span></h2>
+<p></p>
+<p><span style="font-size:18px">使用大小写字母，数字，_，$ 命名；</span></p>
+<p><span style="font-size:18px">不能以数字开头；</span></p>
+<p><span style="font-size:18px">不能使用js的关键字/保留字；</span></p>
+<p><span style="font-size:18px">区分大小写；</span></p>
+<p><span style="font-size:18px">单行注释用 // &nbsp;， 多行注释用 &nbsp; &nbsp;/* */.</span></p>
+<p><span style="font-size:18px; color:#ff0000"><strong>4、js基本数据类型说明：</strong></span></p>
+<p><span style="font-size:18px">number类型分为整形常亮和实型常亮，</span></p>
+<p><span style="font-size:18px">整形常量分为（十进制/八进制/十六进制）三种表现形式，</span></p>
+<p><span style="font-size:18px">十六进制以 0x 或 0X开头，例如： 0x8a</span></p>
+<p><span style="font-size:18px">八进制必须以0开头，例如 ： 0123</span></p>
+<p><span style="font-size:18px">十进制第一位不能为 0 （数字零除外）， 例如： &nbsp;1234</span></p>
+<p><span style="font-size:18px">注意无论数&#20540;以几进制表示，在输出时都是以十进制的形式输出的。</span></p>
+<p><span style="font-size:18px">实型常量，如</span></p>
+<p><span style="font-size:18px">12.32 &nbsp; 、 &nbsp; &nbsp; 193.345 &nbsp; &nbsp;、 &nbsp;45E5 &nbsp; 、5E6 &nbsp;等。</span></p>
+<p><span style="font-size:18px">特殊数&#20540;：</span></p>
+<p><span style="font-size:18px">&nbsp;NAN &nbsp;: &nbsp;不是一个数字</span></p>
+<p><span style="font-size:18px">&nbsp;infinity ： 无穷大</span></p>
+<p><span style="font-size:18px">用函数 isNaN() &nbsp; &nbsp; isFinite() &nbsp;检测以上两种类型 &nbsp; 一个检测是否是非数字，一个检测是否无穷大(注意函数大小写严&#26684;限制)</span></p>
+<p><span style="font-size:18px"><span style="font-family:'courier new'">document.write(isFinite(123)&#43; &quot;&lt;br&gt;&quot;); &nbsp;//返回 &nbsp;true</span><br>
+</span></p>
+<p><span style="font-size:18px"><span style="font-family:'courier new'"><span style="font-family:'courier new'">document.write(isNaN(123)&#43; &quot;&lt;br&gt;&quot;); &nbsp; //返回 false</span><br>
+</span></span></p>
+<p><span style="font-size:18px">string 字符串类型：</span></p>
+<p><span style="font-size:18px">&nbsp; &nbsp;“a” &nbsp; &quot;abc&quot; &nbsp;等</span></p>
+<p><span style="font-size:18px">注意：字符串中的特殊字符，需要以反斜杠（\）后跟一个普通字符来表示，例如： &nbsp;\r 、\n、 \t &nbsp;、\b 、\' &nbsp;、\&quot; &nbsp;、\\XXX等</span></p>
+<p><span style="font-size:18px; color:#ff0000"><strong>5、数据类型转换：</strong></span></p>
+<p><span style="font-size:18px">字符串转为数字的方法：<br>
+parseFloat()<span style="white-space:pre"> </span>解析一个字符串，并返回一个浮点数。<br>
+parseInt()<span style="white-space:pre"> </span>解析一个字符串，并返回一个整数。<br>
+<br>
+</span></p>
+<p><span style="font-size:18px">通过 var asd=123;&nbsp; //数字类型</span></p>
+<p><span style="font-size:18px">&nbsp;&nbsp;&nbsp;&nbsp; Varasd=123&#43;””;&nbsp; // 字符串类型</span></p>
+<p><span style="font-size:18px">可以通过这种方式进行强制类型转换</span></p>
+<p><span style="font-size:18px">加好用在字符串之间相当于PHP中的&nbsp; .&nbsp; 符号，意思是拼接</span></p>
+<p><span style="font-size:18px">加号用在数与数之间则是加法运算</span></p>
+<br>
+<p></p>
+<p><a href='_index.htm'>&lt;&lt;目录</a></p>
+</body>
+</html>

@@ -1,0 +1,62 @@
+﻿<!doctype html>
+<html dir="ltr" lang="zh-CN">
+<head>
+<title>selenium_webdriver(python)获取元素属性值，浏览器窗口控制、网页前进后退，title/url打印</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style type="text/css">
+body {font:normal 12px/24px Arial, Helvetica, sans-serif; background:#D9F0DB;}
+textarea,pre {font-family:Courier; font-size:12px;}
+</style>
+</head>
+<body>
+<p><a href='_index.htm'>&lt;&lt;目录</a></p><pre name="code" class="python">&lt;span style=&quot;font-family: Arial, Helvetica, sans-serif;&quot;&gt;&lt;span style=&quot;font-size:18px;&quot;&gt;# coding: UTF-8    #这句是为了声明编码格式，一定要有&lt;/span&gt;&lt;/span&gt;</pre><pre name="code" class="python">&lt;span style=&quot;font-size:18px;&quot;&gt;from selenium import webdriver  #要想使用selenium 的webdriver 里的函数，首先把包导进来
+import time		#调入time 函数
+driver=webdriver.Ie()   
+#选择浏览器，可以是Firefox 、Ie 或Chrome，使用前需安装浏览器插件；
+#driver是一个变量，可随便起
+driver.get(&quot;http://m.mail.10086.cn&quot;)
+#mplicitly_wait() 方法实现智能等待，相当于uft中的集合点，此处智能等待30秒
+driver.implicitly_wait(30)
+driver.find_element_by_id(&quot;ur&quot;).send_keys(&quot;15610537527&quot;)
+#一个元素有若干属性id、name、（也可以用其它方式定位），此处通过id识别元素，该输入框的id叫ur ，
+#我要在输入框里输入15610537527
+driver.find_element_by_id(&quot;pw&quot;).send_keys(&quot;15866584957&quot;)
+#网页对象操作：
+#	.click()  点击对象
+# .send_keys(&quot;xxx&quot;) 在对象上模拟按键输入
+# .clear() 用于清除输入框的内容，比如百度输入框里默认有个“请输入关键字”的信息，
+#			 再比如我们的登陆框一般默认会有“账号”“密码”这样的默认信息。
+#			 clear 可以帮助我们清除这些信息。
+#	.submit() 提交表单
+#	.text  获取该元素的文本
+#	&#183;get_attribute(&quot;属性名，如name&quot;)   获得属性值
+data1 = driver.find_element_by_class_name(&quot;loading_btn&quot;).text
+print &quot;该元素文本为：&quot; 
+print data1
+data2 = driver.find_element_by_class_name(&quot;loading_btn&quot;).get_attribute(&quot;id&quot;)
+print &quot;该元素id属性值为：&quot; 
+print data2
+driver.find_element_by_class_name(&quot;loading_btn&quot;).click()
+#搜索的按钮的name 叫loading_btn ，我需要点一下按钮（ click() ）。
+time.sleep(5)     #休眠5秒
+print driver.title # 把页面title 打印出来
+print &quot;：页面访问成功！&quot;</pre><pre name="code" class="python">#将当前页面URL，打印出来
+now_url = driver.current_url
+print now_url
+print &quot;浏览器最大化：&quot;
+driver.maximize_window() #将浏览器窗口最大化显示
+print &quot;设置浏览器宽480、高800显示：&quot;
+driver.set_window_size(480, 800)
+#操作浏览器访问网页后退
+print &quot;后退到上一个网页：&quot;
+driver.back()
+time.sleep(1)
+#操作浏览器访问网页前进（以后退之后）
+print &quot;前进到下一个网页：&quot;
+driver.forward()
+time.sleep(2)
+#driver.quit()  #退出并关闭窗口的每一个相关的驱动程序
+driver.close() #关闭当前窗口,注意与上者的区别，按需选用&lt;/span&gt;&lt;/span&gt;</pre><br>
+<p><a href='_index.htm'>&lt;&lt;目录</a></p>
+</body>
+</html>

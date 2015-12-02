@@ -1,0 +1,123 @@
+﻿<!doctype html>
+<html dir="ltr" lang="zh-CN">
+<head>
+<title>php生成验证码、后台验证方法</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style type="text/css">
+body {font:normal 12px/24px Arial, Helvetica, sans-serif; background:#D9F0DB;}
+textarea,pre {font-family:Courier; font-size:12px;}
+</style>
+</head>
+<body>
+<p><a href='_index.htm'>&lt;&lt;目录</a></p><p><span style="font-size:18px"><br>
+</span></p>
+<p><span style="font-size:18px">1、yanzheng.class.php:</span></p>
+<p><pre name="code" class="php">&lt;span style=&quot;font-size:18px;&quot;&gt;&lt;?php
+header(&#39;content-type:text/html;charset=utf-8&#39;);
+session_start();
+class Chptcha{
+    //画布宽度
+	private $width=60;
+	//画布高度
+	private $height=28;
+	//验证码字符长度
+	private $chars=4;
+	//干扰线数目
+	private $lines=1;
+	//干扰点数目
+	private $spots=200;
+	
+	public function generate(){
+		//制作画布
+		$img=imagecreatetruecolor($this-&gt;width,$this-&gt;height);
+		//在画布资源下分配颜色，经验，画布颜色要明亮点
+		$bg=imagecolorallocate($img,mt_rand(200,255),mt_rand(200,255),mt_rand(200,255));
+		//给画布填充颜色
+		imagefill($img,0,0,$bg);
+		//增加验证码（获取验证码）
+		$captcha=$this-&gt;getCaptcha();
+		//将获取的验证码字符存放在session文件中，用作以后和登陆页面输入的验证码做比较
+		$_SESSION[&quot;SafeCode&quot;] = $captcha;
+		//为验证码字符串设定为随机颜色		
+		$str=imagecolorallocate($img,mt_rand(50,100),mt_rand(50,100),mt_rand(50,100));
+		//获取随机位置
+		//宽度: 使用图片宽度减去文件宽度
+		$e_width = $this-&gt;width - $this-&gt;chars * 10 - 5;
+		$e_height = $this-&gt;height/3;
+		//5，代表的是字体的大小
+		imagestring($img,5,mt_rand(10,$e_width),mt_rand($e_height-1,$e_height),$captcha,$str);
+		$this-&gt;getLines($img);
+		$this-&gt;getPixels($img);
+		header(&#39;content-type:image/png&#39;);		
+		imagepng($img);
+		//释放资源
+		imagedestroy($img);
+	}
+	private function getCaptcha(){
+        //产生随机字符串
+        $str = &#39;abcdefghijkmnpqrstuvwxyzABCDEFGHJKLMNPQRSTUVWXYZ23456789&#39;;
+        $captcha = &#39;&#39;;
+        for($i = 0;$i &lt; $this-&gt;chars;$i++){
+            //每次循环产生一个字符， $captcha. 加&quot;.&quot;号表示这几个字符是连接在一起的
+            $captcha.= $str[mt_rand(0,strlen($str) - 1)];
+        }
+        //返回
+        return $captcha;
+	}
+	private function getLines($img){
+        //增加干扰线
+        for($i = 0;$i &lt; $this-&gt;lines;$i++){
+        //分配颜色
+        $line= imagecolorallocate($img,mt_rand(100,200),mt_rand(100,200),mt_rand(100,200));
+        //制作线段
+        imageline($img,mt_rand(0,$this-&gt;width),mt_rand(0,$this-&gt;height),mt_rand(0,$this-&gt;width),mt_rand(0,$this-&gt;height),$line);
+        }
+    }
+    private function getPixels($img){
+        //增加干扰点
+        for($i = 0;$i &lt; $this-&gt;spots;$i++){
+            //分配颜色
+            $pixel= imagecolorallocate($img,mt_rand(100,200),mt_rand(100,200),mt_rand(100,200));
+            //制作
+            imagesetpixel($img,mt_rand(0,$this-&gt;width),mt_rand(0,$this-&gt;height),$pixel);
+        }
+    }
+}
+?&gt;&lt;/span&gt;</pre><span style="font-size:18px"><br>
+2、yanzhengma.php:</span></p>
+<p><pre name="code" class="php">&lt;span style=&quot;font-size:18px;&quot;&gt;&lt;?php
+//设定文件编码格式
+header(&#39;content-type:text/html;charset=utf-8&#39;);
+//引用 yanzheng.class.php 类文件
+include_once &quot;yanzheng.class.php&quot;;
+//创建对象
+$chptcha=new Chptcha();
+//调用方法，生成验证码
+$chptcha-&gt;generate();
+?&gt;
+&lt;/span&gt;</pre></p>
+<p><span style="font-size:18px"><br>
+</span></p>
+<span style="font-size:18px">3、login.html:</span>
+<p><pre name="code" class="php">&lt;span style=&quot;font-size:18px;&quot;&gt;&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;meta charset=&quot;UTF-8&quot;&gt;
+&lt;title&gt;Insert title here&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;b&gt;验证码：&lt;/b&gt;
+&lt;input type=&quot;text&quot; name=&quot;auth&quot; class=&quot;textbox&quot;&gt;
+&lt;!-- 利用src链接，调用生成的图片 --&gt;
+&lt;img src=yanzhengma.php&gt;
+&lt;/body&gt;
+&lt;/html&gt;&lt;/span&gt;</pre><span style="font-size:18px"><br>
+<br>
+</span></p>
+<p><span style="font-size:18px"><br>
+</span></p>
+<p><br>
+</p>
+<p><a href='_index.htm'>&lt;&lt;目录</a></p>
+</body>
+</html>

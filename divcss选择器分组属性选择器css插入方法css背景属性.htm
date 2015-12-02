@@ -1,0 +1,158 @@
+﻿<!doctype html>
+<html dir="ltr" lang="zh-CN">
+<head>
+<title>div+css 选择器分组  属性选择器  css插入方法 css背景属性</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style type="text/css">
+body {font:normal 12px/24px Arial, Helvetica, sans-serif; background:#D9F0DB;}
+textarea,pre {font-family:Courier; font-size:12px;}
+</style>
+</head>
+<body>
+<p><a href='_index.htm'>&lt;&lt;目录</a></p><span style="font-size:14px"><strong>1、CSS 概述：</strong><br>
+<span style="white-space:pre"></span>CSS 指层叠样式表 (Cascading Style Sheets)<br>
+<span style="white-space:pre"></span>样式定义如何显示 HTML 元素<br>
+<span style="white-space:pre"></span>样式通常存储在样式表中<br>
+<span style="white-space:pre"></span>把样式添加到 HTML 4.0 中，是为了解决内容与表现分离的问题<br>
+<span style="white-space:pre"></span>外部样式表可以极大提高工作效率<br>
+<span style="white-space:pre"></span>外部样式表通常存储在 CSS 文件中<br>
+<span style="white-space:pre"></span>多个样式定义可层叠为一<br>
+<span style="white-space:pre"></span><br>
+<strong>2、选择器的分组</strong><br>
+你可以对选择器进行分组，这样，被分组的选择器就可以分享相同的声明。用逗号将需要分组的选择器分开。在下面的例子中，我们对所有的标题元素进行了分组。所有的标题元素都是绿色的。<br>
+</span><pre name="code" class="css">h1,h2,h3,h4,h5,h6 {
+  color: green;
+  }</pre><br>
+<p><span style="font-size:14px"><strong>&nbsp;3、CSS 属性选择器&nbsp;</strong></span></p>
+<p><span style="font-size:14px"><strong><br>
+</strong></span></p>
+<span style="font-size:14px">&nbsp; 选择器<span style="white-space:pre"> </span>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 描述<br>
+[attribute] &nbsp; &nbsp; <span style="white-space:pre"></span>用于选取带有指定属性的元素。<br>
+[attribute=value]<span style="white-space:pre"> </span>用于选取带有指定属性和&#20540;的元素。<br>
+[attribute~=value]<span style="white-space:pre"> </span>用于选取属性&#20540;中包含指定词汇的元素。<br>
+[attribute|=value]<span style="white-space:pre"> </span>用于选取带有以指定&#20540;开头的属性&#20540;的元素，该&#20540;必须是整个单词。<br>
+[attribute^=value]<span style="white-space:pre"> </span>匹配属性&#20540;以指定&#20540;开头的每个元素。<br>
+[attribute$=value]<span style="white-space:pre"> </span>匹配属性&#20540;以指定&#20540;结尾的每个元素。<br>
+[attribute*=value]<span style="white-space:pre"> </span>匹配属性&#20540;中包含指定&#20540;的每个元素。&nbsp;<br>
+&nbsp;&nbsp;<br>
+&nbsp;例：<br>
+</span><pre name="code" class="css"> input[type=&quot;text&quot;]{
+	width:150px;
+	display:block;
+	margin-bottom:10px;
+	background-color:yellow;
+	font-family: Verdana, Arial;
+}</pre><br>
+&nbsp;下面的例子为带有 title 属性的所有元素设置样式：<br>
+<pre name="code" class="css">[title]
+{
+color:red;
+} </pre><br>
+下面的例子为 title=&quot;W3School&quot; 的所有元素设置样式：<br>
+<pre name="code" class="css">[title=W3School]
+{
+border:5px solid blue;
+}  </pre><br>
+<strong>&nbsp;4、HTML中插入css样式表的方法有三种：</strong>&nbsp;<br>
+（1）外部样式表：当样式需要应用于很多页面时，外部样式表将是理想的选择。在使用外部样式表的情况下，你可以通过改变一个文件来改变整个站点的外观。每个页面使用 &lt;link&gt; 标签链接到样式表。&lt;link&gt; 标签在（文档的）头部：<br>
+<span style="white-space:pre"></span>&lt;head&gt;<br>
+<span style="white-space:pre"></span>&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;mystyle.css&quot; /&gt;<br>
+<span style="white-space:pre"></span>&lt;/head&gt;<br>
+<span style="white-space:pre"></span>浏览器会从文件 mystyle.css 中读到样式声明，并根据它来&#26684;式文档。<br>
+<span style="white-space:pre"></span>外部样式表可以在任何文本编辑器中进行编辑。文件不能包含任何的 html 标签。样式表应该以 .css 扩展名进行保存。下面是一个样式表文件的例子：<br>
+<span style="white-space:pre"></span>hr {color: sienna;}<br>
+<span style="white-space:pre"></span>p {margin-left: 20px;}<br>
+<span style="white-space:pre"></span>body {background-image: url(&quot;images/back40.gif&quot;);}<br>
+<span style="white-space:pre"></span>不要在属性&#20540;与单位之间留有空&#26684;。假如你使用 “margin-left: 20 px” 而不是 “margin-left: 20px” ，它仅在 IE 6 中有效，但是在 Mozilla/Firefox 或 Netscape 中却无法正常工作。<br>
+（2）内部样式表：当单个文档需要特殊的样式时，就应该使用内部样式表。你可以使用 &lt;style&gt; 标签在文档头部定义内部样式表，就像这样:<br>
+<pre name="code" class="html">	&lt;head&gt;
+	&lt;style type=&quot;text/css&quot;&gt;
+		hr {color: sienna;}
+		p {margin-left: 20px;}
+		body {background-image: url(&quot;images/back40.gif&quot;);}
+	&lt;/style&gt;
+	&lt;/head&gt;</pre><br>
+（3）内联样式：:由于要将表现和内容混杂在一起，内联样式会损失掉样式表的许多优势。请慎用这种方法，例如当样式仅需要在一个元素上应用一次时。<br>
+<span style="white-space:pre"></span>要使用内联样式，你需要在相关的标签内使用样式（style）属性。Style 属性可以包含任何 CSS 属性。本例展示如何改变段落的颜色和左外边距：<br>
+<p><span style="font-size:14px"><span style="white-space:pre"></span>&lt;p style=&quot;color: sienna; margin-left: 20px&quot;&gt;This is a paragraph&lt;/p&gt;</span></p>
+<span style="font-size:14px"><strong>&nbsp;5、CSS 背景属性：</strong><br>
+&nbsp; &nbsp;属性<span style="white-space:pre"> </span>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 描述<br>
+background<span style="white-space:pre"> </span>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;简写属性，作用是将背景属性设置在一个声明中。<br>
+background-attachment<span style="white-space:pre"> </span>背景图像是否固定或者随着页面的其余部分滚动。<br>
+background-color<span style="white-space:pre"> </span>设置元素的背景颜色。<br>
+background-image<span style="white-space:pre"> </span>把图像设置为背景。<br>
+background-position<span style="white-space:pre"> </span>设置背景图像的起始位置。<br>
+background-repeat<span style="white-space:pre"> </span>设置背景图像是否及如何重复。<br>
+&nbsp;&nbsp;<br>
+</span>
+<p><span style="font-size:14px"><strong>示例:</strong></span></p>
+<p><span style="font-size:14px"></span><pre name="code" class="html">&lt;html&gt;
+&lt;head&gt;
+
+&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;css文件.css&quot; /&gt;
+&lt;title&gt;&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+1、选择器的分组:&lt;br&gt;&lt;br&gt;
+&lt;h1&gt;样式一&lt;/h1&gt;&lt;br&gt;&lt;br&gt;
+&lt;h2&gt;样式二&lt;/h2&gt;&lt;br&gt;&lt;br&gt;
+&lt;h3&gt;样式三&lt;/h3&gt;&lt;br&gt;&lt;br&gt;
+
+
+2、CSS 属性选择器:&lt;br&gt;&lt;br&gt;
+&lt;h2 title=&quot;Hello worol&quot;&gt;Hello world&lt;/h2&gt;&lt;br&gt;&lt;br&gt;
+&lt;a title=&quot;W3School&quot; href=&quot;http://w3school.com.cn&quot;&gt;W3School&lt;/a&gt;&lt;br&gt;&lt;br&gt;
+
+
+&lt;/body&gt;
+
+
+&lt;html&gt;</pre><br>
+<strong>css文件.css:</strong><br>
+</p>
+<p><span style="font-size:14px"></span><pre name="code" class="css">/*1、选择器的分组:可以对选择器进行分组，这样，被分组的选择器就可以分享相同的声明。用逗号将需要分组的选择器分开*/
+h1,h2,h3{
+	color:red;
+	font-size:50px;
+
+}
+/* h2{
+	color:green;
+
+
+}
+h3{
+	color:blue;
+
+
+}
+h1{
+	color:red;
+
+
+}
+*/
+
+
+/*2、CSS 属性选择器:可以为拥有指定属性的 HTML 元素设置样式，而不仅限于 class 和 id 属性。*/
+
+[title]
+{
+color:green;
+} 
+
+[title$=&quot;ol&quot;]
+{
+border:5px solid blue;
+}  
+
+
+/*3、对整个页面设置指定图片背景*/
+body {background-image: url(&quot;1.jpg&quot;);
+background-repeat: repeat-y;
+background-position:center;
+
+}</pre></p>
+<p><a href='_index.htm'>&lt;&lt;目录</a></p>
+</body>
+</html>

@@ -1,0 +1,73 @@
+﻿<!doctype html>
+<html dir="ltr" lang="zh-CN">
+<head>
+<title>第三讲ThinkPHP 3.1.2 输出和模型使用</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style type="text/css">
+body {font:normal 12px/24px Arial, Helvetica, sans-serif; background:#D9F0DB;}
+textarea,pre {font-family:Courier; font-size:12px;}
+</style>
+</head>
+<body>
+<p><a href='_index.htm'>&lt;&lt;目录</a></p><span style="font-size:14px"><br>
+<strong>一、ThinkPHP 的输出 &nbsp;</strong><br>
+<span style="white-space:pre"></span>a、通过 echo 等PHP原生的输出方式在页面中输出<br>
+<span style="white-space:pre"></span>b、通过display方法输出（利用C对V的控制）<br>
+</span>
+<p><span style="font-size:14px"><span style="white-space:pre"></span>想分配变量可以使用assign方法</span></p>
+<p><span style="font-size:14px"><span style="white-space:pre"></span>具体方法如下：</span></p>
+<p><span style="font-size:14px"><span style="white-space:pre"></span>C调用V中内容显示：</span></p>
+<p><span style="font-size:14px"></span></p>
+<p><span style="white-space:pre"></span>C:</p>
+<p><img src="http://img.blog.csdn.net/20150507143732581?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvdTAxMzM3MjQ4Nw==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center" width="600" height="350" alt=""><br>
+</p>
+<p></p>
+<p>V:</p>
+<p><img src="http://img.blog.csdn.net/20150507143604001?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvdTAxMzM3MjQ4Nw==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center" width="600" height="300" alt=""><br>
+</p>
+<p></p>
+<p>V:</p>
+<p><img src="http://img.blog.csdn.net/20150507143646932?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvdTAxMzM3MjQ4Nw==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center" width="600" height="300" alt=""><br>
+</p>
+<p><br>
+</p>
+<p></p>
+<p>&nbsp;<span style="font-size:14px; white-space:pre"> </span>c、最好修改左右定界符（默认为{}，修改成&lt;{}&gt;最好）</p>
+<br>
+<p><span style="font-size:14px"><strong>二、修改配置文件中的配置项</strong></span></p>
+<p><span style="font-size:14px"><strong><br>
+</strong></span></p>
+<span style="font-size:14px"><span style="white-space:pre"></span>'TMPL_L_DELIM'=&gt;'&lt;{', //修改左定界符<br>
+<span style="white-space:pre"></span>'TMPL_R_DELIM'=&gt;'}&gt;', //修改右定界符<br>
+<br>
+<br>
+<strong>三、ThinkPHP 3 的M模型使用</strong>&nbsp;&nbsp;<br>
+<span style="white-space:pre"></span>需要在方法中通过new Model（表名）的形式操作数据库<br>
+<span style="white-space:pre"></span>$m=new Model('User');<br>
+<span style="white-space:pre"></span>$arr=$m-&gt;select();&nbsp;<br>
+</span>
+<p><span style="font-size:14px"><span style="white-space:pre"></span>具体使用方法：</span></p>
+<p><span style="font-size:14px"></span></p>
+<p>C调用M中数据显示：</p>
+<p>C：</p>
+<p><img src="http://img.blog.csdn.net/20150507143716260?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvdTAxMzM3MjQ4Nw==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center" width="600" height="350" alt=""><br>
+</p>
+<p></p>
+<p>‘User’ 是数据库名</p>
+<p>结果：</p>
+<p><img src="http://img.blog.csdn.net/20150507143937444?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvdTAxMzM3MjQ4Nw==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center" width="600" height="350" alt=""><br>
+</p>
+<span style="font-size:14px">config.php文件配置数据库信息：<span style="white-space:pre"></span><br>
+<span style="white-space:pre"></span>'DB_TYPE'=&gt;'mysql', &nbsp; //设置数据库类型<br>
+<span style="white-space:pre"></span>'DB_HOST'=&gt;'localhost',//设置主机<br>
+<span style="white-space:pre"></span>'DB_NAME'=&gt;'thinkphp',//设置数据库名<br>
+<span style="white-space:pre"></span>'DB_USER'=&gt;'root', &nbsp; &nbsp;//设置用户名<br>
+<span style="white-space:pre"></span>'DB_PWD'=&gt;'111111', &nbsp; &nbsp; &nbsp; &nbsp;//设置密码<br>
+<span style="white-space:pre"></span>'DB_PORT'=&gt;'3306', &nbsp; //设置端口号<br>
+</span>
+<p><span style="font-size:14px"><span style="white-space:pre"></span>'DB_PREFIX'=&gt;'tp_', &nbsp;//设置表前缀</span></p>
+<p><span style="font-size:14px"><br>
+</span></p>
+<p><a href='_index.htm'>&lt;&lt;目录</a></p>
+</body>
+</html>

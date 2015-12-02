@@ -1,0 +1,70 @@
+﻿<!doctype html>
+<html dir="ltr" lang="zh-CN">
+<head>
+<title>实时显示当前时间php代码</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style type="text/css">
+body {font:normal 12px/24px Arial, Helvetica, sans-serif; background:#D9F0DB;}
+textarea,pre {font-family:Courier; font-size:12px;}
+</style>
+</head>
+<body>
+<p><a href='_index.htm'>&lt;&lt;目录</a></p><pre name="code" class="php">&lt;?php  
+header(&#39;content-type:text/html;charset=gbk&#39;);  
+date_default_timezone_set(&#39;PRC&#39;);  
+$n=chr(13);  
+echo &quot;&lt;SCRIPT LANGUAGE=\&quot;JavaScript\&quot;&gt;&quot;.$n;
+echo &quot;document.write(&#39;&lt;div id=\&quot;TimeShow\&quot; align=\&quot;right\&quot; style=\&quot;MARGIN-right:0px;font-size:9pt;font-family:宋体\&quot;&gt;?&lt;/div&gt;&#39;);&quot;.$n;
+echo &quot;var y=&quot;.date(&quot;Y&quot;).&quot;; //年 &quot;.$n;
+echo &quot;var m=&quot;.date(&quot;n&quot;).&quot;; //月 &quot;.$n;  
+echo &quot;var d=&quot;.date(&quot;j&quot;).&quot;; //日 &quot;.$n;  
+echo &quot;var w=&quot;.date(&quot;w&quot;).&quot;; //星 &quot;.$n;  
+echo &quot;var h=&quot;.date(&quot;H&quot;).&quot;; //时 &quot;.$n;  
+echo &quot;var i=&quot;.date(&quot;i&quot;).&quot;; //分 &quot;.$n;  
+echo &quot;var s=&quot;.date(&quot;s&quot;).&quot;; //秒 &quot;.$n;  
+echo &quot;var hstr=istr=sstr=a=&#39;&#39;;&quot;.$n;  
+echo &quot;var ww = Array(&#39;日&#39;,&#39;一&#39;,&#39;二&#39;,&#39;三&#39;,&#39;四&#39;,&#39;五&#39;,&#39;六&#39;);&quot;.$n;
+echo &quot;function clock(){&quot;.$n;
+echo &quot; s++;&quot;.$n;  
+echo &quot; if (s==60) {i+=1;s=0;}//秒进位&quot;.$n;
+echo &quot; if (i==60) {h+=1;i=0;}//分进位&quot;.$n;
+echo &quot; if (h==24) {w+=1;d+=1;h=0;}//时进位&quot;.$n;
+echo &quot; if (w==7) {w=0;}//星期进位&quot;.$n;
+echo &quot; if (m==2) { //是否是二月份？&quot;.$n;
+echo &quot; if (!y%4&gt;0) { //不是闰月（二月有28天）&quot;.$n;
+echo &quot; if (d==30){&quot;.$n;
+echo &quot; m+=1;&quot;.$n;
+echo &quot; d=1;}&quot;.$n;
+echo &quot; }&quot;.$n;
+echo &quot; else { //是闰月（二月有29天）&quot;.$n;
+echo &quot; if (d==29){&quot;.$n;
+echo &quot; m+=1;&quot;.$n;
+echo &quot; d=1;}&quot;.$n;
+echo &quot; }&quot;.$n;
+echo &quot; }&quot;.$n;
+echo &quot; else { //非2月份的月份&quot;.$n;
+echo &quot; if (m==4 || m==6 || m==9 || m==11) { //只有30天的月份&quot;.$n;
+echo &quot; if (d==31) {&quot;.$n;
+echo &quot; m+=1;&quot;.$n;
+echo &quot; d=1;}&quot;.$n;
+echo &quot; }&quot;.$n;
+echo &quot; else { //有31天的月份&quot;.$n;
+echo &quot; if (d==32){&quot;.$n;
+echo &quot; m+=1;&quot;.$n;
+echo &quot; d=1;}&quot;.$n;
+echo &quot; }&quot;.$n;
+echo &quot; }&quot;.$n;
+echo &quot; if (m==13) {y+=1;m=1;}//月进位&quot;.$n;
+echo &quot; if (h &lt; 10) {hstr=&#39; 0&#39;+h} else {hstr=&#39; &#39;+h};&quot;.$n;
+echo &quot; if (i &lt; 10) {istr=&#39;:0&#39;+i} else {istr=&#39;:&#39;+i};&quot;.$n;
+echo &quot; if (s &lt; 10) {sstr=&#39;:0&#39;+s} else {sstr=&#39;:&#39;+s};&quot;.$n;
+echo &quot; if (h &lt; 13) {astr=&#39; am&#39;;} else {astr=&#39; pm&#39;;};&quot;.$n;  
+echo &quot; TimeShow.innerHTML=y+&#39;年&#39;+m+&#39;月&#39;+d+&#39;日 &#39;+&#39;&lt;font color=#66FFFF&gt;星期&#39;+ww[w]+&#39;&lt;/font&gt;&#39;+hstr+istr+sstr+astr;&quot;.$n;  
+echo &quot; setTimeout(&#39;clock()&#39;,1000);&quot;.$n;
+echo &quot;}&quot;.$n;
+echo &quot;clock();&quot;.$n;
+echo &quot;&lt;/SCRIPT&gt;&quot;.$n;
+?&gt;</pre><br>
+<p><a href='_index.htm'>&lt;&lt;目录</a></p>
+</body>
+</html>

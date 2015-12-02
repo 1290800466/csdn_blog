@@ -1,0 +1,56 @@
+﻿<!doctype html>
+<html dir="ltr" lang="zh-CN">
+<head>
+<title>css  图片/元素旋转代码</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style type="text/css">
+body {font:normal 12px/24px Arial, Helvetica, sans-serif; background:#D9F0DB;}
+textarea,pre {font-family:Courier; font-size:12px;}
+</style>
+</head>
+<body>
+<p><a href='_index.htm'>&lt;&lt;目录</a></p><p><span style="font-size:18px">代码示例：</span></p>
+<p><pre name="code" class="html">&lt;span style=&quot;font-size:18px;&quot;&gt;&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;zh-cn&quot;&gt;
+&lt;head&gt;
+&lt;style&gt;
+@keyframes wml {
+	from {
+	transform:rotate(0);
+	-ms-transform:rotate(0);
+	-webkit-transform:rotate(0);
+	-o-transform:rotate(0);
+	-moz-transform:rotate(0)
+}
+to {
+	transform:rotate(360deg);
+	-ms-transform:rotate(360deg);
+	-webkit-transform:rotate(360deg);
+	-o-transform:rotate(360deg);
+	-moz-transform:rotate(360deg)
+}
+}.asd {
+	animation:wml 3s linear infinite;
+	-moz-animation:wml 3s linear infinite;
+	-webkit-animation:wml 3s linear infinite;
+	-o-animation:wml 3s linear infinite
+}
+&lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+	&lt;img class=&quot;asd&quot; src=&quot;http://avatar.csdn.net/5/5/7/1_u013372487.jpg&quot;&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+&lt;/span&gt;</pre></p>
+<p><span style="font-size:18px"><br>
+</span></p>
+<p><span style="font-size:18px">from 0 &nbsp;to &nbsp;360 &nbsp;表示顺时针旋转</span></p>
+<p><span style="font-size:18px">from 360 &nbsp;to &nbsp;0 &nbsp;表示逆时针旋转<br>
+</span></p>
+<p><span style="font-size:18px">3s &nbsp;表示旋转速度</span></p>
+<p><span style="font-size:18px"><br>
+</span></p>
+<br>
+<p><a href='_index.htm'>&lt;&lt;目录</a></p>
+</body>
+</html>

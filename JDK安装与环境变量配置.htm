@@ -1,0 +1,50 @@
+﻿<!doctype html>
+<html dir="ltr" lang="zh-CN">
+<head>
+<title>JDK安装与环境变量配置</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style type="text/css">
+body {font:normal 12px/24px Arial, Helvetica, sans-serif; background:#D9F0DB;}
+textarea,pre {font-family:Courier; font-size:12px;}
+</style>
+</head>
+<body>
+<p><a href='_index.htm'>&lt;&lt;目录</a></p><h1 align="center">JDK安装与环境变量配置</h1>
+<p>&nbsp;</p>
+<p>本文介绍JDK的安装与环境变量配置。&nbsp;</p>
+<p><a target="_blank" name="section-2"></a><span style="font-size:12px">工具/原料</span></p>
+<ul type="disc">
+<li>JDK1.7.0 </li><li>WIN7</li></ul>
+<p><a target="_blank" name="section-3"></a><span style="font-size:12px">方法/步骤</span></p>
+<ol start="1" type="1">
+<li>安装JDK 选择安装目录 安装过程中会出现两次 安装提示 。第一次是安装 jdk ，第二次是安装 jre 。建议两个都安装在同一个java文件夹中的不同文件夹中。（不能都安装在java文件夹的根目录下，jdk和jre安装在同一文件夹会出错）</li></ol>
+<p>如下图所示</p>
+<p><a target="_blank" href="http://jingyan.baidu.com/album/6dad5075d1dc40a123e36ea3.html?picindex=1" target="_self"></a></p>
+<ol start="2" type="1">
+<li>安装jdk 随意选择目录 只需把默认安装目录 \java 之前的目录修改即可</li></ol>
+<p><span style="white-space:pre"></span>2：安装jre→更改→ \java 之前目录和安装 jdk 目录相同即可</p>
+<p><span style="white-space:pre"></span>注：若无安装目录要求，可全默认设置。无需做任何修改，两次均直接点下一步。</p>
+<p><a target="_blank" href="http://jingyan.baidu.com/album/6dad5075d1dc40a123e36ea3.html?picindex=2" target="_self"></a></p>
+<p><a target="_blank" href="http://jingyan.baidu.com/album/6dad5075d1dc40a123e36ea3.html?picindex=3" target="_self"></a></p>
+<ol start="3" type="1">
+<li>安装完JDK后配置环境变量 &nbsp;计算机→属性→高级系统设置→高级→环境变量</li></ol>
+<p><a target="_blank" href="http://jingyan.baidu.com/album/6dad5075d1dc40a123e36ea3.html?picindex=4" target="_self"></a></p>
+<ol start="4" type="1">
+<li><span style="font-size:12px">系统变量→新建 JAVA_HOME 变量。</span><span style="font-size:12px">变量&#20540;填写jdk的安装目录（本人是 E:\Java\jdk1.7.0)</span></li></ol>
+<ol start="5" type="1">
+<li><span style="font-size:12px">系统变量→寻找 Path 变量→编辑 &nbsp; &nbsp; &nbsp;</span><span style="font-size:12px">在变量&#20540;最后输入 %JAVA_HOME%\bin;%JAVA_HOME%\jre\bin;</span></li></ol>
+<p><span style="white-space:pre"></span>（注意原来Path的变量&#20540;末尾有没有;号，如果没有，先输入；号再输入上面的代码）</p>
+<p><a target="_blank" href="http://jingyan.baidu.com/album/6dad5075d1dc40a123e36ea3.html?picindex=5" target="_self"></a></p>
+<ol start="6" type="1">
+<li><span style="font-size:12px">系统变量→新建 CLASSPATH 变量</span></li></ol>
+<p>变量&#20540;填写 &nbsp; .;%JAVA_HOME%\lib;%JAVA_HOME%\lib\tools.jar（注意最前面有一点）</p>
+<p>系统变量配置完毕</p>
+<p><a target="_blank" href="http://jingyan.baidu.com/album/6dad5075d1dc40a123e36ea3.html?picindex=6" target="_self"></a></p>
+<ol start="7" type="1">
+<li><span style="font-size:12px">检验是否配置成功运行cmd 输入 java -version （java 和 -version 之间有空&#26684;）</span></li></ol>
+<p>若如图所示显示版本信息 则说明安装和配置成功。</p>
+<p><a target="_blank" href="http://jingyan.baidu.com/album/6dad5075d1dc40a123e36ea3.html?picindex=7" target="_self"></a></p>
+<p>&nbsp;</p>
+<p><a href='_index.htm'>&lt;&lt;目录</a></p>
+</body>
+</html>

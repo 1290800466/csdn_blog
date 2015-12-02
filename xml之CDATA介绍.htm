@@ -1,0 +1,58 @@
+﻿<!doctype html>
+<html dir="ltr" lang="zh-CN">
+<head>
+<title>xml之 CDATA介绍</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style type="text/css">
+body {font:normal 12px/24px Arial, Helvetica, sans-serif; background:#D9F0DB;}
+textarea,pre {font-family:Courier; font-size:12px;}
+</style>
+</head>
+<body>
+<p><a href='_index.htm'>&lt;&lt;目录</a></p><p><span style="font-size:18px"><strong><span style="color:#ff0000">CDATA - （未解析）字符数据</span></strong><br>
+术语 CDATA 是不应该由 XML 解析器解析的文本数据。<br>
+像 &quot;&lt;&quot; 和 &quot;&amp;&quot; 字符在 XML 元素中都是非法的。<br>
+&quot;&lt;&quot; 会产生错误，因为解析器会把该字符解释为新元素的开始。<br>
+&quot;&amp;&quot; 会产生错误，因为解析器会把该字符解释为字符实体的开始。<br>
+某些文本，比如 JavaScript 代码，包含大量 &quot;&lt;&quot; 或 &quot;&amp;&quot; 字符。为了避免错误，可以将脚本代码定义为 CDATA。<br>
+CDATA 部分中的所有内容都会被解析器忽略。<br>
+CDATA 部分由 &quot;&lt;![CDATA[&quot; 开始，由 &quot;]]&gt;&quot; 结束：<br>
+&lt;script&gt;<br>
+&lt;![CDATA[<br>
+function matchwo(a,b)<br>
+{<br>
+if (a &lt; b &amp;&amp; a &lt; 0) then<br>
+{<br>
+return 1;<br>
+}<br>
+else<br>
+{<br>
+return 0;<br>
+}<br>
+}<br>
+]]&gt;<br>
+&lt;/script&gt;<br>
+在上面的实例中，解析器会忽略 CDATA 部分中的所有内容。<br>
+关于 CDATA 部分的注释：<br>
+CDATA 部分不能包含字符串 &quot;]]&gt;&quot;。也不允许嵌套的 CDATA 部分。<br>
+标记 CDATA 部分结尾的 &quot;]]&gt;&quot; 不能包含空&#26684;或换行。<br>
+</span></p>
+<p><span style="font-size:18px; color:#ff0000"><strong>说明：</strong></span></p>
+<p><span style="font-size:18px">XML 文档中的所有文本均会被解析器解析。</span></p>
+<span style="font-size:18px">只有 CDATA 区段中的文本会被解析器忽略。<br>
+在xml文件中，若某个标签内容包含特殊字符，如&quot;&lt;&quot;、&quot;&amp;&quot;等，他们在xml元素中都是非法的，为了避免错误，可以将这些符号放在&lt;![CDATA[...]]&gt;标签中，这样xml就不会对其解析，避免错误。<br>
+CDATA的基本语法：<br>
+&lt;![CDATA[<br>
+内容...<br>
+]]&gt;<br>
+实例：<br>
+&lt;介绍&gt;&lt;![CDATA[$^&amp;()&gt;&lt;LKL:&gt;Kjlk&gt;&lt;]]&gt;&lt;/介绍&gt;<br>
+&lt;头像&gt;&lt;![CDATA[$%()^&amp;#@@]]&gt;&lt;/头像&gt;<br>
+<br>
+面试题: 请问如何使用xml文件来传递、保存一个图片.<br>
+答： 使用程序先读入到内存，然后保存到 xml 文件的&lt;![CDATA[ 文件内容]]&gt; 中<br>
+<br>
+</span><br>
+<p><a href='_index.htm'>&lt;&lt;目录</a></p>
+</body>
+</html>

@@ -1,0 +1,63 @@
+﻿<!doctype html>
+<html dir="ltr" lang="zh-CN">
+<head>
+<title>jquery实现当页面滚动超过一屏时显示返回顶部按钮</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style type="text/css">
+body {font:normal 12px/24px Arial, Helvetica, sans-serif; background:#D9F0DB;}
+textarea,pre {font-family:Courier; font-size:12px;}
+</style>
+</head>
+<body>
+<p><a href='_index.htm'>&lt;&lt;目录</a></p><pre name="code" class="html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;meta charset=utf-8&quot; /&gt;
+&lt;title&gt;jquery实现当页面滚动超过一屏时显示返回顶部按钮&lt;/title&gt;
+&lt;style&gt;
+	#go_top{position:fixed; LEFT: 85%;bottom:50px;}
+&lt;/style&gt;
+&lt;script src=&quot;http://libs.baidu.com/jquery/1.10.2/jquery.min.js&quot;&gt;&lt;/script&gt;
+&lt;script&gt;
+$(document).ready(function(){
+	$(&quot;#go_top&quot;).hide();
+	$(function () {
+		//检测屏幕高度
+		var height=$(window).height();
+		//scroll() 方法为滚动事件
+		$(window).scroll(function(){
+			if ($(window).scrollTop()&gt;height){
+				$(&quot;#go_top&quot;).fadeIn(500);
+			}else{
+				$(&quot;#go_top&quot;).fadeOut(500);
+				}
+		});
+		$(&quot;#go_top&quot;).click(function(){
+			$(&#39;body,html&#39;).animate({scrollTop:0},100);
+			return false;
+		});
+	});
+});
+&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+1&lt;br/&gt;1&lt;br/&gt;1&lt;br/&gt;1&lt;br/&gt;1&lt;br/&gt;1&lt;br/&gt;1&lt;br/&gt;1&lt;br/&gt;1&lt;br/&gt;1&lt;br/&gt;1&lt;br/&gt;
+1&lt;br/&gt;1&lt;br/&gt;1&lt;br/&gt;1&lt;br/&gt;1&lt;br/&gt;1&lt;br/&gt;1&lt;br/&gt;1&lt;br/&gt;1&lt;br/&gt;1&lt;br/&gt;1&lt;br/&gt;
+1&lt;br/&gt;1&lt;br/&gt;1&lt;br/&gt;1&lt;br/&gt;1&lt;br/&gt;1&lt;br/&gt;1&lt;br/&gt;1&lt;br/&gt;1&lt;br/&gt;1&lt;br/&gt;1&lt;br/&gt;
+1&lt;br/&gt;1&lt;br/&gt;1&lt;br/&gt;1&lt;br/&gt;1&lt;br/&gt;1&lt;br/&gt;1&lt;br/&gt;1&lt;br/&gt;1&lt;br/&gt;1&lt;br/&gt;1&lt;br/&gt;
+1&lt;br/&gt;1&lt;br/&gt;1&lt;br/&gt;1&lt;br/&gt;1&lt;br/&gt;1&lt;br/&gt;1&lt;br/&gt;1&lt;br/&gt;1&lt;br/&gt;1&lt;br/&gt;1&lt;br/&gt;
+1&lt;br/&gt;1&lt;br/&gt;1&lt;br/&gt;1&lt;br/&gt;1&lt;br/&gt;1&lt;br/&gt;1&lt;br/&gt;1&lt;br/&gt;1&lt;br/&gt;1&lt;br/&gt;1&lt;br/&gt;
+1&lt;br/&gt;1&lt;br/&gt;1&lt;br/&gt;1&lt;br/&gt;1&lt;br/&gt;1&lt;br/&gt;1&lt;br/&gt;1&lt;br/&gt;1&lt;br/&gt;1&lt;br/&gt;1&lt;br/&gt;
+1&lt;br/&gt;1&lt;br/&gt;1&lt;br/&gt;1&lt;br/&gt;1&lt;br/&gt;1&lt;br/&gt;1&lt;br/&gt;1&lt;br/&gt;1&lt;br/&gt;1&lt;br/&gt;1&lt;br/&gt;
+1&lt;br/&gt;1&lt;br/&gt;1&lt;br/&gt;1&lt;br/&gt;1&lt;br/&gt;1&lt;br/&gt;1&lt;br/&gt;1&lt;br/&gt;1&lt;br/&gt;1&lt;br/&gt;1&lt;br/&gt;
+1&lt;br/&gt;1&lt;br/&gt;1&lt;br/&gt;1&lt;br/&gt;1&lt;br/&gt;1&lt;br/&gt;1&lt;br/&gt;1&lt;br/&gt;1&lt;br/&gt;1&lt;br/&gt;1&lt;br/&gt;
+1&lt;br/&gt;1&lt;br/&gt;1&lt;br/&gt;1&lt;br/&gt;1&lt;br/&gt;1&lt;br/&gt;1&lt;br/&gt;1&lt;br/&gt;1&lt;br/&gt;1&lt;br/&gt;1&lt;br/&gt;
+1&lt;br/&gt;1&lt;br/&gt;1&lt;br/&gt;1&lt;br/&gt;1&lt;br/&gt;1&lt;br/&gt;1&lt;br/&gt;1&lt;br/&gt;1&lt;br/&gt;1&lt;br/&gt;1&lt;br/&gt;
+&lt;div id=&quot;go_top&quot;&gt;
+	&lt;img src=&quot;./img/top.png&quot;/ alt=&quot;回到顶部图片&quot;&gt;
+&lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;</pre><br>
+<p><a href='_index.htm'>&lt;&lt;目录</a></p>
+</body>
+</html>

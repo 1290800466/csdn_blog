@@ -1,0 +1,97 @@
+﻿<!doctype html>
+<html dir="ltr" lang="zh-CN">
+<head>
+<title>animate.css  动画制作</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style type="text/css">
+body {font:normal 12px/24px Arial, Helvetica, sans-serif; background:#D9F0DB;}
+textarea,pre {font-family:Courier; font-size:12px;}
+</style>
+</head>
+<body>
+<p><a href='_index.htm'>&lt;&lt;目录</a></p><h1 style="margin:0px; padding:0px; font-weight:500; font-size:26px; line-height:normal; font-family:'Microsoft Yahei'; text-align:center">
+animate.css – 齐全的CSS3动画库</h1>
+<h2 style="margin:24px 0px; padding:0px 0px 10px; border-bottom-width:1px; border-bottom-style:solid; border-bottom-color:rgb(221,221,221); font-size:18px; font-family:'Microsoft Yahei'; color:rgb(102,102,102)">
+简介</h2>
+<p style="margin-top:24px; margin-bottom:24px; padding-top:0px; padding-bottom:0px; color:rgb(102,102,102); font-family:Consolas,'Microsoft Yahei',Arial,宋体; font-size:14px; line-height:24px">
+animate.css 是一个来自国外的 CSS3 动画库，它预设了抖动（shake）、闪烁（flash）、弹跳（bounce）、翻转（flip）、旋转（rotateIn/rotateOut）、淡入淡出（fadeIn/fadeOut）等多达 60 多种动画效果，几乎包含了所有常见的动画效果。</p>
+<p style="margin-top:24px; margin-bottom:24px; padding-top:0px; padding-bottom:0px; color:rgb(102,102,102); font-family:Consolas,'Microsoft Yahei',Arial,宋体; font-size:14px; line-height:24px">
+虽然借助 animate.css 能够很方便、快速的制作 CSS3 动画效果，但还是建议看看 animate.css 的代码，也许你能从中学到一些东西。</p>
+<h2 style="margin:24px 0px; padding:0px 0px 10px; border-bottom-width:1px; border-bottom-style:solid; border-bottom-color:rgb(221,221,221); font-size:18px; font-family:'Microsoft Yahei'; color:rgb(102,102,102)">
+兼容</h2>
+<p style="margin-top:24px; margin-bottom:24px; padding-top:0px; padding-bottom:0px; color:rgb(102,102,102); font-family:Consolas,'Microsoft Yahei',Arial,宋体; font-size:14px; line-height:24px">
+浏览器兼容：当然是只兼容支持 CSS3 animate 属性的浏览器，他们分别是：IE10&#43;、Firefox、Chrome、Opera、Safari。</p>
+<h2 style="margin:24px 0px; padding:0px 0px 10px; border-bottom-width:1px; border-bottom-style:solid; border-bottom-color:rgb(221,221,221); font-size:18px; font-family:'Microsoft Yahei'; color:rgb(102,102,102)">
+使用方法</h2>
+<h3 style="margin:24px 0px; padding:0px; font-weight:500; font-size:16px; font-family:'Microsoft Yahei'; color:rgb(102,102,102)">
+1、引入文件</h3>
+<pre class="brush:xml" style="margin-top:0px; margin-bottom:0px; padding:10px; border:1px solid rgb(240,240,240); font-size:13px; line-height:24px; font-family:Consolas,'Lucida Sans Typewriter','Lucida Console',Monaco,'Bitstream Vera Sans Mono',monospace; color:rgb(102,102,102); background-color:rgb(248,248,248)">&lt;link rel=&quot;stylesheet&quot; href=&quot;animate.min.css&quot;&gt;</pre>
+<h3 style="margin:24px 0px; padding:0px; font-weight:500; font-size:16px; font-family:'Microsoft Yahei'; color:rgb(102,102,102)">
+2、HTML 及使用</h3>
+<pre class="brush:xml" style="margin-top:0px; margin-bottom:0px; padding:10px; border:1px solid rgb(240,240,240); font-size:13px; line-height:24px; font-family:Consolas,'Lucida Sans Typewriter','Lucida Console',Monaco,'Bitstream Vera Sans Mono',monospace; color:rgb(102,102,102); background-color:rgb(248,248,248)">&lt;div class=&quot;animated bounce&quot; id=&quot;dowebok&quot;&gt;&lt;/div&gt;</pre>
+<p style="margin-top:24px; margin-bottom:24px; padding-top:0px; padding-bottom:0px; color:rgb(102,102,102); font-family:Consolas,'Microsoft Yahei',Arial,宋体; font-size:14px; line-height:24px">
+给元素加上 class 后，刷新页面，就能看到动画效果了。animated 类&#20284;于全局变量，它定义了动画的持续时间；bounce 是动画具体的动画效果的名称，你可以选择任意的效果。</p>
+<p style="margin-top:24px; margin-bottom:24px; padding-top:0px; padding-bottom:0px; color:rgb(102,102,102); font-family:Consolas,'Microsoft Yahei',Arial,宋体; font-size:14px; line-height:24px">
+如果动画是无限播放的，可以添加&nbsp;class infinite。</p>
+<p style="margin-top:24px; margin-bottom:24px; padding-top:0px; padding-bottom:0px; color:rgb(102,102,102); font-family:Consolas,'Microsoft Yahei',Arial,宋体; font-size:14px; line-height:24px">
+你也可以通过 JavaScript 或 jQuery 给元素添加这些 class，比如：</p>
+<pre class="brush:js" style="margin-top:0px; margin-bottom:0px; padding:10px; border:1px solid rgb(240,240,240); font-size:13px; line-height:24px; font-family:Consolas,'Lucida Sans Typewriter','Lucida Console',Monaco,'Bitstream Vera Sans Mono',monospace; color:rgb(102,102,102); background-color:rgb(248,248,248)">$(function(){
+&nbsp;&nbsp; &nbsp;$('#dowebok').addClass('animated bounce');
+});</pre>
+<p style="margin-top:24px; margin-bottom:24px; padding-top:0px; padding-bottom:0px; color:rgb(102,102,102); font-family:Consolas,'Microsoft Yahei',Arial,宋体; font-size:14px; line-height:24px">
+有些动画效果最后会让元素不可见，比如淡出、向左滑动等等，可能你又需要将 class 删除，比如：</p>
+<pre class="brush:js" style="margin-top:0px; margin-bottom:0px; padding:10px; border:1px solid rgb(240,240,240); font-size:13px; line-height:24px; font-family:Consolas,'Lucida Sans Typewriter','Lucida Console',Monaco,'Bitstream Vera Sans Mono',monospace; color:rgb(102,102,102); background-color:rgb(248,248,248)">$(function(){
+&nbsp;&nbsp; &nbsp;$('#dowebok').addClass('animated bounce');
+&nbsp;&nbsp; &nbsp;setTimeout(function(){
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;$('#dowebok').removeClass('bounce');
+&nbsp;&nbsp; &nbsp;}, 1000);
+});</pre>
+<p style="margin-top:24px; margin-bottom:24px; padding-top:0px; padding-bottom:0px; color:rgb(102,102,102); font-family:Consolas,'Microsoft Yahei',Arial,宋体; font-size:14px; line-height:24px">
+animate.css 的默认设置也许有些时候并不是我们想要的，所以你可以重新设置，比如：</p>
+<pre class="brush:css" style="margin-top:0px; margin-bottom:0px; padding:10px; border:1px solid rgb(240,240,240); font-size:13px; line-height:24px; font-family:Consolas,'Lucida Sans Typewriter','Lucida Console',Monaco,'Bitstream Vera Sans Mono',monospace; color:rgb(102,102,102); background-color:rgb(248,248,248)">#dowebok {
+&nbsp;&nbsp; &nbsp;animate-duration: 2s;&nbsp;&nbsp;&nbsp; //动画持续时间
+&nbsp;&nbsp; &nbsp;animate-delay: 1s;&nbsp;&nbsp;&nbsp; //动画延迟时间
+&nbsp;&nbsp; &nbsp;animate-iteration-count: 2;&nbsp;&nbsp;&nbsp; //动画执行次数
+}</pre>
+<p style="margin-top:24px; margin-bottom:24px; padding-top:0px; padding-bottom:0px; color:rgb(102,102,102); font-family:Consolas,'Microsoft Yahei',Arial,宋体; font-size:14px; line-height:24px">
+注意添加浏览器前缀。</p>
+<p style="margin-top:24px; margin-bottom:24px; padding-top:0px; padding-bottom:0px; color:rgb(102,102,102); font-family:Consolas,'Microsoft Yahei',Arial,宋体; font-size:14px; line-height:24px">
+<span style="color:rgb(102,102,102); font-family:Consolas,'Microsoft Yahei',Arial,宋体; font-size:14px; line-height:24px">jQuery形式的使用：</span><br>
+</p>
+<p style="margin-top:24px; margin-bottom:24px; padding-top:0px; padding-bottom:0px; color:rgb(102,102,102); font-family:Consolas,'Microsoft Yahei',Arial,宋体; font-size:14px; line-height:24px">
+<span style="color:rgb(102,102,102); font-family:Consolas,'Microsoft Yahei',Arial,宋体; font-size:14px; line-height:24px">案例代码：</span></p>
+<p style="margin-top:24px; margin-bottom:24px; padding-top:0px; padding-bottom:0px; color:rgb(102,102,102); font-family:Consolas,'Microsoft Yahei',Arial,宋体; font-size:14px; line-height:24px">
+<span style="color:rgb(102,102,102); font-family:Consolas,'Microsoft Yahei',Arial,宋体; font-size:14px; line-height:24px"></span><pre name="code" class="javascript">&lt;script&gt;
+$(function(){
+	$(&#39;#pagescroll&#39;).fullpage({
+		navigation: true,
+		//屏幕下滚元素动画特效；页面打开时元素默认为透明状态，即  opacity:0;  表示元素透明
+		afterLoad: function(anchorLink, index){
+			if(index == 2){
+				$(&#39;.section2 .right_box&#39;).delay(100).removeClass(&#39;fadeOutUp&#39;).addClass(&#39;animated fadeInUp&#39;),
+				$(&#39;.section2 .left_box&#39;).delay(1000).removeClass(&#39;fadeOutDown&#39;).addClass(&#39;animated fadeInDown&#39;)
+			
+			}
+			if(index == 3){
+				$(&#39;.section3 .right_box&#39;).delay(100).removeClass(&#39;fadeOutUp&#39;).addClass(&#39;animated fadeInRight&#39;),
+				$(&#39;.section3 .left_box&#39;).delay(1000).removeClass(&#39;fadeOutDown&#39;).addClass(&#39;animated fadeInLeft&#39;)
+			}
+		},
+		//屏幕上滚元素动画特效
+		onLeave: function(index, direction){
+			if(index == &#39;2&#39;){
+				$(&#39;.section2 .right_box&#39;).delay(100).addClass(&#39;fadeOutUp&#39;),
+				$(&#39;.section2 .left_box&#39;).delay(1000).addClass(&#39;fadeOutDown&#39;)
+			}
+			if(index == &#39;3&#39;){
+				$(&#39;.section3 .right_box&#39;).delay(100).addClass(&#39;fadeOutUp&#39;),
+				$(&#39;.section3 .left_box&#39;).delay(1000).addClass(&#39;fadeOutDown&#39;)
+			}
+		}
+	});
+});
+&lt;/script&gt;</pre><br>
+</p>
+<p><a href='_index.htm'>&lt;&lt;目录</a></p>
+</body>
+</html>

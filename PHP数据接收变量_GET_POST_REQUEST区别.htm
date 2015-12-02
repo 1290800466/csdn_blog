@@ -1,0 +1,86 @@
+﻿<!doctype html>
+<html dir="ltr" lang="zh-CN">
+<head>
+<title>PHP数据接收变量$_GET、$_POST 、$_REQUEST区别</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style type="text/css">
+body {font:normal 12px/24px Arial, Helvetica, sans-serif; background:#D9F0DB;}
+textarea,pre {font-family:Courier; font-size:12px;}
+</style>
+</head>
+<body>
+<p><a href='_index.htm'>&lt;&lt;目录</a></p><p><span style="font-size:14px"><strong>1、$_GET 变量</strong></span></p>
+<p><span style="font-size:14px"><strong><br>
+</strong></span></p>
+<span style="font-size:14px">预定义的 $_GET 变量用于收集来自 method=&quot;get&quot; 的表单中的&#20540;。<br>
+</span>
+<p><span style="font-size:14px">从带有 GET 方法的表单发送的信息，对任何人都是可见的（会显示在浏览器的地址栏），并且对发送信息的量也有限制。</span></p>
+<p><span style="font-size:14px"><span style="font-size:14px">$_GET 变量的安全性不如$_POST 。</span></span></p>
+<span style="font-size:14px"><br>
+实例<br>
+</span><pre name="code" class="html">&lt;form action=&quot;welcome.php&quot; method=&quot;get&quot;&gt;
+Name: &lt;input type=&quot;text&quot; name=&quot;fname&quot;&gt;
+Age: &lt;input type=&quot;text&quot; name=&quot;age&quot;&gt;
+&lt;input type=&quot;submit&quot;&gt;
+&lt;/form&gt;</pre><br>
+当用户点击 &quot;Submit&quot; 按钮时，发送到服务器的 URL 如下所示：<br>
+http://www.w3cschool.cc/welcome.php?fname=Peter&amp;age=37<br>
+&quot;welcome.php&quot; 文件现在可以通过 $_GET 变量来收集表单数据了（请注意，表单域的名称会自动成为 $_GET 数组中的键）：<br>
+<br>
+<pre name="code" class="php">Welcome &lt;?php echo $_GET[&quot;fname&quot;]; ?&gt;.&lt;br&gt;
+You are &lt;?php echo $_GET[&quot;age&quot;]; ?&gt; years old!</pre><br>
+<strong>何时使用 method=&quot;get&quot;？</strong><br>
+在 HTML 表单中使用 method=&quot;get&quot; 时，所有的变量名和&#20540;都会显示在 URL 中。<br>
+<br>
+注释：所以在发送密码或其他敏感信息时，不应该使用这个方法！<br>
+<br>
+然而，正因为变量显示在 URL 中，因此可以在收藏夹中收藏该页面。在某些情况下，这是很有用的。<br>
+<br>
+注释：HTTP GET 方法不适合大型的变量&#20540;。它的&#20540;是不能超过 2000 个字符的。<br>
+<br>
+<p><span style="font-size:14px"><strong>2、$_POST 变量</strong></span></p>
+<p><span style="font-size:14px"><strong><br>
+</strong></span></p>
+<span style="font-size:14px">预定义的 $_POST 变量用于收集来自 method=&quot;post&quot; 的表单中的&#20540;。<br>
+<br>
+从带有 POST 方法的表单发送的信息，对任何人都是不可见的（不会显示在浏览器的地址栏），并且对发送信息的量也没有限制。<br>
+<br>
+注释：然而，默认情况下，POST 方法的发送信息的量最大&#20540;为 8 MB（可通过设置 php.ini 文件中的 post_max_size 进行更改）。<br>
+<br>
+实例<br>
+<br>
+</span><pre name="code" class="html">&lt;form action=&quot;welcome.php&quot; method=&quot;post&quot;&gt;
+Name: &lt;input type=&quot;text&quot; name=&quot;fname&quot;&gt;
+Age: &lt;input type=&quot;text&quot; name=&quot;age&quot;&gt;
+&lt;input type=&quot;submit&quot;&gt;
+&lt;/form&gt;</pre><br>
+当用户点击 &quot;Submit&quot; 按钮时，URL 如下所示：<br>
+<br>
+http://www.w3cschool.cc/welcome.php<br>
+&quot;welcome.php&quot; 文件现在可以通过 $_POST 变量来收集表单数据了（请注意，表单域的名称会自动成为 $_POST 数组中的键）：<br>
+<br>
+<pre name="code" class="php">Welcome &lt;?php echo $_POST[&quot;fname&quot;]; ?&gt;!&lt;br&gt;
+You are &lt;?php echo $_POST[&quot;age&quot;]; ?&gt; years old.</pre><br>
+何时使用 method=&quot;post&quot;？<br>
+从带有 POST 方法的表单发送的信息，对任何人都是不可见的，并且对发送信息的量也没有限制。<br>
+<br>
+然而，由于变量不显示在 URL 中，所以无法把页面加入书签。<br>
+<br>
+<p><span style="font-size:14px"><strong>3、PHP $_REQUEST 变量</strong></span></p>
+<p><span style="font-size:14px"><br>
+</span></p>
+<span style="font-size:14px">预定义的 $_REQUEST 变量包含了 $_GET、$_POST 和 $_COOKIE 的内容。<br>
+<br>
+</span>
+<p><span style="font-size:14px">$_REQUEST 变量可用来收集通过 GET 和 POST 方法发送的表单数据。</span></p>
+<p><span style="font-size:14px"><span style="font-size:14px">$_REQUEST 变量既可以收集<span style="font-size:14px">GET方法发送的数据，也可以接受POST方法接受的数据。</span></span><br>
+</span></p>
+<span style="font-size:14px"><br>
+实例<br>
+<br>
+</span><pre name="code" class="php">Welcome &lt;?php echo $_REQUEST[&quot;fname&quot;]; ?&gt;!&lt;br&gt;
+You are &lt;?php echo $_REQUEST[&quot;age&quot;]; ?&gt; years old.</pre><br>
+<br>
+<p><a href='_index.htm'>&lt;&lt;目录</a></p>
+</body>
+</html>

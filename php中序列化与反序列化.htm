@@ -1,0 +1,60 @@
+﻿<!doctype html>
+<html dir="ltr" lang="zh-CN">
+<head>
+<title>php中序列化与反序列化</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style type="text/css">
+body {font:normal 12px/24px Arial, Helvetica, sans-serif; background:#D9F0DB;}
+textarea,pre {font-family:Courier; font-size:12px;}
+</style>
+</head>
+<body>
+<p><a href='_index.htm'>&lt;&lt;目录</a></p><p style="margin:10px auto; padding-top:0px; padding-bottom:0px; color:rgb(51,51,51); font-family:verdana,Arial,Helvetica,sans-serif; font-size:14px; line-height:25.2000007629395px">
+php序列化：<br>
+</p>
+<div style="margin:0px; padding:0px; color:rgb(51,51,51); font-family:verdana,Arial,Helvetica,sans-serif; font-size:14px; line-height:25.2000007629395px">
+serialize() 函数，<span style="color:rgb(51,51,51); font-family:verdana,Arial,Helvetica,sans-serif; font-size:14px; line-height:25.2000007629395px">把复杂的数据类型压缩到一个字符串中，</span>把变量和它们的&#20540;编码成文本形式，这<span style="color:rgb(51,51,51); font-family:'Fira Sans','Source Sans Pro',Helvetica,Arial,sans-serif; font-size:16px; line-height:24px; background-color:rgb(242,242,242)">有利于存储或传递
+ PHP 的&#20540;，同时不丢失其类型和结构</span></div>
+<div style="margin:0px; padding:0px; color:rgb(51,51,51); font-family:verdana,Arial,Helvetica,sans-serif; font-size:14px; line-height:25.2000007629395px">
+<span style="color:rgb(51,51,51); font-family:'Fira Sans','Source Sans Pro',Helvetica,Arial,sans-serif; font-size:16px; line-height:24px; background-color:rgb(242,242,242)"><br>
+</span></div>
+<div style="margin:0px; padding:0px; color:rgb(51,51,51); font-family:verdana,Arial,Helvetica,sans-serif; font-size:14px; line-height:25.2000007629395px">
+<span style="color:rgb(51,51,51); font-family:'Fira Sans','Source Sans Pro',Helvetica,Arial,sans-serif; font-size:16px; line-height:24px; background-color:rgb(242,242,242)"><span style="color:rgb(51,51,51); font-family:verdana,Arial,Helvetica,sans-serif; font-size:14px; line-height:25.2000007629395px">php</span>反序列化：<br>
+</span></div>
+<div style="margin:0px; padding:0px; color:rgb(51,51,51); font-family:verdana,Arial,Helvetica,sans-serif; font-size:14px; line-height:25.2000007629395px">
+unserialize() 函数<span style="color:rgb(51,51,51); font-family:'Fira Sans','Source Sans Pro',Helvetica,Arial,sans-serif; font-size:16px; line-height:24px; background-color:rgb(242,242,242)">对单一的已序列化的变量进行操作，将其转换回 PHP 的&#20540;</span><br style="margin:0px; padding:0px">
+<div style="margin:0px; padding:0px">例:</div>
+<div style="margin:0px; padding:0px">
+<div style="margin:0px; padding:0px">
+<div class="cnblogs_code" style="margin:5px 0px; padding:5px; border:1px solid rgb(204,204,204); overflow:auto; color:rgb(0,0,0); font-family:'Courier New'!important; font-size:12px!important; background-color:rgb(245,245,245)">
+<pre style="margin-top:0px; margin-bottom:0px; padding:0px; white-space:pre-wrap; word-wrap:break-word; font-family:'Courier New'!important"><span style="margin:0px; padding:0px; line-height:1.8; color:rgb(128,0,128)">$stooges</span> = <span style="margin:0px; padding:0px; line-height:1.8; color:rgb(0,0,255)">array</span>('Moe','Larry','Curly');<br style="margin:0px; padding:0px"><span style="margin:0px; padding:0px; line-height:1.8; color:rgb(128,0,128)">$new</span> = <span style="margin:0px; padding:0px; line-height:1.8; color:rgb(0,128,128)">serialize</span>(<span style="margin:0px; padding:0px; line-height:1.8; color:rgb(128,0,128)">$stooges</span>);<br style="margin:0px; padding:0px"><span style="margin:0px; padding:0px; line-height:1.8; color:rgb(0,128,128)">print_r</span>(<span style="margin:0px; padding:0px; line-height:1.8; color:rgb(128,0,128)">$new</span>);<span style="margin:0px; padding:0px; line-height:1.8; color:rgb(0,0,255)">echo</span> &quot;&lt;br /&gt;&quot;;<br style="margin:0px; padding:0px"><span style="margin:0px; padding:0px; line-height:1.8; color:rgb(0,128,128)">print_r</span>(<span style="margin:0px; padding:0px; line-height:1.8; color:rgb(0,128,128)">unserialize</span>(<span style="margin:0px; padding:0px; line-height:1.8; color:rgb(128,0,128)">$new</span>));</pre>
+</div>
+</div>
+<div style="margin:0px; padding:0px">结果：<span style="margin:0px; padding:0px; line-height:1.8">a:3:{i:0;s:3:&quot;Moe&quot;;i:1;s:5:&quot;Larry&quot;;i:2;s:5:&quot;Curly&quot;;}</span></div>
+<span style="margin:0px; padding:0px; line-height:1.8">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Array ( [0] =&gt; Moe [1] =&gt; Larry [2] =&gt; Curly )</span></div>
+</div>
+<div style="margin:0px; padding:0px; color:rgb(51,51,51); font-family:verdana,Arial,Helvetica,sans-serif; font-size:14px; line-height:25.2000007629395px">
+例：</div>
+<div style="margin:0px; padding:0px; color:rgb(51,51,51); font-family:verdana,Arial,Helvetica,sans-serif; font-size:14px; line-height:25.2000007629395px">
+<pre name="code" class="php">&lt;?php
+$asd=&#39;a:3:{s:7:&quot;app_key&quot;;s:9:&quot;101246651&quot;;s:10:&quot;app_secret&quot;;s:32:&quot;d0bf4565ed029bcd7f979f0c56321a10&quot;;s:7:&quot;app_url&quot;;s:48:&quot;http://www.5188zc.com/api_callback.php?c=Tencent&quot;;}&#39;;
+print_r($asd);
+echo &quot;&lt;br/&gt;&quot;;
+$asd=unserialize($asd);
+echo $asd[&#39;app_key&#39;];
+echo &quot;&lt;br/&gt;&quot;;
+echo $asd[&#39;app_secret&#39;];
+echo &quot;&lt;br/&gt;&quot;;
+echo $asd[&#39;app_url&#39;];
+echo &quot;&lt;br/&gt;&quot;;
+$asd=serialize($asd);
+print_r($asd);
+?&gt;</pre><br>
+<br>
+</div>
+<div style="margin:0px; padding:0px; color:rgb(51,51,51); font-family:verdana,Arial,Helvetica,sans-serif; font-size:14px; line-height:25.2000007629395px">
+<br>
+</div>
+<p><a href='_index.htm'>&lt;&lt;目录</a></p>
+</body>
+</html>

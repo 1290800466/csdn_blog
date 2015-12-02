@@ -1,0 +1,41 @@
+﻿<!doctype html>
+<html dir="ltr" lang="zh-CN">
+<head>
+<title>Apache中设置默认首页</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style type="text/css">
+body {font:normal 12px/24px Arial, Helvetica, sans-serif; background:#D9F0DB;}
+textarea,pre {font-family:Courier; font-size:12px;}
+</style>
+</head>
+<body>
+<p><a href='_index.htm'>&lt;&lt;目录</a></p><h2>Apache<span style="font-family:宋体">中设置默认首页的方法</span></h2>
+<table align="center">
+<tbody>
+<tr>
+<td valign="top">
+<p><span style="color:rgb(102,102,102)">&nbsp;</span></p>
+</td>
+</tr>
+<tr>
+<td valign="top">
+<p><span style="color:rgb(51,51,51)">&nbsp;&nbsp;&nbsp;&nbsp;<span style="font-family:宋体">在你安装后的</span><span style="font-family:Calibri">Apache</span><span style="font-family:宋体">目录下</span><span style="font-family:Calibri">,</span><span style="font-family:宋体">有一个</span><span style="font-family:Calibri">conf</span><span style="font-family:宋体">目录</span><span style="font-family:Calibri">,</span><span style="font-family:宋体">在这个目录里</span><span style="font-family:Calibri">,</span><span style="font-family:宋体">有一个</span><span style="font-family:Calibri">&quot;httpd.conf&quot;</span><span style="font-family:宋体">文件</span><span style="font-family:Calibri">.</span><span style="font-family:宋体">我们要做的</span><span style="font-family:Calibri">,</span><span style="font-family:宋体">就是修改这个文件</span><span style="font-family:Calibri">.</span></span><span style="color:rgb(51,51,51)"><br>
+</span><span style="color:rgb(51,51,51)"><br>
+</span><span style="color:rgb(51,51,51)">&nbsp;&nbsp;&nbsp;&nbsp;<span style="font-family:宋体">在这个文件里</span><span style="font-family:Calibri">,</span><span style="font-family:宋体">凡是以</span><span style="font-family:Calibri">&quot;#&quot;</span><span style="font-family:宋体">开头的每一行</span><span style="font-family:Calibri">,</span><span style="font-family:宋体">都是无效的</span><span style="font-family:Calibri">,</span><span style="font-family:宋体">如果你想让你的设置起作用</span><span style="font-family:Calibri">,</span><span style="font-family:宋体">就要把行首的</span><span style="font-family:Calibri">&quot;#&quot;</span><span style="font-family:宋体">去掉</span><span style="font-family:Calibri">.</span></span><span style="color:rgb(51,51,51)"><br>
+</span><span style="color:rgb(51,51,51)"><br>
+</span><span style="color:rgb(51,51,51)">&nbsp;&nbsp;&nbsp;&nbsp;<span style="font-family:宋体">找到&nbsp;</span><span style="font-family:Calibri">DirectoryIndex&nbsp;&nbsp;</span><span style="font-family:宋体">这段</span><span style="font-family:Calibri">.</span><span style="font-family:宋体">把它改成</span><span style="font-family:Calibri">DirectoryIndex&nbsp;&nbsp;index.php&nbsp;index.Html&nbsp;index.html&nbsp;&nbsp;</span><span style="font-family:宋体">这样</span><span style="font-family:Calibri">,</span><span style="font-family:宋体">你的网站目录的默认首页是&nbsp;</span><span style="font-family:Calibri">index.php,&nbsp;</span><span style="font-family:宋体">如果没有</span><span style="font-family:Calibri">index.php</span><span style="font-family:宋体">系统会自动寻找</span><span style="font-family:Calibri">index.html</span><span style="font-family:宋体">、</span><span style="font-family:Calibri">html</span><span style="font-family:宋体">做为默认首页了。</span></span><span style="color:rgb(51,51,51)"><br>
+</span><span style="color:rgb(51,51,51)">&nbsp;&nbsp;&nbsp;&nbsp;<span style="font-family:宋体">注意事项：</span><span style="font-family:Calibri">index.php&nbsp;index.Html</span><span style="font-family:宋体">之间要有一个空&#26684;</span></span><span style="color:rgb(51,51,51)"><br>
+</span><span style="color:rgb(51,51,51)"><br>
+</span><span style="color:rgb(51,51,51)">&nbsp;&nbsp;&nbsp;&nbsp;<span style="font-family:宋体">另外你还可以操作一下其它的：</span></span><span style="color:rgb(51,51,51)"><br>
+</span><span style="color:rgb(51,51,51)">&nbsp;&nbsp;&nbsp;&nbsp;<span style="font-family:宋体">找到&nbsp;</span><span style="font-family:Calibri">ServerRoot&nbsp;</span><span style="font-family:宋体">这段</span><span style="font-family:Calibri">.</span><span style="font-family:宋体">将它设成你的</span><span style="font-family:Calibri">Apache</span><span style="font-family:宋体">安装目录</span><span style="font-family:Calibri">,</span><span style="font-family:宋体">我的是&nbsp;</span><span style="font-family:Calibri">ServerRoot&nbsp;&quot;D:/Apache&nbsp;Group/Apache2&quot;</span></span><span style="color:rgb(51,51,51)"><br>
+</span><span style="color:rgb(51,51,51)">&nbsp;&nbsp;&nbsp;&nbsp;<span style="font-family:宋体">找到&nbsp;</span><span style="font-family:Calibri">DocumentRoot&nbsp;</span><span style="font-family:宋体">这段</span><span style="font-family:Calibri">.</span><span style="font-family:宋体">把他设成你网站的根目录</span><span style="font-family:Calibri">,</span><span style="font-family:宋体">我的是&nbsp;</span><span style="font-family:Calibri">DocumentRoot&nbsp;&quot;D:/Apache&nbsp;Group/web</span></span><span style="color:rgb(51,51,51)">&nbsp;</span><span style="color:rgb(51,51,51)"><br>
+</span></p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p><a href='_index.htm'>&lt;&lt;目录</a></p>
+</body>
+</html>

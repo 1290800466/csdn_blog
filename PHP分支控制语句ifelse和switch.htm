@@ -1,0 +1,67 @@
+﻿<!doctype html>
+<html dir="ltr" lang="zh-CN">
+<head>
+<title>PHP分支控制语句 if...else 和 switch</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style type="text/css">
+body {font:normal 12px/24px Arial, Helvetica, sans-serif; background:#D9F0DB;}
+textarea,pre {font-family:Courier; font-size:12px;}
+</style>
+</head>
+<body>
+<p><a href='_index.htm'>&lt;&lt;目录</a></p><h2>if...else 语句实例：</h2>
+<pre name="code" class="php">&lt;?php
+$t=date(&quot;H&quot;);
+if ($t&lt;&quot;10&quot;)
+{
+    echo &quot;Have a good morning!&quot;;
+}
+else if ($t&lt;&quot;20&quot;)
+{
+    echo &quot;Have a good day!&quot;;
+}
+else
+{
+    echo &quot;Have a good night!&quot;;
+}
+?&gt;</pre>
+<p>注意：</p>
+<p>☞else if 可以有多个；</p>
+<p>☞else 可以没有；</p>
+<p>☞若条件既满足 if 语句，又满足 else if 语句，则只执行最上面（第一条满足）的语句</p>
+<p><br>
+</p>
+<h2>switch...case多重分支语句实例：</h2>
+<div><pre name="code" class="php">&lt;?php
+$favcolor=&quot;red&quot;;
+switch ($favcolor)//这是表达式
+{
+case &quot;red&quot;:// case 后跟常量
+echo &quot;Your favorite color is red!&quot;;
+break;
+case &quot;blue&quot;:
+echo &quot;Your favorite color is blue!&quot;;
+break;
+case &quot;green&quot;:
+echo &quot;Your favorite color is green!&quot;;
+break;
+default:
+echo &quot;Your favorite color is neither red, blue, or green!&quot;;
+}
+?&gt;</pre><br>
+注意：</div>
+<div>☞ case 语句有一到多个；</div>
+<div>☞ default 语句可有可无，由代码逻辑决定；<br>
+</div>
+<div>☞通常 case 语句后要带上 break 语句，表示要退出 switch 语句；<br>
+</div>
+<div>☞&nbsp;default 语句放置的位置对执行结果没有影响；<br>
+</div>
+<div>☞ switch 首先按照 case 顺序进行匹配（若 default 语句在case之前，也不予考虑），如果一个也没有匹配到，则执行 default 语句的内容，</div>
+<div>&nbsp; &nbsp; &nbsp;直到遇到 break ，则退出 switch；</div>
+<div>☞若 default 语句在case语句之前且运行了 default ，如果 default 语句后没有 break 语句，将继续执行 case 语句的内容，直至遇到break语句为止。&nbsp;</div>
+<p><br>
+</p>
+<p><a href='_index.htm'>&lt;&lt;目录</a></p>
+</body>
+</html>

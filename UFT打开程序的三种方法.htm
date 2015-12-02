@@ -1,0 +1,31 @@
+﻿<!doctype html>
+<html dir="ltr" lang="zh-CN">
+<head>
+<title>UFT打开程序的三种方法</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style type="text/css">
+body {font:normal 12px/24px Arial, Helvetica, sans-serif; background:#D9F0DB;}
+textarea,pre {font-family:Courier; font-size:12px;}
+</style>
+</head>
+<body>
+<p><a href='_index.htm'>&lt;&lt;目录</a></p><pre name="code" class="vb">
+&#39;三种UFT打开程序的方法  
+
+
+&#39;1、SystemUtil.Run &#39; SystemUtil对象的Run方法
+SystemUtil.Run &quot;D:\Program Files\HP\QuickTest Professional\samples\flight\app\flight4a.exe&quot;
+
+
+&#39;2、InvokeApplication &#39; 调用程序函数
+InvokeApplication &quot;D:\Program Files\HP\QuickTest Professional\samples\flight\app\flight4a.exe&quot;
+
+
+&#39;3、WSH &#39; 通过wsh对象的Run（bat）或者exec（exe）方法
+Dim oWSH
+Set oWSH = CreateObject(&quot;WScript.shell&quot;)
+oWSH.exec &quot;D:\Program Files\HP\QuickTest Professional\samples\flight\app\flight4a.exe&quot;
+Set oWSH = nothing</pre><br>
+<p><a href='_index.htm'>&lt;&lt;目录</a></p>
+</body>
+</html>

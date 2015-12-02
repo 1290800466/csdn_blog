@@ -1,0 +1,110 @@
+﻿<!doctype html>
+<html dir="ltr" lang="zh-CN">
+<head>
+<title>PHP  MySQL 数据库dml语句与dql语句的操作</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style type="text/css">
+body {font:normal 12px/24px Arial, Helvetica, sans-serif; background:#D9F0DB;}
+textarea,pre {font-family:Courier; font-size:12px;}
+</style>
+</head>
+<body>
+<p><a href='_index.htm'>&lt;&lt;目录</a></p><p><span style="font-size:18px"><strong>数据库操作语句主要分为dml语句和dql语句：</strong><br>
+数据操作语句（dml）语句：具体是指 UPDATE更新、INSERT插入、DELETE删除。<br>
+数据查询语句（dql）语句：指 SELECT 数据查询语言<br>
+如果执行的是dml语句，则返回bool&#20540;<br>
+如果执行的是dql语句，则返回查询结果$res，从$res中取出查询结果主要有一下四种方式：<br>
+mysql_fetch_row($res) &nbsp;,返回一个索引的数组 &nbsp;(推荐.)<br>
+mysql_fetch_assoc($res) &nbsp;,返回一个关联数组<br>
+mysql_fetch_array($res) &nbsp;,返回索引数组和关联数组 (两套)<br>
+mysql_fetch_object($res) ,把一行数据，当做一个对象返回.</span></p>
+<p><span style="font-size:18px"><br>
+</span></p>
+<p><pre name="code" class="php">&lt;?php
+
+//演示对test表进行增，删，改,查的操作
+$conn=mysql_connect(&quot;localhost&quot;,&quot;root&quot;,&quot;111111&quot;);
+if(!$conn){
+    die(&quot;连接数据库失败！&quot;.mysql_error());
+}
+mysql_select_db(&quot;test&quot;,$conn) or die(&quot;数据库选择失败！&quot;.mysql_error());
+mysql_query(&quot;set names utf8&quot;);
+//$sql=&quot;insert into test(id,name,age,class,home,school) values(1,&#39;qw&#39;,12,12,12,12)&quot;;
+//$sql=&quot;delete from test where id=1&quot;;
+$sql=&quot;update test set age=100 where id=2&quot;;
+$sql_dql=&quot;select * from test&quot;;
+//如果是dml操作，则返回bool
+$res=mysql_query($sql,$conn);
+if(!$res){
+    die(&quot;操作失败&quot;.mysql_error());
+}
+//看看有几条数据受到影响，
+if(mysql_affected_rows($conn)&gt;0){
+    echo &quot;受影响的行数为：&quot;.mysql_affected_rows($conn).&quot;行&quot;;
+}else{
+    echo &quot;没有影响到行数&quot;;
+}
+//如果执行的是dql语句，则返回查询结果$res，从$res中取出查询结果
+$result = mysql_query($sql_dql,$conn);
+if(!$result){
+    echo &#39;数据库查询失败！&#39;.mysql_error();
+    exit;
+}
+echo &quot;&lt;br/&gt;&quot;;
+//返回索引数组
+// while($row = mysql_fetch_row($result)){
+//     echo $row[0].&quot;--&quot;;
+//     echo $row[1].&quot;--&quot;;
+//     echo $row[2].&quot;--&quot;;
+//     echo $row[3].&quot;--&quot;;
+//     echo $row[4].&quot;--&quot;;
+//     echo $row[5].&quot;--&quot;;
+//     echo &quot;&lt;br&gt;&quot;;
+// }
+// echo &quot;共输出&quot;.mysql_affected_rows($conn).&quot;条记录！&quot;;
+//返回关联数组
+// while($row = mysql_fetch_assoc($result)){
+//     echo $row[&#39;id&#39;].&quot;--&quot;;
+//     echo $row[&#39;name&#39;].&quot;--&quot;;
+//     echo $row[&#39;age&#39;].&quot;--&quot;;
+//     echo $row[&#39;home&#39;].&quot;--&quot;;
+//     echo $row[&#39;class&#39;].&quot;--&quot;;
+//     echo $row[&#39;school&#39;].&quot;--&quot;;
+//     echo &quot;&lt;br&gt;&quot;;
+// }
+// echo &quot;共输出&quot;.mysql_affected_rows($conn).&quot;条记录！&quot;;
+//返回索引数组和关联数组 (两套)
+// while($row = mysql_fetch_array($result)){
+//     echo $row[&#39;id&#39;].&quot;--&quot;;
+//     echo $row[0].&quot;--&quot;;
+//     echo $row[&#39;name&#39;].&quot;--&quot;;
+//     echo $row[1].&quot;--&quot;;
+//     echo $row[&#39;age&#39;].&quot;--&quot;;
+//     echo $row[2].&quot;--&quot;;
+//     echo $row[&#39;home&#39;].&quot;--&quot;;
+//     echo $row[&#39;class&#39;].&quot;--&quot;;
+//     echo $row[&#39;school&#39;].&quot;--&quot;;
+//     echo &quot;&lt;br&gt;&quot;;
+// }
+// echo &quot;共输出&quot;.mysql_affected_rows($conn).&quot;条记录！&quot;;
+//把一行数据，当做一个对象返回.
+while($row = mysql_fetch_object($result)){
+    echo $row-&gt;id.&quot;--&quot;;
+    echo $row-&gt;name.&quot;--&quot;;
+    echo $row-&gt;age.&quot;--&quot;;
+    echo $row-&gt;home.&quot;--&quot;;
+    echo $row-&gt;class.&quot;--&quot;;
+    echo $row-&gt;school.&quot;--&quot;;
+    echo &quot;&lt;br&gt;&quot;;
+}
+echo &quot;共输出&quot;.mysql_affected_rows($conn).&quot;条记录！&quot;;
+//释放资源,使用完$result结果集后，一定要尽快释放资源，有助于减轻内存压力：
+mysql_free_result($result);
+//关闭连接,$conn 的使用原则是尽量晚创建，尽量早释放
+mysql_close($conn);
+?&gt;</pre><br>
+<br>
+</p>
+<p><a href='_index.htm'>&lt;&lt;目录</a></p>
+</body>
+</html>

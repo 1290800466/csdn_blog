@@ -1,0 +1,183 @@
+﻿<!doctype html>
+<html dir="ltr" lang="zh-CN">
+<head>
+<title>PHP 变量作用域</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style type="text/css">
+body {font:normal 12px/24px Arial, Helvetica, sans-serif; background:#D9F0DB;}
+textarea,pre {font-family:Courier; font-size:12px;}
+</style>
+</head>
+<body>
+<p><a href='_index.htm'>&lt;&lt;目录</a></p><h2 style="font-size:22px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; margin-top:10px; margin-bottom:10px">
+PHP 变量作用域</h2>
+<p style="line-height:16.7999992370605px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif">
+PHP 有四种不同的变量作用域：</p>
+<ul style="line-height:16.7999992370605px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif">
+<li style="padding:2px 0px">local</li><li style="padding:2px 0px">global</li><li style="padding:2px 0px">static</li><li style="padding:2px 0px">parameter</li></ul>
+<hr style="color:rgb(212,212,212); height:1px; border:0px; clear:both; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; background-color:rgb(212,212,212)">
+<h2 style="font-size:22px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; margin-top:10px; margin-bottom:10px">
+局部和全局作用域</h2>
+<p style="line-height:16.7999992370605px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif">
+在所有函数外部定义的变量，拥有全局作用域。<strong><span style="font-size:14px">除了函数外，全局变量可以被脚本中的任何部分访问</span></strong>，要在一个函数中访问一个全局变量，需要使用 global 关键字。</p>
+<p style="line-height:16.7999992370605px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif">
+在 PHP 函数内部声明的变量是局部变量，仅能在函数内部访问：</p>
+<div class="example" style="width:711px; margin:0px; padding:5px; border:1px solid rgb(212,212,212); font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; background-color:rgb(229,238,204)">
+<h2 class="example" style="font-size:14px; margin-top:0px; margin-bottom:10px; color:rgb(97,127,16); background-color:transparent">
+实例</h2>
+<div class="example_code notranslate" style="width:696.765625px; padding:5px; border:1px solid rgb(212,212,212); font-size:13px; font-family:'courier new'; background-color:rgb(255,255,255)">
+&lt;?php<br>
+$x=5; // 全局变量<br>
+<br>
+function myTest()</div>
+<div class="example_code notranslate" style="width:696.765625px; padding:5px; border:1px solid rgb(212,212,212); font-size:13px; font-family:'courier new'; background-color:rgb(255,255,255)">
+//<span style="font-family:'courier new'; font-size:13px">function myTest(&amp;$y) &nbsp; //替换为这句</span><br>
+{<br>
+$y=10; // 局部变量<br>
+echo &quot;&lt;p&gt;Test variables inside the function:&lt;p&gt;&quot;;</div>
+<div class="example_code notranslate" style="width:696.765625px; padding:5px; border:1px solid rgb(212,212,212); font-size:13px; font-family:'courier new'; background-color:rgb(255,255,255)">
+//global $x; &nbsp; //加上这句就好了</div>
+<div class="example_code notranslate" style="width:696.765625px; padding:5px; border:1px solid rgb(212,212,212); font-size:13px; font-family:'courier new'; background-color:rgb(255,255,255)">
+echo &quot;Variable x is: $x&quot;;<br>
+echo &quot;&lt;br&gt;&quot;;<br>
+echo &quot;Variable y is: $y&quot;;<br>
+}&nbsp;<br>
+<br>
+myTest();</div>
+<div class="example_code notranslate" style="width:696.765625px; padding:5px; border:1px solid rgb(212,212,212); font-size:13px; font-family:'courier new'; background-color:rgb(255,255,255)">
+//<span style="font-family:'courier new'; font-size:13px">myTest($y);</span><br>
+<br>
+echo &quot;&lt;p&gt;Test variables outside the function:&lt;p&gt;&quot;;<br>
+echo &quot;Variable x is: $x&quot;;<br>
+echo &quot;&lt;br&gt;&quot;;<br>
+echo &quot;Variable y is: $y&quot;;<br>
+?&gt;</div>
+</div>
+<p style="line-height:16.7999992370605px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif">
+在以上实例中 myTest() 函数定义了 $x 和 $y 变量。 $x 变量在函数外声明，所以它是全局变量 ， $y 变量在函数内声明所以它是局部变量。</p>
+<p style="line-height:16.7999992370605px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif">
+当我们调用myTest()函数并输出两个变量的&#20540;, 函数将会输出局部变量 $y 的&#20540;，但是不能输出 $x 的&#20540;，因为 $x 变量在函数外定义，无法在函数内使用，如果要在一个函数中访问一个全局变量，需要使用 global 关键字。</p>
+<p style="line-height:16.7999992370605px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif">
+然后我们在myTest()函数外输出两个变量的&#20540;，函数将会输出全局部变量 $x 的&#20540;，但是不能输出 $y 的&#20540;，因为 $y 变量在函数中定义，属于局部变量。</p>
+<table class="lamp  " style="font-size:12px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; width:721px; padding:0px; border:1px solid rgb(212,212,212); color:rgb(0,0,0)">
+<tbody>
+<tr>
+<th style="font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; padding:10px 5px 10px 10px; width:34px">
+<img src="http://www.w3cschool.cc/images/lamp.jpg" alt="Note" style="border:0px; max-width:705px; padding:2px; height:32px; width:32px"></th>
+<td style="line-height:16.7999992370605px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; padding:4px 10px 4px 0px">
+你可以在不同函数中使用相同的变量名称，因为这些函数内定义的变量名是局部变量，只作用于该函数内。</td>
+</tr>
+</tbody>
+</table>
+<hr style="color:rgb(212,212,212); height:1px; border:0px; clear:both; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; background-color:rgb(212,212,212)">
+<h2 style="font-size:22px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; margin-top:10px; margin-bottom:10px">
+PHP global 关键字</h2>
+<p style="line-height:16.7999992370605px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif">
+global 关键字用于函数内访问全局变量。</p>
+<p style="line-height:16.7999992370605px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif">
+在函数内调用函数外定义的全局变量，我们需要在函数中的变量前加上 global 关键字：</p>
+<div class="example" style="width:711px; margin:0px; padding:5px; border:1px solid rgb(212,212,212); font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; background-color:rgb(229,238,204)">
+<h2 class="example" style="font-size:14px; margin-top:0px; margin-bottom:10px; color:rgb(97,127,16); background-color:transparent">
+实例</h2>
+<div class="example_code" style="width:696.765625px; padding:5px; border:1px solid rgb(212,212,212); font-size:13px; font-family:'courier new'; background-color:rgb(255,255,255)">
+&lt;?php<br>
+$x=5;<br>
+$y=10;<br>
+<br>
+function myTest()<br>
+{<br>
+global $x,$y;<br>
+$y=$x&#43;$y;<br>
+}<br>
+<br>
+myTest();<br>
+echo $y; // 输出 15<br>
+?&gt;</div>
+</div>
+<p style="line-height:16.7999992370605px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif">
+PHP 将所有全局变量存储在一个名为 $GLOBALS[<em>index</em>] 的数组中。&nbsp;<em>index</em>&nbsp;保存变量的名称。这个数组可以在函数内部访问，也可以直接用来更新全局变量。</p>
+<p style="line-height:16.7999992370605px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif">
+上面的实例可以写成这样：</p>
+<div class="example" style="width:711px; margin:0px; padding:5px; border:1px solid rgb(212,212,212); font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; background-color:rgb(229,238,204)">
+<h2 class="example" style="font-size:14px; margin-top:0px; margin-bottom:10px; color:rgb(97,127,16); background-color:transparent">
+实例</h2>
+<div class="example_code notranslate" style="width:696.765625px; padding:5px; border:1px solid rgb(212,212,212); font-size:13px; font-family:'courier new'; background-color:rgb(255,255,255)">
+&lt;?php<br>
+$x=5;<br>
+$y=10;<br>
+<br>
+function myTest()<br>
+{<br>
+$GLOBALS['y']=$GLOBALS['x']&#43;$GLOBALS['y'];<br>
+}&nbsp;<br>
+<br>
+myTest();<br>
+echo $y;<br>
+?&gt;</div>
+</div>
+<br style="font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif">
+<hr style="color:rgb(212,212,212); height:1px; border:0px; clear:both; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; background-color:rgb(212,212,212)">
+<h2 style="font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; margin-top:10px; margin-bottom:10px">
+<span style="font-weight:normal"><span style="font-size:18px">注意：</span></span>
+<p><span style="font-weight:normal"><span style="font-size:18px">全局变量的定义和赋&#20540;要分开，不能放在一起。</span></span></p>
+<p><span style="font-weight:normal"><span style="font-size:18px">如&nbsp;&nbsp; global $name=12;&nbsp;&nbsp; 是错误的！</span></span></p>
+<p><span style="font-weight:normal"><span style="font-size:18px">要这样：</span></span></p>
+<p><span style="font-weight:normal"><span style="font-size:18px">global $name;</span></span></p>
+<p><span style="font-weight:normal"><span style="font-size:18px">$name=12;</span></span></p>
+<p><span style="font-weight:normal"><span style="font-size:18px"><br>
+</span></span></p>
+</h2>
+<h2 style="font-size:22px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; margin-top:10px; margin-bottom:10px">
+Static 作用域</h2>
+<p style="line-height:16.7999992370605px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif">
+当一个函数完成时，它的所有变量通常都会被删除。然而，有时候您希望某个局部变量不要被删除。</p>
+<p style="line-height:16.7999992370605px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif">
+要做到这一点，请在您第一次声明变量时使用&nbsp;<strong>static</strong>&nbsp;关键字：（利用static关键字可以使函数完成后，变量保持在完成时得到的&#20540;，而不是返回初始&#20540;）</p>
+<div class="example" style="width:711px; margin:0px; padding:5px; border:1px solid rgb(212,212,212); font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; background-color:rgb(229,238,204)">
+<h2 class="example" style="font-size:14px; margin-top:0px; margin-bottom:10px; color:rgb(97,127,16); background-color:transparent">
+实例</h2>
+<div class="example_code notranslate" style="width:696.765625px; padding:5px; border:1px solid rgb(212,212,212); font-size:13px; font-family:'courier new'; background-color:rgb(255,255,255)">
+&lt;?php<br>
+<br>
+function myTest()<br>
+{<br>
+static $x=0;<br>
+echo $x;<br>
+$x&#43;&#43;;<br>
+}<br>
+<br>
+myTest(); &nbsp; //输出0<br>
+myTest(); &nbsp; //输出1<br>
+myTest(); &nbsp; //输出2<br>
+<br>
+?&gt;</div>
+</div>
+<p style="line-height:16.7999992370605px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif">
+然后，每次调用该函数时，该变量将会保留着函数前一次被调用时的&#20540;。</p>
+<p style="line-height:16.7999992370605px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif">
+<strong>注释：</strong>该变量仍然是函数的局部变量。</p>
+<hr style="color:rgb(212,212,212); height:1px; border:0px; clear:both; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; background-color:rgb(212,212,212)">
+<h2 style="font-size:22px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; margin-top:10px; margin-bottom:10px">
+参数作用域</h2>
+<p style="line-height:16.7999992370605px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif">
+参数是通过调用代码将&#20540;传递给函数的局部变量。</p>
+<p style="line-height:16.7999992370605px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif">
+参数是在参数列表中声明的，作为函数声明的一部分：</p>
+<div class="example" style="width:711px; margin:0px; padding:5px; border:1px solid rgb(212,212,212); font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; background-color:rgb(229,238,204)">
+<h2 class="example" style="font-size:14px; margin-top:0px; margin-bottom:10px; color:rgb(97,127,16); background-color:transparent">
+实例</h2>
+<div class="example_code notranslate" style="width:696.765625px; padding:5px; border:1px solid rgb(212,212,212); font-size:13px; font-family:'courier new'; background-color:rgb(255,255,255)">
+&lt;?php<br>
+<br>
+function myTest($x)<br>
+{<br>
+echo $x;<br>
+}<br>
+<br>
+myTest(5);<br>
+<br>
+?&gt;</div>
+</div>
+<p><a href='_index.htm'>&lt;&lt;目录</a></p>
+</body>
+</html>

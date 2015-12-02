@@ -1,0 +1,107 @@
+﻿<!doctype html>
+<html dir="ltr" lang="zh-CN">
+<head>
+<title>jquery  实现tab选项卡功能</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style type="text/css">
+body {font:normal 12px/24px Arial, Helvetica, sans-serif; background:#D9F0DB;}
+textarea,pre {font-family:Courier; font-size:12px;}
+</style>
+</head>
+<body>
+<p><a href='_index.htm'>&lt;&lt;目录</a></p><p><span style="font-size:18px">代码示例：</span></p>
+<p><pre name="code" class="html">&lt;html&gt;
+&lt;head&gt;
+&lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=UTF-8&quot;&gt;
+&lt;style&gt;
+ul.tabs {
+	margin: 0;
+	padding: 0;
+	float: left;
+	list-style: none;
+	height: 32px;
+	border-bottom: 1px solid #999;
+	border-left: 1px solid #999;
+	width: 100%;
+}
+ul.tabs li {
+	float: left;
+	margin: 0;
+	padding: 0;
+	height: 31px;
+	line-height: 31px;
+	border: 1px solid #999;
+	border-left: none;
+	margin-bottom: -1px;
+	background: #e0e0e0;
+	overflow: hidden;
+	position: relative;
+}
+ul.tabs li a {
+	text-decoration: none;
+	color: #000;
+	display: block;
+	font-size: 1.2em;
+	padding: 0 20px;
+	border: 1px solid #fff;
+	outline: none;
+}
+	
+html ul.tabs li.active, html ul.tabs li.active a:hover  {
+	background: #fff;
+	border-bottom: 1px solid #fff;
+}
+.tab_container {
+	border: 1px solid #999;
+	border-top: none;
+	clear: both;
+	float: left; 
+	width: 100%;
+	background: #fff;
+	-moz-border-radius-bottomright: 5px;
+	-khtml-border-radius-bottomright: 5px;
+	-webkit-border-bottom-right-radius: 5px;
+	-moz-border-radius-bottomleft: 5px;
+	-khtml-border-radius-bottomleft: 5px;
+	-webkit-border-bottom-left-radius: 5px;
+}
+&lt;/style&gt;
+&lt;script src=&quot;http://libs.baidu.com/jquery/1.10.2/jquery.min.js&quot;&gt;//Baidu CDN&lt;/script&gt;
+&lt;script type=&quot;text/javascript&quot;&gt;  
+$(document).ready(function() {  
+    //Default Action  
+    $(&quot;.tab_content&quot;).hide(); //Hide all content  
+    $(&quot;ul.tabs li:first&quot;).addClass(&quot;active&quot;).show(); //Activate first tab  
+    $(&quot;.tab_content:first&quot;).show(); //Show first tab content  
+      
+    //On Click Event  
+    $(&quot;ul.tabs li&quot;).click(function() {  
+        $(&quot;ul.tabs li&quot;).removeClass(&quot;active&quot;); //Remove any &quot;active&quot; class  
+        $(this).addClass(&quot;active&quot;); //Add &quot;active&quot; class to selected tab  
+        $(&quot;.tab_content&quot;).hide(); //Hide all tab content  
+        var activeTab = $(this).find(&quot;a&quot;).attr(&quot;href&quot;); //Find the rel attribute value to identify the active tab + content  
+        $(activeTab).fadeIn(); //Fade in the active content  
+        return false;  
+    });  
+});  
+&lt;/script&gt;  
+&lt;/head&gt; 
+    &lt;ul class=&quot;tabs&quot;&gt;  
+        &lt;li class=&quot;active&quot;&gt;&lt;a href=&quot;#tab1&quot;&gt;TAB1&lt;/a&gt;&lt;/li&gt;  
+        &lt;li&gt;&lt;a href=&quot;#tab2&quot;&gt;TAB2&lt;/a&gt;&lt;/li&gt;  
+    &lt;/ul&gt;  
+    &lt;div class=&quot;tab_container&quot;&gt;  
+        &lt;div id=&quot;tab1&quot; class=&quot;tab_content&quot; style=&quot;display: block; &quot;&gt;  
+			tab1内容
+        &lt;/div&gt;  
+        &lt;div id=&quot;tab2&quot; class=&quot;tab_content&quot; style=&quot;display: none; &quot;&gt;  
+			tab2内容  
+        &lt;/div&gt;  
+    &lt;/div&gt;  
+&lt;/html&gt;
+</pre><br>
+<br>
+</p>
+<p><a href='_index.htm'>&lt;&lt;目录</a></p>
+</body>
+</html>

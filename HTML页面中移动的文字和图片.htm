@@ -1,0 +1,43 @@
+﻿<!doctype html>
+<html dir="ltr" lang="zh-CN">
+<head>
+<title>HTML页面中  移动的文字和图片</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style type="text/css">
+body {font:normal 12px/24px Arial, Helvetica, sans-serif; background:#D9F0DB;}
+textarea,pre {font-family:Courier; font-size:12px;}
+</style>
+</head>
+<body>
+<p><a href='_index.htm'>&lt;&lt;目录</a></p><pre name="code" class="html">&lt;html&gt;
+&lt;head&gt;
+&lt;title&gt;第七讲代码&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;br&gt;&lt;br&gt;&lt;br&gt;
+&lt;marquee&gt; 移动的文字&lt;/marquee&gt;
+&lt;marquee direction=left&gt;1我从右向左移！&lt;/marquee&gt;
+&lt;marquee direction=right&gt;2我从左向右移！&lt;/marquee&gt;
+&lt;marquee behavior=scroll&gt;3我一圈一圈绕着走！&lt;/marquee&gt; 
+&lt;marquee behavior=slide&gt;4我只走一次就歇了！&lt;/marquee&gt; 
+&lt;marquee behavior=alternate&gt;5我来回走耶！&lt;/marquee&gt;
+&lt;!--循环 &lt;loop=#&gt; #=次数；若未指定则循环不止(infinite)--&gt;
+&lt;marquee loop=3 width=50% behavior=scroll&gt;6我只走 3 趟哟！&lt;/marquee&gt;
+&lt;!--速度 &lt;scrollamount=#&gt;--&gt;
+&lt;marquee scrollamount=20&gt;7我走得好快哟！&lt;/marquee&gt;
+&lt;!--延时 &lt;scrolldelay=#&gt;--&gt;
+&lt;marquee scrolldelay=500 scrollamount=100&gt;8啦啦啦，我走一步，停一停！&lt;/marquee&gt;
+&lt;!--对齐方式(Align) &lt;align=#&gt; #=top, middle, bottom--&gt;
+&lt;font size=6&gt;
+&lt;marquee align=&quot;top&quot; width=400&gt;9我会移动耶！&lt;/marquee&gt;&lt;br&gt;
+&lt;/font&gt;
+&lt;marquee height=40 width=50% bgcolor=yellow&gt;10我会移动耶！&lt;/marquee&gt;
+&lt;marquee bgcolor=&quot;red&quot;&gt;11我会移动耶！底色为红色&lt;/marquee&gt;
+&lt;!--空白--&gt;
+&lt;marquee hspace=20 vspace=20 width=150 bgcolor=ffaaaa align=middle&gt;12我会移动耶！,只在一部分屏幕移动&lt;/marquee&gt;
+&lt;marquee&gt; 13移动的图片:&lt;img src=&quot;wml.jpg&quot; width=&quot;100px&quot; height=&quot;120px&quot;&gt;&lt;/img&gt;&lt;/marquee&gt;
+&lt;/body&gt;
+&lt;/html&gt;</pre><br>
+<p><a href='_index.htm'>&lt;&lt;目录</a></p>
+</body>
+</html>

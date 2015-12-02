@@ -1,0 +1,41 @@
+﻿<!doctype html>
+<html dir="ltr" lang="zh-CN">
+<head>
+<title>Python列表写入文件代码</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style type="text/css">
+body {font:normal 12px/24px Arial, Helvetica, sans-serif; background:#D9F0DB;}
+textarea,pre {font-family:Courier; font-size:12px;}
+</style>
+</head>
+<body>
+<p><a href='_index.htm'>&lt;&lt;目录</a></p><br>
+<pre name="code" class="python">fr = open(&#39;aaa.py&#39;,&#39;r&#39;)
+lifr = fr.readline()
+while lifr!=&#39;&#39;:
+    lifr = lifr.rstrip(&#39;\n&#39;)  #截掉lifr右边的换行符\n
+    print lifr
+    lifr=fr.readline()</pre><br>
+<pre name="code" class="python">li = [1,2,3,4,5]
+ls = open(&#39;aaa.py&#39;,&#39;a&#39;)
+ls.write(&#39;[1,2,3,4,5]&#39;)
+ls.close()
+ls = open(&#39;aaa.py&#39;,&#39;r&#39;)
+lr = ls.read() 
+print lr
+ls.close()</pre><pre name="code" class="python">&lt;pre name=&quot;code&quot; class=&quot;python&quot;&gt;li = [1,2,3]
+i=0
+ls = open(&#39;aaa.py&#39;,&#39;a&#39;)
+while  i&lt;len(li):
+    ls.write(&#39;\n&#39;+str(li[i])+&#39;\n&#39;)   #将列表数据写入文档，注意write只能写字符串，写入数字时，要转换格式
+    i=i+1
+ls.close()
+ls = open(&#39;aaa.py&#39;,&#39;r&#39;)
+lr = ls.read()   
+print lr
+ls.close()</pre><br>
+<br>
+<pre></pre>
+<p><a href='_index.htm'>&lt;&lt;目录</a></p>
+</body>
+</html>

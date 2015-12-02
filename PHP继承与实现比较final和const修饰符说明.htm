@@ -1,0 +1,88 @@
+﻿<!doctype html>
+<html dir="ltr" lang="zh-CN">
+<head>
+<title>PHP 继承与实现比较  final和const修饰符说明</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style type="text/css">
+body {font:normal 12px/24px Arial, Helvetica, sans-serif; background:#D9F0DB;}
+textarea,pre {font-family:Courier; font-size:12px;}
+</style>
+</head>
+<body>
+<p><a href='_index.htm'>&lt;&lt;目录</a></p><p><span style="font-size:18px">&nbsp;继承和实现接口的比较:</span></p>
+<p><span style="font-size:18px">&nbsp;(1)可以认为 实现接口是对单一继承的补充.</span><br>
+<span style="font-size:18px">&nbsp;(2)可以在不破坏类层级关系的前提下，对某个类功能扩展.</span><br>
+<strong><span style="font-size:24px">&nbsp;final关键字</span></strong><br>
+<span style="font-size:18px">&nbsp;1.如果我们希望某个类不被其它的类来继承(可能因为安全考虑...), 可以使用final</span></p>
+<p><span style="font-size:18px"></span></p>
+<p><span style="font-size:18px">// &nbsp;final class A{</span></p>
+<p><span style="font-size:18px">// &nbsp;}</span></p>
+<p><span style="font-size:18px">//此时，B类不能继承A类</span></p>
+<span style="font-size:18px">// &nbsp;class B extends A{<br>
+<br>
+// &nbsp;}<br>
+// &nbsp;echo &quot;ok&quot;;</span>
+<p><span style="font-size:18px">&nbsp;2.如果我们希望某个方法，比如计算个人所得税的方法，不能子类改写，（不希望该方法被子类中方法重载 &nbsp; ）可以使用fianl 来修饰方法</span></p>
+<p><pre name="code" class="php">&lt;?php
+class A{
+    final public function getRate($salary){
+        return $salary*0.08;
+    }
+}
+class B extends A{
+    //不能去覆盖父类的getRate方法.
+    /*public function getRate($sal){
+        return $sal*0.01;
+    }*/
+}
+      
+$b=new B();
+echo $b-&gt;getRate(100).&quot;&lt;br/&gt;&quot;;
+?&gt;</pre><br>
+<br>
+</p>
+<p><span style="font-size:18px">final关键字不能去修饰属性.</span></p>
+<strong><span style="font-size:24px">const 关键字</span></strong><span style="font-size:18px">的讲解</span><br>
+<span style="font-size:18px">//当你有一个属性，不希望被修改，则考虑使用const 做成常量</span><br>
+<span style="font-size:18px">// 基本用法是</span><br>
+<span style="font-size:18px">// class C{</span><br>
+<span style="font-size:18px">// &nbsp; &nbsp; &nbsp; &nbsp;//常量在定义的同时必须赋初&#20540;</span><br>
+<span style="font-size:18px">// &nbsp; &nbsp; &nbsp; &nbsp;const 常量名=赋初&#20540;;</span><br>
+<span style="font-size:18px">// }</span><br>
+<span style="font-size:18px">// interface 接口名{</span><br>
+<span style="font-size:18px">// &nbsp; &nbsp; &nbsp; &nbsp;//常量在定义时就要赋储&#20540;</span><br>
+<span style="font-size:18px">// &nbsp; &nbsp; &nbsp; &nbsp;const 常量名=赋初&#20540;;</span><br>
+<span style="font-size:18px">// }</span><br>
+<span style="font-size:18px">// 常量不能写修饰符，默认是public，但不能写出来</span><br>
+<span style="font-size:18px">// 常量名一般全部用大写字母表示</span><br>
+<span style="font-size:18px">// 使用 类名::常量名; 接口名::常量</span><br>
+<br>
+<pre name="code" class="php">&lt;?php
+       class Z{
+              //常量在定义的时候，必须给初值.
+              //const 关键字前面不要带修饰符号,但默认为public.
+              const TAX_RATE=0.08;
+              public function payTax($val){
+                     //常量不能修改.
+                     //Z::TAX_RATE=0.01;
+                     //return $val*self::TAX_RATE; 【ok】
+                     return $val*Z::TAX_RATE; //【ok】
+              }
+       }
+       $a=new Z();
+       echo $a-&gt;payTax(200);
+
+?&gt;</pre><br>
+<br>
+<p><span style="font-size:18px">注意：</span></p>
+<span style="font-size:18px">&nbsp;1.常量在定义的时候需要赋初&#20540;</span><br>
+<span style="font-size:18px">&nbsp;2.常量不能修改.</span><br>
+<span style="font-size:18px">&nbsp;3.常量名不能有 $, 一般是大写, 默认是public</span><br>
+<span style="font-size:18px">&nbsp;4.常量在类的内部使用 self::常量的名称 &nbsp;或 &nbsp; 类名::常量的名称 &nbsp;表示</span><br>
+<span style="font-size:18px">&nbsp; &nbsp; 在类的外部使用 &nbsp; 类名::常量的名称 &nbsp; 表示.</span><br>
+<span style="font-size:18px">&nbsp;5.常量可以被子类继承</span><br>
+<span style="font-size:18px">&nbsp;6.常量是属于 类 的，不是属于某个对象</span><br>
+<br>
+<p><a href='_index.htm'>&lt;&lt;目录</a></p>
+</body>
+</html>

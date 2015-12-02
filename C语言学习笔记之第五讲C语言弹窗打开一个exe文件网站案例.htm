@@ -1,0 +1,104 @@
+﻿<!doctype html>
+<html dir="ltr" lang="zh-CN">
+<head>
+<title>C语言学习笔记之  第五讲：C语言弹窗打开一个exe,文件，网站案例</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style type="text/css">
+body {font:normal 12px/24px Arial, Helvetica, sans-serif; background:#D9F0DB;}
+textarea,pre {font-family:Courier; font-size:12px;}
+</style>
+</head>
+<body>
+<p><a href='_index.htm'>&lt;&lt;目录</a></p><p><strong>1、 windows.h头文件意义：</strong></p>
+<p><a target="_blank" href="http://baike.baidu.com/view/74419.htm" target="_blank">Win</a>32程序的开头都可看到：</p>
+<p>#include&lt;windows.h&gt;</p>
+<p>WINDOWS.H是一个最重要的<a target="_blank" href="http://baike.baidu.com/view/668911.htm" target="_blank">头文件</a>，它包含了其他Windows<a target="_blank" href="http://baike.baidu.com/view/668911.htm" target="_blank">头文件</a>，这些头文件的某些也包含了其他头文件。这些<a target="_blank" href="http://baike.baidu.com/view/668911.htm" target="_blank">头文件</a>中最重要的和最基本的是：</p>
+<p>WINDEF.H基本数据类型定义。</p>
+<p>WINNT.H支持Unicode的类型定义。</p>
+<p>WINBASE.HKernel(内核)函数。</p>
+<p>WINUSER.H用户界面函数。</p>
+<p>WINGDI.H图形设备接口函数。</p>
+<p>这些<a target="_blank" href="http://baike.baidu.com/view/668911.htm" target="_blank">头文件</a>定义了Windows的所有资料型态、<a target="_blank" href="http://baike.baidu.com/view/2369016.htm" target="_blank">函数调用</a>、<a target="_blank" href="http://baike.baidu.com/view/1997894.htm" target="_blank">资料结构</a>和常数识别字，它们是Windows文件中的一个重要部分。</p>
+<p><strong>2、 C语言弹窗函数用法：</strong></p>
+<p><strong>MessageBox()</strong>，注意区分大小写。它的功能是弹出一个标准的Windows对话框。它不是C函数库的标准函数，而是WINDNWS API函数，但是可以用C语言调用API函数。<br>
+下面举例，显示出一个对话框，其<strong><span style="background:yellow">标题为Hello</span></strong>，<span style="background:yellow">内容为Hello World</span>，包含一个【确定】按钮：<br>
+#include &lt;windows.h&gt;<br>
+int main()<br>
+{<br>
+&nbsp; MessageBox(NULL,&quot;Hello World&quot;,&quot;Hello&quot;,MB_OK);</p>
+<p>// MessageBox(0,&quot;HelloWorld&quot;,&quot;Hello&quot;,MB_OK);<br>
+&nbsp; return 0;<br>
+}<br>
+MessageBox()函数第一个参数是<span style="background:yellow">窗口句柄</span>（既依赖的窗口编号，相当于谁弹出的窗口，0表示系统弹出），第二个是<span style="background:yellow">窗口内容</span>字符串，第三个是<span style="background:yellow">窗口标题</span>字符串，第四个是<span style="background:yellow">窗口所包含的按钮类型</span>；函数返回&#20540;为int类型，用于判断用户点击了哪个按钮。</p>
+<p>简单介绍一下第四个参数(左边参数，右边按钮)：<br>
+MB_OK&nbsp; 确定<br>
+MB_OKCANCEL&nbsp; 确定 取消<br>
+MB_YESNO 是 否<br>
+MB_RETRYCANCEL 重试 取消<br>
+还可以在窗口显示通知图标：<br>
+MB_OK|MB_ICONQUESTION 确定 问号<br>
+依此类推，只要在后面加“|”然后是图标代号。<br>
+MB_ICONEXCLAMATION 感叹号<br>
+MB_ICONERROR 错误<br>
+MB_ICONINFORMATION 信息<br>
+再来说说函数的返回&#20540;：<br>
+假设对话框上有2个缺省按钮，【是】和【否】，<br>
+int ret = MessageBox(NULL,&quot;是否关机?&quot;,&quot;询问&quot;,MB_YESNO|MB_ICONQUESTION);<br>
+if(ret == IDYES)<br>
+{<br>
+&nbsp; ......//伪代码<br>
+}<br>
+当用户点击了【是】就……<br>
+列一个清单(左 按钮，右 返回&#20540;)：<br>
+【是】&nbsp; IDYES<br>
+【否】&nbsp; IDNO<br>
+【确定】&nbsp; IDOK<br>
+【取消】&nbsp; IDCANCEL<br>
+【重试】&nbsp; IDRETRY</p>
+<p><strong>3、 ShellExecute()函数使用方法：</strong></p>
+<p>ShellExecute是系统里面进行操作的一个函数，主要用于打开，能打开东西很多，打开外部程序、网页、文件夹、EMAIL、我的文档、我的电脑、回收站等等。一切与系统关联的东西都可以用它来打开，谓之“全能打手”也不过份。</p>
+<p>ShellExecute函数原型及参数含义如下：</p>
+<p>ShellExecute(</p>
+<p>hWnd:HWND; {指定父窗口句柄,指示哪个窗口执行的，0表示系统执行的}</p>
+<p>Operation:PChar; {指定动作, 譬如: open（打开）、runas、print（打印）、edit、explore、find}</p>
+<p>FileName:PChar; {指定要打开的文件或程序地址、网址}</p>
+<p>Parameters:PChar; {给要打开的程序指定参数; 如果打开的是文件这里应该是0}</p>
+<p>Directory:PChar; {缺省目录}</p>
+<p>ShowCmd:Integer {打开选项}</p>
+<p>);</p>
+<p><strong>//ShowCmd参数可选&#20540;:</strong></p>
+<p>SW_HIDE&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; = 0;&nbsp; {隐藏}</p>
+<p>SW_SHOWNORMAL&nbsp;&nbsp; &nbsp; = 1;&nbsp; {用最近的大小和位置显示, 激活}</p>
+<p>SW_NORMAL&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; = 1;&nbsp; {同SW_SHOWNORMAL}</p>
+<p>SW_SHOWMINIMIZED&nbsp;&nbsp; = 2;&nbsp; {最小化, 激活}</p>
+<p>SW_SHOWMAXIMIZED&nbsp;&nbsp; = 3;&nbsp; {最大化, 激活}</p>
+<p>SW_MAXIMIZE&nbsp;&nbsp; &nbsp; &nbsp; = 3;&nbsp; {同SW_SHOWMAXIMIZED}</p>
+<p>SW_SHOWNOACTIVATE&nbsp;= 4;&nbsp; {用最近的大小和位置显示, 不激活}</p>
+<p>SW_SHOW&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; = 5;&nbsp; {同 SW_SHOWNORMAL}</p>
+<p>SW_MINIMIZE&nbsp;&nbsp; &nbsp; &nbsp; = 6;&nbsp; {最小化, 不激活}</p>
+<p>SW_SHOWMINNOACTIVE= 7;&nbsp; {同 SW_MINIMIZE}</p>
+<p>SW_SHOWNA&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; = 8;&nbsp; {同SW_SHOWNOACTIVATE}</p>
+<p>SW_RESTORE&nbsp;&nbsp; &nbsp; &nbsp;&nbsp; = 9;&nbsp; {同 SW_SHOWNORMAL}</p>
+<p>SW_SHOWDEFAULT&nbsp;&nbsp;&nbsp; = 10; {同 SW_SHOWNORMAL}</p>
+<p>SW_MAX&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; = 10;{同 SW_SHOWNORMAL}</p>
+<p>&nbsp;</p>
+<p><strong>案例：</strong></p>
+<p>如要打开一个文件：</p>
+<p>ShellExecute (0,”open”,”D:\\1.txt”,0,0,1);&nbsp;&nbsp; </p>
+<p>&nbsp;//<span style="background:yellow">C</span><span style="background:yellow">语言路径中\\</span>代表\，所有的\都要替换成\\</p>
+<p>如要打开一个网站：</p>
+<p>ShellExecute (0,”open”,”http://www.baidu.com”,0,0,1);</p>
+<p>如要打开QQ：</p>
+<p>ShellExecute(0,”open”,”C:\\ProgramFiles(x86)<a target="_blank" href="file://tencent/QQ/QQProtect/Bin/QQProtect.exe%E2%80%9D,0,0,1">\\Tencent\\QQ\\QQProtect\\Bin\\QQProtect.exe”,0,0,1</a>);</p>
+<p>如要打印文档：</p>
+<p>ShellExecute (0,”print”,”D:\\1.txt”,0,0,1);&nbsp; </p>
+<p>如要打开系统文件,不需要注明路径，直接调用默认即可，如记事本、计算器等：</p>
+<p>ShellExecute (0,”open”,”notepad”,0,0,1);&nbsp; </p>
+<p>如要发邮件：</p>
+<p>ShellExecute (0,”open”,”mailto:”,0,0,1);&nbsp; </p>
+<p>如给确定地址发邮件：</p>
+<p>ShellExecute (0,”open”,”mailto:1290800466@qq.com”,0,0,1);&nbsp; </p>
+<p>&nbsp;</p>
+<p><a href='_index.htm'>&lt;&lt;目录</a></p>
+</body>
+</html>

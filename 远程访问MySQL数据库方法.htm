@@ -1,0 +1,50 @@
+﻿<!doctype html>
+<html dir="ltr" lang="zh-CN">
+<head>
+<title>远程访问MySQL数据库方法</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style type="text/css">
+body {font:normal 12px/24px Arial, Helvetica, sans-serif; background:#D9F0DB;}
+textarea,pre {font-family:Courier; font-size:12px;}
+</style>
+</head>
+<body>
+<p><a href='_index.htm'>&lt;&lt;目录</a></p><p><span style="font-size:18px"><strong>1、授权法</strong></span></p>
+<p><span style="font-size:18px">在本地MySQL下执行以下命令：<br>
+</span></p>
+<p><span style="font-size:18px"><span style="font-size:18px">语法：</span></span></p>
+<p><span style="font-size:18px">grant &nbsp;权限 &nbsp;on &nbsp;数据库*数据库表 &nbsp;to &nbsp;用户名@登陆主机 &nbsp;identified &nbsp;by &nbsp;&quot;密码&quot;;</span></p>
+<p><span style="font-size:18px">实例：</span></p>
+<p><span style="font-size:18px">（1）、允许ip为192.168.1.80 的电脑以账户“wml” 密码 “111111” &nbsp;访问本地数据库且拥有该数据库的所有权限</span></p>
+<p></p>
+<pre name="code" class="sql">grant all privileges on *.* to wml@192.168.1.80 identified by &quot;111111&quot;;</pre><br>
+<p></p>
+<div><span style="font-size:18px">（2）、允许局域网中所有电脑以账户“wml” 密码 “111111” &nbsp;访问本地数据库且拥有该数据库的所有权限</span></div>
+<div><pre name="code" class="sql">grant all privileges on *.* to wml@&#39;%&#39; identified by &quot;111111&quot;;</pre><br>
+<span style="font-size:18px">（3）、允许ip为192.168.1.80 的电脑以账户“wml” 密码 “111111” &nbsp;访问本地数据库且只拥有该数据库的数据查询和插入权限</span></div>
+<div><pre name="code" class="sql">grant select,insert   on  *.*  to wml@192.168.1.80  identified by &quot;111111&quot;;</pre><br>
+</div>
+<div><span style="font-size:18px"><strong>2、改表法&nbsp;</strong><br>
+<span style="white-space:pre"></span>可能是你的帐号不允许从远程登陆，只能在localhost。这个时候只要在localhost的那台电脑，登入mysql后，更改 &quot;mysql&quot; 数据库里的 &quot;user&quot; 表里的 &quot;host&quot; 项，从&quot;localhost&quot;改成&quot;%&quot;&nbsp;<br>
+</span><pre name="code" class="sql">mysql -u root -p 
+use mysql; 
+update user set host = &#39;%&#39; where user = &#39;root&#39;; 
+select host, user from user;</pre><span style="font-size:18px"></span>
+<div><span style="font-size:18px"><span style="font-family:Arial; font-size:14px; color:#333333; line-height:26px">//update&nbsp; user set host = '192.168.0.1' where user = 'root'</span><br>
+</span></div>
+这样即允许局域网中所有电脑以账户“root” 访问本地数据库<br>
+<br>
+</div>
+<div><br>
+</div>
+<div><br>
+</div>
+<div><strong><span style="font-size:18px">本地数据库设置完成后，远程电脑可以通过以下命令访问本地数据库：(次ip为本地主机IP)</span></strong></div>
+<div><pre name="code" class="sql">mysql  -h  192.168.1.184  -uwml  -p111111;</pre><br>
+<br>
+</div>
+<div><br>
+</div>
+<p><a href='_index.htm'>&lt;&lt;目录</a></p>
+</body>
+</html>

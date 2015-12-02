@@ -1,0 +1,193 @@
+﻿<!doctype html>
+<html dir="ltr" lang="zh-CN">
+<head>
+<title>PHP人们币金额小写转大写类库</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style type="text/css">
+body {font:normal 12px/24px Arial, Helvetica, sans-serif; background:#D9F0DB;}
+textarea,pre {font-family:Courier; font-size:12px;}
+</style>
+</head>
+<body>
+<p><a href='_index.htm'>&lt;&lt;目录</a></p><p>MoneyConvertor 类：</p>
+<p></p>
+<p>MoneyConvertor.php&nbsp;</p>
+<p><pre name="code" class="php">&lt;?php
+/** 
+ * MoneyConvertor Library For PHP
+ * 人民币大小写转换类
+ * --------------------------------------------------- 
+ */
+final class MoneyConvertor {
+	
+	//大写数字
+	private $NUMBER_STR = array(&quot;零&quot;,&quot;壹&quot;,&quot;贰&quot;,&quot;叁&quot;,&quot;肆&quot;,&quot;伍&quot;,&quot;陆&quot;,&quot;柒&quot;,&quot;捌&quot;,&quot;玖&quot;);
+	
+	//整数位货币单位
+	private $I_UNIT_STR = array(&quot;元&quot;,&quot;拾&quot;,&quot;佰&quot;,&quot;仟&quot;,&quot;万&quot;,&quot;拾&quot;,&quot;佰&quot;,&quot;仟&quot;,&quot;亿&quot;,&quot;拾&quot;,&quot;佰&quot;,&quot;仟&quot;);
+	
+	//小数位货币单位
+	private $D_UNIT_STR = array(&quot;角&quot;,&quot;分&quot;,&quot;厘&quot;);
+	
+	//转换结果
+	private $resultString = null;
+	/**
+	 * 使用一个小写数字金额的字符串来转换resultString对象
+	 * ---------------------------------------------------
+	 * @param	$numberStr		将要转换的小写数字金额
+	 * @return 	$this-&gt;resultString
+	 */
+	public function convert($numberStr) {
+		
+		//处理小数位为0
+		if(preg_match(&#39;/^[0-9]+\.[0]+$/&#39;,$numberStr))
+			$numberStr = intval($numberStr);
+		
+		//补齐类似.5这样的无整数位数字
+		if(substr($numberStr, 0, 1) == &#39;.&#39;)
+			number_format($numberStr);
+		
+		//如果带逗号分隔符的数字
+		if(strpos($numberStr, &#39;,&#39;))
+			$numberStr = str_replace(&quot;,&quot;,&quot;&quot;,$numberStr);
+		
+		//如果数字达到万亿则提示数字过大，无法处理
+		if ($numberStr&gt;=1000000000000) 
+		    return &quot;数字太大，无法处理。抱歉！&quot;;
+		
+		//判断是否为数字
+		if (!is_numeric($numberStr))
+			return &#39;不是有效的货币数值&#39;;
+		
+		//执行转换
+		self::convertor($numberStr);
+		
+		//返回转换结果
+		return $this-&gt;resultString;
+	}
+	
+	
+	/**
+	 * 执行转换
+	 * ---------------------------------------------------
+	 * @param	$numberStr		将要转换的小写数字金额
+	 * @return 	void
+	 */
+	private function convertor($numberStr){
+		//分差整数与浮点位，整数和小数部分分开，分别进行转换
+		$cutedNumber = explode(&#39;.&#39;, (string)$numberStr);
+		//如果只有整数部分
+		if (count($cutedNumber) == 1) {
+			self::convertInteger($numberStr, TRUE);
+		} else {
+			self::convertInteger($cutedNumber[0]);
+			self::convertDecimal($cutedNumber[1]);
+		}
+		//去除无用零字符
+		self::removeZero();
+	}
+	
+	
+	/**
+	 * 对整数部分进行转换
+	 * ------------------------------------------------------------------
+	 * @param	$integer				将要转换的小写数字整数部分
+	 * @param	$without_fractional		是否原数不带浮点数，即在最后显示“整”
+	 *
+	 * @return 	$this
+	 */
+	private function convertInteger($integer, $without_fractional = false) {
+		$resultString = null;
+			
+		for ($i = 0; $i &lt; strlen($integer); $i++) {
+			$resultString .= $this-&gt;I_UNIT_STR[$i];
+			$resultString .= $this-&gt;NUMBER_STR[substr(strrev($integer), $i, 1)];
+		}
+		//如果没有小数位
+		$tidy = $without_fractional == false ? &#39;&#39; : &#39;整&#39;;
+		$this-&gt;resultString = self::str_reverse($resultString) . $tidy;
+		return $this;
+	}
+	/**
+	 * 对小数点后三位部分进行转换
+	 * ------------------------------------------------------------------
+	 * @param	$integer				将要转换的小数点后三位部分
+	 * @return 	$this
+	 */
+	private function convertDecimal($decimal) {
+		
+		$resultString = null;
+		
+		for ($i = 0; $i &lt; strlen($decimal); $i++) {
+			$resultString .= $this-&gt;NUMBER_STR[substr($decimal, $i, 1)];
+			$resultString .= $this-&gt;D_UNIT_STR[$i];
+			if($i&gt;1){
+			    /* echo &quot;小数位过多！&quot;; */
+			    //如果小数位过多则只显示小数点后三位
+			    $i = strlen($decimal);
+			}
+		}
+		$this-&gt;resultString .= $resultString;
+		return $this;
+	}
+	/**
+	 * 去掉多余的&quot;零X&quot;
+	 * ------------------------------------------------------------------
+	 * @return 	$this
+	 */
+	private function removeZero() {
+		while (strpos($this-&gt;resultString, &quot;零拾&quot;) || strpos($this-&gt;resultString, &quot;零佰&quot;) || strpos($this-&gt;resultString, &quot;零仟&quot;) || strpos($this-&gt;resultString, &quot;零万&quot;) || strpos($this-&gt;resultString, &quot;零亿&quot;) || strpos($this-&gt;resultString, &quot;零角&quot;) || strpos($this-&gt;resultString, &quot;零分&quot;) || strpos($this-&gt;resultString, &quot;零厘&quot;) || strpos($this-&gt;resultString, &quot;零零&quot;) || strpos($this-&gt;resultString, &quot;亿万&quot;) || strpos($this-&gt;resultString, &quot;零元&quot;)) {
+			$this-&gt;resultString = str_replace(&quot;零拾&quot;, &quot;零&quot;, $this-&gt;resultString);
+			$this-&gt;resultString = str_replace(&quot;零佰&quot;, &quot;零&quot;, $this-&gt;resultString);
+			$this-&gt;resultString = str_replace(&quot;零仟&quot;, &quot;零&quot;, $this-&gt;resultString);
+			$this-&gt;resultString = str_replace(&quot;零万&quot;, &quot;万&quot;, $this-&gt;resultString);
+			$this-&gt;resultString = str_replace(&quot;零亿&quot;, &quot;亿&quot;, $this-&gt;resultString);
+			$this-&gt;resultString = str_replace(&quot;零角&quot;, &quot;零&quot;, $this-&gt;resultString);
+			$this-&gt;resultString = str_replace(&quot;零分&quot;, &quot;零&quot;, $this-&gt;resultString);
+			$this-&gt;resultString = str_replace(&quot;零厘&quot;, &quot;零&quot;, $this-&gt;resultString);
+			$this-&gt;resultString = str_replace(&quot;零零&quot;, &quot;零&quot;, $this-&gt;resultString);
+			$this-&gt;resultString = str_replace(&quot;亿万&quot;, &quot;亿&quot;, $this-&gt;resultString);
+			$this-&gt;resultString = str_replace(&quot;零元&quot;, &quot;元&quot;, $this-&gt;resultString);
+		}
+		return $this;
+	}
+	/**
+	 * 中文UTF-8字符串反转
+	 * ------------------------------------------------------------------
+	 * @param 	$str	需要转换的UTF-8字符串
+	 * @return 	void
+	 */
+	function str_reverse($str) {
+		//判断输入的是不是utf8类型的字符，否则退出
+		if (!is_string($str) || !mb_check_encoding($str, &#39;UTF-8&#39;)) {
+			return;
+		}
+		$array = array();
+		//将字符串存入数组
+		$l = mb_strlen($str, &#39;UTF-8&#39;);
+		for ($i = 0; $i &lt; $l; $i++) {
+			$array[] = mb_substr($str, $i, 1, &#39;UTF-8&#39;);
+		}
+		//反转字符串
+		krsort($array);
+		//拼接字符串
+		$string = implode($array);
+		return $string;
+	}
+}</pre>MoneyConvertor 类调用方法：</p>
+<p><pre name="code" class="php">&lt;?php
+header(&quot;Content-type:text/html;charset=utf-8&quot;);
+require &quot;MoneyConvertor.php&quot;;
+$moneyObj = new MoneyConvertor();
+$output = &#39;&#39;;
+//value 表示要转换的小写数字，注意要对其小数位保留位数考虑
+$value=&#39;222222222222.4&#39;;
+$output = $moneyObj-&gt;convert($value);
+echo $output;
+?&gt;</pre><br>
+</p>
+<p><br>
+</p>
+<p><a href='_index.htm'>&lt;&lt;目录</a></p>
+</body>
+</html>

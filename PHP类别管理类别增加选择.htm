@@ -1,0 +1,123 @@
+﻿<!doctype html>
+<html dir="ltr" lang="zh-CN">
+<head>
+<title>PHP类别管理：类别增加、选择</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style type="text/css">
+body {font:normal 12px/24px Arial, Helvetica, sans-serif; background:#D9F0DB;}
+textarea,pre {font-family:Courier; font-size:12px;}
+</style>
+</head>
+<body>
+<p><a href='_index.htm'>&lt;&lt;目录</a></p><p>思路：</p>
+<p>做一个输入框，输入类别，通过后台插入一个数据库中，作为类别表；</p>
+<p>类别选择时，制作一个下拉列表；</p>
+<p>将类别从类别表中取出（数组形式）；</p>
+<p>利用foreach遍历取出的类别数组，作为类别选择下拉列表的数据。</p>
+<p><br>
+</p>
+<p>创建一个数据库：</p>
+<p><pre name="code" class="sql">CREATE TABLE IF NOT EXISTS `class_add` (
+  `ID` int(4) NOT NULL AUTO_INCREMENT,
+  `class_name` varchar(100) NOT NULL,
+  PRIMARY KEY (`ID`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=12 ;</pre></p>
+<p><br>
+</p>
+<p>代码如下：</p>
+<p>index.html</p>
+<p></p>
+<pre name="code" class="html">&lt;html&gt;  
+&lt;head&gt;  
+&lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html;charset=utf-8&quot; /&gt;  
+&lt;title&gt;添加分类&lt;/title&gt;  
+&lt;/head&gt;  
+&lt;body&gt;  
+&lt;form action=&quot;add.php&quot; method=&quot;post&quot;&gt;  
+	类别:&lt;input type=&quot;text&quot; name=&quot;class_name&quot;/&gt;&lt;br&gt;&lt;br&gt;
+    &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; &lt;input type= &quot;submit&quot; value=&quot;添加&quot;/&gt;      
+&lt;/form&gt;
+&lt;/body&gt;
+&lt;/html&gt;</pre><br>
+add.php<br>
+<p></p>
+<p></p>
+<pre name="code" class="php">&lt;?php 
+$class_name = $_POST[&#39;class_name&#39;]; //获取表单提交数据
+$conn = mysql_connect(&quot;localhost&quot;,&quot;root&quot;,&quot;111111&quot;);  //链接数据库
+if(!$conn)  //链接数据库判断
+{  
+    die(&quot;连接数据库失败&quot;.mysql_error());  
+}  
+//选择数据库
+mysql_select_db(&quot;class_add&quot;) or die(&quot;数据库选择失败&quot;.mysql_error());  
+mysql_query(&quot;set names &#39;uft8&#39;&quot;);  
+//需要使用的SQL语句
+$sql = &quot;insert into class_add(class_name) values (&#39;$class_name&#39;)&quot;; 
+//执行SQL语句 
+$result = mysql_query($sql,$conn);  
+//判断SQL语句是否执行成功
+if(!$result)  
+{  
+    echo &#39;数据插入失败！&#39;.mysql_error();  
+    exit;  
+}   
+mysql_close($conn);//断开与数据库的链接
+include(&quot;index.html&quot;);//返回类别添加页面
+?&gt;</pre>
+<p></p>
+<p>select.php</p>
+<p></p>
+<pre name="code" class="php">&lt;html&gt;  
+&lt;head&gt;  
+&lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html;charset=utf-8&quot; /&gt;  
+&lt;title&gt;调用分类&lt;/title&gt;  
+&lt;/head&gt;  
+&lt;body&gt;  
+&lt;?php
+$conn = mysql_connect(&quot;localhost&quot;,&quot;root&quot;,&quot;111111&quot;);  
+if(!$conn)  
+{  
+    die(&quot;连接数据库失败&quot;.mysql_error());  
+}  
+mysql_select_db(&quot;class_add&quot;) or die(&quot;数据库选择失败&quot;.mysql_error());  
+mysql_query(&quot;set names &#39;uft8&#39;&quot;);  
+$sql = &quot;select class_name from class_add&quot;;  
+$result = mysql_query($sql,$conn);  
+?&gt;
+&lt;form action=&quot;test.php&quot; method=&quot;post&quot;&gt;  
+&lt;select name=&quot;class_name&quot; size=&quot;1&quot;&gt;  
+&lt;?php 
+//数据库获取的数据是以数组形式表示的
+while($row = mysql_fetch_row($result))  
+{  
+    foreach($row as $key=&gt;$key_val)  
+    {  
+        echo &quot;&lt;option value=&quot;.$key_val.&quot;&gt;&quot;.$key_val.&quot;&lt;/option&gt;&quot;;  
+    }  
+    echo &quot;&lt;br/&gt;&quot;;  
+} 
+?&gt; 
+&lt;/select&gt;  
+&lt;input type= &quot;submit&quot; value=&quot;确定&quot;/&gt;     
+&lt;/form&gt;
+&lt;/body&gt;
+&lt;/html&gt;</pre>
+<p></p>
+<p>test.php</p>
+<p></p>
+<pre name="code" class="php">&lt;?php 
+$class_name = $_POST[&#39;class_name&#39;];
+echo $class_name;
+?&gt;</pre><br>
+<br>
+<p></p>
+<p><br>
+</p>
+<p><br>
+</p>
+<p><br>
+</p>
+<p><a href='_index.htm'>&lt;&lt;目录</a></p>
+</body>
+</html>

@@ -1,0 +1,41 @@
+﻿<!doctype html>
+<html dir="ltr" lang="zh-CN">
+<head>
+<title>Python里的OS模块常用函数说明</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style type="text/css">
+body {font:normal 12px/24px Arial, Helvetica, sans-serif; background:#D9F0DB;}
+textarea,pre {font-family:Courier; font-size:12px;}
+</style>
+</head>
+<body>
+<p><a href='_index.htm'>&lt;&lt;目录</a></p><h2><a target="_blank" href="http://www.cnblogs.com/herbert/archive/2010/09/30/1839382.html"><span style="font-size:18px"><span style="color:windowtext">Python</span><span style="color:windowtext">里的</span><span style="color:windowtext">OS</span><span style="color:windowtext">模块常用函数说明</span></span></a></h2>
+<p><span style="font-size:18px">Python的标准库中的<strong><span style="background:yellow">os</span><span style="background:yellow">模块包含普遍的操作系统功能</span></strong>。如果你希望你的程序能够与平台无关的话，这个模块是尤为重要的。即它允许一个程序在编写后不需要任何改动，也不会发生任何问题，就可以在Linux和Windows下运行。</span></p>
+<p><span style="font-size:18px">下面列出了一些在os模块中比较有用的部分。它们中的大多数都简单明了。</span></p>
+<p><span style="font-size:18px">使用前要先导入该模块才可以使用：</span></p>
+<p><span style="font-size:18px">Import &nbsp;os</span></p>
+<p><span style="font-size:18px">&nbsp;</span></p>
+<p style="background:#EEEEDD"><span style="font-size:18px">os.sep可以取代操作系统特定的路径分隔符。windows下为 “\\”</span></p>
+<p style="background:#EEEEDD"><span style="font-size:18px">os.name字符串指示你正在使用的平台。比如对于Windows，它是'nt'，而对于Linux/Unix用户，它是'posix'。</span></p>
+<p style="background:#EEEEDD"><span style="font-size:18px">os.getcwd()函数得到当前工作目录，即当前Python脚本工作的目录路径。</span></p>
+<p style="background:#EEEEDD"><span style="font-size:18px">os.getenv()获取一个环境变量，如果没有返回none</span></p>
+<p style="background:#EEEEDD"><span style="font-size:18px">os.putenv(key, value)设置一个环境变量&#20540;</span></p>
+<p style="background:#EEEEDD"><span style="font-size:18px">os.listdir(path)返回指定目录下的所有文件和目录名。</span></p>
+<p style="background:#EEEEDD"><span style="font-size:18px">os.remove(path)函数用来删除一个文件。</span></p>
+<p style="background:#EEEEDD"><span style="font-size:18px">os.system(command)函数用来运行shell命令。</span></p>
+<p style="background:#EEEEDD"><span style="font-size:18px">os.linesep字符串给出当前平台使用的行终止符。例如，Windows使用'\r\n'，Linux使用'\n'而Mac使用'\r'。</span></p>
+<p style="background:#EEEEDD"><span style="font-size:18px">os.path.split(p)函数返回一个路径的目录名和文件名。</span></p>
+<p style="background:#EEEEDD"><span style="font-size:18px">os.path.isfile()和os.path.isdir()函数分别检验给出的路径是一个文件还是目录。</span></p>
+<p style="background:#EEEEDD"><span style="font-size:18px">os.path.existe()函数用来检验给出的路径是否真地存在</span></p>
+<p style="background:#EEEEDD"><span style="font-size:18px">os.curdir:返回当前目录（'.')<br>
+os.chdir(dirname):改变工作目录到dirname</span></p>
+<p style="background:#EEEEDD"><span style="font-size:18px">os.path.getsize(name):获得文件大小，如果name是目录返回0L</span></p>
+<p style="background:#EEEEDD"><span style="font-size:18px">os.path.abspath(name):获得绝对路径<br>
+os.path.normpath(path):规范path字符串形式</span></p>
+<p style="background:#EEEEDD"><span style="font-size:18px">os.path.splitext():分离文件名与扩展名<br>
+os.path.join(path,name):连接目录与文件名或目录<br>
+os.path.basename(path):返回文件名<br>
+os.path.dirname(path):返回文件路径</span></p>
+<p><a href='_index.htm'>&lt;&lt;目录</a></p>
+</body>
+</html>

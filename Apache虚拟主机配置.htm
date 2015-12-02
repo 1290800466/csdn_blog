@@ -1,0 +1,163 @@
+﻿<!doctype html>
+<html dir="ltr" lang="zh-CN">
+<head>
+<title>Apache虚拟主机配置</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style type="text/css">
+body {font:normal 12px/24px Arial, Helvetica, sans-serif; background:#D9F0DB;}
+textarea,pre {font-family:Courier; font-size:12px;}
+</style>
+</head>
+<body>
+<p><a href='_index.htm'>&lt;&lt;目录</a></p><h3>Apache配置虚拟主机步骤：&nbsp;</h3>
+<p>（<span style="font-family:Calibri">1</span>）启用&nbsp;httpd-vhosts.conf:</p>
+<p>在<span style="font-family:Calibri">httpd.conf&nbsp;</span><span style="font-family:宋体">文件中</span>找到如下代码，若有注释，去掉。 (启用虚拟主机)</p>
+<p>#&nbsp;Virtual&nbsp;hosts&nbsp;<span style="font-family:宋体">，虚拟主机</span></p>
+<p>Include&nbsp;conf/extra/httpd-vhosts.conf</p>
+<p>（1）&nbsp;在httpd-vhosts.conf文件中做配置：</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&lt;VirtualHost&nbsp;127.0.0.1:80&gt;<br>
+　　<span style="font-family:Courier New">ServerName&nbsp;www.test1.com</span><br>
+　　<span style="font-family:Courier New">DocumentRoot&nbsp;/www/test2/</span></p>
+<p><span style="font-family:Courier New">&nbsp; &nbsp;Directoryindex my.html &nbsp;index.html &nbsp; index.htm &nbsp; index.php<br>
+</span>　　<span style="font-family:Courier New">&lt;Directory&nbsp;&quot;/www/test2&quot;&gt;</span><br>
+&nbsp;<span style="font-family:Courier New">Options&nbsp;Indexes&nbsp;FollowSymLinks</span><br>
+　　　　<span style="font-family:Courier New">&nbsp;AllowOverride&nbsp;None</span><br>
+　　　　<span style="font-family:Courier New">&nbsp;Order&nbsp;allow,deny</span><br>
+　　<span style="font-family:Courier New">&nbsp;</span><span style="font-family:Courier New">Allow&nbsp;From&nbsp;All</span><br>
+&nbsp;<span style="font-family:Courier New">&nbsp;&lt;/Directory&gt;</span><br>
+&lt;/VirtualHost&gt;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p><span style="background-color:rgb(255,255,255)"><span style="font-size:18px">&nbsp;<span style="color:rgb(17,17,17); font-family:Verdana">host</span><span style="color:rgb(17,17,17); font-family:Verdana">s文件位于：C:\Windows\System32\drivers\etc &nbsp;目录下</span></span></span></p>
+<p><span style="background-color:rgb(255,255,255)"><span style="font-size:18px"><span style="color:rgb(17,17,17); font-family:Verdana">&nbsp;hosts文件中添加ip与域名的绑定</span></span></span></p>
+<h1><a target="_blank" target="_blank" href="http://www.cnblogs.com/hi-bazinga/archive/2012/04/23/2466605.html">Apache&nbsp;<span style="font-family:宋体">配置虚拟主机三种方式</span></a></h1>
+<p><span style="color:rgb(255,0,0)">一、基于<span style="font-family:Verdana">IP</span></span></p>
+<p><span style="color:rgb(17,17,17)">&nbsp;1.&nbsp;<span style="font-family:宋体">假设服务器有个</span><span style="font-family:Verdana">IP</span><span style="font-family:宋体">地址为</span><span style="font-family:Verdana">192.168.1.10</span><span style="font-family:宋体">，使用</span><span style="font-family:Verdana">ifconfig</span><span style="font-family:宋体">在同一个网络接口</span><span style="font-family:Verdana">eth0</span><span style="font-family:宋体">上绑定</span><span style="font-family:Verdana">3</span><span style="font-family:宋体">个</span><span style="font-family:Verdana">IP</span><span style="font-family:宋体">：</span></span></p>
+<p style="background:rgb(245,245,245)">[root@localhost&nbsp;root]#&nbsp;ifconfig&nbsp;eth0:1&nbsp;192.168.1.11<br>
+[root@localhost&nbsp;root]#&nbsp;ifconfig&nbsp;eth0:2&nbsp;192.168.1.12<br>
+[root@localhost&nbsp;root]#&nbsp;ifconfig&nbsp;eth0:3&nbsp;192.168.1.13</p>
+<p><span style="color:rgb(17,17,17)">&nbsp;2.&nbsp;<span style="font-family:宋体">修改</span><span style="font-family:Verdana; background-color:rgb(255,0,0)">hosts</span><span style="font-family:宋体">文件，添加三个域名与之一一对应： &nbsp;</span></span></p>
+<p style="background:rgb(245,245,245)">192.168.1.11&nbsp;&nbsp;&nbsp;www.test1.com<br>
+192.168.1.12&nbsp;&nbsp;&nbsp;www.test2.com<br>
+192.168.1.13&nbsp;&nbsp;&nbsp;www.test3.com</p>
+<p><span style="color:rgb(17,17,17)">&nbsp;3.&nbsp;<span style="font-family:宋体">建立虚拟主机存放网页的根目录，如在</span><span style="font-family:Verdana">/www</span><span style="font-family:宋体">目录下建立</span><span style="font-family:Verdana">test1</span><span style="font-family:宋体">、</span><span style="font-family:Verdana">test2</span><span style="font-family:宋体">、</span><span style="font-family:Verdana">test3</span><span style="font-family:宋体">文件夹，其中分别存放</span><span style="font-family:Verdana">1.html</span><span style="font-family:宋体">、</span><span style="font-family:Verdana">2.html</span><span style="font-family:宋体">、</span><span style="font-family:Verdana">3.html</span></span></p>
+<p style="background:rgb(245,245,245)">/www/test1/1.html<br>
+/www/test2/2.html<br>
+/www/test3/3.html</p>
+<p><span style="color:rgb(17,17,17)">&nbsp;4.&nbsp;<span style="font-family:宋体">在</span><span style="font-family:Verdana">httpd.conf</span><span style="font-family:宋体">中将附加配置文件</span><span style="font-family:Verdana">httpd-vhosts.conf</span><span style="font-family:宋体">包含进来，接着在</span><span style="font-family:Verdana">httpd-vhosts.conf</span><span style="font-family:宋体">中写入如下配置：</span></span></p>
+<p><span style="color:rgb(17,17,17)"><strong>&nbsp;（添加新的虚拟主机）</strong></span></p>
+<p style="background:rgb(245,245,245)">&nbsp;</p>
+<p style="background:rgb(245,245,245)">&lt;VirtualHost&nbsp;192.168.1.11:80&gt;<br>
+　　<span style="font-family:Verdana">ServerName&nbsp;www.test1.com</span><br>
+　　<span style="font-family:Verdana">DocumentRoot&nbsp;/www/test1/</span><br>
+　　<span style="font-family:Verdana">&lt;Directory&nbsp;&quot;/www/test1&quot;&gt;</span><br>
+&nbsp;<span style="font-family:Verdana">Options&nbsp;Indexes&nbsp;FollowSymLinks</span><br>
+　　　　<span style="font-family:Verdana">&nbsp;AllowOverride&nbsp;None</span><br>
+　　　　<span style="font-family:Verdana">&nbsp;Order&nbsp;allow,deny</span><br>
+　　<span style="font-family:Verdana">&nbsp;</span><span style="font-family:Verdana">Allow&nbsp;From&nbsp;All</span><br>
+&nbsp;<span style="font-family:Verdana">&nbsp;&lt;/Directory&gt;</span><br>
+&lt;/VirtualHost&gt;<br>
+<br>
+&lt;VirtualHost&nbsp;192.168.1.12:80&gt;<br>
+　　<span style="font-family:Verdana">ServerName&nbsp;www.test1.com</span><br>
+　　<span style="font-family:Verdana">DocumentRoot&nbsp;/www/test2/</span><br>
+　　<span style="font-family:Verdana">&lt;Directory&nbsp;&quot;/www/test2&quot;&gt;</span><br>
+&nbsp;<span style="font-family:Verdana">Options&nbsp;Indexes&nbsp;FollowSymLinks</span><br>
+　　　　<span style="font-family:Verdana">&nbsp;AllowOverride&nbsp;None</span><br>
+　　　　<span style="font-family:Verdana">&nbsp;Order&nbsp;allow,deny</span><br>
+　　<span style="font-family:Verdana">&nbsp;</span><span style="font-family:Verdana">Allow&nbsp;From&nbsp;All</span><br>
+&nbsp;<span style="font-family:Verdana">&nbsp;&lt;/Directory&gt;</span><br>
+&lt;/VirtualHost&gt;<br>
+<br>
+&lt;VirtualHost&nbsp;192.168.1.13:80&gt;<br>
+　　<span style="font-family:Verdana">ServerName&nbsp;www.test1.com</span><br>
+　　<span style="font-family:Verdana">DocumentRoot&nbsp;/www/test3/</span><br>
+　　<span style="font-family:Verdana">&lt;Directory&nbsp;&quot;/www/test3&quot;&gt;</span><br>
+&nbsp;<span style="font-family:Verdana">Options&nbsp;Indexes&nbsp;FollowSymLinks</span><br>
+　　　　<span style="font-family:Verdana">&nbsp;AllowOverride&nbsp;None</span><br>
+　　　　<span style="font-family:Verdana">&nbsp;Order&nbsp;allow,deny</span><br>
+　　<span style="font-family:Verdana">&nbsp;</span><span style="font-family:Verdana">Allow&nbsp;From&nbsp;All</span><br>
+&nbsp;<span style="font-family:Verdana">&nbsp;&lt;/Directory&gt;</span><br>
+&lt;/VirtualHost&gt;</p>
+<p style="background:rgb(245,245,245)">&nbsp;</p>
+<p><span style="color:rgb(17,17,17)">&nbsp;5.&nbsp;<span style="font-family:宋体">大功告成，测试下每个虚拟主机，分别访问</span><span style="font-family:Verdana">www.test1.com</span><span style="font-family:宋体">、</span><span style="font-family:Verdana">www.test2.com</span><span style="font-family:宋体">、</span><span style="font-family:Verdana">www.test3.com</span></span></p>
+<p><span style="color:rgb(17,17,17)">&nbsp;</span></p>
+<p><span style="color:rgb(255,0,0)">二、基于主机名</span></p>
+<p><span style="color:rgb(17,17,17)">&nbsp;1.&nbsp;<span style="font-family:宋体">设置域名映射同一个</span><span style="font-family:Verdana">IP</span><span style="font-family:宋体">，修改</span><span style="font-family:Verdana">hosts</span><span style="font-family:宋体">：</span></span></p>
+<p style="background:rgb(245,245,245)">192.168.1.10&nbsp;&nbsp;www.test1.com<br>
+192.168.1.10&nbsp;&nbsp;www.test2.com<br>
+192.168.1.10&nbsp;&nbsp;www.test3.com</p>
+<p><span style="color:rgb(17,17,17)">&nbsp;2.&nbsp;<span style="font-family:宋体">跟上面一样，建立虚拟主机存放网页的根目录</span></span></p>
+<p style="background:rgb(245,245,245)">/www/test1/1.html<br>
+/www/test2/2.html<br>
+/www/test3/3.html</p>
+<p><span style="color:rgb(17,17,17)">&nbsp;3.&nbsp;<span style="font-family:宋体">在</span><span style="font-family:Verdana">httpd.conf</span><span style="font-family:宋体">中将附加配置文件</span><span style="font-family:Verdana">httpd-vhosts.conf</span><span style="font-family:宋体">包含进来，接着在</span><span style="font-family:Verdana">httpd-vhosts.conf</span><span style="font-family:宋体">中写入如下配置：</span></span></p>
+<p><span style="color:rgb(17,17,17)">&nbsp;</span></p>
+<p><span style="color:rgb(17,17,17)">　　为了使用基于域名的虚拟主机，必须指定服务器<span style="font-family:Verdana">IP</span><span style="font-family:宋体">地址（和可能的端口）来使主机接受请求。可以用</span></span><span style="color:rgb(255,0,0)">NameVirtualHost</span><span style="color:rgb(17,17,17)">指令来进行配置。&nbsp;如果服务器上所有的<span style="font-family:Verdana">IP</span><span style="font-family:宋体">地址都会用到，&nbsp;你可以用</span></span><span style="color:rgb(255,0,0)">*</span><span style="color:rgb(17,17,17)">作为<span style="font-family:Verdana">NameVirtualHost</span><span style="font-family:宋体">的参数。</span></span><span style="color:rgb(255,0,0)">在<span style="font-family:Verdana">NameVirtualHost</span><span style="font-family:宋体">指令中指明</span><span style="font-family:Verdana">IP</span><span style="font-family:宋体">地址并不会使服务器自动侦听那个</span><span style="font-family:Verdana">IP</span><span style="font-family:宋体">地址</span></span><span style="color:rgb(17,17,17)">。</span><span style="color:rgb(17,17,17)">&nbsp;</span><span style="color:rgb(17,17,17)">这里设定的<span style="font-family:Verdana">IP</span><span style="font-family:宋体">地址必须对应服务器上的一个网络接口。</span></span></p>
+<p><span style="color:rgb(17,17,17)">　　下一步就是为你建立的每个虚拟主机设定<span style="font-family:Verdana">&lt;VirtualHost&gt;</span><span style="font-family:宋体">配置块，</span><span style="font-family:Verdana">&lt;VirtualHost&gt;</span><span style="font-family:宋体">的参数与</span><span style="font-family:Verdana">NameVirtualHost</span><span style="font-family:宋体">指令的参数是一样的。每个</span><span style="font-family:Verdana">&lt;VirtualHost&gt;</span><span style="font-family:宋体">定义块中，至少都会有一个</span></span><span style="color:rgb(255,0,0)">ServerName</span><span style="color:rgb(17,17,17)">指令来指定伺服哪个主机和一个</span><span style="color:rgb(255,0,0)">DocumentRoot</span><span style="color:rgb(17,17,17)">指令来说明这个主机的内容存在于文件系统的什么地方。</span></p>
+<p><span style="color:rgb(17,17,17)">　　如果在现有的<span style="font-family:Verdana">web</span><span style="font-family:宋体">服务器上增加虚拟主机，必须也为现存的主机建造一个</span><span style="font-family:Verdana">&lt;VirtualHost&gt;</span><span style="font-family:宋体">定义块。其中</span><span style="font-family:Verdana">ServerName</span><span style="font-family:宋体">和</span><span style="font-family:Verdana">DocumentRoot</span><span style="font-family:宋体">所包含的内容应该与全局的保持一致，且要放在配置文件的最前面，扮演默认主机的角色。</span></span></p>
+<p style="background:rgb(245,245,245)">&nbsp;</p>
+<p style="background:rgb(245,245,245)">NameVirtualHost&nbsp;*:80<br>
+&lt;VirtualHost&nbsp;*:80&gt;&nbsp;&nbsp;</p>
+<p style="background:rgb(245,245,245)">　　<span style="font-family:Verdana">ServerName&nbsp;*</span></p>
+<p style="background:rgb(245,245,245)">　　<span style="font-family:Verdana">DocumentRoot&nbsp;/www/&nbsp;</span></p>
+<p style="background:rgb(245,245,245)">&lt;/VirtualHost&gt;</p>
+<p style="background:rgb(245,245,245)">&lt;VirtualHost&nbsp;*:80&gt;</p>
+<p style="background:rgb(245,245,245)">　　<span style="font-family:Verdana">ServerName&nbsp;www.test1.com</span></p>
+<p style="background:rgb(245,245,245)">　　<span style="font-family:Verdana">DocumentRoot&nbsp;/www/test1/</span></p>
+<p style="background:rgb(245,245,245)">　　<span style="font-family:Verdana">&lt;Directory&nbsp;&quot;/www/test1&quot;&gt;</span></p>
+<p style="background:rgb(245,245,245)">　　　　<span style="font-family:Verdana">Options&nbsp;Indexes&nbsp;FollowSymLinks</span></p>
+<p style="background:rgb(245,245,245)">　　　　<span style="font-family:Verdana">AllowOverride&nbsp;None</span></p>
+<p style="background:rgb(245,245,245)">　　　　<span style="font-family:Verdana">Order&nbsp;allow,deny</span></p>
+<p style="background:rgb(245,245,245)">　　　　<span style="font-family:Verdana">Allow&nbsp;from&nbsp;all</span></p>
+<p style="background:rgb(245,245,245)">　　<span style="font-family:Verdana">&lt;/Directory&gt;</span></p>
+<p style="background:rgb(245,245,245)">&lt;/VirtualHost&gt;&nbsp;</p>
+<p style="background:rgb(245,245,245)">&nbsp;</p>
+<p style="background:rgb(245,245,245)">&lt;VirtualHost&nbsp;*:80&gt;</p>
+<p style="background:rgb(245,245,245)">　　<span style="font-family:Verdana">ServerName&nbsp;www.test2.com</span></p>
+<p style="background:rgb(245,245,245)">　　<span style="font-family:Verdana">DocumentRoot&nbsp;/www/test2/</span></p>
+<p style="background:rgb(245,245,245)">　　<span style="font-family:Verdana">&lt;Directory&nbsp;&quot;/www/test2&quot;&gt;</span></p>
+<p style="background:rgb(245,245,245)">　　　　<span style="font-family:Verdana">Options&nbsp;Indexes&nbsp;FollowSymLinks</span></p>
+<p style="background:rgb(245,245,245)">　　　　<span style="font-family:Verdana">AllowOverride&nbsp;None</span></p>
+<p style="background:rgb(245,245,245)">　　　　<span style="font-family:Verdana">Order&nbsp;allow,deny</span></p>
+<p style="background:rgb(245,245,245)">　　　　<span style="font-family:Verdana">Allow&nbsp;from&nbsp;all</span></p>
+<p style="background:rgb(245,245,245)">　　<span style="font-family:Verdana">&lt;/Directory&gt;</span></p>
+<p style="background:rgb(245,245,245)">&lt;/VirtualHost&gt;</p>
+<p style="background:rgb(245,245,245)">&lt;VirtualHost&nbsp;*:80&gt;</p>
+<p style="background:rgb(245,245,245)">　　<span style="font-family:Verdana">ServerName&nbsp;www.test3.com</span></p>
+<p style="background:rgb(245,245,245)">　　<span style="font-family:Verdana">DocumentRoot&nbsp;/www/test3/</span></p>
+<p style="background:rgb(245,245,245)">　　<span style="font-family:Verdana">&lt;Directory&nbsp;&quot;/www/test3&quot;&gt;</span></p>
+<p style="background:rgb(245,245,245)">　　　　<span style="font-family:Verdana">Options&nbsp;Indexes&nbsp;FollowSymLinks</span></p>
+<p style="background:rgb(245,245,245)">　　　　<span style="font-family:Verdana">AllowOverride&nbsp;None</span></p>
+<p style="background:rgb(245,245,245)">　　　　<span style="font-family:Verdana">Order&nbsp;allow,deny</span></p>
+<p style="background:rgb(245,245,245)">　　　　<span style="font-family:Verdana">Allow&nbsp;from&nbsp;all</span></p>
+<p style="background:rgb(245,245,245)">　　<span style="font-family:Verdana">&lt;/Directory&gt;</span></p>
+<p style="background:rgb(245,245,245)">&lt;/VirtualHost&gt;</p>
+<p style="background:rgb(245,245,245)">&nbsp;</p>
+<p><span style="color:rgb(17,17,17)">&nbsp;4.&nbsp;<span style="font-family:宋体">大功告成，测试下每个虚拟主机，分别访问</span><span style="font-family:Verdana">www.test1.com</span><span style="font-family:宋体">、</span><span style="font-family:Verdana">www.test2.com</span><span style="font-family:宋体">、</span><span style="font-family:Verdana">www.test3.com</span></span></p>
+<p><span style="color:rgb(17,17,17)">&nbsp;</span></p>
+<p><span style="color:rgb(255,0,0)">三、基于端口</span></p>
+<p>1.&nbsp;&nbsp;<span style="font-family:宋体">修改配置文件</span></p>
+<p>将原来的</p>
+<p><span style="color:rgb(17,17,17)">　　&nbsp;　</span>Listen&nbsp;80<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="font-family:宋体">改为</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;Listen&nbsp;80<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Listen&nbsp;8080</p>
+<p><br>
+2.&nbsp;<span style="font-family:宋体">更改虚拟主机设置：</span></p>
+<p style="background:rgb(245,245,245)">&nbsp;</p>
+<p style="background:rgb(245,245,245)">&lt;VirtualHost&nbsp;192.168.1.10:80&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;DocumentRoot&nbsp;/var/www/test1/<br>
+&nbsp;&nbsp;&nbsp;&nbsp;ServerName&nbsp;www.test1.com<br>
+&lt;/VirtualHost&gt;<br>
+<br>
+&lt;VirtualHost&nbsp;192.168.1.10:8080&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;DocumentRoot&nbsp;/var/www/test2<br>
+&nbsp;&nbsp;&nbsp;&nbsp;ServerName&nbsp;www.test2.com<br>
+&lt;/VirtualHost&gt;</p>
+<p style="background:rgb(245,245,245)">&nbsp;</p>
+<p><a href='_index.htm'>&lt;&lt;目录</a></p>
+</body>
+</html>

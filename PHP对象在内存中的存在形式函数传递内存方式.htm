@@ -1,0 +1,71 @@
+﻿<!doctype html>
+<html dir="ltr" lang="zh-CN">
+<head>
+<title>PHP对象在内存中的存在形式，函数传递内存方式</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style type="text/css">
+body {font:normal 12px/24px Arial, Helvetica, sans-serif; background:#D9F0DB;}
+textarea,pre {font-family:Courier; font-size:12px;}
+</style>
+</head>
+<body>
+<p><a href='_index.htm'>&lt;&lt;目录</a></p><pre name="code" class="php">&lt;html&gt;
+&lt;head&gt;
+&lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html;charset=utf-8&quot; /&gt;
+&lt;title&gt;对象在内存中的存在形式，函数传递内存方式&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;?php 
+class Persion
+{
+	public $name;
+	public $age;
+}
+$a = new Persion();
+$a-&gt;name = &quot;小白&quot;;
+$a-&gt;age = &quot;8&quot;;
+//此处传的是$a的地址
+$b = $a;
+//都输出小白
+echo $a-&gt;name.&quot;&lt;br&gt;&quot;;
+echo $b-&gt;name.&quot;&lt;br&gt;&quot;; 
+
+
+$a = 78;
+//$b对应的是$a的地址，改变了$b也就是改变了$a
+$b = &amp;$a; 
+$b = $b + 8;
+//$a和$b均等于86
+echo $a.&#39;|&#39;.$b.&quot;&lt;br&gt;&quot;;
+
+
+$p = new Persion();
+$p-&gt;nmae = &quot;小刚&quot;;
+$p-&gt;age = 23;
+//如果给一个函数传递一个值，实际上是传递的地址，数据的改变则地址所对应的值也改变
+function test($p)
+{
+	$p-&gt;name = &quot;小明&quot;;
+}
+//函数的调用，开辟了一个新的栈，函数调用完成则栈关闭
+test($p);
+//输出小明
+echo $p-&gt;name;
+?&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+
+</pre>
+<p></p>
+<p><span style="font-size:14px">在以上代码中：</span></p>
+<p><span style="font-size:14px">（1）$a对应内存地址，假设是0x123，（$a和地址存放在栈区，相当于我们查字典时的索引）；<br>
+（2）通过内存地址的索引，找到堆区。堆区里面存放着”小白“，”8“等数据<br>
+（3）$b = $a，实际上是将$a的内存地址0x123传给$b,堆区里的属性$name，$age不变，也就是不会再重新复制一份。当改变$b-&gt;name时，$a-&gt;name的&#20540;会改变。</span></p>
+<strong><span style="font-size:14px">内存图：</span></strong>
+<p><img src="http://img.blog.csdn.net/20150529092534430?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvdTAxMzM3MjQ4Nw==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center" width="500" height="400" alt=""><br>
+</p>
+<p><br>
+</p>
+<p><a href='_index.htm'>&lt;&lt;目录</a></p>
+</body>
+</html>

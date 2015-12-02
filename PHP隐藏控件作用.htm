@@ -1,0 +1,53 @@
+﻿<!doctype html>
+<html dir="ltr" lang="zh-CN">
+<head>
+<title>PHP隐藏控件作用</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style type="text/css">
+body {font:normal 12px/24px Arial, Helvetica, sans-serif; background:#D9F0DB;}
+textarea,pre {font-family:Courier; font-size:12px;}
+</style>
+</head>
+<body>
+<p><a href='_index.htm'>&lt;&lt;目录</a></p><p><span style="font-size:18px">array_test.php：<br>
+</span></p>
+<p><pre name="code" class="php">&lt;span style=&quot;font-size:18px;&quot;&gt;&lt;?php 
+//对于同一个界面中有多个表单要提交的情况，可以利用隐藏控件对所提交的表单进行判断；
+//此处我只写一个表单为例，可以扩展到多个表单；
+//隐藏控件还可以将一些不希望在前台看到的值传递给服务器；隐含传值
+$arr=array(67,80,59,96,95);
+//接受doing值，判断该用户所要做的操作
+$doing=$_REQUEST[&#39;doing&#39;];
+if($doing==&#39;seegrade&#39;) //如果要做的操作是查询学生成绩
+{
+	$stuno=$_REQUEST[&#39;stuno&#39;]; //获取学生学号
+	if($stuno&gt;=0 &amp;&amp; $stuno&lt;5) 
+	{
+		//调用输出学生成绩函数
+		showgrade($stuno,$arr);
+	}
+	else
+		echo &#39;查无此数&#39;;
+}
+function showgrade($stuno,&amp;$arr)
+{
+	//return $arr[$stuno];
+	echo $arr[$stuno];
+}
+?&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;meta http-equiv=&quot;content-type&quot; content=&quot;text/html;charset=utf-8&quot;/&gt;
+&lt;/head&gt;
+&lt;form action=&quot;array_test.php&quot; method=&quot;post&quot;&gt;
+请输入学生学号：&lt;input type=&quot;text&quot; name=&quot;stuno&quot;/&gt;&lt;br&gt;
+&lt;!--隐藏控件--作用见上面--&gt;
+&lt;input type=&quot;hidden&quot; name=&quot;doing&quot; value=&quot;seegrade&quot;/&gt;
+&lt;input type=&quot;submit&quot; value=&quot;查询成绩&quot;/&gt;&lt;br&gt;
+&lt;/form&gt;
+&lt;/html&gt;&lt;/span&gt;</pre><span style="font-size:18px"><br>
+</span><br>
+</p>
+<p><a href='_index.htm'>&lt;&lt;目录</a></p>
+</body>
+</html>

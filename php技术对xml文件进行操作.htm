@@ -1,0 +1,183 @@
+﻿<!doctype html>
+<html dir="ltr" lang="zh-CN">
+<head>
+<title>php技术对xml文件进行操作</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style type="text/css">
+body {font:normal 12px/24px Arial, Helvetica, sans-serif; background:#D9F0DB;}
+textarea,pre {font-family:Courier; font-size:12px;}
+</style>
+</head>
+<body>
+<p><a href='_index.htm'>&lt;&lt;目录</a></p><p><span style="font-size:18px; color:#ff0000"><strong>使用php技术对xml文件进行操作</strong></span></p>
+<p><span style="font-size:18px; color:#ff0000"><strong>常用的三种技术</strong></span></p>
+<p><span style="font-size:18px">①&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; php dom</span></p>
+<p><span style="font-size:18px">②&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; php 结合xpath 操作xml</span></p>
+<p><span style="font-size:18px">③&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; SimpleXml</span></p>
+<p><span style="font-weight:bold"><span style="font-size:18px">说明Dom</span></span></p>
+<p><span style="font-size:18px"><strong>dom</strong>(document object model) 文档-对象-模型,核心思想是把一个xml文件,看成一个对象模型,然后通过对象的方式来操作xml文件</span></p>
+<p><span style="font-size:18px"><span style="color:#ff0000"><strong>php dom技术对xml文件进行增删改查操作实例：</strong></span><br>
+</span></p>
+<p><span style="font-size:18px">xml文件：</span></p>
+<p><pre name="code" class="html">&lt;span style=&quot;font-size:18px;&quot;&gt;&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;班级&gt;
+&lt;stu 性别=&quot;男&quot; 年龄=&quot;100&quot;&gt;&lt;name&gt;韩顺平8&lt;/name&gt;&lt;sex&gt;男&lt;/sex&gt;&lt;age&gt;80&lt;/age&gt;&lt;介绍&gt;学习不刻苦&lt;/介绍&gt;&lt;/stu&gt;
+&lt;stu 性别=&quot;男&quot; 年龄=&quot;100&quot;&gt;&lt;name&gt;韩顺平8&lt;/name&gt;&lt;sex&gt;男&lt;/sex&gt;&lt;age&gt;80&lt;/age&gt;&lt;介绍&gt;学习不刻苦&lt;/介绍&gt;&lt;/stu&gt;
+&lt;stu 性别=&quot;男&quot; 年龄=&quot;100&quot;&gt;&lt;name&gt;韩顺平8&lt;/name&gt;&lt;sex&gt;男&lt;/sex&gt;&lt;age&gt;80&lt;/age&gt;&lt;介绍&gt;学习不刻苦&lt;/介绍&gt;&lt;/stu&gt;
+&lt;stu 性别=&quot;男&quot; 年龄=&quot;100&quot;&gt;&lt;name&gt;韩顺平8&lt;/name&gt;&lt;sex&gt;男&lt;/sex&gt;&lt;age&gt;80&lt;/age&gt;&lt;介绍&gt;学习不刻苦&lt;/介绍&gt;&lt;/stu&gt;
+&lt;stu 性别=&quot;男&quot; 年龄=&quot;100&quot;&gt;&lt;name&gt;韩顺平8&lt;/name&gt;&lt;sex&gt;男&lt;/sex&gt;&lt;age&gt;80&lt;/age&gt;&lt;介绍&gt;学习不刻苦&lt;/介绍&gt;&lt;/stu&gt;
+&lt;stu 性别=&quot;男&quot; 年龄=&quot;100&quot;&gt;&lt;name&gt;韩顺平8&lt;/name&gt;&lt;sex&gt;男&lt;/sex&gt;&lt;age&gt;80&lt;/age&gt;&lt;介绍&gt;学习不刻苦&lt;/介绍&gt;&lt;/stu&gt;
+&lt;stu 性别=&quot;男&quot; 年龄=&quot;100&quot;&gt;&lt;name&gt;韩顺平8&lt;/name&gt;&lt;sex&gt;男&lt;/sex&gt;&lt;age&gt;80&lt;/age&gt;&lt;介绍&gt;学习不刻苦&lt;/介绍&gt;&lt;/stu&gt;
+&lt;stu 性别=&quot;男&quot; 年龄=&quot;100&quot;&gt;&lt;name&gt;韩顺平8&lt;/name&gt;&lt;sex&gt;男&lt;/sex&gt;&lt;age&gt;80&lt;/age&gt;&lt;介绍&gt;学习不刻苦&lt;/介绍&gt;&lt;/stu&gt;
+&lt;stu 性别=&quot;男&quot; 年龄=&quot;100&quot;&gt;&lt;name&gt;韩顺平8&lt;/name&gt;&lt;sex&gt;男&lt;/sex&gt;&lt;age&gt;80&lt;/age&gt;&lt;介绍&gt;学习不刻苦&lt;/介绍&gt;&lt;/stu&gt;
+&lt;stu 性别=&quot;男&quot; 年龄=&quot;100&quot;&gt;&lt;name&gt;韩顺平8&lt;/name&gt;&lt;sex&gt;男&lt;/sex&gt;&lt;age&gt;80&lt;/age&gt;&lt;介绍&gt;学习不刻苦&lt;/介绍&gt;&lt;/stu&gt;
+&lt;stu 性别=&quot;男&quot; 年龄=&quot;100&quot;&gt;&lt;name&gt;韩顺平8&lt;/name&gt;&lt;sex&gt;男&lt;/sex&gt;&lt;age&gt;80&lt;/age&gt;&lt;介绍&gt;学习不刻苦&lt;/介绍&gt;&lt;/stu&gt;
+&lt;stu 性别=&quot;男&quot; 年龄=&quot;100&quot;&gt;&lt;name&gt;韩顺平8&lt;/name&gt;&lt;sex&gt;男&lt;/sex&gt;&lt;age&gt;80&lt;/age&gt;&lt;介绍&gt;学习不刻苦&lt;/介绍&gt;&lt;/stu&gt;
+&lt;stu 性别=&quot;男&quot; 年龄=&quot;100&quot;&gt;&lt;name&gt;韩顺平8&lt;/name&gt;&lt;sex&gt;男&lt;/sex&gt;&lt;age&gt;80&lt;/age&gt;&lt;介绍&gt;学习不刻苦&lt;/介绍&gt;&lt;/stu&gt;
+&lt;stu 性别=&quot;男&quot; 年龄=&quot;100&quot;&gt;&lt;name&gt;韩顺平8&lt;/name&gt;&lt;sex&gt;男&lt;/sex&gt;&lt;age&gt;80&lt;/age&gt;&lt;介绍&gt;学习不刻苦&lt;/介绍&gt;&lt;/stu&gt;
+&lt;stu 性别=&quot;男&quot; 年龄=&quot;100&quot;&gt;&lt;name&gt;韩顺平8&lt;/name&gt;&lt;sex&gt;男&lt;/sex&gt;&lt;age&gt;80&lt;/age&gt;&lt;介绍&gt;学习不刻苦&lt;/介绍&gt;&lt;/stu&gt;
+&lt;stu 性别=&quot;男&quot; 年龄=&quot;100&quot;&gt;&lt;name&gt;韩顺平8&lt;/name&gt;&lt;sex&gt;男&lt;/sex&gt;&lt;age&gt;80&lt;/age&gt;&lt;介绍&gt;学习不刻苦&lt;/介绍&gt;&lt;/stu&gt;
+&lt;/班级&gt;
+&lt;/span&gt;</pre><span style="font-size:18px"><br>
+</span></p>
+<p><span style="font-size:18px; background-color:rgb(255,255,102)">1、查询：</span></p>
+<p><pre name="code" class="php">&lt;span style=&quot;font-size:18px;&quot;&gt;&lt;?php
+header(&quot;Content-Type:text/html;Charset=utf-8&quot;);
+//解析一个文件的步骤
+//1.创建一个DOMDocument对象 表示文档
+$xmldoc=new DOMDocument();
+
+//2.指定加载哪个xml,解析哪个文件
+$xmldoc-&gt;load(&quot;test.xml&quot;);
+
+//3.获取你关心的节点
+//把所有的学生获取(DOMNodeList )
+$stus=$xmldoc-&gt;getElementsByTagName(&quot;stu&quot;);
+/* var_dump($stus-&gt;item(4));
+exit; */
+
+//4.遍历
+for($i=0;$i&lt;$stus-&gt;length;$i++){
+    //取出学生
+    $stu=$stus-&gt;item($i);
+    //各个信息
+    echo getNodeVal($stu,&quot;name&quot;).&quot;--&quot;
+        .getNodeVal($stu,&quot;sex&quot;).&quot;--&quot;.getNodeVal($stu,&quot;age&quot;).&quot;--&quot;.getNodeVal($stu,&quot;介绍&quot;).&quot;&lt;br/&gt;&quot;;
+
+}
+
+function getNodeVal(&amp;$MyNode,$tagName){
+    return $MyNode-&gt;getElementsByTagName($tagName)-&gt;item(0)-&gt;nodeValue;
+}
+?&gt;
+&lt;/span&gt;</pre><span style="font-size:18px; background-color:rgb(255,255,102)">2、添加：</span></p>
+<p><pre name="code" class="php">&lt;span style=&quot;font-size:18px;&quot;&gt;&lt;?php
+
+    header(&quot;Content-Type:text/html;Charset=utf-8&quot;);
+	//该案例演示对xml文件的增删改
+
+	//1创建DOMDocument
+	$xmldoc=new DoMDocument();
+	//2.加载xml文件
+	$xmldoc-&gt;load(&quot;test.xml&quot;);
+	//3.演示如何添加一个学生信息(同时增加一个性别的属性)
+	//(1)取出根节点
+	$root=$xmldoc-&gt;getElementsByTagName(&quot;班级&quot;)-&gt;item(0);
+	//(2)创建学生节点
+	$stu_node=$xmldoc-&gt;createElement(&quot;stu&quot;);
+	
+	//echo $stu_node-&gt;nodeType;
+	//******添加属性节点*******
+	//创建属性节点
+	$stu_node-&gt;setAttribute(&quot;性别&quot;,&quot;男&quot;);
+	$stu_node-&gt;setAttribute(&quot;年龄&quot;,&quot;100&quot;);
+	//(3)创建名字节点
+	$stu_node_name=$xmldoc-&gt;createElement(&quot;name&quot;);
+	$stu_node_name-&gt;nodeValue=&quot;韩顺平8&quot;; //为什么我们可以使用nodeValue属性??
+	//把名字节点挂载到学生节点下
+	$stu_node-&gt;appendChild($stu_node_name);
+
+	// 创建性别
+	$stu_node_sex=$xmldoc-&gt;createElement(&quot;sex&quot;);
+	$stu_node_sex-&gt;nodeValue=&quot;男&quot;;
+	
+	//把性别节点挂载到学生节点
+	$stu_node-&gt;appendChild($stu_node_sex);
+	
+	// 创建年龄
+	$stu_node_age=$xmldoc-&gt;createElement(&quot;age&quot;);
+	$stu_node_age-&gt;nodeValue=&quot;80&quot;; 
+
+	//把年龄节点挂载到学生节点
+	$stu_node-&gt;appendChild($stu_node_age);
+
+	//创建介绍节点
+
+	$stu_node_intro=$xmldoc-&gt;createElement(&quot;介绍&quot;);
+	$stu_node_intro-&gt;nodeValue=&quot;学习不刻苦&quot;;
+	$stu_node-&gt;appendChild($stu_node_intro);
+	//把学生节点，挂载到根节点下
+	$root-&gt;appendChild($stu_node);
+	//重新保存会xml
+	//如果save到源文件，则相当于是对文件更新,添加了新的东西
+	//如果save 是新的文件名，则是保存到新文件（将原文件内容加刚加的内容全部添加到新文件中）
+	$xmldoc-&gt;save(&quot;test.xml&quot;);
+	echo &quot;成功!&quot;;
+	
+?&gt;&lt;/span&gt;</pre><span style="font-size:18px"><br>
+<span style="background-color:rgb(255,255,102)">3、删除：</span></span></p>
+<p><pre name="code" class="php">&lt;span style=&quot;font-size:18px;&quot;&gt;&lt;?php 
+header(&quot;Content-Type:text/html;Charset=utf-8&quot;);
+//1创建DOMDocument
+$xmldoc=new DoMDocument();
+//2.加载xml文件
+$xmldoc-&gt;load(&quot;test.xml&quot;);
+//3.演示如何添加一个学生信息
+//(1)取出根节点
+$root=$xmldoc-&gt;getElementsByTagName(&quot;班级&quot;)-&gt;item(0);
+//删除第3个学生
+//1.找到该学生
+$stus=$xmldoc-&gt;getElementsByTagName(&quot;stu&quot;);
+$stu1=$stus-&gt;item(0);
+//$root-&gt;removeChild($stu1);
+/* DOM 属性：
+innerHTML - 节点（元素）的文本值
+parentNode - 节点（元素）的父节点
+childNodes - 节点（元素）的子节点
+attributes - 节点（元素）的属性节点 */
+//这里有一个更加灵活的方法
+$stu1-&gt;parentNode-&gt;removeChild($stu1);
+//更新文件
+$xmldoc-&gt;save(&quot;test.xml&quot;);
+
+echo &quot;删除ok&quot;;
+?&gt;&lt;/span&gt;</pre><span style="font-size:18px"><br>
+<span style="background-color:rgb(255,255,102)">4、更新：</span></span></p>
+<p><pre name="code" class="php">&lt;span style=&quot;font-size:18px;&quot;&gt;&lt;?php
+header(&quot;Content-Type:text/html;Charset=utf-8&quot;);
+//更新某个节点值
+//把第一个学生的年龄+10
+
+//1.创建DOMDocument
+$xmldoc=new DoMDocument();
+//2.加载xml文件
+$xmldoc-&gt;load(&quot;test.xml&quot;);
+
+//更新步骤
+//(1)找到这个学生
+$stus=$xmldoc-&gt;getElementsByTagName(&quot;stu&quot;);
+$stu1=$stus-&gt;item(0);
+//即使下面只有一个指定名字标签，也要加 item(0) ，因为系统本身并不知道有几个，若不加，系统不能识别。
+$stu1_age=$stu1-&gt;getElementsByTagName(&quot;age&quot;)-&gt;item(0);
+$stu1_age-&gt;nodeValue+=10;
+
+//更新文件
+$xmldoc-&gt;save(&quot;test.xml&quot;);
+
+echo &quot;更新ok&quot;;
+?&gt;&lt;/span&gt;</pre><span style="font-size:18px"><br>
+</span><br>
+</p>
+<p><a href='_index.htm'>&lt;&lt;目录</a></p>
+</body>
+</html>

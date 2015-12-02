@@ -1,0 +1,99 @@
+﻿<!doctype html>
+<html dir="ltr" lang="zh-CN">
+<head>
+<title>selenium_webdriver(python)单/复选框的遍历选择</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style type="text/css">
+body {font:normal 12px/24px Arial, Helvetica, sans-serif; background:#D9F0DB;}
+textarea,pre {font-family:Courier; font-size:12px;}
+</style>
+</head>
+<body>
+<p><a href='_index.htm'>&lt;&lt;目录</a></p><p>wml.html:</p>
+<p></p>
+<pre name="code" class="html">&lt;html&gt;
+&lt;head&gt;
+&lt;meta http-equiv=&quot;content-type&quot; content=&quot;text/html;charset=utf-8&quot; /&gt;
+&lt;title&gt;Checkbox&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;h3&gt;checkbox&lt;/h3&gt;
+&lt;form&gt;
+&lt;!-- &lt;label for=&quot;c1&quot;&gt;checkbox1&lt;/label&gt; --&gt;
+&lt;input type=&quot;checkbox&quot; id=&quot;c1&quot; /&gt;checkbox1&lt;br&gt;
+&lt;!-- &lt;label for=&quot;c2&quot;&gt;checkbox2&lt;/label&gt; --&gt;
+&lt;input type=&quot;checkbox&quot; id=&quot;c2&quot; /&gt;checkbox2&lt;br&gt;
+&lt;!-- &lt;label for=&quot;c3&quot;&gt;checkbox3&lt;/label&gt; --&gt;
+&lt;input type=&quot;checkbox&quot; id=&quot;c3&quot; /&gt;checkbox3&lt;br&gt;
+&lt;/form&gt;
+
+&lt;form&gt;
+&lt;label  value=&quot;radio&quot;&gt;radio&lt;/label&gt; 
+&lt;input type=&quot;radio&quot;   name=&quot;sex&quot; value=&quot;male&quot; id=&quot;as&quot;/&gt;&lt;br&gt;
+&lt;label  value=&quot;radio1&quot;&gt;radio&lt;/label&gt;
+&lt;input type=&quot;radio&quot;   name=&quot;sex&quot; value=&quot;female&quot; id=&quot;sd&quot;/&gt;
+&lt;/form&gt;
+
+&lt;!-- &lt;form&gt;
+&lt;input type=&quot;radio&quot; name=&quot;sex&quot; value=&quot;male&quot; /&gt; Male
+&lt;br /&gt;
+&lt;input type=&quot;radio&quot; name=&quot;sex&quot; value=&quot;female&quot; /&gt; Female
+&lt;/form&gt; --&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;</pre>
+<p><br>
+</p>
+<p><pre name="code" class="python">#coding: utf-8
+#以下代码用来遍历所有复选框
+from selenium import webdriver
+import time
+import os
+driver = webdriver.Chrome()
+#获取要测试文件绝对路径
+file_path = os.path.abspath(&#39;wml.html&#39;)
+print file_path
+#用浏览器打开文件
+driver.get(file_path)
+# 选择页面上所有的input，然后从中过滤出所有的checkbox 并勾选之
+inputs = driver.find_elements_by_tag_name(&#39;input&#39;)
+for input in inputs:
+    if input.get_attribute(&#39;type&#39;) == &#39;checkbox&#39;:
+        input.click()
+        time.sleep(2)
+&#39;&#39;&#39;
+checkboxs = driver.find_elements_by_css_selector(&#39;input[type=checkbox]&#39;)
+for checkbox in checkboxs:
+    checkbox.click()
+    time.sleep(2)
+&#39;&#39;&#39;
+# 把页面上最后1个checkbox 的勾给去掉
+#.pop() 方法用于删除并返回数组的最后一个元素，在此处是返回到复选框的“最后一个”按钮
+driver.find_elements_by_css_selector(&#39;input[type=checkbox]&#39;).pop().click()
+time.sleep(2)
+driver.quit()</pre><br>
+</p>
+<p></p>
+<pre></pre>
+<p></p>
+<p></p>
+<pre name="code" class="python">#coding: utf-8
+##以下代码用来遍历所有单选框
+from selenium import webdriver
+import time
+import os
+dr = webdriver.Chrome()
+file_path = os.path.abspath(&#39;wml.html&#39;)
+dr.get(file_path)
+# 选择所有的radio并全部勾上
+radios = dr.find_elements_by_css_selector(&#39;input[type=radio]&#39;)
+for radio in radios:
+    radio.click()
+    time.sleep(2)
+time.sleep(2)
+dr.quit()</pre><br>
+<br>
+<br>
+<p><a href='_index.htm'>&lt;&lt;目录</a></p>
+</body>
+</html>

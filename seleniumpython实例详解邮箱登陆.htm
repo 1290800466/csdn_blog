@@ -1,0 +1,59 @@
+﻿<!doctype html>
+<html dir="ltr" lang="zh-CN">
+<head>
+<title>selenium+python实例详解：邮箱登陆</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style type="text/css">
+body {font:normal 12px/24px Arial, Helvetica, sans-serif; background:#D9F0DB;}
+textarea,pre {font-family:Courier; font-size:12px;}
+</style>
+</head>
+<body>
+<p><a href='_index.htm'>&lt;&lt;目录</a></p><pre name="code" class="python">1、访问百度首页的selenium+python示例代码</pre><pre name="code" class="python">from selenium import webdriver
+import time
+driver = webdriver.Ie()
+driver.get(&quot;http://www.baidu.com&quot;)
+time.sleep(10)
+driver.close()
+driver.quit()
+driver = None&lt;/span&gt;</pre>
+<p><span style="font-size:18px">2、登陆139邮箱的selenium&#43;python示例代码<br>
+</span></p>
+<p></p>
+<pre name="code" class="python">from selenium import webdriver
+import time
+driver=webdriver.Ie()
+driver.get(&quot;http://m.mail.10086.cn&quot;)
+driver.implicitly_wait(30)
+driver.find_element_by_id(&quot;ur&quot;).send_keys(&quot;15610537527&quot;)
+driver.find_element_by_id(&quot;pw&quot;).send_keys(&quot;15866584957&quot;)
+driver.find_element_by_class_name(&quot;loading_btn&quot;).click()
+time.sleep(5)
+driver.quit()
+</pre><span style="font-size:18px"><br>
+</span><pre name="code" class="python">from selenium import webdriver  #要想使用selenium 的webdriver 里的函数，首先把包导进来
+import time		#调入time 函数
+driver=webdriver.Ie()   
+#选择浏览器，可以是Firefox 、Ie 或Chrome，使用前需安装浏览器插件；
+#driver是一个变量，可随便起
+driver.get(&quot;http://m.mail.10086.cn&quot;)
+#mplicitly_wait() 方法实现智能等待，相当于uft中的集合点，此处智能等待30秒
+driver.implicitly_wait(30)
+driver.find_element_by_id(&quot;ur&quot;).send_keys(&quot;15610537527&quot;)
+#一个元素有若干属性id 、name、（也可以用其它方式定位），此处通过id识别元素，该输入框的id叫ur ，
+#我要在输入框里输入15610537527
+driver.find_element_by_id(&quot;pw&quot;).send_keys(&quot;15866584957&quot;)
+driver.find_element_by_class_name(&quot;loading_btn&quot;).click()
+#搜索的按钮的name 叫loading_btn ，我需要点一下按钮（ click() ）。
+time.sleep(5)     #休眠5秒
+#driver.quit()  #退出并关闭窗口的每一个相关的驱动程序
+driver.close() #关闭当前窗口,注意与上者的区别，按需选用</pre><br>
+<br>
+<p></p>
+<span style="font-size:18px"><br>
+<br>
+</span>
+<p></p>
+<p><a href='_index.htm'>&lt;&lt;目录</a></p>
+</body>
+</html>

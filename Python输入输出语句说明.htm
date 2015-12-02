@@ -1,0 +1,40 @@
+﻿<!doctype html>
+<html dir="ltr" lang="zh-CN">
+<head>
+<title>Python输入输出语句说明</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style type="text/css">
+body {font:normal 12px/24px Arial, Helvetica, sans-serif; background:#D9F0DB;}
+textarea,pre {font-family:Courier; font-size:12px;}
+</style>
+</head>
+<body>
+<p><a href='_index.htm'>&lt;&lt;目录</a></p><h1>print输出语句说明：</h1>
+<p><span style="font-size:18px">同时输出多个&#20540;：printx,t,n</span></p>
+<p><span style="font-size:18px">Print&#26684;式化输出：</span></p>
+<p><span style="font-size:18px">（1）小数&#20540;确定精度输出</span></p>
+<p><span style="font-size:18px">print(format(&#20540;，‘&#26684;式字f’))&nbsp;&nbsp; 如：输出12.34567&nbsp; 保留3位小数（注意此时是四舍五入）且输出占6位</span></p>
+<p><pre code_snippet_id="646189" snippet_file_name="blog_20150417_1_9727015"  name="code" class="python">Print(format(12.34567,’6.3f’))</pre><br>
+<br>
+</p>
+<p><span style="font-size:18px">12.346</span></p>
+<p><span style="font-size:18px">当保留小数位多于小数位数时，后面用0补足；</span></p>
+<p><span style="font-size:18px">当输出位数大于实际位数时，前面用空&#26684;补足，即右对齐显示；</span></p>
+<p><span style="font-size:18px">当输出位数小于实际位数时，对输出无影响，左对齐显示；</span></p>
+<p><span style="font-size:18px">（2）小数&#20540;转化为百分数输出</span></p>
+<p><pre code_snippet_id="646189" snippet_file_name="blog_20150417_2_344535"  name="code" class="python">Print(format(0.345678,’.3%’))
+#34.568%
+Print(format(0.345678,’4.3%’))
+#34.568%
+Print(format(0.345678,’9.3%’))
+#34.568%</pre><br>
+<br>
+</p>
+<h1>raw_input()输入语句说明：</h1>
+<p><span style="font-size:18px">注意raw_input()函数读取的数&#20540;都作为字符串类型数据</span></p>
+<p><span style="font-size:18px">若想输入的字符为其他类型，可以;</span></p>
+<p><span style="font-size:18px">&nbsp;age= int(raw_input(&quot;your age is:&quot;))</span></p>
+<p><span style="font-size:18px">此时读取的数据为int型字符</span></p>
+<p><a href='_index.htm'>&lt;&lt;目录</a></p>
+</body>
+</html>

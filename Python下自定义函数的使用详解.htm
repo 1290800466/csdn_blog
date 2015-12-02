@@ -1,0 +1,85 @@
+﻿<!doctype html>
+<html dir="ltr" lang="zh-CN">
+<head>
+<title>Python下自定义函数的使用详解</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style type="text/css">
+body {font:normal 12px/24px Arial, Helvetica, sans-serif; background:#D9F0DB;}
+textarea,pre {font-family:Courier; font-size:12px;}
+</style>
+</head>
+<body>
+<p><a href='_index.htm'>&lt;&lt;目录</a></p><h2>Python下自定义函数的使用：</h2>
+<p>自定义函数语法结构：</p>
+<p></p>
+<pre code_snippet_id="664334" snippet_file_name="blog_20150511_1_7842557"  code_snippet_id="664334" snippet_file_name="blog_20150511_1_7842557" name="code" class="python">def function_name(parameters):   #此处必须有冒号，参数可有可无，可有多个
+ #注意每条语句之前都要点击Tab键，必须缩进，Python靠tab键识别函数语句；
+         statement2
+         statement3
+        
+#例1：以下无返回的自定义函数text_1
+def text_1():
+         print &quot;hdklfbrhelgf&quot;
+         print &quot;jieshu&quot;
+        
+print &quot;调用程序&quot;
+text_1()
+print &quot;调用结束&quot;  
+#例2：带单个返回值的自定义函数text_2
+def text_2(n1,n2):
+   n3=n1+n2
+   return n3
+        
+print &quot;调用程序&quot;
+sum=text_2( 12,13)
+print sum
+print &quot;调用结束&quot;  
+#结果：
+#&gt;&gt;&gt;
+#调用程序
+#25
+#调用结束
+#&gt;&gt;&gt; 
+#例3：带多个返回值的自定义函数text_3
+def text_3(n1,n2):
+   n3=n1+n2
+   n4=n1*n2
+   n5=n1**n2
+   return n3,n4,n5
+        
+        
+print &quot;调用程序&quot;
+ 
+s,c,v=text_3( 2,3)
+#print c,s,v
+print &quot;s=&quot; ,s
+print &quot;c=&quot; ,c
+print &quot;v=&quot; , v
+print &quot;调用结束&quot;  
+ 
+#结果：
+#调用程序
+#s= 5
+#c= 6
+#v= 8
+#调用结束
+#例4：参数预设定值的自定义函数text_4，对于这种函数，只需要给出没有设定默认值的形参的实参即可，已确定的不需要给出实参；
+def  text_4(n1,n2,n3=3):    #形参具有默认值，注意：有预定值得形参，必须写在括号的右边，而不能在左边，否则会报错；
+   n4=n1+n2+n3
+   n5=n1*n2*n3
+   n6=n1**n2*n3
+   return n4,n5,n6
+ 
+print &quot;调用程序&quot;
+n4,n5,n6=text_4(2,3)  #只需给出两个实参，若给出3个实参，则会自动替换默认实参；
+print n4,n5,n6
+print &quot;结束程序&quot;</pre><br>
+<br>
+<p></p>
+<h2>函数调用赋&#20540;顺序问题：</h2>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 一般情况下是一一对应赋&#20540;；</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 可以指定形参一一赋&#20540;，顺序可改变；</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 由预定义&#20540;得参数不能优先于无预定义&#20540;参数被赋&#20540;。</p>
+<p><a href='_index.htm'>&lt;&lt;目录</a></p>
+</body>
+</html>

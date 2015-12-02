@@ -1,0 +1,54 @@
+﻿<!doctype html>
+<html dir="ltr" lang="zh-CN">
+<head>
+<title>第二讲ThinkPHP 3.1.2 MVC模式、URL访问控制器和调试模式</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style type="text/css">
+body {font:normal 12px/24px Arial, Helvetica, sans-serif; background:#D9F0DB;}
+textarea,pre {font-family:Courier; font-size:12px;}
+</style>
+</head>
+<body>
+<p><a href='_index.htm'>&lt;&lt;目录</a></p><span style="font-size:14px"><br>
+<strong>一、什么是MVC &nbsp; &nbsp; &nbsp; </strong>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<br>
+<span style="white-space:pre"></span>M -Model 编写model类 对数据进行操作<br>
+<span style="white-space:pre"></span>V -View &nbsp;编写html文件，页面呈现<br>
+<span style="white-space:pre"></span>C-Controller 编写类文件（UserAction.class.php）处理输入（写入数据库记录），确保M和V的同步，一旦M改变，V应该同步更新&nbsp; &nbsp;&nbsp;<br>
+<strong>二、ThinkPHP的MVC对应的目录 &nbsp;&nbsp;</strong><br>
+<span style="white-space:pre"></span>M 项目目录/应用目录/Lib/Model<br>
+<span style="white-space:pre"></span>V 项目目录/应用目录/Tpl<br>
+<span style="white-space:pre"></span>C 项目目录/应用目录/Lib/Action&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<br>
+<strong>三、<span style="font-size:14px">利用url访问C，</span>url的4种访问C（控制器）的方式 &nbsp; &nbsp; &nbsp; </strong>
+&nbsp;&nbsp;<br>
+<span style="white-space:pre"></span>1.PATHINFO 模式 -- 重点！！！！！！<br>
+<span style="white-space:pre"></span>http://域名/项目名/入口文件/模块名（C下）/方法名/键1/&#20540;1/键2/&#20540;2<br>
+<span style="white-space:pre"></span>2.普通模式<br>
+<span style="white-space:pre"></span>http://域名/项目名/入口文件?m=模块名&amp;a=方法名&amp;键1=&#20540;1&amp;键2=&#20540;2<br>
+<span style="white-space:pre"></span>3.REWRITE模式<br>
+<span style="white-space:pre"></span>http://域名/项目名/模块名/方法名/键1/&#20540;1/键2/&#20540;2<br>
+<span style="white-space:pre"></span>4.兼容模式<br>
+<span style="white-space:pre"></span>http://域名/项目名/入口文件？s=模块名/方法名/键1/&#20540;1/键2/&#20540;2<br>
+<br>
+<br>
+<strong>四、conf配置文件修改：</strong><span style="white-space:pre"> </span><br>
+<span style="white-space:pre"></span>//&#26684;式：'配置项'=&gt;'配置&#20540;',<br>
+<span style="white-space:pre"></span>'URL_PATHINFO_DEPR'=&gt;'-',//修改URL的分隔符为'-'<br>
+<strong>五、php调试模式:</strong><br>
+（php默认情况下是关闭调试模式的，开启调试模式后，缓存将不再记录，文件的修改会即时生效。）<br>
+开启方法：<br>
+</span>
+<p><span style="font-size:14px">在htdocs下的文件夹thinkphp中的文件 index.php 中输入如下内容;</span></p>
+<p><span style="font-size:14px"></span><pre name="code" class="php">&lt;?php     
+//第一步：确定应用名称（前台应用一般用Home），后台一般用Admin  
+define(&quot;APP_NAME&quot;,&quot;Home&quot;);  
+//第二步：确定应用路径  
+define(&quot;APP_PATH&quot;,&quot;./Home/&quot;);  
+//引入ThinkPHP核心文件  
+require  &quot;./ThinkPHP/ThinkPHP.php&quot;  
+//开启调试模式:
+define(&quot;APP_DEBUG&quot;,true);
+?&gt;</pre></p>
+<br>
+<p><a href='_index.htm'>&lt;&lt;目录</a></p>
+</body>
+</html>

@@ -1,0 +1,285 @@
+﻿<!doctype html>
+<html dir="ltr" lang="zh-CN">
+<head>
+<title>ajax  get与post请求</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style type="text/css">
+body {font:normal 12px/24px Arial, Helvetica, sans-serif; background:#D9F0DB;}
+textarea,pre {font-family:Courier; font-size:12px;}
+</style>
+</head>
+<body>
+<p><a href='_index.htm'>&lt;&lt;目录</a></p><p><span style="font-size:18px; color:#ff0000"><strong>1、使用ajax与服务器通信的的步骤:</strong></span></p>
+<p><span style="font-size:18px">①&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;创建一个XMLHttpRequest对象</span></p>
+<p><span style="font-size:18px">②&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;创建url,data,通过 xmlHttpRequest.send()</span></p>
+<p><span style="font-size:18px">③&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;服务器端接收 ajax的请求,做相应处理(操作数据库)，然后返回结果(用 echo 语句返回结果)</span></p>
+<p><span style="font-size:18px">④&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;客户端通过xmlHttpRequest的属性 reponseText , responseXML 取的数据，然后就完成局部刷新当前页面任务</span></p>
+<p><span style="font-size:18px"></span></p>
+<h2 style="border:0px; margin:2px 0px; padding:0px; line-height:1.8em; font-family:'Open Sans','Helvetica Neue',Helvetica,Arial,STHeiti,'Microsoft Yahei',sans-serif">
+<span style="font-size:18px; color:#ff0000">2、XMLHttpRequest 对象属性</span></h2>
+<table class="reference notranslate " style="font-weight:bold; border:0px; margin:4px 0px; padding:0px; border-collapse:collapse; width:729px; color:rgb(51,51,51); font-family:'Open Sans','Helvetica Neue',Helvetica,Arial,STHeiti,'Microsoft Yahei',sans-serif">
+<tbody style="border:0px; margin:0px; padding:0px">
+<tr style="border:0px; margin:0px; padding:0px; background-color:rgb(246,244,240)">
+<th width="35%" style="border:1px solid rgb(85,85,85); margin:0px; padding:3px; color:rgb(255,255,255); vertical-align:top; background-color:rgb(85,85,85)">
+属性</th>
+<th width="65%" style="border:1px solid rgb(85,85,85); margin:0px; padding:3px; color:rgb(255,255,255); vertical-align:top; background-color:rgb(85,85,85)">
+描述</th>
+</tr>
+<tr style="border:0px; margin:0px; padding:0px">
+<td style="border:1px solid rgb(212,212,212); margin:0px; padding:7px 5px; vertical-align:top">
+onreadystatechange</td>
+<td style="border:1px solid rgb(212,212,212); margin:0px; padding:7px 5px; vertical-align:top">
+存储函数（或函数的名称）在每次 readyState 属性变化时被自动调用。</td>
+</tr>
+<tr style="border:0px; margin:0px; padding:0px; background-color:rgb(246,244,240)">
+<td style="border:1px solid rgb(212,212,212); margin:0px; padding:7px 5px; vertical-align:top">
+readyState</td>
+<td style="border:1px solid rgb(212,212,212); margin:0px; padding:7px 5px; vertical-align:top">
+存放了 XMLHttpRequest 的状态。从 0 到 4 变化：<br>
+0：请求未初始化<br>
+1：服务器建立连接<br>
+2：收到的请求<br>
+3：处理请求<br>
+4：请求完成和响应准备就绪</td>
+</tr>
+<tr style="border:0px; margin:0px; padding:0px">
+<td style="border:1px solid rgb(212,212,212); margin:0px; padding:7px 5px; vertical-align:top">
+responseText</td>
+<td style="border:1px solid rgb(212,212,212); margin:0px; padding:7px 5px; vertical-align:top">
+返回作为一个字符串的响应数据。</td>
+</tr>
+<tr style="border:0px; margin:0px; padding:0px; background-color:rgb(246,244,240)">
+<td style="border:1px solid rgb(212,212,212); margin:0px; padding:7px 5px; vertical-align:top">
+responseXML</td>
+<td style="border:1px solid rgb(212,212,212); margin:0px; padding:7px 5px; vertical-align:top">
+返回作为 XML 数据响应数据。</td>
+</tr>
+<tr style="border:0px; margin:0px; padding:0px">
+<td style="border:1px solid rgb(212,212,212); margin:0px; padding:7px 5px; vertical-align:top">
+status</td>
+<td style="border:1px solid rgb(212,212,212); margin:0px; padding:7px 5px; vertical-align:top">
+返回状态数（例如 &quot;404&quot; 为 &quot;Not Found&quot; 或 &quot;200&quot; 为 &quot;OK&quot;）。</td>
+</tr>
+<tr style="border:0px; margin:0px; padding:0px; background-color:rgb(246,244,240)">
+<td style="border:1px solid rgb(212,212,212); margin:0px; padding:7px 5px; vertical-align:top">
+statusText</td>
+<td style="border:1px solid rgb(212,212,212); margin:0px; padding:7px 5px; vertical-align:top">
+返回状态文本（如 &quot;Not Found&quot; 或 &quot;OK&quot;）。</td>
+</tr>
+</tbody>
+</table>
+<p></p>
+<p><span style="font-size:18px"></span></p>
+<h2 style="border:0px; margin:2px 0px; padding:0px; line-height:1.8em; font-family:'Open Sans','Helvetica Neue',Helvetica,Arial,STHeiti,'Microsoft Yahei',sans-serif">
+<span style="font-size:18px; color:#ff0000">3、XMLHttpRequest 对象方法</span></h2>
+<table class="reference notranslate " style="font-weight:bold; border:0px; margin:4px 0px; padding:0px; border-collapse:collapse; width:729px; color:rgb(51,51,51); font-family:'Open Sans','Helvetica Neue',Helvetica,Arial,STHeiti,'Microsoft Yahei',sans-serif">
+<tbody style="border:0px; margin:0px; padding:0px">
+<tr style="border:0px; margin:0px; padding:0px; background-color:rgb(246,244,240)">
+<th width="35%" style="border:1px solid rgb(85,85,85); margin:0px; padding:3px; color:rgb(255,255,255); vertical-align:top; background-color:rgb(85,85,85)">
+方法</th>
+<th width="65%" style="border:1px solid rgb(85,85,85); margin:0px; padding:3px; color:rgb(255,255,255); vertical-align:top; background-color:rgb(85,85,85)">
+描述</th>
+</tr>
+<tr style="border:0px; margin:0px; padding:0px">
+<td style="border:1px solid rgb(212,212,212); margin:0px; padding:7px 5px; vertical-align:top">
+abort()</td>
+<td style="border:1px solid rgb(212,212,212); margin:0px; padding:7px 5px; vertical-align:top">
+取消当前的请求。</td>
+</tr>
+<tr style="border:0px; margin:0px; padding:0px; background-color:rgb(246,244,240)">
+<td style="border:1px solid rgb(212,212,212); margin:0px; padding:7px 5px; vertical-align:top">
+getAllResponseHeaders()</td>
+<td style="border:1px solid rgb(212,212,212); margin:0px; padding:7px 5px; vertical-align:top">
+返回头信息。</td>
+</tr>
+<tr style="border:0px; margin:0px; padding:0px">
+<td style="border:1px solid rgb(212,212,212); margin:0px; padding:7px 5px; vertical-align:top">
+getResponseHeader()</td>
+<td style="border:1px solid rgb(212,212,212); margin:0px; padding:7px 5px; vertical-align:top">
+返回指定的头信息。</td>
+</tr>
+<tr style="border:0px; margin:0px; padding:0px; background-color:rgb(246,244,240)">
+<td style="border:1px solid rgb(212,212,212); margin:0px; padding:7px 5px; vertical-align:top">
+open(method,url,async,uname,pswd)</td>
+<td style="border:1px solid rgb(212,212,212); margin:0px; padding:7px 5px; vertical-align:top">
+规定请求的类型，URL，请求是否应该进行异步处理，以及请求的其他可选属性。&nbsp;<br>
+<br>
+method：请求的类型：GET 或 POST<br>
+url：文件在服务器上的位置<br>
+async：true（异步）或 false（同步）</td>
+</tr>
+<tr style="border:0px; margin:0px; padding:0px">
+<td style="border:1px solid rgb(212,212,212); margin:0px; padding:7px 5px; vertical-align:top">
+send(string)</td>
+<td style="border:1px solid rgb(212,212,212); margin:0px; padding:7px 5px; vertical-align:top">
+发送请求到服务器。<br>
+<br>
+string：仅用于 POST 请求</td>
+</tr>
+<tr style="border:0px; margin:0px; padding:0px; background-color:rgb(246,244,240)">
+<td style="border:1px solid rgb(212,212,212); margin:0px; padding:7px 5px; vertical-align:top">
+setRequestHeader()</td>
+<td style="border:1px solid rgb(212,212,212); margin:0px; padding:7px 5px; vertical-align:top">
+把标签/&#20540;对添加到要发送的头文件。</td>
+</tr>
+</tbody>
+</table>
+<p></p>
+<p><span style="font-size:18px; color:#ff0000"><strong>4、ajax发送get请求方法：</strong></span></p>
+<p><span style="font-size:18px"></span><pre name="code" class="javascript" style="font-weight: bold;">&lt;script&gt;
+function loadXMLDoc(){
+	var xmlhttp;
+	//创建一个XMLHttpRequest对象
+	if (window.XMLHttpRequest){
+		// code for IE7+, Firefox, Chrome, Opera, Safari
+		//对于以上浏览器采用下面方法创建
+		xmlhttp=new XMLHttpRequest();
+	}else{
+			// code for IE6, IE5
+			//对于以上浏览器采用下面方法创建
+		xmlhttp=new ActiveXObject(&quot;Microsoft.XMLHTTP&quot;);
+	}
+	//每次readyState发生变化时执行以下函数
+	xmlhttp.onreadystatechange=function(){
+		if (xmlhttp.readyState==4 &amp;&amp; xmlhttp.status==200){
+			//将ajax请求返回的值赋给id为 myDiv的元素
+			document.getElementById(&quot;myDiv&quot;).innerHTML=xmlhttp.responseText;
+		}
+	}
+	//规定请求的类型，URL，请求是否应该进行异步处理，以及请求的其他可选属性。 
+	xmlhttp.open(&quot;GET&quot;,&quot;/try/ajax/demo_get.php&quot;,true);
+	//发送请求
+	xmlhttp.send();
+}
+&lt;/script&gt;</pre><span style="color:#ff0000"><strong>5、以用户注册为例，以get方式发送请求实例：</strong></span></p>
+<p><strong><span style="font-size:18px"><span style="background-color:rgb(255,255,102)">register.php</span><br>
+</span></strong></p>
+<p><strong><span style="font-size:18px"></span></strong><pre name="code" class="php">&lt;html&gt;
+&lt;head&gt;
+&lt;title&gt;用户注册&lt;/title&gt;
+&lt;meta http-equiv=&quot;content-type&quot; content=&quot;text/html;charset=utf-8&quot;/&gt;
+&lt;script type=&quot;text/javascript&quot;&gt;
+	//创建ajax引擎
+	function getXmlHttpObject(){
+		var xmlHttpRequest;
+		//不同的浏览器获取对象xmlhttprequest 对象方法不一样
+		if(window.ActiveXObject){
+			xmlHttpRequest=new ActiveXObject(&quot;Microsoft.XMLHTTP&quot;);
+		}else{
+			xmlHttpRequest=new XMLHttpRequest();
+		}
+		return xmlHttpRequest;
+	}
+	var myXmlHttpRequest=&quot;&quot;;
+	//验证用户名是否存在
+	function checkName(){
+		myXmlHttpRequest=getXmlHttpObject();
+		//怎么判断创建ok
+		if(myXmlHttpRequest){
+			//通过myXmlHttpRequest对象发送请求到服务器的某个页面
+			//第一个参数表示请求的方式, &quot;get&quot; / &quot;post&quot;
+			//第二个参数指定url,对哪个页面发出ajax请求(本质仍然是http请求)
+			//第三个参数表示 true表示使用异步机制,如果false表示不使用异步,即同步机制。
+			var url=&quot;/ajax/registerProcess.php?mytime=&quot;+new  Date()+&quot;&amp;username=&quot;+$(&quot;username&quot;).value;
+			//打开请求.
+			myXmlHttpRequest.open(&quot;get&quot;,url,true);
+			//指定回调函数.chuli是函数名
+			myXmlHttpRequest.onreadystatechange=chuli;
+			//真的发送请求,如果是get请求则填入 null即可
+			//如果是post请求，则填入实际的数据
+			myXmlHttpRequest.send(null); 
+		}
+	}
+
+	//回调函数
+	function chuli(){
+		//window.alert(&quot;处理函数被调回&quot;+myXmlHttpRequest.readyState);
+		//我要取出从registerPro.php页面返回的数据
+		if(myXmlHttpRequest.readyState==4){
+			//取出值,根据返回信息的格式定.text
+			//window.alert(&quot;服务器返回&quot;+myXmlHttpRequest.responseText);
+			$(&#39;myres&#39;).value=myXmlHttpRequest.responseText;
+		}
+	}
+	//这里我们写一个函数
+	function $(id){
+		return document.getElementById(id);
+	}
+&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+	&lt;form action=&quot;???&quot; method=&quot;post&quot;&gt;
+    用户名字:&lt;input type=&quot;text&quot;  onkeyup=&quot;checkName();&quot;  name=&quot;username1&quot; id=&quot;username&quot;&gt;&lt;input type=&quot;button&quot; onclick=&quot;checkName();&quot;  value=&quot;验证用户名&quot;&gt;
+    &lt;input style=&quot;border-width: 0;color: red&quot; type=&quot;text&quot; id=&quot;myres&quot;&gt;
+    &lt;br/&gt;
+    用户密码:&lt;input type=&quot;password&quot; name=&quot;password&quot;&gt;&lt;br&gt;
+    电子邮件:&lt;input type=&quot;text&quot; name=&quot;email&quot;&gt;&lt;br/&gt;
+    &lt;input type=&quot;submit&quot; value=&quot;用户注册&quot;&gt;
+    &lt;/form&gt;
+     &lt;form action=&quot;???&quot; method=&quot;post&quot;&gt;
+    用户名字:&lt;input type=&quot;text&quot; name=&quot;username2&quot; &gt;
+   
+    &lt;br/&gt;
+    用户密码:&lt;input type=&quot;password&quot; name=&quot;password&quot;&gt;&lt;br&gt;
+    电子邮件:&lt;input type=&quot;text&quot; name=&quot;email&quot;&gt;&lt;br/&gt;
+    &lt;input type=&quot;submit&quot; value=&quot;用户注册&quot;&gt;
+    &lt;/form&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;</pre><br>
+<span style="background-color:rgb(255,255,102)">registerpro.php</span><br>
+</p>
+<p><pre name="code" class="php">&lt;span style=&quot;font-size:18px;&quot;&gt;&lt;?php
+	//这里两句话很重要,第一讲话告诉浏览器返回的数据是xml格式
+	header(&quot;Content-Type: text/xml;charset=utf-8&quot;);
+	//告诉浏览器不要缓存数据
+	header(&quot;Cache-Control: no-cache&quot;);
+	//接收数据
+	$username=$_GET[&#39;username&#39;];
+	if($username==&quot;shunping&quot;){
+	    //注意，这里数据是返回给请求的页面.用echo语句返回
+		echo &quot;用户名不可以用&quot;;
+	}else{
+		echo &quot;用户名可以用&quot;;
+	}
+?&gt;	&lt;/span&gt;</pre><span style="font-size:18px"><br>
+</span></p>
+<p><strong><span style="font-size:18px"><span style="font-weight:bold"><span style="color:#ff0000">&nbsp;6、ajax发送post请求方法：</span></span><br>
+</span></strong></p>
+<p><span style="font-size:18px"></span><pre name="code" class="javascript" style="font-weight: bold;">&lt;script&gt;
+function loadXMLDoc(){
+    var xmlhttp;
+    if (window.XMLHttpRequest){
+        // code for IE7+, Firefox, Chrome, Opera, Safari
+        xmlhttp=new XMLHttpRequest();
+    }else{
+        // code for IE6, IE5
+        xmlhttp=new ActiveXObject(&quot;Microsoft.XMLHTTP&quot;);
+    }
+    xmlhttp.onreadystatechange=function(){
+        if (xmlhttp.readyState==4 &amp;&amp; xmlhttp.status==200){
+            document.getElementById(&quot;myDiv&quot;).innerHTML=xmlhttp.responseText;
+        }
+    }
+    xmlhttp.open(&quot;POST&quot;,&quot;/try/ajax/demo_post2.php&quot;,true);
+    //下面这句话必须有
+    //把标签/值对添加到要发送的头文件。
+    xmlhttp.setRequestHeader(&quot;Content-type&quot;,&quot;application/x-www-form-urlencoded&quot;);
+    xmlhttp.send(&quot;fname=Henry&amp;lname=Ford&quot;);
+    }
+&lt;/script&gt;</pre><br>
+</p>
+<p><span style="color:#ff0000"><strong>7、使用get方式发出请求，如果提交的用户名不变化，浏览器将不会真的发请求，而是从缓存取数据、url</strong></span></p>
+<p>解决方法：</p>
+<p>1、url 后带一个总是变化的参数,比如当前时间</p>
+<p>&nbsp; &nbsp; &nbsp; varurl=&quot;/ajax/registerProcess.php?mytime=&quot;&#43;new&nbsp;Date()&#43;&quot;&amp;username=&quot;&#43;$(&quot;username&quot;).value;</p>
+<p>2、在服务器回送结果时，禁用缓存.</p>
+<p><span style="white-space:pre"></span>//这里两句话很重要,第一讲话告诉浏览器返回的数据是xml&#26684;式</p>
+<p><span style="white-space:pre"></span>header(&quot;Content-Type:text/xml;charset=utf-8&quot;);</p>
+<p><span style="white-space:pre"></span>//告诉浏览器不要缓存数据</p>
+<p><span style="white-space:pre"></span>header(&quot;Cache-Control:no-cache&quot;);</p>
+<p style="font-weight:bold"><br>
+</p>
+<p><a href='_index.htm'>&lt;&lt;目录</a></p>
+</body>
+</html>

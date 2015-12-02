@@ -1,0 +1,55 @@
+﻿<!doctype html>
+<html dir="ltr" lang="zh-CN">
+<head>
+<title>selenium_webdriver(python)文件上传操作</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style type="text/css">
+body {font:normal 12px/24px Arial, Helvetica, sans-serif; background:#D9F0DB;}
+textarea,pre {font-family:Courier; font-size:12px;}
+</style>
+</head>
+<body>
+<p><a href='_index.htm'>&lt;&lt;目录</a></p><p><span style="font-size:14px"><strong>asd.html:</strong></span></p>
+<p><pre name="code" class="html">&lt;html&gt;
+&lt;head&gt;
+&lt;meta http-equiv=&quot;content-type&quot; content=&quot;text/html;charset=utf-8&quot; /&gt;
+&lt;title&gt;upload_file&lt;/title&gt;
+&lt;script type=&quot;text/javascript&quot;
+async=&quot;&quot;src=&quot;http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js
+&quot;&gt;&lt;/script&gt;
+&lt;link
+href=&quot;http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstra
+p-combined.min.css&quot; rel=&quot;stylesheet&quot; /&gt;
+&lt;script type=&quot;text/javascript&quot;&gt;
+&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;div class=&quot;row-fluid&quot;&gt;
+&lt;div class=&quot;span6 well&quot;&gt;
+&lt;h3&gt;upload_file&lt;/h3&gt;
+&lt;input type=&quot;file&quot; name=&quot;file&quot; /&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/body&gt;
+&lt;script
+src=&quot;http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.
+min.js&quot;&gt;&lt;/script&gt;
+&lt;/html&gt;</pre><br>
+<strong>python:</strong></p>
+<p><strong></strong><pre name="code" class="python">#coding=utf-8
+from selenium import webdriver
+import os,time
+driver = webdriver.Firefox()
+#脚本要与asd.html 同一目录
+file_path = os.path.abspath(&#39;asd.html&#39;)
+print file_path
+driver.get(file_path)
+#定位上传按钮，添加本地文件
+driver.find_element_by_xpath(&quot;html/body/div[1]/div/input&quot;).send_keys(&#39;C:\MySQL\MySQL Server 5.1\my.ini&#39;)
+time.sleep(2)
+driver.quit()</pre><br>
+<br>
+</p>
+<p><a href='_index.htm'>&lt;&lt;目录</a></p>
+</body>
+</html>

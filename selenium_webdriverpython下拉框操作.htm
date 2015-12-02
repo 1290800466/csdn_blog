@@ -1,0 +1,53 @@
+﻿<!doctype html>
+<html dir="ltr" lang="zh-CN">
+<head>
+<title>selenium_webdriver(python)下拉框操作</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style type="text/css">
+body {font:normal 12px/24px Arial, Helvetica, sans-serif; background:#D9F0DB;}
+textarea,pre {font-family:Courier; font-size:12px;}
+</style>
+</head>
+<body>
+<p><a href='_index.htm'>&lt;&lt;目录</a></p><p><span style="font-size:14px"><strong>zx.html</strong></span></p>
+<p><pre name="code" class="html">&lt;html&gt;
+&lt;body&gt;
+&lt;select id=&quot;ShippingMethod&quot;  name=&quot;ShippingMethod&quot;&gt;
+&lt;option value=&quot;12.51&quot;&gt;UPS Next Day Air ==&gt; $12.51&lt;/option&gt;
+&lt;option value=&quot;11.61&quot;&gt;UPS Next Day Air Saver ==&gt; $11.61&lt;/option&gt;
+&lt;option value=&quot;10.69&quot;&gt;UPS 3 Day Select ==&gt; $10.69&lt;/option&gt;
+&lt;option value=&quot;9.03&quot;&gt;UPS 2nd Day Air ==&gt; $9.03&lt;/option&gt;
+&lt;option value=&quot;8.34&quot;&gt;UPS Ground ==&gt; $8.34&lt;/option&gt;
+&lt;option value=&quot;9.25&quot;&gt;USPS Priority Mail Insured ==&gt; $9.25&lt;/option&gt;
+&lt;option value=&quot;7.45&quot;&gt;USPS Priority Mail ==&gt; $7.45&lt;/option&gt;
+&lt;option value=&quot;3.20&quot;&gt;USPS First Class ==&gt; $3.20&lt;/option&gt;
+&lt;/select&gt;
+&lt;/body&gt;
+&lt;/html&gt;</pre><img src="http://img.blog.csdn.net/20150519133452943?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvdTAxMzM3MjQ4Nw==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center" width="300" height="250" alt=""></p>
+<p><br>
+<span style="font-size:14px"><strong>python:</strong></span></p>
+<p><pre name="code" class="python">#coding=utf-8
+from selenium import webdriver
+import os,time
+driver= webdriver.Firefox()
+
+file_path = os.path.abspath(&#39;C:\Users\Administrator\Desktop\zx.html&#39;)
+print file_path
+driver.get(file_path)
+time.sleep(2)
+#先定位到下拉框
+m=driver.find_element_by_xpath(&quot;//*[@id=&#39;ShippingMethod&#39;]&quot;)
+#再点击下拉框下的选项
+m.find_element_by_xpath(&quot;//*[@id=&#39;ShippingMethod&#39;]/option[3]&quot;).click()
+time.sleep(3)
+driver.quit()</pre><span style="font-size:14px"><br>
+<strong>注意：</strong><br>
+这里可能与之前的操作有所不同，首先要定位到下拉框的元素，然后选择下拉列表中的选项进行点击操作。<br>
+m=driver.find_element_by_id(&quot;ShippingMethod&quot;)<br>
+m.find_element_by_xpath(&quot;//option[@value='10.69']&quot;).click()</span><br>
+</p>
+<p><br>
+</p>
+<p><a href='_index.htm'>&lt;&lt;目录</a></p>
+</body>
+</html>

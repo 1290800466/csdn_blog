@@ -1,0 +1,37 @@
+﻿<!doctype html>
+<html dir="ltr" lang="zh-CN">
+<head>
+<title>UFT中ChildObjects 函数的应用</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style type="text/css">
+body {font:normal 12px/24px Arial, Helvetica, sans-serif; background:#D9F0DB;}
+textarea,pre {font-family:Courier; font-size:12px;}
+</style>
+</head>
+<body>
+<p><a href='_index.htm'>&lt;&lt;目录</a></p><pre name="code" class="vb">&#39;qtp 中ChildObjects 函数的应用：
+&#39;ChildObjects 函数主要用于页面中同一类型对象的批量操作，减少代码量；
+&#39;如在出售中的 宝贝中有很多宝贝要进行批量下架，可以用以下方法得到：
+&#39;使用方法详解：
+
+
+&#39;（1）、首先对要操作的对象建立一个Description对象：
+Set MyDescription = Description.Create()
+&#39;（2）、设置Description对象的属性：
+MyDescription(&quot;html tag&quot;).Value = &quot;INPUT&quot;
+MyDescription(&quot;type&quot;).Value = &quot;checkbox&quot;
+MyDescription(&quot;name&quot;).Value=&quot;selectedIds&quot;
+
+
+&#39;调用ChildObjects方法实现选中所有复选框
+Dim Counter
+Set Checkboxes = Browser(&quot;test:=XXX&quot;).Page(&quot;text:=XXX&quot;).ChildObjects(MyDescription)
+Num = Checkboxes.Count
+&#39;这里的Num-1 表示所有的复选框；
+For Counter=0 to Num-1
+&#39;对该类型的数据赋值
+Checkboxes(Counter).Set &quot;ON&quot;
+Next</pre><br>
+<p><a href='_index.htm'>&lt;&lt;目录</a></p>
+</body>
+</html>

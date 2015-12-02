@@ -1,0 +1,327 @@
+﻿<!doctype html>
+<html dir="ltr" lang="zh-CN">
+<head>
+<title>Python 列表详解</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style type="text/css">
+body {font:normal 12px/24px Arial, Helvetica, sans-serif; background:#D9F0DB;}
+textarea,pre {font-family:Courier; font-size:12px;}
+</style>
+</head>
+<body>
+<p><a href='_index.htm'>&lt;&lt;目录</a></p><h1 style="font-size:25px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; margin-top:0px">
+Python&nbsp;<span class="color_h1" style="color:rgb(138,192,7)">列表(Lists)</span></h1>
+<p style="line-height:16.7999992370605px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif">
+序列是Python中最基本的数据结构。序列中的每个元素都分配一个数字 - 它的位置，或索引，第一个索引是0，第二个索引是1，依此类推。</p>
+<p style="line-height:16.7999992370605px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif">
+Python有6个序列的内置类型，但最常见的是列表和元组。</p>
+<p style="line-height:16.7999992370605px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif">
+<span style="line-height:16.7999992370605px">列表是最常用的Python数据类型，它可以作为一个方括号内的逗号分隔&#20540;出现。</span></p>
+<p style="line-height:16.7999992370605px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif">
+列表的数据项不需要具有相同的类型</p>
+<p style="line-height:16.7999992370605px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif">
+<span style="font-size:18px; color:#ff0000">列表可以嵌套；</span></p>
+<p style="line-height:16.7999992370605px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif">
+创建一个列表，只要把逗号分隔的不同的数据项使用<span style="font-size:18px; color:#ff6666">方括号括起来</span>即可。如下所示：</p>
+<pre class="prettyprint prettyprinted" style="margin:15px auto; line-height:20px; font-family:'courier new'; word-break:break-all; word-wrap:break-word; border-width:1px 1px 1px 4px; border-style:solid; border-color:rgb(221,221,221); padding:10px 15px"><span class="pln">list1 </span><span class="pun" style="color:rgb(102,102,0)">=</span><span class="pln"> </span><span class="pun" style="color:rgb(102,102,0)">[</span><span class="str" style="color:rgb(0,136,0)">'physics'</span><span class="pun" style="color:rgb(102,102,0)">,</span><span class="pln"> </span><span class="str" style="color:rgb(0,136,0)">'chemistry'</span><span class="pun" style="color:rgb(102,102,0)">,</span><span class="pln"> </span><span class="lit" style="color:rgb(0,102,102)">1997</span><span class="pun" style="color:rgb(102,102,0)">,</span><span class="pln"> </span><span class="lit" style="color:rgb(0,102,102)">2000</span><span class="pun" style="color:rgb(102,102,0)">];</span><span class="pln">
+list2 </span><span class="pun" style="color:rgb(102,102,0)">=</span><span class="pln"> </span><span class="pun" style="color:rgb(102,102,0)">[</span><span class="lit" style="color:rgb(0,102,102)">1</span><span class="pun" style="color:rgb(102,102,0)">,</span><span class="pln"> </span><span class="lit" style="color:rgb(0,102,102)">2</span><span class="pun" style="color:rgb(102,102,0)">,</span><span class="pln"> </span><span class="lit" style="color:rgb(0,102,102)">3</span><span class="pun" style="color:rgb(102,102,0)">,</span><span class="pln"> </span><span class="lit" style="color:rgb(0,102,102)">4</span><span class="pun" style="color:rgb(102,102,0)">,</span><span class="pln"> </span><span class="lit" style="color:rgb(0,102,102)">5</span><span class="pln"> </span><span class="pun" style="color:rgb(102,102,0)">];</span><span class="pln">
+list3 </span><span class="pun" style="color:rgb(102,102,0)">=</span><span class="pln"> </span><span class="pun" style="color:rgb(102,102,0)">[</span><span class="str" style="color:rgb(0,136,0)">&quot;a&quot;</span><span class="pun" style="color:rgb(102,102,0)">,</span><span class="pln"> </span><span class="str" style="color:rgb(0,136,0)">&quot;b&quot;</span><span class="pun" style="color:rgb(102,102,0)">,</span><span class="pln"> </span><span class="str" style="color:rgb(0,136,0)">&quot;c&quot;</span><span class="pun" style="color:rgb(102,102,0)">,</span><span class="pln"> </span><span class="str" style="color:rgb(0,136,0)">&quot;d&quot;</span><span class="pun" style="color:rgb(102,102,0)">];</span></pre>
+<p style="line-height:16.7999992370605px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif">
+与字符串的索引一样，列表索引从0开始。列表可以进行截取、组合等。</p>
+<hr style="color:rgb(212,212,212); height:1px; border:0px; clear:both; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; background-color:rgb(212,212,212)">
+<h2 style="font-size:22px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; margin-top:10px; margin-bottom:10px">
+访问列表中的&#20540;</h2>
+<p style="line-height:16.7999992370605px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif">
+使用下标索引来访问列表中的&#20540;，同样你也可以使用方括号的形式截取字符，如下所示：</p>
+<pre class="prettyprint prettyprinted" style="margin:15px auto; line-height:20px; font-family:'courier new'; word-break:break-all; word-wrap:break-word; border-width:1px 1px 1px 4px; border-style:solid; border-color:rgb(221,221,221); padding:10px 15px"><span class="com" style="color:rgb(136,0,0)">#!/usr/bin/python</span><span class="pln">
+
+list1 </span><span class="pun" style="color:rgb(102,102,0)">=</span><span class="pln"> </span><span class="pun" style="color:rgb(102,102,0)">[</span><span class="str" style="color:rgb(0,136,0)">'physics'</span><span class="pun" style="color:rgb(102,102,0)">,</span><span class="pln"> </span><span class="str" style="color:rgb(0,136,0)">'chemistry'</span><span class="pun" style="color:rgb(102,102,0)">,</span><span class="pln"> </span><span class="lit" style="color:rgb(0,102,102)">1997</span><span class="pun" style="color:rgb(102,102,0)">,</span><span class="pln"> </span><span class="lit" style="color:rgb(0,102,102)">2000</span><span class="pun" style="color:rgb(102,102,0)">];</span><span class="pln">
+list2 </span><span class="pun" style="color:rgb(102,102,0)">=</span><span class="pln"> </span><span class="pun" style="color:rgb(102,102,0)">[</span><span class="lit" style="color:rgb(0,102,102)">1</span><span class="pun" style="color:rgb(102,102,0)">,</span><span class="pln"> </span><span class="lit" style="color:rgb(0,102,102)">2</span><span class="pun" style="color:rgb(102,102,0)">,</span><span class="pln"> </span><span class="lit" style="color:rgb(0,102,102)">3</span><span class="pun" style="color:rgb(102,102,0)">,</span><span class="pln"> </span><span class="lit" style="color:rgb(0,102,102)">4</span><span class="pun" style="color:rgb(102,102,0)">,</span><span class="pln"> </span><span class="lit" style="color:rgb(0,102,102)">5</span><span class="pun" style="color:rgb(102,102,0)">,</span><span class="pln"> </span><span class="lit" style="color:rgb(0,102,102)">6</span><span class="pun" style="color:rgb(102,102,0)">,</span><span class="pln"> </span><span class="lit" style="color:rgb(0,102,102)">7</span><span class="pln"> </span><span class="pun" style="color:rgb(102,102,0)">];</span><span class="pln">
+
+</span><span class="kwd" style="color:rgb(0,0,136)">print</span><span class="pln"> </span><span class="str" style="color:rgb(0,136,0)">&quot;list1[0]: &quot;</span><span class="pun" style="color:rgb(102,102,0)">,</span><span class="pln"> list1</span><span class="pun" style="color:rgb(102,102,0)">[</span><span class="lit" style="color:rgb(0,102,102)">0</span><span class="pun" style="color:rgb(102,102,0)">]</span><span class="pln">
+</span><span class="kwd" style="color:rgb(0,0,136)">print</span><span class="pln"> </span><span class="str" style="color:rgb(0,136,0)">&quot;list2[1:5]: &quot;</span><span class="pun" style="color:rgb(102,102,0)">,</span><span class="pln"> list2</span><span class="pun" style="color:rgb(102,102,0)">[</span><span class="lit" style="color:rgb(0,102,102)">1</span><span class="pun" style="color:rgb(102,102,0)">:</span><span class="lit" style="color:rgb(0,102,102)">5</span><span class="pun" style="color:rgb(102,102,0)">]</span></pre>
+<p style="line-height:16.7999992370605px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif">
+以上实例输出结果：</p>
+<pre class="prettyprint prettyprinted" style="margin:15px auto; line-height:20px; font-family:'courier new'; word-break:break-all; word-wrap:break-word; border-width:1px 1px 1px 4px; border-style:solid; border-color:rgb(221,221,221); padding:10px 15px"><span class="pln">list1</span><span class="pun" style="color:rgb(102,102,0)">[</span><span class="lit" style="color:rgb(0,102,102)">0</span><span class="pun" style="color:rgb(102,102,0)">]:</span><span class="pln">  physics
+list2</span><span class="pun" style="color:rgb(102,102,0)">[</span><span class="lit" style="color:rgb(0,102,102)">1</span><span class="pun" style="color:rgb(102,102,0)">:</span><span class="lit" style="color:rgb(0,102,102)">5</span><span class="pun" style="color:rgb(102,102,0)">]:</span><span class="pln">  </span><span class="pun" style="color:rgb(102,102,0)">[</span><span class="lit" style="color:rgb(0,102,102)">2</span><span class="pun" style="color:rgb(102,102,0)">,</span><span class="pln"> </span><span class="lit" style="color:rgb(0,102,102)">3</span><span class="pun" style="color:rgb(102,102,0)">,</span><span class="pln"> </span><span class="lit" style="color:rgb(0,102,102)">4</span><span class="pun" style="color:rgb(102,102,0)">,</span><span class="pln"> </span><span class="lit" style="color:rgb(0,102,102)">5</span><span class="pun" style="color:rgb(102,102,0)">]</span></pre>
+<hr style="color:rgb(212,212,212); height:1px; border:0px; clear:both; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; background-color:rgb(212,212,212)">
+<h2 style="font-size:22px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; margin-top:10px; margin-bottom:10px">
+更新列表</h2>
+<span style="font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif">你可以对列表的数据项进行修改或更新，你也可以使用append()方法来添加列表项，如下所示：</span>
+<pre class="prettyprint prettyprinted" style="margin:15px auto; line-height:20px; font-family:'courier new'; word-break:break-all; word-wrap:break-word; border-width:1px 1px 1px 4px; border-style:solid; border-color:rgb(221,221,221); padding:10px 15px"><span class="com" style="color:rgb(136,0,0)">#!/usr/bin/python</span><span class="pln">
+
+list </span><span class="pun" style="color:rgb(102,102,0)">=</span><span class="pln"> </span><span class="pun" style="color:rgb(102,102,0)">[</span><span class="str" style="color:rgb(0,136,0)">'physics'</span><span class="pun" style="color:rgb(102,102,0)">,</span><span class="pln"> </span><span class="str" style="color:rgb(0,136,0)">'chemistry'</span><span class="pun" style="color:rgb(102,102,0)">,</span><span class="pln"> </span><span class="lit" style="color:rgb(0,102,102)">1997</span><span class="pun" style="color:rgb(102,102,0)">,</span><span class="pln"> </span><span class="lit" style="color:rgb(0,102,102)">2000</span><span class="pun" style="color:rgb(102,102,0)">];</span><span class="pln">
+
+</span><span class="kwd" style="color:rgb(0,0,136)">print</span><span class="pln"> </span><span class="str" style="color:rgb(0,136,0)">&quot;Value available at index 2 : &quot;</span><span class="pln">
+</span><span class="kwd" style="color:rgb(0,0,136)">print</span><span class="pln"> list</span><span class="pun" style="color:rgb(102,102,0)">[</span><span class="lit" style="color:rgb(0,102,102)">2</span><span class="pun" style="color:rgb(102,102,0)">];</span><span class="pln">
+list</span><span class="pun" style="color:rgb(102,102,0)">[</span><span class="lit" style="color:rgb(0,102,102)">2</span><span class="pun" style="color:rgb(102,102,0)">]</span><span class="pln"> </span><span class="pun" style="color:rgb(102,102,0)">=</span><span class="pln"> </span><span class="lit" style="color:rgb(0,102,102)">2001</span><span class="pun" style="color:rgb(102,102,0)">;</span><span class="pln">
+</span><span class="kwd" style="color:rgb(0,0,136)">print</span><span class="pln"> </span><span class="str" style="color:rgb(0,136,0)">&quot;New value available at index 2 : &quot;</span><span class="pln">
+</span><span class="kwd" style="color:rgb(0,0,136)">print</span><span class="pln"> list</span><span class="pun" style="color:rgb(102,102,0)">[</span><span class="lit" style="color:rgb(0,102,102)">2</span><span class="pun" style="color:rgb(102,102,0)">];</span></pre>
+<p style="line-height:16.7999992370605px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif">
+<span style="line-height:16.7999992370605px">以上实例输出结果：</span></p>
+<pre class="prettyprint prettyprinted" style="margin:15px auto; line-height:20px; font-family:'courier new'; word-break:break-all; word-wrap:break-word; border-width:1px 1px 1px 4px; border-style:solid; border-color:rgb(221,221,221); padding:10px 15px"><span class="typ" style="color:rgb(102,0,102)">Value</span><span class="pln"> available at index </span><span class="lit" style="color:rgb(0,102,102)">2</span><span class="pln"> </span><span class="pun" style="color:rgb(102,102,0)">:</span><span class="pln">
+</span><span class="lit" style="color:rgb(0,102,102)">1997</span><span class="pln">
+</span><span class="typ" style="color:rgb(102,0,102)">New</span><span class="pln"> value available at index </span><span class="lit" style="color:rgb(0,102,102)">2</span><span class="pln"> </span><span class="pun" style="color:rgb(102,102,0)">:</span><span class="pln">
+</span><span class="lit" style="color:rgb(0,102,102)">2001</span></pre>
+<hr style="color:rgb(212,212,212); height:1px; border:0px; clear:both; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; background-color:rgb(212,212,212)">
+<h2 style="font-size:22px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; margin-top:10px; margin-bottom:10px">
+删除列表元素</h2>
+<p style="line-height:16.7999992370605px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif">
+可以使用 del 语句来删除列表的的元素，如下实例：</p>
+<pre class="prettyprint prettyprinted" style="margin:15px auto; line-height:20px; font-family:'courier new'; word-break:break-all; word-wrap:break-word; border-width:1px 1px 1px 4px; border-style:solid; border-color:rgb(221,221,221); padding:10px 15px"><span class="com" style="color:rgb(136,0,0)">#!/usr/bin/python</span><span class="pln">
+
+list1 </span><span class="pun" style="color:rgb(102,102,0)">=</span><span class="pln"> </span><span class="pun" style="color:rgb(102,102,0)">[</span><span class="str" style="color:rgb(0,136,0)">'physics'</span><span class="pun" style="color:rgb(102,102,0)">,</span><span class="pln"> </span><span class="str" style="color:rgb(0,136,0)">'chemistry'</span><span class="pun" style="color:rgb(102,102,0)">,</span><span class="pln"> </span><span class="lit" style="color:rgb(0,102,102)">1997</span><span class="pun" style="color:rgb(102,102,0)">,</span><span class="pln"> </span><span class="lit" style="color:rgb(0,102,102)">2000</span><span class="pun" style="color:rgb(102,102,0)">];</span><span class="pln">
+
+</span><span class="kwd" style="color:rgb(0,0,136)">print</span><span class="pln"> list1</span><span class="pun" style="color:rgb(102,102,0)">;</span><span class="pln">
+</span><span class="kwd" style="color:rgb(0,0,136)">del</span><span class="pln"> list1</span><span class="pun" style="color:rgb(102,102,0)">[</span><span class="lit" style="color:rgb(0,102,102)">2</span><span class="pun" style="color:rgb(102,102,0)">];</span><span class="pln">
+</span><span class="kwd" style="color:rgb(0,0,136)">print</span><span class="pln"> </span><span class="str" style="color:rgb(0,136,0)">&quot;After deleting value at index 2 : &quot;</span><span class="pln">
+</span><span class="kwd" style="color:rgb(0,0,136)">print</span><span class="pln"> list1</span><span class="pun" style="color:rgb(102,102,0)">;</span></pre>
+<p style="line-height:16.7999992370605px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif">
+以上实例输出结果：</p>
+<pre class="prettyprint prettyprinted" style="margin:15px auto; line-height:20px; font-family:'courier new'; word-break:break-all; word-wrap:break-word; border-width:1px 1px 1px 4px; border-style:solid; border-color:rgb(221,221,221); padding:10px 15px"><span class="pun" style="color:rgb(102,102,0)">[</span><span class="str" style="color:rgb(0,136,0)">'physics'</span><span class="pun" style="color:rgb(102,102,0)">,</span><span class="pln"> </span><span class="str" style="color:rgb(0,136,0)">'chemistry'</span><span class="pun" style="color:rgb(102,102,0)">,</span><span class="pln"> </span><span class="lit" style="color:rgb(0,102,102)">1997</span><span class="pun" style="color:rgb(102,102,0)">,</span><span class="pln"> </span><span class="lit" style="color:rgb(0,102,102)">2000</span><span class="pun" style="color:rgb(102,102,0)">]</span><span class="pln">
+</span><span class="typ" style="color:rgb(102,0,102)">After</span><span class="pln"> deleting value at index </span><span class="lit" style="color:rgb(0,102,102)">2</span><span class="pln"> </span><span class="pun" style="color:rgb(102,102,0)">:</span><span class="pln">
+</span><span class="pun" style="color:rgb(102,102,0)">[</span><span class="str" style="color:rgb(0,136,0)">'physics'</span><span class="pun" style="color:rgb(102,102,0)">,</span><span class="pln"> </span><span class="str" style="color:rgb(0,136,0)">'chemistry'</span><span class="pun" style="color:rgb(102,102,0)">,</span><span class="pln"> </span><span class="lit" style="color:rgb(0,102,102)">2000</span><span class="pun" style="color:rgb(102,102,0)">]</span></pre>
+<p style="line-height:16.7999992370605px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif">
+<strong>注意：</strong>我们会在接下来的章节讨论remove()方法的使用</p>
+<hr style="color:rgb(212,212,212); height:1px; border:0px; clear:both; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; background-color:rgb(212,212,212)">
+<h2 style="font-size:22px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; margin-top:10px; margin-bottom:10px">
+Python列表脚本操作符</h2>
+<p style="line-height:16.7999992370605px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif">
+列表对 &#43; 和 * 的操作符与字符串相&#20284;。&#43; 号用于组合列表，* 号用于重复列表。</p>
+<p style="line-height:16.7999992370605px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif">
+如下所示：</p>
+<table class="reference   " style="font-size:12px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; border-collapse:collapse; width:722px; color:rgb(0,0,0)">
+<tbody>
+<tr style="background-color:rgb(246,244,240)">
+<th style="font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; color:rgb(255,255,255); border:1px solid rgb(85,85,85); padding:3px; vertical-align:top; background-color:rgb(85,85,85)">
+Python 表达式</th>
+<th style="font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; color:rgb(255,255,255); border:1px solid rgb(85,85,85); padding:3px; vertical-align:top; background-color:rgb(85,85,85)">
+结果</th>
+<th style="font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; color:rgb(255,255,255); border:1px solid rgb(85,85,85); padding:3px; vertical-align:top; background-color:rgb(85,85,85)">
+描述</th>
+</tr>
+<tr>
+<td style="line-height:16.7999992370605px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; border:1px solid rgb(212,212,212); padding:7px 5px; vertical-align:top">
+len([1, 2, 3])</td>
+<td style="line-height:16.7999992370605px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; border:1px solid rgb(212,212,212); padding:7px 5px; vertical-align:top">
+3</td>
+<td style="line-height:16.7999992370605px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; border:1px solid rgb(212,212,212); padding:7px 5px; vertical-align:top">
+长度</td>
+</tr>
+<tr style="background-color:rgb(246,244,240)">
+<td style="line-height:16.7999992370605px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; border:1px solid rgb(212,212,212); padding:7px 5px; vertical-align:top">
+[1, 2, 3] &#43; [4, 5, 6]</td>
+<td style="line-height:16.7999992370605px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; border:1px solid rgb(212,212,212); padding:7px 5px; vertical-align:top">
+[1, 2, 3, 4, 5, 6]</td>
+<td style="line-height:16.7999992370605px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; border:1px solid rgb(212,212,212); padding:7px 5px; vertical-align:top">
+组合</td>
+</tr>
+<tr>
+<td style="line-height:16.7999992370605px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; border:1px solid rgb(212,212,212); padding:7px 5px; vertical-align:top">
+['Hi!'] * 4</td>
+<td style="line-height:16.7999992370605px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; border:1px solid rgb(212,212,212); padding:7px 5px; vertical-align:top">
+['Hi!', 'Hi!', 'Hi!', 'Hi!']</td>
+<td style="line-height:16.7999992370605px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; border:1px solid rgb(212,212,212); padding:7px 5px; vertical-align:top">
+重复</td>
+</tr>
+<tr style="background-color:rgb(246,244,240)">
+<td style="line-height:16.7999992370605px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; border:1px solid rgb(212,212,212); padding:7px 5px; vertical-align:top">
+3 in [1, 2, 3]</td>
+<td style="line-height:16.7999992370605px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; border:1px solid rgb(212,212,212); padding:7px 5px; vertical-align:top">
+True</td>
+<td style="line-height:16.7999992370605px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; border:1px solid rgb(212,212,212); padding:7px 5px; vertical-align:top">
+元素是否存在于列表中</td>
+</tr>
+<tr>
+<td style="line-height:16.7999992370605px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; border:1px solid rgb(212,212,212); padding:7px 5px; vertical-align:top">
+for x in [1, 2, 3]: print x,</td>
+<td style="line-height:16.7999992370605px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; border:1px solid rgb(212,212,212); padding:7px 5px; vertical-align:top">
+1 2 3</td>
+<td style="line-height:16.7999992370605px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; border:1px solid rgb(212,212,212); padding:7px 5px; vertical-align:top">
+迭代</td>
+</tr>
+</tbody>
+</table>
+<hr style="color:rgb(212,212,212); height:1px; border:0px; clear:both; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; background-color:rgb(212,212,212)">
+<h2 style="font-size:22px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; margin-top:10px; margin-bottom:10px">
+Python列表截取（切片）</h2>
+<p style="line-height:16.7999992370605px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif">
+Python的列表截取与字符串操作类型，如下所示：</p>
+<pre class="prettyprint prettyprinted" style="margin:15px auto; line-height:20px; font-family:'courier new'; word-break:break-all; word-wrap:break-word; border-width:1px 1px 1px 4px; border-style:solid; border-color:rgb(221,221,221); padding:10px 15px"><span class="pln">L </span><span class="pun" style="color:rgb(102,102,0)">=</span><span class="pln"> </span><span class="pun" style="color:rgb(102,102,0)">[</span><span class="str" style="color:rgb(0,136,0)">'spam'</span><span class="pun" style="color:rgb(102,102,0)">,</span><span class="pln"> </span><span class="str" style="color:rgb(0,136,0)">'Spam'</span><span class="pun" style="color:rgb(102,102,0)">,</span><span class="pln"> </span><span class="str" style="color:rgb(0,136,0)">'SPAM!'</span><span class="pun" style="color:rgb(102,102,0)">]</span></pre>
+<p style="line-height:16.7999992370605px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif">
+操作： <span style="font-size:18px">&nbsp;L[star:end:sep]</span></p>
+<table class="reference   " style="font-size:12px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; border-collapse:collapse; width:722px; color:rgb(0,0,0)">
+<tbody>
+<tr style="background-color:rgb(246,244,240)">
+<th style="font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; color:rgb(255,255,255); border:1px solid rgb(85,85,85); padding:3px; vertical-align:top; width:233px; background-color:rgb(85,85,85)">
+Python 表达式</th>
+<th style="font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; color:rgb(255,255,255); border:1px solid rgb(85,85,85); padding:3px; vertical-align:top; width:234px; background-color:rgb(85,85,85)">
+结果</th>
+<th style="font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; color:rgb(255,255,255); border:1px solid rgb(85,85,85); padding:3px; vertical-align:top; width:234px; background-color:rgb(85,85,85)">
+描述</th>
+</tr>
+<tr>
+<td style="line-height:16.7999992370605px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; border:1px solid rgb(212,212,212); padding:7px 5px; vertical-align:top">
+L[2]</td>
+<td style="line-height:16.7999992370605px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; border:1px solid rgb(212,212,212); padding:7px 5px; vertical-align:top">
+'SPAM!'</td>
+<td style="line-height:16.7999992370605px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; border:1px solid rgb(212,212,212); padding:7px 5px; vertical-align:top">
+读取列表中第三个元素</td>
+</tr>
+<tr style="background-color:rgb(246,244,240)">
+<td style="line-height:16.7999992370605px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; border:1px solid rgb(212,212,212); padding:7px 5px; vertical-align:top">
+L[-2]</td>
+<td style="line-height:16.7999992370605px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; border:1px solid rgb(212,212,212); padding:7px 5px; vertical-align:top">
+'Spam'</td>
+<td style="line-height:16.7999992370605px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; border:1px solid rgb(212,212,212); padding:7px 5px; vertical-align:top">
+读取列表中倒数第二个元素</td>
+</tr>
+<tr>
+<td style="line-height:16.7999992370605px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; border:1px solid rgb(212,212,212); padding:7px 5px; vertical-align:top">
+L[1:]</td>
+<td style="line-height:16.7999992370605px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; border:1px solid rgb(212,212,212); padding:7px 5px; vertical-align:top">
+['Spam', 'SPAM!']</td>
+<td style="line-height:16.7999992370605px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; border:1px solid rgb(212,212,212); padding:7px 5px; vertical-align:top">
+从第二个元素开始截取列表</td>
+</tr>
+</tbody>
+</table>
+<hr style="color:rgb(212,212,212); height:1px; border:0px; clear:both; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; background-color:rgb(212,212,212)">
+<h2 style="font-size:22px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; margin-top:10px; margin-bottom:10px">
+Python列表函数&amp;方法</h2>
+<p style="line-height:16.7999992370605px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif">
+Python包含以下函数:</p>
+<table class="reference   " style="font-size:12px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; border-collapse:collapse; width:722px; color:rgb(0,0,0)">
+<tbody>
+<tr style="background-color:rgb(246,244,240)">
+<th style="font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; color:rgb(255,255,255); border:1px solid rgb(85,85,85); padding:3px; vertical-align:top; width:30px; background-color:rgb(85,85,85)">
+序号</th>
+<th style="font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; color:rgb(255,255,255); border:1px solid rgb(85,85,85); padding:3px; vertical-align:top; width:678px; background-color:rgb(85,85,85)">
+函数</th>
+</tr>
+<tr>
+<td style="line-height:16.7999992370605px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; border:1px solid rgb(212,212,212); padding:7px 5px; vertical-align:top">
+1</td>
+<td style="line-height:16.7999992370605px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; border:1px solid rgb(212,212,212); padding:7px 5px; vertical-align:top">
+<a target="_blank" target="_blank" href="http://www.w3cschool.cc/python/att-list-cmp.html" style="color:rgb(0,0,0); background-color:transparent">cmp(list1, list2)</a><br>
+比较两个列表的元素</td>
+</tr>
+<tr style="background-color:rgb(246,244,240)">
+<td style="line-height:16.7999992370605px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; border:1px solid rgb(212,212,212); padding:7px 5px; vertical-align:top">
+2</td>
+<td style="line-height:16.7999992370605px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; border:1px solid rgb(212,212,212); padding:7px 5px; vertical-align:top">
+<a target="_blank" target="_blank" href="http://www.w3cschool.cc/python/att-list-len.html" style="color:rgb(0,0,0); background-color:transparent">len(list)</a><br>
+列表元素个数</td>
+</tr>
+<tr>
+<td style="line-height:16.7999992370605px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; border:1px solid rgb(212,212,212); padding:7px 5px; vertical-align:top">
+3</td>
+<td style="line-height:16.7999992370605px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; border:1px solid rgb(212,212,212); padding:7px 5px; vertical-align:top">
+<a target="_blank" target="_blank" href="http://www.w3cschool.cc/python/att-list-max.html" style="color:rgb(0,0,0); background-color:transparent">max(list)</a><br>
+返回列表元素最大&#20540;</td>
+</tr>
+<tr style="background-color:rgb(246,244,240)">
+<td style="line-height:16.7999992370605px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; border:1px solid rgb(212,212,212); padding:7px 5px; vertical-align:top">
+4</td>
+<td style="line-height:16.7999992370605px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; border:1px solid rgb(212,212,212); padding:7px 5px; vertical-align:top">
+<a target="_blank" target="_blank" href="http://www.w3cschool.cc/python/att-list-min.html" style="color:rgb(0,0,0); background-color:transparent">min(list)</a><br>
+返回列表元素最小&#20540;</td>
+</tr>
+<tr>
+<td style="line-height:16.7999992370605px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; border:1px solid rgb(212,212,212); padding:7px 5px; vertical-align:top">
+5</td>
+<td style="line-height:16.7999992370605px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; border:1px solid rgb(212,212,212); padding:7px 5px; vertical-align:top">
+<a target="_blank" target="_blank" href="http://www.w3cschool.cc/python/att-list-list.html" style="color:rgb(0,0,0); background-color:transparent">list(seq)</a><br>
+将元组转换为列表</td>
+</tr>
+</tbody>
+</table>
+<p style="line-height:16.7999992370605px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif">
+Python包含以下方法:</p>
+<p>
+<table class="reference   " style="font-size:12px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; border-collapse:collapse; width:722px; color:rgb(0,0,0)">
+<tbody>
+<tr style="background-color:rgb(246,244,240)">
+<th style="font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; color:rgb(255,255,255); border:1px solid rgb(85,85,85); padding:3px; vertical-align:top; width:30px; background-color:rgb(85,85,85)">
+序号</th>
+<th style="font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; color:rgb(255,255,255); border:1px solid rgb(85,85,85); padding:3px; vertical-align:top; width:678px; background-color:rgb(85,85,85)">
+方法</th>
+</tr>
+<tr>
+<td style="line-height:16.7999992370605px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; border:1px solid rgb(212,212,212); padding:7px 5px; vertical-align:top">
+1</td>
+<td style="line-height:16.7999992370605px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; border:1px solid rgb(212,212,212); padding:7px 5px; vertical-align:top">
+<a target="_blank" target="_blank" href="http://www.w3cschool.cc/python/att-list-append.html" style="color:rgb(0,0,0); background-color:transparent">list.append(obj)</a><br>
+在列表末尾添加新的对象</td>
+</tr>
+<tr style="background-color:rgb(246,244,240)">
+<td style="line-height:16.7999992370605px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; border:1px solid rgb(212,212,212); padding:7px 5px; vertical-align:top">
+2</td>
+<td style="line-height:16.7999992370605px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; border:1px solid rgb(212,212,212); padding:7px 5px; vertical-align:top">
+<a target="_blank" target="_blank" href="http://www.w3cschool.cc/python/att-list-count.html" style="color:rgb(0,0,0); background-color:transparent">list.count(obj)</a><br>
+统计某个元素在列表中出现的次数</td>
+</tr>
+<tr>
+<td style="line-height:16.7999992370605px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; border:1px solid rgb(212,212,212); padding:7px 5px; vertical-align:top">
+3</td>
+<td style="line-height:16.7999992370605px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; border:1px solid rgb(212,212,212); padding:7px 5px; vertical-align:top">
+<a target="_blank" target="_blank" href="http://www.w3cschool.cc/python/att-list-extend.html" style="color:rgb(0,0,0); background-color:transparent">list.extend(seq)</a><br>
+在列表末尾一次性追加另一个序列中的多个&#20540;（用新列表扩展原来的列表）</td>
+</tr>
+<tr style="background-color:rgb(246,244,240)">
+<td style="line-height:16.7999992370605px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; border:1px solid rgb(212,212,212); padding:7px 5px; vertical-align:top">
+4</td>
+<td style="line-height:16.7999992370605px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; border:1px solid rgb(212,212,212); padding:7px 5px; vertical-align:top">
+<a target="_blank" target="_blank" href="http://www.w3cschool.cc/python/att-list-index.html" style="color:rgb(0,0,0); background-color:transparent">list.index(obj)</a><br>
+从列表中找出某个&#20540;第一个匹配项的索引位置</td>
+</tr>
+<tr>
+<td style="line-height:16.7999992370605px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; border:1px solid rgb(212,212,212); padding:7px 5px; vertical-align:top">
+5</td>
+<td style="line-height:16.7999992370605px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; border:1px solid rgb(212,212,212); padding:7px 5px; vertical-align:top">
+<a target="_blank" target="_blank" href="http://www.w3cschool.cc/python/att-list-insert.html" style="color:rgb(0,0,0); background-color:transparent">list.insert(index, obj)</a><br>
+将对象插入列表</td>
+</tr>
+<tr style="background-color:rgb(246,244,240)">
+<td style="line-height:16.7999992370605px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; border:1px solid rgb(212,212,212); padding:7px 5px; vertical-align:top">
+6</td>
+<td style="line-height:16.7999992370605px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; border:1px solid rgb(212,212,212); padding:7px 5px; vertical-align:top">
+<a target="_blank" target="_blank" href="http://www.w3cschool.cc/python/att-list-pop.html" style="color:rgb(0,0,0); background-color:transparent">list.pop(obj=list[-1])</a><br>
+移除列表中的一个元素（默认最后一个元素），并且返回该元素的&#20540;</td>
+</tr>
+<tr>
+<td style="line-height:16.7999992370605px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; border:1px solid rgb(212,212,212); padding:7px 5px; vertical-align:top">
+7</td>
+<td style="line-height:16.7999992370605px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; border:1px solid rgb(212,212,212); padding:7px 5px; vertical-align:top">
+<a target="_blank" target="_blank" href="http://www.w3cschool.cc/python/att-list-remove.html" style="color:rgb(0,0,0); background-color:transparent">list.remove(obj)</a><br>
+移除列表中某个&#20540;的第一个匹配项</td>
+</tr>
+<tr style="background-color:rgb(246,244,240)">
+<td style="line-height:16.7999992370605px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; border:1px solid rgb(212,212,212); padding:7px 5px; vertical-align:top">
+8</td>
+<td style="line-height:16.7999992370605px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; border:1px solid rgb(212,212,212); padding:7px 5px; vertical-align:top">
+<a target="_blank" target="_blank" href="http://www.w3cschool.cc/python/att-list-reverse.html" style="color:rgb(0,0,0); background-color:transparent">list.reverse()</a><br>
+反向列表中元素</td>
+</tr>
+<tr>
+<td style="line-height:16.7999992370605px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; border:1px solid rgb(212,212,212); padding:7px 5px; vertical-align:top">
+9</td>
+<td style="line-height:16.7999992370605px; font-family:'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif; border:1px solid rgb(212,212,212); padding:7px 5px; vertical-align:top">
+<a target="_blank" target="_blank" href="http://www.w3cschool.cc/python/att-list-sort.html" style="color:rgb(0,0,0); background-color:transparent">list.sort([func])</a><br>
+对原列表进行排序</td>
+</tr>
+</tbody>
+</table>
+</p>
+<h1><span style="font-family:Microsoft Yahei,Helvetica Neue,Helvetica,Arial,sans-serif"><strong>for循环的使用：</strong></span></h1>
+<p></p>
+<p><span style="font-family:Microsoft Yahei,Helvetica Neue,Helvetica,Arial,sans-serif"></span><pre name="code" class="python">li = [1,2,3]
+for x in [1,2,3]:
+    print x</pre><br>
+<br>
+</p>
+<p><span style="font-family:Microsoft Yahei,Helvetica Neue,Helvetica,Arial,sans-serif"><br>
+</span></p>
+<p><a href='_index.htm'>&lt;&lt;目录</a></p>
+</body>
+</html>

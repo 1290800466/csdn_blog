@@ -1,0 +1,32 @@
+﻿<!doctype html>
+<html dir="ltr" lang="zh-CN">
+<head>
+<title>UFT对象库编程法、直接描述性编程法以及with语句的使用</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style type="text/css">
+body {font:normal 12px/24px Arial, Helvetica, sans-serif; background:#D9F0DB;}
+textarea,pre {font-family:Courier; font-size:12px;}
+</style>
+</head>
+<body>
+<p><a href='_index.htm'>&lt;&lt;目录</a></p><pre name="code" class="vb">&#39;一、UFT直接录制方法（利用对象识别）：
+Dialog(&quot;Login&quot;).WinEdit(&quot;Agent Name:&quot;).Set &quot;wml111&quot;
+Dialog(&quot;Login&quot;).WinEdit(&quot;Password:&quot;).SetSecure &quot;5514daebeeea118b8a208fcb96ce79880347a908&quot;
+Dialog(&quot;Login&quot;).WinButton(&quot;OK&quot;).Click</pre>
+<p><br>
+</p>
+<p><pre name="code" class="vb">&#39;二、直接描述性编程方法：
+Dialog(&quot;text:=Login&quot;).WinEdit(&quot;attached text:=Agent Name:&quot;).Set &quot;wml111&quot;
+Dialog(&quot;text:=Login&quot;).WinEdit(&quot;attached text:=Password:&quot;).SetSecure &quot;5514daebeeea118b8a208fcb96ce79880347a908&quot;
+Dialog(&quot;text:=Login&quot;).WinButton(&quot;text:=OK&quot;).Click</pre><br>
+<pre name="code" class="vb">&#39;with语句表示方法：
+With Dialog(&quot;Login&quot;)
+	.WinEdit(&quot;Agent Name:&quot;).Set &quot;wml111&quot;
+	.WinEdit(&quot;Password:&quot;).SetSecure &quot;5514daebeeea118b8a208fcb96ce79880347a908&quot;
+	.WinButton(&quot;OK&quot;).Click
+End With</pre><br>
+<br>
+</p>
+<p><a href='_index.htm'>&lt;&lt;目录</a></p>
+</body>
+</html>

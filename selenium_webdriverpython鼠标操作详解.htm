@@ -1,0 +1,87 @@
+﻿<!doctype html>
+<html dir="ltr" lang="zh-CN">
+<head>
+<title>selenium_webdriver(python)鼠标操作详解</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style type="text/css">
+body {font:normal 12px/24px Arial, Helvetica, sans-serif; background:#D9F0DB;}
+textarea,pre {font-family:Courier; font-size:12px;}
+</style>
+</head>
+<body>
+<p><a href='_index.htm'>&lt;&lt;目录</a></p><p><br>
+</p>
+<p></p>
+<pre name="code" class="python">#coding=utf-8
+from selenium import webdriver
+from selenium.webdriver.common.keys import Keys 
+#要使用鼠标操作，首先需要引入ActionChains包  
+from selenium.webdriver.common.action_chains import ActionChains  
+import time
+
+#1、鼠标右键操作
+driver = webdriver.Ie()
+driver.get(&quot;http://www.mxvpnjsq.cc/member.php?mod=logging&amp;action=login&quot;)
+#输入用户名、密码，回车登陆
+driver.find_element_by_name(&quot;username&quot;).send_keys(&quot;1290800466&quot;)  
+driver.find_element_by_name(&quot;username&quot;).send_keys(Keys.TAB)   
+driver.find_element_by_name(&quot;password&quot;).send_keys(&quot;15866584957&quot;) 
+driver.find_element_by_name(&quot;password&quot;).send_keys(Keys.ENTER)
+time.sleep(5)
+#定位到要右击的元素
+qqq=driver.find_element_by_id(&quot;mn_Nfb8a&quot;)
+#对定位到的元素执行鼠标右键操作
+ActionChains(driver).context_click(qqq).perform()
+time.sleep(3)
+#按 下 键，进入右键菜单第一个选项
+driver.find_element_by_id(&quot;mn_Nfb8a&quot;).send_keys(Keys.DOWN) 
+#直接按回车或单击进入
+#driver.find_element_by_id(&quot;mn_Nfb8a&quot;).send_keys(Keys.ENTER)
+#鼠标单击操作
+driver.find_element_by_id(&quot;mn_Nfb8a&quot;).click()
+time.sleep(3) #休眠3秒
+driver.close()
+
+#2、鼠标双击操作
+driver = webdriver.Ie()
+driver.get(&quot;http://www.mxvpnjsq.cc/space-uid-269119.html&quot;)
+#定位到要双击的元素
+qqq =driver.find_element_by_id(&quot;spacename&quot;)
+#对定位到的元素执行鼠标双击操作
+ActionChains(driver).double_click(qqq).perform()
+time.sleep(3) #休眠3秒
+driver.close()
+
+#3、鼠标拖放操作
+driver = webdriver.Ie()
+driver.get(&quot;http://www.mxvpnjsq.cc/space-uid-269119.html&quot;)
+time.sleep(5)
+#定位元素的原位置
+element = driver.find_element_by_id(&quot;domainurl&quot;)
+#定位元素要移动到的目标位置
+target = driver.find_element_by_id(&quot;a_poke_269119&quot;)
+#执行元素的移动操作
+ActionChains(driver).drag_and_drop(element, target).perform()
+#鼠标拖放过程详解：首先是鼠标点击并按住element元素，然后执行鼠标移动动作，
+#移动到 target 元素位置或者是 (xOffset, yOffset) 位置，再执行鼠标的释放动作
+#如上所示的目标位置既可以用某一元素位置表示，也可用坐标表示
+time.sleep(5) #休眠3秒
+
+driver.quit()</pre>
+<p><br>
+</p>
+<p><span style="font-size:18px; color:#ff0000"><strong>ActionChains 类鼠标操作的常用方法：</strong></span><br>
+</p>
+<p><span style="font-size:18px">context_click() 右击<br>
+double_click() 双击<br>
+drag_and_drop() 拖动<br>
+move_to_element() 鼠标悬停在一个元素上<br>
+click_and_hold() 按下鼠标左键在一个元素上</span><br>
+</p>
+<p><br>
+</p>
+<br>
+<p></p>
+<p><a href='_index.htm'>&lt;&lt;目录</a></p>
+</body>
+</html>

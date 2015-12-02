@@ -1,0 +1,62 @@
+﻿<!doctype html>
+<html dir="ltr" lang="zh-CN">
+<head>
+<title>php中错误和异常处理的机制三（错误日志）</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style type="text/css">
+body {font:normal 12px/24px Arial, Helvetica, sans-serif; background:#D9F0DB;}
+textarea,pre {font-family:Courier; font-size:12px;}
+</style>
+</head>
+<body>
+<p><a href='_index.htm'>&lt;&lt;目录</a></p><p><span style="font-size:18px">&nbsp;定义和用法<br>
+&nbsp;error_log() 函数向服务器错误记录、文件或远程目标发送一个错误。<br>
+&nbsp;如果成功该函数返回 TRUE，如果失败该函数返回 FALSE。<br>
+&nbsp;语法<br>
+&nbsp;error_log(error,type,destination,headers)<br>
+&nbsp;参数<span style="white-space:pre"> </span>描述<br>
+&nbsp;error<span style="white-space:pre"> </span>必需。要记录的错误消息。<br>
+&nbsp;type<span style="white-space:pre"> </span>可选。规定错误记录的类型。<br>
+&nbsp;可能的记录类型：<br>
+&nbsp;0 - 默认。根据在 php.ini 文件中的 error_log 配置，错误被发送到服务器日志系统或文件。<br>
+&nbsp;1 - 错误被发送到 destination 参数中的地址。只有该类型使用 headers 参数。<br>
+&nbsp;2 - 通过 PHP debugging 连接来发送错误。该选项只在 PHP 3 中可用。<br>
+&nbsp;3 - 错误发送到文件目标字符串，表示以追加的形式记录。<br>
+&nbsp;destination<span style="white-space:pre"> </span>可选。规定向何处发送错误消息。该参数的&#20540;依赖于 &quot;type&quot; 参数的&#20540;。<br>
+&nbsp;headers<span style="white-space:pre"> </span>可选。只在 &quot;type&quot; 参数为 1 时使用。规定附加的头部，比如 From, Cc 以及 Bcc。附加头部由 CRLF (\r\n) 分隔。<br>
+&nbsp;注意：在发送电子邮件时，必须包含 From 头部。可以在 php.ini 文件中或者通过此参数设置。<br>
+</span></p>
+<p><span style="font-size:18px"><br>
+</span></p>
+<p><pre name="code" class="php">&lt;span style=&quot;font-size:18px;&quot;&gt;&lt;?php 
+//设置时区
+date_default_timezone_set(&#39;PRC&#39;);  /* 其中PRC为“中华人民共和国“  */
+//自定义错误函数
+function  my_error($errno,$errmes){
+    $err_info=&quot;错误号是:&quot;.$errno.&quot;--&quot;.$errmes.date(&quot;Y年m月d日 , H点i分s秒 &quot;);
+    echo $err_info;
+    //把这个错误信息保存
+    //\r\n 表示向文件输入一个回车换行
+    //&lt;br/&gt; 表示向网页输出一个回车换行
+    error_log($err_info.&quot;\r\n&quot;,3,&quot;D:/myerr.txt&quot;);
+}
+set_error_handler(&quot;my_error&quot;,E_USER_ERROR);
+//当set_error_handler只有一个参数时，表示只要出现错误就执行my_error函数
+//set_error_handler(&quot;my_error&quot;);
+
+//错误触发器
+$test=2;
+if ($test&gt;1)
+{
+    //调用触发器,同时指定错误级别.
+    //此处的错误类型可以有以下几种：E_USER_ERROR、E_USER_WARNING、E_USER_NOTICE
+    trigger_error(&quot;Value must be 1 or below&quot;,E_USER_ERROR);
+    //只调用触发器,错误级别输出默认值.
+    //trigger_error(&quot;Value must be 1 or below&quot;);
+}
+?&gt;&lt;/span&gt;</pre><span style="font-size:18px"><br>
+</span><br>
+</p>
+<p><a href='_index.htm'>&lt;&lt;目录</a></p>
+</body>
+</html>

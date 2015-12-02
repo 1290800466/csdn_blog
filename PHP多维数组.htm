@@ -1,0 +1,63 @@
+﻿<!doctype html>
+<html dir="ltr" lang="zh-CN">
+<head>
+<title>PHP 多维数组</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style type="text/css">
+body {font:normal 12px/24px Arial, Helvetica, sans-serif; background:#D9F0DB;}
+textarea,pre {font-family:Courier; font-size:12px;}
+</style>
+</head>
+<body>
+<p><a href='_index.htm'>&lt;&lt;目录</a></p><p><span style="font-size:14px">定义：多维数组是包含一个或多个数组的数组。</span></p>
+<p><span style="font-size:14px"><span style="white-space:pre"></span>&nbsp; &nbsp;&nbsp;在多维数组中，主数组中的每一个元素也可以是一个数组，子数组中的每一个元素也可以是一个数组。</span></p>
+<p><span style="font-size:14px">二维数组实例代码;</span></p>
+<p><pre name="code" class="php">&lt;?php
+//二维数组用途：
+//带有横纵坐标的，如地图等
+// 定义一个二维数组:
+$cars = array
+(
+	array(&quot;Volvo&quot;,100,96),
+	array(&quot;BMW&quot;,60,59),
+	array(&quot;Toyota&quot;, 110,100)
+);
+print_r($cars);
+?&gt;</pre><br>
+<pre code_snippet_id="689602" snippet_file_name="blog_20150610_2_6467001"  name="code" class="php">&lt;?php
+//定义一个二维数组
+$arr = array
+(
+array(0,0,0,0,0,1,8,9,0,9),
+array(3,9,0,0,0,8,7,9,9,0),
+array(4,8,0,1,1,1,7,8,9,0),
+array(6,8,5,1,1,1,9,8,9,0)
+);
+//遍历二维数组(行)
+for($i=0;$i&lt;count($arr);$i++)
+{
+	//遍历每行的数据
+	for($j=0;$j&lt;count($arr[$i]);$j++)
+	{
+		echo $arr[$i][$j].&quot;&#160;&quot;;
+	}
+	echo &quot;&lt;br&gt;&quot;;
+}
+echo &quot;&lt;br&gt;&quot;.$arr[2][3];
+echo &quot;&lt;br&gt;&quot;;
+//矩阵转置(行列互换)
+for($i=0;$i&lt;count($arr[0]);$i++)
+{
+	//遍历每行的数据
+	for($j=0;$j&lt;count($arr);$j++)
+	{
+		echo $arr[$j][$i].&quot;&#160;&quot;;
+	}
+	echo &quot;&lt;br&gt;&quot;;
+}
+?&gt;</pre><br>
+<br>
+</p>
+<p><a href='_index.htm'>&lt;&lt;目录</a></p>
+</body>
+</html>

@@ -1,0 +1,50 @@
+﻿<!doctype html>
+<html dir="ltr" lang="zh-CN">
+<head>
+<title>PHP实现短信宝发送短信验证码功能</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style type="text/css">
+body {font:normal 12px/24px Arial, Helvetica, sans-serif; background:#D9F0DB;}
+textarea,pre {font-family:Courier; font-size:12px;}
+</style>
+</head>
+<body>
+<p><a href='_index.htm'>&lt;&lt;目录</a></p><p><span style="font-size:18px">短信验证码是随机生成的几位数字，将此数字保存到数据库中，发送短信时将该数字 取出来放到下面代码填写短信内容处，即可发送。</span></p>
+<p><span style="font-size:18px">注意要发送的手机号，短信宝账号、密码，短信发送内容等都要提前存放到数据库中，下面代码中从数据库中查询。</span></p>
+<p><pre name="code" class="php">&lt;?php
+header(&quot;Content-type: text/html; charset=utf-8&quot;);
+$statusStr = array(
+&quot;0&quot; =&gt; &quot;短信发送成功&quot;,
+&quot;-1&quot; =&gt; &quot;参数不全&quot;,
+&quot;-2&quot; =&gt; &quot;服务器空间不支持,请确认支持curl或者fsocket，联系您的空间商解决或者更换空间！&quot;,
+&quot;30&quot; =&gt; &quot;密码错误&quot;,
+&quot;40&quot; =&gt; &quot;账号不存在&quot;,
+&quot;41&quot; =&gt; &quot;余额不足&quot;,
+&quot;42&quot; =&gt; &quot;帐户已过期&quot;,
+&quot;43&quot; =&gt; &quot;IP地址限制&quot;,
+&quot;50&quot; =&gt; &quot;内容含有敏感词&quot;
+);
+$smsapi = &quot;http://api.smsbao.com/&quot;; //短信网关
+$user = &quot;sdxx123&quot;; //短信平台帐号
+$pass = md5(&quot;sdxx4567&quot;); //短信平台密码
+$content=&quot;此处填写短信内容&quot;;//要发送的短信内容
+$phone = &quot;15610537527&quot;;//要发送短信的手机号码
+$sendurl = $smsapi.&quot;sms?u=&quot;.$user.&quot;&amp;p=&quot;.$pass.&quot;&amp;m=&quot;.$phone.&quot;&amp;c=&quot;.urlencode($content);
+$result =file_get_contents($sendurl) ;
+//短信发送后，可以将发送内容等记录到数据库中
+// echo $statusStr[$result];
+if($result==&#39;0&#39;)
+{
+    //输出，短信发送成功
+    echo &quot;$statusStr[$result]&quot;;  
+    //此时可以更新发送状态
+}else{
+    //输出  短信发送失败原因
+    echo &quot;$statusStr[$result]&quot;;
+}
+?&gt;</pre><br>
+<br>
+</p>
+<p><a href='_index.htm'>&lt;&lt;目录</a></p>
+</body>
+</html>

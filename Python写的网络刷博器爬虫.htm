@@ -1,0 +1,33 @@
+﻿<!doctype html>
+<html dir="ltr" lang="zh-CN">
+<head>
+<title>Python写的网络刷博器爬虫</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style type="text/css">
+body {font:normal 12px/24px Arial, Helvetica, sans-serif; background:#D9F0DB;}
+textarea,pre {font-family:Courier; font-size:12px;}
+</style>
+</head>
+<body>
+<p><a href='_index.htm'>&lt;&lt;目录</a></p><h2>while网络刷博器爬虫：</h2>
+<p>&nbsp; &nbsp; &nbsp; &nbsp;&nbsp;</p>
+<pre name="code" class="python">import webbrowser
+import os
+import time  #导入的Python函数模块
+i=0
+n=0
+#whiletrue：  #添加while true：将一直执行下去
+while i&lt;1000:  
+     i=i+1
+     n=n+1
+     webbrowser.open_new_tab(&quot;http://lifestyle.blog.sohu.com/308521633.html&quot;)      #用浏览器打开要访问的网址
+     time.sleep(1)   #每打开一个网页延迟1秒
+     if n==10:    #每打开10个网页关闭浏览器，防止内存占用有太多
+     &lt;span style=&quot;white-space:pre&quot;&gt;	&lt;/span&gt;n=0
+     &lt;span style=&quot;white-space:pre&quot;&gt;	&lt;/span&gt;os.system(&quot;taskkill/f /im 360chrome.exe&quot;)   #关闭程序命令
+     else:
+        print&quot;已访问1000次&quot;</pre><br>
+<p></p>
+<p><a href='_index.htm'>&lt;&lt;目录</a></p>
+</body>
+</html>

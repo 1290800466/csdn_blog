@@ -1,0 +1,134 @@
+﻿<!doctype html>
+<html dir="ltr" lang="zh-CN">
+<head>
+<title>php面向对象编程之--封装</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style type="text/css">
+body {font:normal 12px/24px Arial, Helvetica, sans-serif; background:#D9F0DB;}
+textarea,pre {font-family:Courier; font-size:12px;}
+</style>
+</head>
+<body>
+<p><a href='_index.htm'>&lt;&lt;目录</a></p><span style="font-size:18px">php面向对象编程的三大特征<br>
+<br>
+①、封装<br>
+②、继承<br>
+③、多态<br>
+<br>
+抽象：我们在前面研究类时，实际上是把一类事物的共有的属性和行为提取出来，形成一个物理模型。这种研究问题的方法称为抽象。<br>
+<br>
+封装：<br>
+<span style="white-space:pre"></span>&nbsp;封装，也就是把客观事物封装成抽象的类，并且类可以把自己的数据和方法只让可信的类或者对象操作，对不可信的进行信息隐藏。<br>
+</span>
+<p><span style="font-size:18px">上面的操作是靠以下访问控制符号来实现，规定了自身权限，使有的人能访问，有的人不能访问</span></p>
+<p><span style="font-size:18px">例程：</span></p>
+<pre name="code" class="php">&lt;span style=&quot;font-size:18px;&quot;&gt;&lt;?php
+class Person{
+	public   $name;
+	private  $age;
+	private  $salary;
+	function  __construct($name,$age,$salary){
+		$this-&gt;name=$name;
+        $this-&gt;age=$age;
+        $this-&gt;salary=$salary;
+	}
+}
+$a1=new Person(&quot;小明&quot;,32,5000);
+//正确显示，全局属性访问没有限制
+echo &quot;&lt;br&gt;&quot;.$a1-&gt;name.&quot;&lt;br&gt;&quot;;
+//报错，私有属性不能在类外访问
+//echo &quot;&lt;br&gt;&quot;.$a1-&gt;age.&quot;&lt;br&gt;&quot;; 
+//报错，私有属性不能在类外访问
+//echo &quot;&lt;br&gt;&quot;.$a1-&gt;salary.&quot;&lt;br&gt;&quot;;
+?&gt;&lt;/span&gt;</pre><span style="font-size:18px"><br>
+php提供了三种访问控制符号来控制方法和属性（变量）的访问权限.<br>
+<br>
+1. public &nbsp;表示全局，可以在本类，类外部，子类 中使用<br>
+2. protected 表示受到保护， 可以在本类, 子类中使用<br>
+3. private 表示私有, 只能在本类使用<br>
+<br>
+这三个控制修饰符号可以对 属性 和 方法进行修饰<br>
+1. &nbsp;如果一个方法没有访问修饰符，则默认是public<br>
+2. &nbsp;属性 &nbsp;必须指定访问修饰符，若没有访问修饰符，会报错。<br>
+<br>
+//方法之间可以互相调用. 但是需要使用 $this引用&nbsp;<br>
+function test11()<br>
+{<br>
+<span style="white-space:pre"></span>$this-&gt;test12();<br>
+}<br>
+protected function test12()<br>
+{<br>
+<span style="white-space:pre"></span>echo &quot;test12 hello&quot;;<br>
+}<br>
+<br>
+</span>
+<p><span style="font-size:18px">举例说明:</span></p>
+<p><pre name="code" class="php">&lt;?php
+class Person1{
+	public $name;
+	protected  $age;
+	private  $salary;
+
+
+	function __construct($name,$age,$salary){
+		$this-&gt;name=$name;
+		$this-&gt;age=$age;
+		$this-&gt;salary=$salary;
+	}
+
+
+	//成员方法
+	public function showInfo(){
+		//这里说明在本类中可以使用 public protected 和private 修饰的变量.
+		echo $this-&gt;name.&quot;||&quot;.$this-&gt;age.&quot;||&quot;.$this-&gt;salary;
+	}
+	function test(){
+		//调用showInfo()方法，利用this引用
+		$this-&gt;showInfo();
+	}
+}
+//创建一个人
+$p1=new Person1(&quot;孙悟空&quot;,30,1000);
+$p1-&gt;test();
+?&gt;</pre><br>
+</p>
+<span style="font-size:18px">若想在类外去访问protected 变量或者 private 变量, 通常的做法是在类中创建 public 方法去访问 这些变量. 形式是<br>
+public function setXxx($val){<br>
+}<br>
+public function getXxx(){<br>
+}<br>
+public function showInfo(){<br>
+}<br>
+</span>
+<p><span style="font-size:18px"><br>
+</span></p>
+<p><span style="font-size:18px">举例说明:</span></p>
+<p><pre name="code" class="php">&lt;?php
+class Person2{
+	public $name;
+	protected  $age;
+	private  $salary;
+
+	function __construct($name,$age,$salary){
+		$this-&gt;name=$name;
+		$this-&gt;age=$age;
+		$this-&gt;salary=$salary;
+	}
+
+	//成员方法
+	public function showInfo(){
+		//这里说明在本类中可以使用 public protected 和private 修饰的变量.
+		echo &quot;&lt;br&gt;&quot;.$this-&gt;name.&quot;||&quot;.$this-&gt;age.&quot;||&quot;.$this-&gt;salary;
+	}
+}
+//创建一个人
+$p1=new Person2(&quot;猪八戒&quot;,20,5000);
+//访问其详细信息，由于属性age和salary分别为保护和私有变量，若在类外直接访问
+//其属性会报错，但在类中创建一个公共属性的函数，通过函数即可访问这些变量。
+$p1-&gt;showInfo();		
+?&gt;</pre><br>
+<br>
+</p>
+<p><a href='_index.htm'>&lt;&lt;目录</a></p>
+</body>
+</html>

@@ -1,0 +1,34 @@
+﻿<!doctype html>
+<html dir="ltr" lang="zh-CN">
+<head>
+<title>PHP颜色随机生成器</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style type="text/css">
+body {font:normal 12px/24px Arial, Helvetica, sans-serif; background:#D9F0DB;}
+textarea,pre {font-family:Courier; font-size:12px;}
+</style>
+</head>
+<body>
+<p><a href='_index.htm'>&lt;&lt;目录</a></p><pre name="code" class="php">&lt;?php
+function randomColor() { 
+    $str = &#39;#&#39;; 
+    for($i = 0 ; $i &lt; 6 ; $i++) { 
+        $randNum = rand(0 , 15); 
+        switch ($randNum) { 
+            case 10: $randNum = &#39;A&#39;; break; 
+            case 11: $randNum = &#39;B&#39;; break; 
+            case 12: $randNum = &#39;C&#39;; break; 
+            case 13: $randNum = &#39;D&#39;; break; 
+            case 14: $randNum = &#39;E&#39;; break; 
+            case 15: $randNum = &#39;F&#39;; break; 
+        } 
+        $str .= $randNum; 
+    } 
+    return $str; 
+} 
+$color = randomColor();
+echo $color;
+?&gt;</pre><br>
+<p><a href='_index.htm'>&lt;&lt;目录</a></p>
+</body>
+</html>

@@ -1,0 +1,56 @@
+﻿<!doctype html>
+<html dir="ltr" lang="zh-CN">
+<head>
+<title>PHP 页面跳转实现方法</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style type="text/css">
+body {font:normal 12px/24px Arial, Helvetica, sans-serif; background:#D9F0DB;}
+textarea,pre {font-family:Courier; font-size:12px;}
+</style>
+</head>
+<body>
+<p><a href='_index.htm'>&lt;&lt;目录</a></p><p><span style="font-size:18px">PHP中从一个页面重定向到另一个页面的4种办法：</span><br>
+</p>
+<p><pre name="code" class="php">&lt;!DOCTYPE html&gt;
+&lt;HTML&gt;
+&lt;HEAD&gt;
+&lt;!-- 1、HTML标记，就是用META的REFRESH标记，实现页面跳转：
+META的REFRESH标记：表示页面定期刷新，如果加url的，则会重新定向到指定的网页，content后面跟的是时间（单位秒），
+            把这句话加到指定网页的&lt;head&gt;&lt;/head&gt;里
+            一般也用在实时性很强的应用中，需要定期刷新的，如新闻页面，论坛等，不过一般不会用这个，都用新的技术比如ajax等
+    content=&quot;0;URL=&quot;，这里0表示没有延时，直接跳转到后面的URL；把0改成1，则延时1秒后跳转。 
+            当某个页面需要自动跳转的时候就要用到这个代码,比如一般的网站广告页面打开几秒后自动跳转到另外一个页面去就是用这个代码实现的(当然用js也是可以实现的) 
+ --&gt;&lt;!-- 表示每隔5秒刷新页面--&gt;
+&lt;META HTTP-EQUIV=&quot;REFRESH&quot; CONTENT=&quot;5&quot;&gt; 
+&lt;!-- 表示5秒后跳转到 https://www.baidu.com 页面--&gt;
+&lt;META HTTP-EQUIV=&quot;REFRESH&quot; CONTENT=&quot;5  URL=https://www.baidu.com&quot;&gt; 
+&lt;/HEAD&gt;
+&lt;BODY&gt;
+&lt;/BODY&gt;
+&lt;/HTML&gt;
+&lt;?php 
+//2、用HTTP头信息重定向到另外一个页面:
+//303 See Other ：即303重定向
+
+Header(&quot;HTTP/1.1 303 See Other&quot;);
+Header(&quot;Location: https://www.baidu.com&quot;); 
+exit;  //若没有exit 则会重定向到http://bbs.csdn.net/home
+Header(&quot;Location: http://bbs.csdn.net/home&quot;);
+
+
+//3、用脚本location.href来实现：
+$url=&quot;http://www.jb51.net&quot;;
+echo &quot;&lt;script language=javascript&gt;alert(&#39;恭喜您，注册成功！&#39;)&lt;/script&gt;&quot;;
+echo &quot;&lt;script language=javascript&gt;location.href=&#39;$url&#39;&lt;/script&gt;&quot;; 
+//echo time();
+
+//4、用脚本window.open来实现：
+$url=&quot;http://www.jb51.net&quot;;
+echo &quot;&lt;script language=javascript&gt;alert(&#39;恭喜您，注册成功！&#39;)&lt;/script&gt;&quot;;
+echo &quot;&lt;script language=javascript&gt;window.open(&#39;$url&#39;,&#39;_self&#39;)&lt;/script&gt;&quot;;
+?&gt; </pre><br>
+<br>
+</p>
+<p><a href='_index.htm'>&lt;&lt;目录</a></p>
+</body>
+</html>

@@ -1,0 +1,163 @@
+﻿<!doctype html>
+<html dir="ltr" lang="zh-CN">
+<head>
+<title>HTML 浮动窗口 表单及表单控件  标签汇总   线包字效果</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style type="text/css">
+body {font:normal 12px/24px Arial, Helvetica, sans-serif; background:#D9F0DB;}
+textarea,pre {font-family:Courier; font-size:12px;}
+</style>
+</head>
+<body>
+<p><a href='_index.htm'>&lt;&lt;目录</a></p><p><br>
+</p>
+<p><pre name="code" class="html">&lt;html&gt;
+&lt;head&gt;
+&lt;title&gt;第五讲代码&lt;/title&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+&lt;!--有时我们需要在一个含有&lt;body&gt;的页面嵌入另外一个页面，形成画中画的效果，这时就需要iframe元素（浮动窗口）--&gt;
+***************************************************************************************************************************************************
+&lt;br&gt;&lt;b&gt;1、浮动窗口：&lt;/b&gt;&lt;br&gt;
+
+
+&lt;!--iframe 用于在网页内显示网页--&gt;
+&lt;iframe src=&quot;http://www.baidu.com&quot; width=&quot;400px&quot; height=&quot;300px&quot;&gt;&lt;/iframe&gt;
+
+&lt;!--name 对浮动窗口进行命名，以便进行替换--&gt;
+&lt;iframe src=&quot;http://www.haosou.com/&quot; width=&quot;400px&quot; height=&quot;300px&quot; name=&quot;asd&quot;&gt;&lt;/iframe&gt;
+
+&lt;br&gt;友情链接：&lt;br&gt;
+&lt;a href=&quot;http://www.taobao.com/&quot; target=&quot;asd&quot;&gt;淘宝网&lt;/a&gt;
+
+&lt;br&gt;&lt;a href=&quot;http://www.haosou.com/&quot; target=&quot;asd&quot;&gt;返回&lt;/a&gt;
+&lt;br&gt;&lt;br&gt;
+****************************************************************************************************************************************************
+&lt;!--表单元素（form）：
+在网页中，我们经常需要把一些数据提交给服务器处理，比如注册用户，发帖等，这样就需要使用到表单元素。
+常见的表单元素类型有：
+Text:文字输入框
+Password：密码输入框
+Checkbox：复选框
+Radio：单选框
+Image:图片提交按钮
+hidden：隐藏表单的元素
+submit:提交按钮
+reset：重置按钮
+file：上传文件
+
+基本结构：
+&lt;form  action=””  method=””&gt;
+&lt;input type=”类型”  name=”名字”/&gt;
+&lt;form&gt;
+--&gt;</pre><pre name="code" class="html">&lt;img src=&quot;http://img.blog.csdn.net/20150513210623372?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvdTAxMzM3MjQ4Nw==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center&quot; width=&quot;400&quot; height=&quot;150&quot; alt=&quot;&quot; /&gt;
+</pre><pre name="code" class="html">
+&lt;br&gt;&lt;b&gt;2、表单元素(form)：&lt;b&gt;&lt;br&gt;&lt;br&gt;
+
+&lt;b&gt;(1)登录系统:&lt;/b&gt;
+&lt;!--
+&lt;form&gt;表单标记,
+action属性的值是要接受提交的数据页面的url
+method属性指定数据提交的方式，主要有两种： get 和  post
+post的安全性更高，
+--&gt;
+
+&lt;form action=&quot;ok.html&quot; method=&quot;get&quot;&gt;
+
+&lt;br&gt;用户名:&lt;input type=&quot;text&quot; name=&quot;username&quot;/&gt;&lt;br&gt;&lt;br&gt;
+密&#160;&#160;码:&lt;input type=&quot;password&quot; name = &quot;password&quot;/&gt;&lt;br&gt;&lt;br&gt;
+&#160;&#160;&#160;&#160;&#160;&#160;&#160; &lt;input type= &quot;submit&quot; value=&quot;登陆&quot;/&gt; &#160;&#160;&#160;
+&lt;input type=&quot;reset&quot; value=&quot;重置&quot;/&gt;
+
+&lt;br&gt;&lt;br&gt;&lt;b&gt;(2)请选择你喜欢吃的水果（复选框）&lt;/b&gt;&lt;br&gt;&lt;br&gt;
+&lt;!--对于同一个调查的复选框，他们的name属性值要保持一致--&gt;
+&lt;!--注意，服务器真正接收的值是value的值，而尖括号外的值苹果等只是在网页界面上显示给用户看的--&gt;
+&lt;!--checked属性，默认选中该项，单选框也是如此--&gt;
+&lt;input type=&quot;checkbox&quot; name=&quot;fruit&quot; value=&quot;pingguo&quot;&gt;苹果&lt;br&gt;
+&lt;input type=&quot;checkbox&quot; name=&quot;fruit&quot; value= &quot;xiangjiao&quot;&gt;香蕉&lt;br&gt;
+&lt;input type=&quot;checkbox&quot; name=&quot;fruit&quot; value= &quot;juzi&quot; checked &gt;橘子&lt;br&gt;
+&lt;input type=&quot;checkbox&quot; name=&quot;fruit&quot; value=&quot;lizhi&quot;&gt;荔枝&lt;br&gt;
+&lt;input type=&quot;checkbox&quot; name=&quot;fruit&quot; value=&quot;taozi&quot;&gt;桃子&lt;br&gt;
+&lt;input type=&quot;checkbox&quot; name=&quot;fruit&quot; value=&quot;yingtao&quot;&gt;樱桃&lt;br&gt;
+&#160;&#160;&#160;&#160;&#160;&#160;&#160; &lt;input type= &quot;submit&quot; value=&quot;确定&quot;&gt; &#160;&#160;&#160;
+&lt;input type=&quot;reset&quot; value =&quot;重置&quot;&gt;
+
+&lt;br&gt;&lt;br&gt;&lt;b&gt;(3)请选择你的性别（单选框）&lt;/b&gt;&lt;br&gt;&lt;br&gt;
+&lt;!--对于同一个调查的单选框，他们的name属性值要保持一致；
+对于每一个input一定要有name值，否则服务器将无法接收--&gt;
+&lt;input type=&quot;radio&quot; name=&quot;sex&quot; value=&quot;nan&quot;&gt;男&lt;br&gt;
+&lt;input type=&quot;radio&quot; name=&quot;sex&quot; value=&quot;nv&quot;&gt;女&lt;br&gt;
+&#160;&#160;&#160;&#160;&#160;&#160;&#160; &lt;input type= &quot;submit&quot; name=&quot;确定&quot;&gt; &#160;&#160;&#160;
+&lt;input type=&quot;reset&quot; name =&quot;重置&quot;&gt;
+
+
+&lt;br&gt;&lt;br&gt;&lt;b&gt;(4)隐藏域的使用&lt;/b&gt;&lt;br&gt;&lt;br&gt;
+&lt;!--在网页中，如果我们希望提交某些数据（这些数据用户不能看见），但又不影响页面显示效果，可以考虑使用隐藏域--&gt;
+
+&lt;input type=&quot;hidden&quot; name=&quot;data&quot; value=&quot;ok!&quot;&gt;
+
+
+&lt;br&gt;&lt;br&gt;&lt;b&gt;(5)图片按钮的使用&lt;/b&gt;&lt;br&gt;&lt;br&gt;
+&lt;br&gt;用户名:&lt;input type=&quot;text&quot; name=&quot;username&quot;/&gt;&lt;br&gt;&lt;br&gt;
+密&#160;&#160;码:&lt;input type=&quot;password&quot; name = &quot;password&quot;/&gt;&lt;br&gt;&lt;br&gt;
+&#160;&#160;&#160;&#160;&#160;&#160;&#160; &lt;input type= &quot;image&quot; src=&quot;login.png&quot;/&gt; &#160;&#160;&#160;
+&lt;input type=&quot;reset&quot; value=&quot;重置&quot;/&gt;
+
+
+&lt;br&gt;&lt;br&gt;&lt;b&gt;(6)下拉列表的使用&lt;/b&gt;&lt;br&gt;&lt;br&gt;
+&lt;b&gt;请选择你的出生地：&lt;/b&gt;&lt;br&gt;&lt;br&gt;
+
+&lt;!--size属性表示在页面上下拉列表显示几列，默认为1--&gt;
+&lt;!--multiple属性表示下拉列表可多选，注意，是用 Ctrl 键配合鼠标实现多选。--&gt;
+&lt;!--selected属性，下拉列表中默认选中该项--&gt;
+&lt;select name=&quot;address&quot; size=&quot;2&quot; multiple&gt; 
+&lt;option value=&quot;qingdao&quot;&gt;青岛&lt;/option&gt;
+&lt;option value=&quot;jinan&quot;&gt;济南&lt;/option&gt;
+&lt;option value=&quot;weifang&quot; selected&gt;潍坊&lt;/option&gt;
+&lt;option value=&quot;jining&quot;&gt;济宁&lt;/option&gt;
+&lt;option value=&quot;yantai&quot;&gt;烟台&lt;/option&gt;
+&lt;option value=&quot;weihai&quot;&gt;威海&lt;/option&gt;
+
+
+&lt;/select&gt;
+
+&lt;br&gt;&lt;br&gt;&lt;b&gt;(7)文本域的使用&lt;/b&gt;&lt;br&gt;&lt;br&gt;
+&lt;!--文本域的大小用行和列表示--&gt;
+&lt;textarea name = &quot;my_textarea&quot; rows=&quot;10&quot; cols=&quot;50&quot;&gt;请输入...&lt;/textarea&gt;
+
+
+&lt;br&gt;&lt;br&gt;&lt;b&gt;(8)文件上传的控件&lt;/b&gt;&lt;br&gt;&lt;br&gt;
+&lt;input type=&quot;file&quot; name=&quot;my_file&quot;&gt;文件上传&lt;/br&gt;
+&#160;&#160;&#160;&#160;&#160;&#160;&#160; &lt;input type= &quot;submit&quot; value=&quot;上传&quot;&gt; &#160;&#160;&#160;
+&lt;input type=&quot;reset&quot; value =&quot;重置&quot;&gt;
+
+&lt;/form&gt;
+
+&lt;br&gt;&lt;br&gt;&lt;b&gt;(9)相关表单元素分组标记&lt;/b&gt;&lt;br&gt;&lt;br&gt;</pre><pre name="code" class="html">&lt;img src=&quot;http://img.blog.csdn.net/20150513210727832?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvdTAxMzM3MjQ4Nw==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center&quot; width=&quot;500&quot; height=&quot;100&quot; alt=&quot;&quot; /&gt;
+</pre><pre name="code" class="html">
+
+&lt;form&gt;
+&lt;!--fieldset 元素可将表单内的相关元素分组。&lt;fieldset&gt; 标签将表单内容的一部分打包，生成一组相关表单的字段。--&gt;
+  &lt;fieldset style=&quot;width:300px&quot;&gt;
+  &lt;!--&lt;legend&gt; 标签为 &lt;fieldset&gt;、&lt;figure&gt; 以及 &lt;details&gt; 元素定义标题--&gt;
+    &lt;legend&gt;健康信息&lt;/legend&gt;
+    身高：&lt;input type=&quot;text&quot; name=&quot;shengao&quot;/&gt;&lt;br&gt;
+    体重：&lt;input type=&quot;text&quot; name=&quot;tizhong&quot; /&gt;
+  &lt;/fieldset&gt;
+&lt;/form&gt;
+
+
+&lt;/body&gt;
+&lt;/html&gt;
+
+
+&lt;/body&gt;
+
+
+&lt;/html&gt;</pre><br>
+<br>
+</p>
+<p><a href='_index.htm'>&lt;&lt;目录</a></p>
+</body>
+</html>

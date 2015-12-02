@@ -1,0 +1,32 @@
+﻿<!doctype html>
+<html dir="ltr" lang="zh-CN">
+<head>
+<title>php使用cookie显示用户上次访问网站日期的方法</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style type="text/css">
+body {font:normal 12px/24px Arial, Helvetica, sans-serif; background:#D9F0DB;}
+textarea,pre {font-family:Courier; font-size:12px;}
+</style>
+</head>
+<body>
+<p><a href='_index.htm'>&lt;&lt;目录</a></p><p></p>
+<div id="art_demo" style="margin:5px 0px; padding:0px 5px; list-style:none; border:none; text-indent:30px; line-height:25px; font-family:Tahoma,Helvetica,Arial,宋体,sans-serif; background-color:rgb(253,253,253)">
+<span style="font-size:18px">这篇文章主要介绍了php使用cookie显示用户上次访问网站日期的方法,主要通过使用cookie保存访问时间来实现该功能,需要的朋友可以参考下</span></div>
+<div id="art_demo" style="margin:5px 0px; padding:0px 5px; list-style:none; border:none; text-indent:30px; line-height:25px; font-family:Tahoma,Helvetica,Arial,宋体,sans-serif; background-color:rgb(253,253,253)">
+<span style="font-size:18px"><span style="line-height:12px">&nbsp;</span>本文实例讲述了php使用cookie显示用户上次访问网站日期的方法。分享给大家供大家参考。具体实现方法如下：</span></div>
+<p></p>
+<p><span style="font-size:18px">代码如下：</span></p>
+<p><span style="font-size:18px"></span><pre name="code" class="php">&lt;?php
+if(!empty($_COOKIE[&#39;lastvisit&#39;])){//先判断，是否存在cookie
+    echo &quot;您上次访问时间是：&quot;.$_COOKIE[&#39;lastvisit&#39;];
+    setCookie(&quot;lastvisit&quot;,date(&quot;Y-m-d H:i:s&quot;),time()+3600*24*360);
+}else{
+    echo &quot;您是第一次登录，欢迎！&quot;;
+    setCookie(&quot;lastvisit&quot;,date(&quot;Y-m-d H:i:s&quot;),time()+3600*24*360);
+}
+?&gt;</pre><br>
+<br>
+</p>
+<p><a href='_index.htm'>&lt;&lt;目录</a></p>
+</body>
+</html>

@@ -1,0 +1,67 @@
+﻿<!doctype html>
+<html dir="ltr" lang="zh-CN">
+<head>
+<title>PHP预定义超全局数组 $_SERVER 、$_ENV 、$GLOBALS 讲解</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style type="text/css">
+body {font:normal 12px/24px Arial, Helvetica, sans-serif; background:#D9F0DB;}
+textarea,pre {font-family:Courier; font-size:12px;}
+</style>
+</head>
+<body>
+<p><a href='_index.htm'>&lt;&lt;目录</a></p><h1 class="infotitle" style="text-align:left; padding:0px; margin:0px; font-family:宋体; line-height:24px">
+<span style="font-size:18px">$_ENV：<br>
+<span style="font-weight:normal">该全局数组可以获取环境变量，在php5.3中默认禁用，但是你可以启动,在php.ini文件中启用.</span><br>
+<span style="font-weight:normal">variables_order =&quot;EGPCS&quot;</span><br>
+<span style="font-weight:normal">特别说明一把，在开发和生产环境，不要启用.</span><br>
+<br>
+$GLOBALS：<br>
+</span></h1>
+<div><span style="font-size:18px">包含了全部变量的全局组合数组。变量的名字就是数组的键[手册]<br>
+如 [_POST、[_GET] 、[_COOKIE]、[_FILES] 等<br>
+同时一个自定义的全局变量，也会自动的被$_GLOBALS 管理<br>
+</span></div>
+<h1 class="infotitle" style="text-align:left; padding:0px; margin:0px; font-weight:normal; font-family:宋体; line-height:24px">
+<span style="font-size:18px">案例:<br>
+&lt;?php<br>
+&nbsp; &nbsp; &nbsp; &nbsp;echo &quot;aaaa&quot;;<br>
+&nbsp; &nbsp; &nbsp; &nbsp;echo &quot;&lt;pre&gt;&quot;;<br>
+&nbsp; &nbsp; &nbsp; &nbsp;echo print_r($GLOBALS);<br>
+&nbsp; &nbsp; &nbsp; &nbsp;echo &quot;&lt;/pre&gt;&quot;;<br>
+?&gt;<br>
+当你定义一个全局变量，该变量也会被$GLOBALS管理<br>
+&lt;?php<br>
+&nbsp; &nbsp; &nbsp; &nbsp;$a=900;<br>
+&nbsp; &nbsp; &nbsp; &nbsp;echo “&lt;pre&gt;”;<br>
+&nbsp; &nbsp; &nbsp; &nbsp;print_r($GLOBALS);<br>
+&nbsp; &nbsp; &nbsp; &nbsp;echo “&lt;/pre&gt;”<br>
+?&gt;</span><br>
+</h1>
+<div><span style="font-size:18px">输出结果：</span></div>
+<div><span style="font-size:18px"></span>
+<pre>Array
+(
+    [GLOBALS] =&gt; Array
+ *RECURSION*
+    [_POST] =&gt; Array
+        (
+        )
+
+    [_GET] =&gt; Array
+        (
+        )
+
+    [_COOKIE] =&gt; Array
+        (
+        )
+
+    [_FILES] =&gt; Array
+        (
+        )
+
+    [a] =&gt; 900
+)</pre>
+</div>
+<p><a href='_index.htm'>&lt;&lt;目录</a></p>
+</body>
+</html>

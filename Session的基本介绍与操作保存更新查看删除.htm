@@ -1,0 +1,187 @@
+﻿<!doctype html>
+<html dir="ltr" lang="zh-CN">
+<head>
+<title>Session的基本介绍与操作：保存、更新、查看、删除</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style type="text/css">
+body {font:normal 12px/24px Arial, Helvetica, sans-serif; background:#D9F0DB;}
+textarea,pre {font-family:Courier; font-size:12px;}
+</style>
+</head>
+<body>
+<p><a href='_index.htm'>&lt;&lt;目录</a></p><p><br>
+</p>
+<p></p>
+<pre name="code" class="php">&lt;?php 
+/* 	
+ * Session的初步介绍:
+    Session是服务器端技术+
+          注意:一个会话（浏览器）对应一个Session文件 
+    session的基本用法(crud) 增删改查.
+    xampp中session文件默认保存在  C:\xampp\tmp
+*/
+?&gt;
+&lt;?php
+header(&quot;Content-type: text/html; charset=utf-8&quot;);
+//屏蔽notice级错误
+error_reporting(E_ALL^E_NOTICE);
+echo &quot;&lt;br/&gt;&lt;b&gt;***演示如何保存session数据**&lt;/b&gt;&lt;br/&gt;&quot;;
+//1.初始化session
+session_start();
+//2.保存数据
+$_SESSION[&#39;name&#39;]=&quot;shunping&quot;;
+//session文件中可以保存srring , dobule , integer, bool, array, object
+//3、保存inter bool
+$_SESSION[&#39;age&#39;]=100;
+$_SESSION[&#39;isBoy&#39;]=true;
+
+//4、保存数组
+$arr1=array(&quot;北京&quot;,&quot;小明&quot;,&quot;hello&quot;);
+$_SESSION[&#39;arr1&#39;]=$arr1;
+
+//5、保存一个对象到session文件
+class Dog{
+    private $name;
+    private $age;
+    private $intro;
+    function __construct($name,$age,$intro){
+        $this-&gt;name=$name;
+        $this-&gt;age=$age;
+        $this-&gt;intro=$intro;
+    }
+    public function getName(){
+        return $this-&gt;name;
+    }
+}
+
+$dog1=new Dog(&quot;大狗&quot;,5,&quot;很好的一只狗&quot;);
+$_SESSION[&#39;dog1&#39;]=$dog1;
+echo &quot;保存ok&quot;;
+?&gt;
+&lt;?php
+    // (1) 要使用session，都需要初始化 sesssion_start();
+    // (2) session文件中可以放入多个  key&lt;==&gt;val对 , 注意 key不能重复，val可以是基本数据类型，和array,对象.
+    // (3) 如果我们要取出对象，则需要实现申明一下类的定义信息.
+
+	echo &quot;&lt;br/&gt;&lt;br/&gt;&lt;b&gt;***演示如何获取session数据***&lt;/b&gt;&lt;br/&gt;&quot;;
+	//1.初始化session
+	//session_start();
+	//获取session
+	//2.把所有的session获取
+    //pre 元素可定义预格式化的文本。被包围在 pre 元素中的文本通常会保留空格和换行符。而文本也会呈现为等宽字体。
+    //&lt;pre&gt; 标签的一个常见应用就是用来表示计算机的源代码,用来格式化某文本。
+	echo &quot;&lt;pre&gt;&quot;;
+	print_r($_SESSION);
+	echo &quot;&lt;/pre&gt;&quot;;
+
+	//3.通过key来指定获取某个值
+	echo &quot;&lt;br/&gt;名字是:&quot;.$_SESSION[&quot;name&quot;];
+	
+	$arr1=$_SESSION[&#39;arr1&#39;];
+
+	echo &quot;&lt;br/&gt;数组的数据是:&quot;;
+	foreach($arr1 as $key=&gt;$val){
+		echo &quot;&lt;br/&gt;--$val&quot;;
+	}
+	//4.取出对象
+	//保存一个对象到session文件
+	//类的定义重新引入到该文件,我们必须 把它放在session_start()前
+
+	$xiaogou=$_SESSION[&#39;dog1&#39;];
+
+	echo &quot;&lt;br/&gt;小狗的名字:&quot;.$xiaogou-&gt;getName();//
+?&gt;
+&lt;?php
+	echo &quot;&lt;br/&gt;&lt;br/&gt;&lt;b&gt;***演示如何更新session数据***&lt;/b&gt;&lt;br/&gt;&quot;;
+    //1、初始化session
+	//session_start();
+    //2、session的更新即对session中对应的key重新赋值即可
+	$_SESSION[&#39;name&#39;]=&quot;顺平&quot;;
+	echo &quot;更新成功!&quot;;
+	echo &quot;&lt;br/&gt;名字是:&quot;.$_SESSION[&quot;name&quot;];
+?&gt;
+&lt;?php
+
+    echo &quot;&lt;br/&gt;&lt;br/&gt;&lt;b&gt;***演示如何删除session数据***&lt;/b&gt;&lt;br/&gt;&quot;;
+	
+    //1、初始化session
+	//session_start();
+    //删除sessoin信息
+    //1.删除某一个key&lt;==&gt;val
+	//unset($_SESSION[&#39;name&#39;]);
+
+	//2.删除所有的 key&lt;==&gt;val
+	//这样就会把当前这个浏览器对应的session文件删除.
+    //session_destroy()虽然销毁了，但cookie中仍然存在
+	//session_destroy();
+    session_unset();
+	echo &quot;删除session成功!&quot;;
+	if($_SESSION[&#39;age&#39;]==&quot;&quot;)
+	echo &quot;&lt;br/&gt;确实删除session成功!&quot;;
+	echo $_SESSION[&#39;age&#39;];
+?&gt;
+
+	</pre>
+<h2 style="padding:0px 0px 0px 40px; color:rgb(51,51,51)"><a target="_blank" title="PHP中Session()函数使用" href="http://sjolzy.cn/PHP-function-to-use-in-Session.html" style="text-decoration:none; outline:0px; color:rgb(19,12,14)">PHP中Session()扩展函数的使用</a>&nbsp;</h2>
+<div class="entry" style="height:auto; color:rgb(51,51,51); font-size:14px">
+<div id="postContent" style="overflow:hidden; width:649px; font-family:verdana,sans-serif; line-height:21px">
+<p style="line-height:20px">对比起 Cookie，Session 是存储在服务器端的会话，相对安全，并且不像 Cookie 那样有存储长度限制，本文简单介绍 Session 的使用。<br>
+由于 Session 是以文本文件形式存储在服务器端的，所以不怕客户端修改 Session 内容。实际上在服务器端的 Session 文件，PHP 自动修改 Session 文件的权限，只保留了系统读和写权限，而且不能通过 ftp 修改，所以安全得多。</p>
+<p style="line-height:20px"><pre name="code" class="php">&lt;?php 
+// 启动 Session 
+session_start(); 
+// 声明一个名为 admin 的变量，并赋空值。 
+$_SESSION[&quot;admin&quot;] = null; 
+?&gt;
+&lt;?php 
+session_start(); 
+// 这种方法是将原来注册的某个变量销毁
+unset($_SESSION[&#39;admin&#39;]); 
+// 这种方法是销毁整个 Session 文件
+session_destroy(); 
+?&gt;
+&lt;?php 
+session_start(); 
+// 保存一天 
+$lifeTime = 24 * 3600; 
+setcookie(session_name(), session_id(), time() + $lifeTime, &quot;/&quot;); 
+?&gt;
+&lt;?php 
+// 保存一天 
+$lifeTime = 24 * 3600; 
+session_set_cookie_params($lifeTime); 
+session_start(); 
+$_SESSION[&quot;admin&quot;] = true; 
+?&gt;
+&lt;?php 
+// 保存一天 
+$lifeTime = 24 * 3600; 
+// 取得当前 Session 名，默认为 PHPSESSID 
+$sessionName = session_name(); 
+// 取得 Session ID 
+$sessionID = $_GET[$sessionName]; 
+// 使用 session_id() 设置获得的 Session ID 
+session_id($sessionID);
+session_set_cookie_params($lifeTime); 
+session_start(); 
+$_SESSION[&#39;admin&#39;] = true; 
+?&gt;
+&lt;?php 
+// 设置一个存放目录 
+$savePath = &#39;./session_save_dir/&#39;; 
+// 保存一天 
+$lifeTime = 24 * 3600; 
+session_save_path($savePath); 
+session_set_cookie_params($lifeTime); 
+session_start(); 
+$_SESSION[&#39;admin&#39;] = true; 
+?&gt;</pre><br>
+</p>
+<p style="line-height:20px">另外，我们还可以使用 session_set_save_handler 函数来自定义 Session 的调用方式。</p>
+</div>
+</div>
+<br>
+<p></p>
+<p><a href='_index.htm'>&lt;&lt;目录</a></p>
+</body>
+</html>
